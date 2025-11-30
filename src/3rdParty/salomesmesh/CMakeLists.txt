@@ -248,6 +248,9 @@ FILE(GLOB SMESHDS_source_files src/SMESHDS/*.cpp inc/SMESHDS_*.h*)
 ADD_LIBRARY(SMESHDS SHARED ${SMESHDS_source_files})
 TARGET_LINK_LIBRARIES(SMESHDS ${SMESH_LIBS} SMDS ${Boost_LIBRARIES} )
 
+add_executable(TestSMDS_Mesh testSMDS_compactMesh.cxx)
+target_link_libraries(TestSMDS_Mesh PRIVATE SMDS)
+
 SET_BIN_DIR(SMESHDS SMESHDS)
 
 #########
