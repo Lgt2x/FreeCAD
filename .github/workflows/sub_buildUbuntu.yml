@@ -22,9 +22,9 @@
 # ***************************************************************************
 
 # This is a build and test workflow for CI of FreeCAD.
-# This workflow aims at building and testing FreeCAD on Ubuntu 22.04 using GCC.
+# This workflow aims at building and testing FreeCAD on Ubuntu 25.04 using GCC.
 
-name: Build Ubuntu 22.04
+name: Build Ubuntu 25.04
 
 on:
   workflow_call:
@@ -47,7 +47,7 @@ on:
 jobs:
 
   Build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-25.04 # Minimal required version for PySide6 native package
     continue-on-error: ${{ inputs.allowedToFail }}
     env:
       CCACHE_COMPILERCHECK: "%compiler% -dumpfullversion -dumpversion" # default:mtime
@@ -62,8 +62,6 @@ jobs:
       CCACHE_SLOPPINESS: "include_file_ctime,include_file_mtime,pch_defines,time_macros"
       CC: /usr/bin/gcc
       CXX: /usr/bin/g++
-      #CC: /usr/bin/clang
-      #CXX: /usr/bin/clang++
       builddir: ${{ github.workspace }}/build/release/
       config: release
       logdir: /tmp/logs/
@@ -93,8 +91,7 @@ jobs:
         run: |
           sudo apt-get update -y -qq
           sudo apt-get install -y -qq python3-pip
-          python3 -m pip install --upgrade pip
-          python3 -m pip install ifcopenshell==0.8.2
+          python3 -m pip install ifcopenshell==0.8.4 --break-system-packages
 
       - name: Make needed directories, files and initializations
         id: Init
@@ -133,7 +130,7 @@ jobs:
       - name: Install cmake
         uses: jwlawson/actions-setup-cmake@802fa1a2c4e212495c05bf94dba2704a92a472be # v2.0.2
         with:
-          cmake-version: '3.31.6'
+          cmake-version: '4.2.1'
 
       - name: CMake Configure
         uses: ./.github/workflows/actions/linux/configure
