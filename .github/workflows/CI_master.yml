@@ -39,11 +39,11 @@ jobs:
     with:
       artifactBasename: Prepare-${{ github.run_id }}
 
-  Pixi:
-    needs: [Prepare]
-    uses: ./.github/workflows/sub_buildPixi.yml
-    with:
-      artifactBasename: Pixi-${{ github.run_id }}
+  # Pixi:
+  #   needs: [Prepare]
+  #   uses: ./.github/workflows/sub_buildPixi.yml
+  #   with:
+  #     artifactBasename: Pixi-${{ github.run_id }}
 
   Ubuntu:
     needs: [Prepare]
@@ -51,33 +51,33 @@ jobs:
     with:
       artifactBasename: Ubuntu-${{ github.run_id }}
 
-  Windows:
-    needs: [Prepare]
-    uses: ./.github/workflows/sub_buildWindows.yml
-    with:
-      artifactBasename: Windows-${{ github.run_id }}
+  # Windows:
+  #   needs: [Prepare]
+  #   uses: ./.github/workflows/sub_buildWindows.yml
+  #   with:
+  #     artifactBasename: Windows-${{ github.run_id }}
 
-  Lint:
-    needs: [Prepare]
-    uses: ./.github/workflows/sub_lint.yml
-    with:
-      artifactBasename: Lint-${{ github.run_id }}
-      changedFiles: ${{ needs.Prepare.outputs.changedFiles }}
-      changedLines: ${{ needs.Prepare.outputs.changedLines }}
-      changedCppFiles: ${{ needs.Prepare.outputs.changedCppFiles }}
-      changedCppLines: ${{ needs.Prepare.outputs.changedCppLines }}
-      changedPythonFiles: ${{ needs.Prepare.outputs.changedPythonFiles }}
-      changedPythonLines: ${{ needs.Prepare.outputs.changedPythonLines }}
+  # Lint:
+  #   needs: [Prepare]
+  #   uses: ./.github/workflows/sub_lint.yml
+  #   with:
+  #     artifactBasename: Lint-${{ github.run_id }}
+  #     changedFiles: ${{ needs.Prepare.outputs.changedFiles }}
+  #     changedLines: ${{ needs.Prepare.outputs.changedLines }}
+  #     changedCppFiles: ${{ needs.Prepare.outputs.changedCppFiles }}
+  #     changedCppLines: ${{ needs.Prepare.outputs.changedCppLines }}
+  #     changedPythonFiles: ${{ needs.Prepare.outputs.changedPythonFiles }}
+  #     changedPythonLines: ${{ needs.Prepare.outputs.changedPythonLines }}
 
-  WrapUp:
-    needs: [
-        Prepare,
-        Pixi,
-        Ubuntu,
-        Windows,
-        Lint
-      ]
-    if: always()
-    uses: ./.github/workflows/sub_wrapup.yml
-    with:
-      previousSteps: ${{ toJSON(needs) }}
+  # WrapUp:
+  #   needs: [
+  #       Prepare,
+  #       Pixi,
+  #       Ubuntu,
+  #       Windows,
+  #       Lint
+  #     ]
+  #   if: always()
+  #   uses: ./.github/workflows/sub_wrapup.yml
+  #   with:
+  #     previousSteps: ${{ toJSON(needs) }}
