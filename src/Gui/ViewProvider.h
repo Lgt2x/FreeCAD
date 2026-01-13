@@ -29,11 +29,11 @@
 #include <vector>
 #include <QIcon>
 #include <fastsignals/signal.h>
-#include <boost/intrusive_ptr.hpp>
 
 #include <App/Material.h>
 #include <App/TransactionalObject.h>
 #include <Base/BoundBox.h>
+#include <Base/IntrusivePtr.h>
 #include <Base/Vector3D.h>
 
 #include "TreeItemMode.h"
@@ -89,16 +89,14 @@ enum ViewStatus
 
 /** Convenience smart pointer to wrap coin node.
  *
- * It is basically boost::intrusive plus implicit pointer conversion to save the
+ * It is basically Base::IntrusivePtr plus implicit pointer conversion to save the
  * trouble of typing get() all the time.
  */
 template<class T>
-class CoinPtr: public boost::intrusive_ptr<T>
+class CoinPtr: public Base::IntrusivePtr<T>
 {
 public:
-    // Too bad, VC2013 does not support constructor inheritance
-    // using boost::intrusive_ptr<T>::intrusive_ptr;
-    using inherited = boost::intrusive_ptr<T>;
+    using inherited = Base::IntrusivePtr<T>;
     CoinPtr() = default;
     CoinPtr(T* p, bool add_ref = true)
         : inherited(p, add_ref)

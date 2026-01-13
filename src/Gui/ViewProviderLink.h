@@ -30,6 +30,8 @@
 #include <vector>
 #include <memory>
 
+#include <Base/IntrusivePtr.h>
+
 #include "Selection/SoFCUnifiedSelection.h"
 #include "ViewProviderDocumentObject.h"
 #include "ViewProviderExtension.h"
@@ -45,7 +47,7 @@ namespace Gui
 {
 
 class LinkInfo;
-using LinkInfoPtr = boost::intrusive_ptr<LinkInfo>;
+using LinkInfoPtr = Base::IntrusivePtr<LinkInfo>;
 
 #if defined(_MSC_VER)
 // forward declaration to please MSVC
