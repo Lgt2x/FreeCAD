@@ -25,12 +25,12 @@
 #ifndef PARTGUI_SOBREPEDGESET_H
 #define PARTGUI_SOBREPEDGESET_H
 
+#include <boost/algorithm/string/predicate.hpp>
 #include <Inventor/nodes/SoIndexedLineSet.h>
 #include <memory>
 #include <vector>
 #include <Gui/Selection/SoFCSelectionContext.h>
 #include <Mod/Part/PartGlobal.h>
-
 
 class SoCoordinateElement;
 class SoGLCoordinateElement;

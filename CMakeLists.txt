@@ -154,3 +154,6 @@ PrintFinalReport()
 message("\n=================================================\n"
         "Now run 'cmake --build ${CMAKE_BINARY_DIR}' to build ${PROJECT_NAME}\n"
         "=================================================\n")
+
+add_executable(Test_Include test_include.cpp)
+target_link_libraries(Test_Include PRIVATE FreeCADApp)

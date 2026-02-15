@@ -22,17 +22,20 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <boost/tokenizer.hpp>
-#include <boost/regex.hpp>
-#include <deque>
-#include <memory>
-#include <sstream>
-#include <tuple>
-#include <list>
-#include <map>
-#include <string>
-#include <set>
-#include <vector>
+ #include <boost/tokenizer.hpp>
+ #include <boost/regex.hpp>
+ #include <deque>
+ #include <memory>
+ #include <sstream>
+ #include <tuple>
+ #include <list>
+ #include <map>
+ #include <string>
+ #include <set>
+ #include <vector>
+ 
+ #include <boost_graph_adjacency_list.hpp>
+ #include <boost/graph/topological_sort.hpp>
 
 #include <App/Application.h>
 #include <App/Document.h>

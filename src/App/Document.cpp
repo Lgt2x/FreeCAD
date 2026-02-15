@@ -39,6 +39,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/bimap.hpp>
 #include <boost/graph/strong_components.hpp>
+#include <boost/graph/topological_sort.hpp>
 
 #include <boost/regex.hpp>
 #include <random>
@@ -2683,7 +2684,7 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
     // delete recompute log
     d->clearRecomputeLog();
 
-    FC_TIME_INIT(t);
+    Base::TimeTracker tracker("Document::recompute");
 
     Base::ObjectStatusLocker<Document::Status, Document> exe(Document::Recomputing, this);
 
@@ -2725,7 +2726,7 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
         GetApplication().GetParameterGroupByPath("User parameter:BaseApp/Preferences/Document");
     bool canAbort = hGrp->GetBool("CanAbortRecompute", true);
 
-    FC_TIME_INIT(t2);
+    tracker.checkpoint("pre-recompute & topo sort");
 
     try {
         std::set<DocumentObject*> filter;
@@ -2800,8 +2801,6 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
         e.reportException();
     }
 
-    FC_TIME_LOG(t2, "Recompute");
-
     for (auto obj : topoSortedObjects) {
         if (!obj->isAttachedToDocument()) {
             continue;
@@ -2811,8 +2810,6 @@ int Document::recompute(const std::vector<DocumentObject*>& objs,
     }
 
     signalRecomputed(*this, topoSortedObjects);
-
-    FC_TIME_LOG(t, "Recompute total");
 
     if (!d->_RecomputeLog.empty()) {
         if (!testStatus(Status::IgnoreErrorOnRecompute)) {
