@@ -47,7 +47,6 @@
 #include <Inventor/annex/HardCopy/SoVectorizePSAction.h>
 #include <Inventor/annex/Profiler/SoProfiler.h>
 #include <Inventor/annex/Profiler/elements/SoProfilerElement.h>
-#include <Inventor/details/SoDetail.h>
 #include <Inventor/elements/SoLightModelElement.h>
 #include <Inventor/elements/SoOverrideElement.h>
 #include <Inventor/elements/SoViewportRegionElement.h>
@@ -66,7 +65,6 @@
 #include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoOrthographicCamera.h>
 #include <Inventor/nodes/SoPerspectiveCamera.h>
-#include <Inventor/nodes/SoPickStyle.h>
 #include <Inventor/nodes/SoScale.h>
 #include <Inventor/nodes/SoSelection.h>
 #include <Inventor/nodes/SoSeparator.h>
@@ -91,7 +89,6 @@
 #include <QWheelEvent>
 
 #include <App/Document.h>
-#include <App/GeoFeatureGroupExtension.h>
 #include <Base/Console.h>
 #include <Base/FileInfo.h>
 #include <Base/Sequencer.h>
@@ -115,8 +112,6 @@
 #include "Multisample.h"
 #include "NaviCube.h"
 #include "Navigation/NavigationStyle.h"
-#include "Navigation/GestureNavigationStyle.h"
-#include "Navigation/SiemensNXNavigationStyle.h"
 #include "Selection.h"
 #include "SoDevicePixelRatioElement.h"
 #include "SoFCDB.h"
@@ -129,7 +124,6 @@
 #include "SoFCVectorizeU3DAction.h"
 #include "SoTouchEvents.h"
 #include "SpaceballEvent.h"
-#include "View3DInventorRiftViewer.h"
 #include "View3DViewerPy.h"
 #include "ViewParams.h"
 #include "ViewProvider.h"

@@ -56,7 +56,6 @@
 #include <Inventor/C/glue/gl.h>
 
 #include "ContextMenu.h"
-#include "NativeEvent.h"
 #include "QuarterP.h"
 
 

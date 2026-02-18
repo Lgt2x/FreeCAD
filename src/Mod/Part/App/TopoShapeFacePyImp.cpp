@@ -42,12 +42,7 @@
 #include <Geom_Surface.hxx>
 #include <Geom_ToroidalSurface.hxx>
 #include <Geom2d_Curve.hxx>
-#include <gp_Cylinder.hxx>
-#include <gp_Cone.hxx>
-#include <gp_Pln.hxx>
 #include <gp_Pnt2d.hxx>
-#include <gp_Sphere.hxx>
-#include <gp_Torus.hxx>
 #include <GProp_GProps.hxx>
 #include <GProp_PrincipalProps.hxx>
 #include <Poly_Triangulation.hxx>
@@ -55,7 +50,6 @@
 #include <ShapeFix_Shape.hxx>
 #include <ShapeFix_Wire.hxx>
 #include <Standard_Version.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>
@@ -66,7 +60,6 @@
 #include <BRepOffsetAPI_MakeEvolved.hxx>
 
 #include <Base/GeometryPyCXX.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/VectorPy.h>
 
 #include <Mod/Part/App/BezierSurfacePy.h>
@@ -85,7 +78,6 @@
 #include <Mod/Part/App/TopoShapeWirePy.h>
 #include <Mod/Part/App/ToroidPy.h>
 
-#include "FaceMaker.h"
 #include "Geometry2d.h"
 #include "OCCError.h"
 #include "PartPyCXX.h"

@@ -24,7 +24,6 @@
  **************************************************************************/
 
 
-#include <sstream>
 #include <QApplication>
 #include <Inventor/engines/SoCalculator.h>
 #include <Inventor/engines/SoConcatenate.h>
@@ -53,12 +52,9 @@
 
 #include <App/Document.h>
 #include <Base/BaseClass.h>
-#include <Base/Console.h>
 #include <Base/Quantity.h>
-#include <Mod/Measure/App/Preferences.h>
 
 #include "ViewProviderMeasureDistance.h"
-#include "Gui/Application.h"
 #include <Gui/Command.h>
 #include "Gui/Document.h"
 #include "Gui/ViewParams.h"

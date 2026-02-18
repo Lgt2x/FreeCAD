@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include "Core/Iterator.h"
 #include "Core/SetOperations.h"
 
 #include "FeatureMeshSetOperations.h"

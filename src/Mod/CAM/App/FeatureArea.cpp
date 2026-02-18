@@ -22,12 +22,10 @@
  ****************************************************************************/
 
 #include <BRep_Builder.hxx>
-#include <Precision.hxx>
 #include <TopoDS_Compound.hxx>
 
 
 #include <Base/Console.h>  // for FC_LOG_LEVEL_INIT
-#include <Base/Placement.h>
 
 #include "FeatureArea.h"
 #include "FeatureAreaPy.h"

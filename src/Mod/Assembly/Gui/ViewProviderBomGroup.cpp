@@ -21,9 +21,6 @@
  *                                                                          *
  ***************************************************************************/
 
-#include <App/Document.h>
-#include <App/DocumentObject.h>
-#include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 
 #include "ViewProviderBomGroup.h"

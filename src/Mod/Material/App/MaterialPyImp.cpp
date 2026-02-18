@@ -24,16 +24,12 @@
 
 #include <QMetaType>
 
-#include <Base/Quantity.h>
-#include <Base/QuantityPy.h>
 #include <CXX/Objects.hxx>
-#include <Gui/MetaTypes.h>
 
 #include "Materials.h"
 
 #include "Array2DPy.h"
 #include "Array3DPy.h"
-#include "Exceptions.h"
 #include "MaterialLibrary.h"
 #include "MaterialPy.h"
 #include "MaterialValue.h"

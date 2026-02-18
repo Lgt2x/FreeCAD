@@ -23,14 +23,10 @@
  ******************************************************************************/
 
 
-#include <Mod/Part/App/FCBRepAlgoAPI_Common.h>
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
-#include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
 #include <Standard_Failure.hxx>
 
 
 #include <App/DocumentObject.h>
-#include <Mod/Part/App/modelRefine.h>
 #include <Mod/Part/App/TopoShapeOpCode.h>
 
 #include "FeatureBoolean.h"

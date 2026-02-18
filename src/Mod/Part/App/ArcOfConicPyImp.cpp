@@ -30,7 +30,6 @@
 
 #include "ArcOfConicPy.h"
 #include "ArcOfConicPy.cpp"
-#include "OCCError.h"
 
 
 using namespace Part;

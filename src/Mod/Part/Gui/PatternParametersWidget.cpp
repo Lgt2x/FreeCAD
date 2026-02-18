@@ -40,7 +40,6 @@
 #include <Gui/QuantitySpinBox.h>
 #include <Gui/SpinBox.h>
 #include <Gui/BitmapFactory.h>
-#include <Base/Console.h>
 
 using namespace PartGui;
 

@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Python.h>
 
 // clang-format off
 #include "FemPostBranchFilter.h"

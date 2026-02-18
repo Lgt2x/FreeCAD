@@ -32,7 +32,6 @@
 #include <QStyleOptionSpinBox>
 #include <QToolTip>
 
-#include <sstream>
 
 #include <App/Application.h>
 #include <App/Document.h>

@@ -26,7 +26,6 @@
 //**************************************************************************
 
 
-# include <cmath>
 # include <limits>
 # include <sstream>
 # include <BRep_Tool.hxx>

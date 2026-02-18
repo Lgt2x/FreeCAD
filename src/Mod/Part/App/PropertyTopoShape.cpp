@@ -31,7 +31,6 @@
 #include <BRepTools_ShapeSet.hxx>
 #include <OSD_OpenFile.hxx>
 #include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <TopoDS.hxx>
 
 #include <App/Application.h>

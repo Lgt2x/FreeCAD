@@ -23,12 +23,11 @@
 //largely based on a python widget from:
 //https://github.com/tcalmant/demo-ipopo-qt/blob/master/pc/details/compass.py
 
-#include <QtGui>
-
+#include <QPainter>
+#include <QPainterPath>
 
 #include <Mod/TechDraw/TechDrawGlobal.h>
 
-#include <Base/Console.h>
 
 #include "CompassDialWidget.h"
 

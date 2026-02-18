@@ -23,10 +23,10 @@
  ***************************************************************************/
 
 
+#include <cassert>
 #include <sstream>
 
 
-#include "Sheet.h"
 #include "Utils.h"
 
 

@@ -33,7 +33,6 @@
 #include "PythonWrapper.h"
 #include "Selection.h"
 #include "ShortcutManager.h"
-#include "Window.h"
 
 // generated out of Command.pyi
 #include "CommandPy.h"

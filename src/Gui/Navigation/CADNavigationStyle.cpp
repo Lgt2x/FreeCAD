@@ -21,7 +21,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Inventor/nodes/SoCamera.h>
 #include <QApplication>
 
 #include "Navigation/NavigationStyle.h"

@@ -25,7 +25,6 @@
 #include <GCE2d_MakeArcOfCircle.hxx>
 #include <Geom2d_Circle.hxx>
 #include <Geom2d_TrimmedCurve.hxx>
-#include <gp_Circ2d.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

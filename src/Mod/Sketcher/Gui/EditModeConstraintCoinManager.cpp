@@ -27,7 +27,6 @@
 #include <QPainter>
 #include <QRegularExpression>
 #include <limits>
-#include <memory>
 #include <map>
 #include <stack>
 #include <cmath>
@@ -35,10 +34,8 @@
 #include <Inventor/SbImage.h>
 #include <Inventor/SbVec3f.h>
 #include <Inventor/SoPickedPoint.h>
-#include <Inventor/nodes/SoAnnotation.h>
 #include <Inventor/nodes/SoDepthBuffer.h>
 #include <Inventor/nodes/SoDrawStyle.h>
-#include <Inventor/nodes/SoGroup.h>
 #include <Inventor/nodes/SoImage.h>
 #include <Inventor/nodes/SoInfo.h>
 #include <Inventor/nodes/SoMaterial.h>
@@ -62,7 +59,6 @@
 #include <Mod/Sketcher/App/GeoEnum.h>
 #include <Mod/Sketcher/App/GeoList.h>
 #include <Mod/Sketcher/App/GeometryFacade.h>
-#include <Mod/Sketcher/App/SolverGeometryExtension.h>
 
 #include "EditModeConstraintCoinManager.h"
 #include "SoZoomTranslation.h"

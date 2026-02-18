@@ -44,7 +44,6 @@
 #include "Application.h"
 #include "FileDialog.h"
 #include "MainWindow.h"
-#include "Tools.h"
 
 
 using namespace Gui;

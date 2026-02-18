@@ -37,7 +37,6 @@
 #include <Inventor/engines/SoComposeMatrix.h>
 #include <Inventor/engines/SoTransformVec3f.h>
 #include <Inventor/engines/SoConcatenate.h>
-#include <Inventor/SbViewportRegion.h>
 
 
 #include <App/DocumentObject.h>

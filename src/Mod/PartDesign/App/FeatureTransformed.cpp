@@ -24,33 +24,26 @@
 
 #include <Bnd_Box.hxx>
 #include <BRep_Builder.hxx>
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
-#include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
 #include <BRepBndLib.hxx>
 #include <BRepBuilderAPI_Copy.hxx>
 #include <BRepBuilderAPI_Transform.hxx>
-#include <Precision.hxx>
 #include <TopExp_Explorer.hxx>
 
 
 #include <array>
 
-#include <Base/Console.h>
 #include <Base/Exception.h>
 #include <Base/ProgressIndicator.h>
 #include <Base/Reader.h>
-#include <Mod/Part/App/modelRefine.h>
+#include <Mod/Part/App/OCCTProgressIndicator.h>
 
 #include "FeatureTransformed.h"
 #include "Body.h"
 #include "FeatureAddSub.h"
-#include "FeatureMultiTransform.h"
 #include "FeatureMirrored.h"
 #include "FeatureLinearPattern.h"
 #include "FeaturePolarPattern.h"
 #include "FeatureSketchBased.h"
-#include "Mod/Part/App/TopoShapeOpCode.h"
-#include "Mod/Part/App/OCCTProgressIndicator.h"
 
 
 using namespace PartDesign;

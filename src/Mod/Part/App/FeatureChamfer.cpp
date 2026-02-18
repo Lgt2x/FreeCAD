@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <BRepFilletAPI_MakeChamfer.hxx>
-#include <Precision.hxx>
 #include <TopExp.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Edge.hxx>

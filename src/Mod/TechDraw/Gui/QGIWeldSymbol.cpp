@@ -30,7 +30,6 @@
 #include <Base/Tools.h>
 
 #include <Mod/TechDraw/App/DrawLeaderLine.h>
-#include <Mod/TechDraw/App/DrawTile.h>
 #include <Mod/TechDraw/App/DrawTileWeld.h>
 #include <Mod/TechDraw/App/DrawWeldSymbol.h>
 #include <Mod/TechDraw/App/DrawUtil.h>

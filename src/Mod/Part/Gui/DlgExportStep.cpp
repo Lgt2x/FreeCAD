@@ -28,11 +28,8 @@
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
 #include <QVBoxLayout>
-#include <Interface_Static.hxx>
 
 
-#include <App/Application.h>
-#include <Base/Parameter.h>
 #include <Mod/Part/App/OCAF/ImportExportSettings.h>
 #include <Mod/Part/App/STEP/ImportExportSettings.h>
 

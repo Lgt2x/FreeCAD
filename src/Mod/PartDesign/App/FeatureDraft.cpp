@@ -44,7 +44,6 @@
 
 #include <App/Datums.h>
 #include <App/Document.h>
-#include <Base/Console.h>
 #include <Base/Exception.h>
 #include <Base/Tools.h>
 #include <Mod/Part/App/Part2DObject.h>

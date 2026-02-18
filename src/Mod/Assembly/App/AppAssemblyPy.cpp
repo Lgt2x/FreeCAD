@@ -23,7 +23,6 @@
 
 
 #include <Base/Interpreter.h>
-#include <Base/Tools.h>
 
 
 namespace Assembly

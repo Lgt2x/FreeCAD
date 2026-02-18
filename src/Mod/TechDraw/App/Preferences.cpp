@@ -26,7 +26,6 @@
 
 
 #include <App/Application.h>
-#include <App/Material.h>
 #include <Base/Console.h>
 #include <Base/FileInfo.h>
 #include <Base/Parameter.h>

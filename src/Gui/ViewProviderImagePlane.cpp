@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <sstream>
 #include <QAction>
 #include <QFileInfo>
 #include <QImage>

@@ -27,7 +27,6 @@
 
 
 #include <App/ComplexGeoData.h>
-#include <App/Document.h>
 #include <App/Placement.h>
 #include <Base/Converter.h>
 #include <Base/CoordinateSystem.h>

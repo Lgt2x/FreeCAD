@@ -44,7 +44,6 @@
 #include <gp_Dir.hxx>
 #include <gp_Pln.hxx>
 #include <gp_Pnt.hxx>
-#include <sstream>
 
 
 #include <App/Application.h>

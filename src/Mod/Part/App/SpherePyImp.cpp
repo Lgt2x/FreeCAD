@@ -31,7 +31,6 @@
 
 #include "SpherePy.h"
 #include "SpherePy.cpp"
-#include "OCCError.h"
 
 
 using namespace Part;

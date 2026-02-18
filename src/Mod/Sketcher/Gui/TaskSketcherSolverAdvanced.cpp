@@ -25,7 +25,6 @@
 #include <QString>
 
 
-#include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Mod/Sketcher/App/SketchObject.h>
 

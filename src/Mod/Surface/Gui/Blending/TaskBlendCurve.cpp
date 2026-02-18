@@ -28,14 +28,10 @@
 
 #include <App/Document.h>
 #include <Base/Tools.h>
-#include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/CommandT.h>
 #include <Gui/Control.h>
 #include <Gui/Selection/SelectionObject.h>
-#include <Gui/Tools.h>
-#include <Gui/Widgets.h>
-#include <Mod/Part/Gui/ViewProvider.h>
 #include <Mod/Surface/App/Blending/FeatureBlendCurve.h>
 
 #include "TaskBlendCurve.h"

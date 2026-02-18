@@ -23,24 +23,18 @@
  ***************************************************************************/
 
 
-#include <Inventor/events/SoKeyboardEvent.h>
 #include <QApplication>
 #include <QEvent>
 
 
 #include "ui_SketcherToolDefaultWidget.h"
-#include <Gui/Application.h>
-#include <Gui/Document.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/ViewProvider.h>
-#include <Gui/WaitCursor.h>
 #include <Gui/PrefWidgets.h>
 #include <Base/Tools.h>
 #include <Base/UnitsApi.h>
 #include <Base/Exception.h>
 
 
-#include "ViewProviderSketch.h"
 
 #include "SketcherToolDefaultWidget.h"
 

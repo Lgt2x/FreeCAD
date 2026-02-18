@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <iomanip>
 
 #include <CXX/WrapPython.h>
 
@@ -30,7 +29,6 @@
 #include "UnitsApi.h"
 #include "UnitsSchema.h"
 #include "UnitsSchemas.h"
-#include "UnitsSchemasData.h"
 
 using Base::UnitsApi;
 using Base::UnitsSchema;

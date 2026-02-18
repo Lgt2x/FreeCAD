@@ -22,7 +22,6 @@
 
 
 #include <cassert>
-#include <algorithm>
 
 
 #include "ViewProviderExtension.h"

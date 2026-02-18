@@ -22,16 +22,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cmath>
 
 #include <Inventor/nodes/SoGroup.h>
-#include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoShapeHints.h>
 
 #include <App/Document.h>
-#include <Base/Parameter.h>
 
-#include "ViewProvider.h"
 #include "ViewProviderReference.h"
 
 

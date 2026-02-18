@@ -28,16 +28,13 @@
 #include <App/DocumentObject.h>
 #include <App/Origin.h>
 #include <Base/Console.h>
-#include <Base/Converter.h>
 #include <Base/Tools.h>
 #include <Gui/Application.h>
 #include <Gui/CommandT.h>
 #include <Gui/Document.h>
 #include <Gui/Selection/Selection.h>
-#include <Gui/WaitCursor.h>
 #include <Mod/Part/App/Tools.h>
 #include <Gui/ViewProviderCoordinateSystem.h>
-#include <Gui/Inventor/Draggers/SoLinearDragger.h>
 #include <Mod/PartDesign/App/Body.h>
 #include <Mod/PartDesign/App/FeatureHelix.h>
 #include <Mod/Part/App/GizmoHelper.h>

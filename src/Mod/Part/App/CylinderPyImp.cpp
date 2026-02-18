@@ -25,7 +25,6 @@
 #include <GC_MakeCylindricalSurface.hxx>
 #include <Geom_Circle.hxx>
 #include <Geom_CylindricalSurface.hxx>
-#include <gp_Cylinder.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

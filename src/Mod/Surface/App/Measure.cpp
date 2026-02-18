@@ -23,9 +23,7 @@
 //! we are treating surfaces like Part objects for now
 
 
-#include <App/Application.h>
 #include <App/MeasureManager.h>
-#include "Base/Console.h"
 #include "Measure.h"
 
 

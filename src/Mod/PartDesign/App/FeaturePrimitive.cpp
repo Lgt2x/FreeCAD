@@ -25,8 +25,6 @@
 #include <limits>
 
 #include <BRepPrim_Cylinder.hxx>
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
-#include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
 #include <BRepBuilderAPI_GTransform.hxx>
 #include <BRepBuilderAPI_MakeFace.hxx>
 #include <BRepBuilderAPI_MakePolygon.hxx>

@@ -23,8 +23,6 @@
  ***************************************************************************/
 
 #include <App/Application.h>
-#include <App/Document.h>
-#include <Base/GeometryPyCXX.h>
 
 // inclusion of the generated files (generated out of QuickMeasurePy.xml)
 #include "QuickMeasurePy.h"

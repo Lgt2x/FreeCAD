@@ -37,7 +37,6 @@
 # include <config.h>
 #endif  // HAVE_CONFIG_H
 
-#include <cstdio>
 #include <iostream>
 #include <QByteArray>
 

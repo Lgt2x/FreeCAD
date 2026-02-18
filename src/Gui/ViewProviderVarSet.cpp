@@ -21,13 +21,12 @@
  ****************************************************************************/
 
 
+#include "ViewProviderVarSet.h"
 #include <memory>
 
 
-#include <App/VarSet.h>
 
 #include "MainWindow.h"
-#include "ViewProviderVarSet.h"
 
 using namespace Gui;
 using namespace Gui::Dialog;

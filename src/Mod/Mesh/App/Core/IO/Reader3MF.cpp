@@ -24,8 +24,6 @@
 
 #include <boost/tokenizer.hpp>
 #include <memory>
-#include <ostream>
-#include <sstream>
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
 

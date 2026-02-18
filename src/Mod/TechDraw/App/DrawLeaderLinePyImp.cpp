@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include "DrawLeaderLine.h"
 // inclusion of the generated files (generated out of DrawLeaderLinePy.xml)
 #include <Mod/TechDraw/App/DrawLeaderLinePy.h>
 #include <Mod/TechDraw/App/DrawLeaderLinePy.cpp>

@@ -62,8 +62,6 @@
  */
 
 
-#include <Inventor/SoFullPath.h>
-#include <Inventor/SoPickedPoint.h>
 #include <Inventor/actions/SoRayPickAction.h>
 #include <Inventor/draggers/SoDragger.h>
 #include <QApplication>
@@ -78,7 +76,6 @@
 #include <Base/Console.h>
 
 #include "GestureNavigationStyle.h"
-#include "Application.h"
 #include "SoTouchEvents.h"
 #include "View3DInventorViewer.h"
 

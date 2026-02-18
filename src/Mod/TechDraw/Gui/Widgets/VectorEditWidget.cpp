@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <QObject>
 #include <QPushButton>
-#include <QtGui>
+#include <QKeyEvent>
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QHBoxLayout>
@@ -39,7 +39,6 @@
 
 #include <Mod/TechDraw/TechDrawGlobal.h>
 
-#include <Base/Console.h>
 #include <Base/UnitsApi.h>
 
 #include <Gui/SpinBox.h>

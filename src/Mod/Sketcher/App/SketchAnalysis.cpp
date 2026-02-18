@@ -26,7 +26,6 @@
 #include <cmath>
 
 #include <BRep_Tool.hxx>
-#include <Precision.hxx>
 #include <TopExp.hxx>
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <TopoDS.hxx>

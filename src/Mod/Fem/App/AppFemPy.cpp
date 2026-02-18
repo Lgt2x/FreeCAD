@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cstdlib>
 #include <memory>
 
 
@@ -29,7 +28,6 @@
 #include <App/DocumentObject.h>
 #include <App/DocumentObjectPy.h>
 #include <Base/Interpreter.h>
-#include <Base/PlacementPy.h>
 #include <Mod/Part/App/OCCError.h>
 
 #include "FemMesh.h"

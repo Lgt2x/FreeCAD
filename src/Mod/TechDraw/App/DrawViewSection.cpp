@@ -79,7 +79,6 @@
 #include <Base/Converter.h>
 #include <Base/FileInfo.h>
 #include <Base/Parameter.h>
-#include <Base/Tools.h>
 
 #include <Mod/Part/App/PartFeature.h>
 

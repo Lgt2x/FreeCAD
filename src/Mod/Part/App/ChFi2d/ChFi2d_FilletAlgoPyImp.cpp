@@ -24,7 +24,6 @@
 
 #include <Mod/Part/PartGlobal.h>
 
-#include <gp_Pln.hxx>
 #include <Standard_Failure.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Edge.hxx>

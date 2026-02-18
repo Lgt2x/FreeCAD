@@ -61,7 +61,6 @@
 #include <ShapeFix_ShapeTolerance.hxx>
 #include <ShapeFix_Wire.hxx>
 #include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS_Compound.hxx>

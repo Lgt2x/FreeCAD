@@ -27,11 +27,7 @@
 #include <QString>
 
 
-#include <App/Application.h>
-#include <Base/Interpreter.h>
-#include <Gui/Application.h>
 #include <Gui/Command.h>
-#include <Gui/WaitCursor.h>
 
 #include "MaterialsEditor.h"
 #include "ModelSelect.h"

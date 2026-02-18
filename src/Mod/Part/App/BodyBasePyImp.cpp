@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include "BodyBase.h"
 // inclusion of the generated files (generated out of ItemPy.xml)
 #include "BodyBasePy.h"
 #include "BodyBasePy.cpp"

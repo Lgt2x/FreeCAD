@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <xercesc/framework/MemoryManager.hpp>
 #include <xercesc/util/OutOfMemoryException.hpp>
 
 #include "Exception.h"

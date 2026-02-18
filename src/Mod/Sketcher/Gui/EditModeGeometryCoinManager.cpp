@@ -38,7 +38,6 @@
 #include <Gui/Inventor/SmSwitchboard.h>
 #include <Mod/Sketcher/App/Constraint.h>
 #include <Mod/Sketcher/App/GeoEnum.h>
-#include <Mod/Sketcher/App/GeoList.h>
 #include <Mod/Sketcher/App/GeometryFacade.h>
 #include <Mod/Sketcher/App/SolverGeometryExtension.h>
 

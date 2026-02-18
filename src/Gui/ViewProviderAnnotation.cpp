@@ -40,7 +40,6 @@
 #include <Inventor/nodes/SoText2.h>
 #include <Inventor/nodes/SoTranslation.h>
 
-#include <Inventor/draggers/SoTranslate2Dragger.h>
 
 #include <App/Annotation.h>
 #include <App/Document.h>

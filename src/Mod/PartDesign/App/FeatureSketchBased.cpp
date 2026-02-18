@@ -36,13 +36,11 @@
 #include <BRepGProp_Face.hxx>
 #include <BRepLProp_SLProps.hxx>
 #include <BRepProj_Projection.hxx>
-#include <Extrema_ExtCC.hxx>
 #include <Extrema_POnCurv.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Pln.hxx>
 #include <GProp_GProps.hxx>
 #include <ShapeAnalysis.hxx>
-#include <Standard_Version.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS_Face.hxx>

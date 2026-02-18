@@ -24,7 +24,6 @@
 
 #include <cmath>
 #include <limits>
-#include <queue>
 
 
 #include <Base/Console.h>

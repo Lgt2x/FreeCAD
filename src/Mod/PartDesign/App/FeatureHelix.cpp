@@ -39,18 +39,14 @@
 #include <Precision.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>
-#include <TopoDS_Wire.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax3.hxx>
 
-#include <Standard_Version.hxx>
-#include <Base/Axis.h>
 #include <Base/Exception.h>
 #include <Base/Placement.h>
 #include <Base/Tools.h>
 
 #include <Mod/Part/App/TopoShape.h>
-#include <Mod/Part/App/FaceMakerCheese.h>
 
 #include "FeatureHelix.h"
 

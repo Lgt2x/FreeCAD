@@ -29,7 +29,6 @@
 #include <unordered_map>
 #include <vector>
 #include <cctype>
-#include <mutex>
 #include <QApplication>
 #include <QFileInfo>
 #include <QMessageBox>
@@ -69,7 +68,6 @@
 #include "View3DInventor.h"
 #include "View3DInventorViewer.h"
 #include "ViewProviderDocumentObject.h"
-#include "ViewProviderDocumentObjectGroup.h"
 #include "WaitCursor.h"
 
 

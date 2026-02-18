@@ -35,7 +35,6 @@
 #include <QHBoxLayout>
 #include <QString>
 
-#include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>

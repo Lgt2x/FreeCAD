@@ -24,7 +24,6 @@
 
 #include <Mod/Part/PartGlobal.h>
 
-#include <Precision.hxx>
 
 
 #include "ShapeFix/ShapeFix_RootPy.h"

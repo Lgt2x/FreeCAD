@@ -30,7 +30,6 @@
 
 #include "ConicPy.h"
 #include "ConicPy.cpp"
-#include "OCCError.h"
 
 
 using namespace Part;

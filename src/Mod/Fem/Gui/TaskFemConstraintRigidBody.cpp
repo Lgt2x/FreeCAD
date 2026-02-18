@@ -24,7 +24,6 @@
 #include <QAction>
 #include <QMessageBox>
 #include <limits>
-#include <sstream>
 
 
 #include <App/Document.h>

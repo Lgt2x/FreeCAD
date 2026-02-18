@@ -23,7 +23,6 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 #include <QColorDialog>
-#include <sstream>
 
 
 #include <App/ElementNamingUtils.h>

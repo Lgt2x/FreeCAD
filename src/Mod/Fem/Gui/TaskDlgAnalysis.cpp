@@ -21,11 +21,6 @@
  ***************************************************************************/
 
 
-#include <Base/Console.h>
-#include <Base/Exception.h>
-#include <Gui/Application.h>
-#include <Gui/Command.h>
-#include <Gui/Document.h>
 #include <Mod/Fem/App/FemAnalysis.h>
 
 #include "TaskAnalysisInfo.h"

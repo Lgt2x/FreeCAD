@@ -27,7 +27,6 @@
 #include <App/Application.h>
 #include <src/App/InitApplication.h>
 
-#include <Mod/Material/App/MaterialManager.h>
 #include <Mod/Material/App/Model.h>
 #include <Mod/Material/App/ModelManager.h>
 

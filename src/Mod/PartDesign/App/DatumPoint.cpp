@@ -25,7 +25,6 @@
 
 
 #include <BRepBuilderAPI_MakeVertex.hxx>
-#include <Standard_Version.hxx>
 
 
 #include "DatumPoint.h"

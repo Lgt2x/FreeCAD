@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Python.h>
 #include <cstdlib>
 #include <memory>
 
@@ -46,7 +45,6 @@
 #include <StdMeshers_QuadranglePreference.hxx>
 #include <StdMeshers_Quadrangle_2D.hxx>
 #include <StdMeshers_Regular_1D.hxx>
-#include <StdMeshers_StartEndLength.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Solid.hxx>
@@ -64,7 +62,6 @@
 #include <Base/Stream.h>
 #include <Base/TimeInfo.h>
 #include <Base/Writer.h>
-#include <Mod/Mesh/App/Core/Iterator.h>
 
 #include "FemMesh.h"
 #include <FemMeshPy.h>

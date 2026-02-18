@@ -8,7 +8,6 @@
 //
 // File Version: 4.10.0 (2009/11/18)
 
-#include "Wm4FoundationPCH.h"
 #include "Wm4ConvexHull3.h"
 #include "Wm4Mapper3.h"
 #include "Wm4Query3Filtered.h"

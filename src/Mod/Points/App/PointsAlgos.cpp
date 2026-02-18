@@ -35,7 +35,6 @@
 #include <boost/math/special_functions/fpclassify.hpp>  // needed for compilation on some systems
 #include <boost/regex.hpp>
 
-#include <Base/Console.h>
 #include <Base/Converter.h>
 #include <Base/Exception.h>
 #include <Base/FileInfo.h>

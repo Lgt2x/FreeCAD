@@ -31,9 +31,7 @@
 # include <QRegularExpression>
 # include <QRegularExpressionMatch>
 
-#include <App/Application.h>
 #include <Base/Console.h>
-#include <Base/Parameter.h>
 
 #include <Mod/TechDraw/App/DrawSVGTemplate.h>
 #include <Mod/TechDraw/App/DrawPage.h>

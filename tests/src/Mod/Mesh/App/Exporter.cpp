@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 #include <Base/FileInfo.h>
-#include <Base/Interpreter.h>
 #include <App/Document.h>
 #include <App/Part.h>
 #include <src/App/InitApplication.h>

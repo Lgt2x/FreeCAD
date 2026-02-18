@@ -29,7 +29,6 @@
 #endif
 
 #include <Base/Builder3D.h>
-#include <Base/Console.h>
 #include <Mod/Mesh/App/Core/Evaluation.h>
 #include <Mod/Mesh/App/Core/Iterator.h>
 #include <Mod/Mesh/App/Core/MeshKernel.h>
@@ -157,7 +156,6 @@ void MeshAlgos::offsetSpecial(MeshCore::MeshKernel* Mesh, float fSize, float zma
 #include <TopoDS.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Vertex.hxx>
-#include <TopoDS_Wire.hxx>
 
 void MeshAlgos::cutByShape(
     const TopoDS_Shape& aShape,

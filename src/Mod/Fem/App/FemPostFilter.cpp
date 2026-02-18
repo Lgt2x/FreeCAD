@@ -20,14 +20,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Python.h>
 #include <vtkDoubleArray.h>
 #include <vtkPointData.h>
 #include <vtkAlgorithm.h>
 #include <vtkAlgorithmOutput.h>
-#include <vtkUnstructuredGrid.h>
 #include <vtkInformation.h>
-
+#include <vtkPassThrough.h>
 #include <App/FeaturePythonPyImp.h>
 #include <App/Document.h>
 #include <Base/Console.h>
@@ -36,7 +34,6 @@
 #include "FemPostFilterPy.h"
 
 #include "FemPostPipeline.h"
-#include "FemPostBranchFilter.h"
 
 
 using namespace Fem;

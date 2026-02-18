@@ -29,7 +29,6 @@
 
 #include "DrawTileWeld.h"
 #include "DrawTileWeldPy.h"  // generated from DrawTileWeldPy.xml
-#include "DrawUtil.h"
 
 
 using namespace TechDraw;

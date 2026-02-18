@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
 #include <gtest/gtest.h>
-#include <Mod/Mesh/App/Mesh.h>
 #include <Mod/Mesh/App/Core/Grid.h>
 
 #include <src/App/InitApplication.h>

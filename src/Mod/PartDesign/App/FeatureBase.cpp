@@ -23,13 +23,11 @@
  ***************************************************************************/
 
 
-#include <Standard_Failure.hxx>
 
 
 #include <App/FeaturePythonPyImp.h>
 #include "Body.h"
 #include "FeatureBase.h"
-#include "FeaturePy.h"
 
 namespace PartDesign
 {

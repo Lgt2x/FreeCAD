@@ -33,7 +33,6 @@
 #include "frames_io.hpp"
 
 #include <stdlib.h>
-#include <ctype.h>
 #include <string.h>
 #include <iostream>
 

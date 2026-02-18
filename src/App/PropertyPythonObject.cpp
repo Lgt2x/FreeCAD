@@ -34,7 +34,7 @@
 #include <Base/Writer.h>
 
 #include "PropertyPythonObject.h"
-#include "DocumentObject.h"
+#include "App/PropertyContainer.h"
 
 
 using namespace App;

@@ -36,7 +36,6 @@
 #include <App/GeoFeature.h>
 #include <Base/Console.h>
 #include <Base/Exception.h>
-#include <Base/Interpreter.h>
 #include <Base/Tools.h>
 #include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/UnitsApi.h>

@@ -27,7 +27,6 @@
 
 
 #include <App/FeaturePythonPyImp.h>
-#include <Mod/Part/App/modelRefine.h>
 #include <Mod/Part/App/TopoShapeOpCode.h>
 
 #include "FeatureAddSub.h"

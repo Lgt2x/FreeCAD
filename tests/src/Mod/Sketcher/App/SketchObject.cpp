@@ -2,8 +2,6 @@
 
 #include <FCConfig.h>
 
-#include <App/Application.h>
-#include <App/Document.h>
 #include <App/Expression.h>
 #include <App/ObjectIdentifier.h>
 #include <Mod/Sketcher/App/GeoEnum.h>

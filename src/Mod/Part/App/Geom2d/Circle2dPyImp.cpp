@@ -24,7 +24,6 @@
 
 #include <GCE2d_MakeCircle.hxx>
 #include <Geom2d_Circle.hxx>
-#include <gp_Circ2d.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

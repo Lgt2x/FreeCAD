@@ -23,9 +23,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "Mod/Fem/App/FemConstraintTemperature.h"
-#include "TaskFemConstraintTemperature.h"
-#include "ViewProviderFemConstraintTemperature.h"
+#include "Mod/Fem/Gui/ViewProviderFemConstraintTemperature.h"
+#include "Mod/Fem/Gui/TaskFemConstraintTemperature.h"
 #include <Gui/Control.h>
 
 

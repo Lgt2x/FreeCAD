@@ -29,7 +29,6 @@
 #include <Base/Tools.h>
 
 #include "OriginGroupExtension.h"
-#include "GeoFeature.h"
 #include "Origin.h"
 
 

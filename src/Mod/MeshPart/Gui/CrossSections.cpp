@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <limits>
-#include <sstream>
 
 #include <BRepBuilderAPI_MakePolygon.hxx>
 #include <BRep_Builder.hxx>

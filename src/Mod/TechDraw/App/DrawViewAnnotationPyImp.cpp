@@ -24,11 +24,8 @@
 # include <sstream>
 
 
-#include "DrawView.h"
-#include "DrawViewAnnotation.h"
 
 // inclusion of the generated files
-#include <Mod/TechDraw/App/DrawViewPy.h>
 #include <Mod/TechDraw/App/DrawViewAnnotationPy.h>
 #include <Mod/TechDraw/App/DrawViewAnnotationPy.cpp>
 

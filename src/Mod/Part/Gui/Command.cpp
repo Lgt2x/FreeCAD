@@ -26,18 +26,15 @@
 #include <QFileInfo>
 #include <QPointer>
 #include <QString>
-#include <Standard_Version.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS_Shape.hxx>
 
 
 #include <App/Document.h>
 #include <App/GeoFeature.h>
-#include <App/DocumentObjectGroup.h>
 #include <Base/Console.h>
 #include <Base/Exception.h>
 #include <Base/Tools.h>
-#include <App/Link.h>
 #include <Gui/Action.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
@@ -52,7 +49,6 @@
 #include <Gui/View3DInventorViewer.h>
 #include <Gui/WaitCursor.h>
 
-#include <Mod/Part/App/Datums.h>
 #include <Mod/Part/App/Part2DObject.h>
 
 #include "BoxSelection.h"
@@ -65,12 +61,12 @@
 #include "DlgProjectionOnSurface.h"
 #include "DlgRevolution.h"
 #include "Mirroring.h"
+#include "Mod/Part/Gui/ViewProviderExt.h"
 #include "SectionCutting.h"
 #include "TaskCheckGeometry.h"
 #include "TaskLoft.h"
 #include "TaskShapeBuilder.h"
 #include "TaskSweep.h"
-#include "ViewProvider.h"
 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

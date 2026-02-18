@@ -34,8 +34,6 @@
 #include "Application.h"
 #include "MainWindow.h"
 #include "ViewProviderDocumentObject.h"
-#include "MetaTypes.h"
-#include "ViewParams.h"
 
 FC_LOG_LEVEL_INIT("Gui", true, true)
 

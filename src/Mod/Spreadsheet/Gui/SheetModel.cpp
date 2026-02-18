@@ -31,7 +31,6 @@
 #include <Base/Interpreter.h>
 #include <Base/Tools.h>
 #include <Base/UnitsApi.h>
-#include <Gui/Application.h>
 #include <Gui/Command.h>
 #include <Mod/Spreadsheet/App/Sheet.h>
 

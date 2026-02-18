@@ -64,18 +64,15 @@
 #include <gp_Vec.hxx>
 
 #include <fstream>
-#include <App/Annotation.h>
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObjectGroup.h>
 #include <App/DocumentObjectPy.h>
 #include <App/FeaturePythonPyImp.h>
 #include <Base/Console.h>
-#include <Base/Interpreter.h>
 #include <Base/Matrix.h>
 #include <Base/Parameter.h>
 #include <Base/Vector3D.h>
-#include <Base/PlacementPy.h>
 #include <Mod/Part/App/PartFeature.h>
 #include <Mod/Part/App/FeatureCompound.h>
 #include <Mod/Part/App/PrimitiveFeature.h>

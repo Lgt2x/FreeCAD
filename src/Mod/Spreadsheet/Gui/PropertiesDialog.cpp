@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include <App/Document.h>
 #include <App/ExpressionParser.h>
 #include <App/Range.h>
 #include <Base/Tools.h>

@@ -25,13 +25,12 @@
 #include <QGroupBox>
 #include <QObject>
 #include <QLabel>
-
+#include <QGridLayout>
 
 #include <Gui/Application.h>
 #include <Gui/Command.h>
 #include <Gui/MenuManager.h>
 #include <Gui/Selection/Selection.h>
-#include <Gui/TaskView/TaskView.h>
 #include <Gui/ToolBarManager.h>
 #include <Mod/Mesh/App/MeshFeature.h>
 

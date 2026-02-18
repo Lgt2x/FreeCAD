@@ -43,7 +43,6 @@
 #include "FirstStartWidget.h"
 #include "FlowLayout.h"
 #include "NewFileButton.h"
-#include <App/DocumentObject.h>
 #include <App/Application.h>
 #include <Base/Interpreter.h>
 #include <Base/Tools.h>

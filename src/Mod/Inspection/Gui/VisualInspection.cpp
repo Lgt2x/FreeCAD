@@ -30,8 +30,8 @@
 #include <Gui/Command.h>
 #include <Gui/Document.h>
 #include <Gui/MainWindow.h>
-#include <Gui/PrefWidgets.h>
 #include <Gui/ViewProvider.h>
+#include <QPushButton>
 
 #include "VisualInspection.h"
 #include "ui_VisualInspection.h"

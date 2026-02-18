@@ -23,9 +23,10 @@
 
 #include <QDockWidget>
 #include <QStatusBar>
-
+#include <QGridLayout>
 
 #include "Workbench.h"
+#include "MainWindow.h"
 #include "WorkbenchManipulator.h"
 #include "WorkbenchPy.h"
 #include "Action.h"
@@ -33,13 +34,11 @@
 #include "Command.h"
 #include "Control.h"
 #include "DockWindowManager.h"
-#include "MainWindow.h"
 #include "MenuManager.h"
 #include "PythonWorkbenchPy.h"
 #include "Selection.h"
 #include "ToolBarManager.h"
 #include "ToolBoxManager.h"
-#include "Window.h"
 
 #include <App/Application.h>
 #include <App/DocumentObject.h>

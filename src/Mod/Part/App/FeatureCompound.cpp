@@ -22,11 +22,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <BRep_Builder.hxx>
 #include <Standard_Failure.hxx>
-#include <TopoDS_Compound.hxx>
-#include <TopExp.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
 
 
 #include "FeatureCompound.h"

@@ -23,7 +23,6 @@
 
 #include "RecentFilesModel.h"
 #include <App/Application.h>
-#include <App/ProjectFile.h>
 
 using namespace Start;
 

@@ -26,7 +26,6 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
-#include <Base/Console.h>
 #include <Base/Tools.h>
 #include "ShortcutManager.h"
 #include "Command.h"

@@ -34,7 +34,6 @@
 #include <QProcess>
 
 #include <App/Document.h>
-#include <Base/Exception.h>
 #include <Base/Interpreter.h>
 #include <Base/Sequencer.h>
 
@@ -50,7 +49,6 @@
 #include "MainWindow.h"
 #include "OnlineDocumentation.h"
 #include "Selection.h"
-#include "WhatsThis.h"
 #include "Workbench.h"
 #include "WorkbenchManager.h"
 #include "App/GeoFeature.h"

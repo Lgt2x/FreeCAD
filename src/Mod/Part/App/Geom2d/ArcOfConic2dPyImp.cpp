@@ -30,7 +30,6 @@
 
 #include "Geom2d/ArcOfConic2dPy.h"
 #include "Geom2d/ArcOfConic2dPy.cpp"
-#include "OCCError.h"
 
 
 using namespace Part;

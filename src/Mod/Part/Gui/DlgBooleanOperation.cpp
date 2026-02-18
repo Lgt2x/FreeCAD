@@ -33,7 +33,6 @@
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <App/DocumentObjectGroup.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>

@@ -30,7 +30,6 @@
 # include <QRectF>
 # include <QTransform>
 
-#include <App/Application.h>
 #include <Base/Console.h>
 #include <Base/Parameter.h>
 #include <Mod/TechDraw/App/DrawUtil.h>

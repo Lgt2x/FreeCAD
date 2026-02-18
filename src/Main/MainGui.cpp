@@ -37,7 +37,6 @@
 
 #include <cstdio>
 #include <map>
-#include <stdexcept>
 
 #include <QApplication>
 #include <QLocale>

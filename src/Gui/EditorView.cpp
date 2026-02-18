@@ -47,9 +47,7 @@
 #include "MainWindow.h"
 #include "PythonEditor.h"
 #include "PythonTracing.h"
-#include "WaitCursor.h"
 
-#include <Base/Exception.h>
 #include <Base/Interpreter.h>
 #include <Base/Parameter.h>
 

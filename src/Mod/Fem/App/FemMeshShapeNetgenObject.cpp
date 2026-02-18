@@ -20,22 +20,16 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <SMESH_Version.h>
 
-#include <Python.h>
-#include <SMESHDS_Mesh.hxx>
+
+#include "Mod/Part/App/PartFeature.h"
 #include <SMESH_Mesh.hxx>
-
 #ifdef FCWithNetgen
 # include <NETGENPlugin_Hypothesis.hxx>
 # include <NETGENPlugin_Mesher.hxx>
 #endif
 
-#include <App/DocumentObjectPy.h>
-#include <Base/Console.h>
-#include <Mod/Part/App/PartFeature.h>
 
-#include "FemMesh.h"
 #include "FemMeshShapeNetgenObject.h"
 
 

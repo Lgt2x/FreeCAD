@@ -21,12 +21,10 @@
  *                                                                         *
  **************************************************************************/
 
-#include <string>
 #include <QLatin1Char>
 
 #include <QFileInfo>
 
-#include <App/Application.h>
 
 #include "Exceptions.h"
 #include "Model.h"

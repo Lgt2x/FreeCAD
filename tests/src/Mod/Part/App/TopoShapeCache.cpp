@@ -6,7 +6,6 @@
 
 #include <src/App/InitApplication.h>
 #include <gp_Quaternion.hxx>
-#include <TopoDS_TVertex.hxx>
 #include <BRep_TVertex.hxx>
 #include <BRepBuilderAPI_MakeEdge.hxx>
 #include <BRepAlgoAPI_Fuse.hxx>

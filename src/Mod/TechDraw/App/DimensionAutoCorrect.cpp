@@ -61,7 +61,6 @@
 
 #include <App/Document.h>
 #include <Base/Console.h>
-#include <Base/Tools.h>
 
 #include <Mod/Part/App/TopoShape.h>
 #include <Mod/Measure/App/ShapeFinder.h>

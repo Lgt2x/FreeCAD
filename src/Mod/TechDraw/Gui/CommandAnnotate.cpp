@@ -38,7 +38,6 @@
 #include <Mod/TechDraw/App/DrawLeaderLine.h>
 #include <Mod/TechDraw/App/DrawPage.h>
 #include <Mod/TechDraw/App/DrawView.h>
-#include <Mod/TechDraw/App/DrawViewAnnotation.h>
 #include <Mod/TechDraw/App/DrawViewPart.h>
 #include <Mod/TechDraw/App/DrawViewSymbol.h>
 #include <Mod/TechDraw/App/DrawWeldSymbol.h>

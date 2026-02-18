@@ -24,7 +24,6 @@
 #include "FileCardView.h"
 
 #include <App/Application.h>
-#include "../App/DisplayedFilesModel.h"
 #include <algorithm>
 
 namespace StartGui

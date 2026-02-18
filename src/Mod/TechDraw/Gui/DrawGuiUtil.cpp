@@ -43,11 +43,9 @@
 #include <App/DocumentObject.h>
 #include <App/PropertyPythonObject.h>
 #include <Base/Console.h>
-#include <Base/Exception.h>
 #include <Base/Parameter.h>
 #include <Base/Tools.h>
 #include <Base/Tools2D.h>
-#include <Base/Type.h>
 #include <Gui/Application.h>
 #include <Gui/Command.h>
 #include <Gui/Document.h>
@@ -56,7 +54,6 @@
 #include <Gui/Selection/Selection.h>
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
-#include <Gui/PrefWidgets.h>
 #include <Inventor/SbVec3f.h>
 
 #include <Mod/TechDraw/App/ArrowPropEnum.h>

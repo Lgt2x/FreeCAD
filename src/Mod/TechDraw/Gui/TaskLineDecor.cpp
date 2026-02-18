@@ -20,11 +20,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Base/Console.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>
-#include <Gui/Selection/Selection.h>
 #include <Gui/ViewProvider.h>
 #include <Mod/TechDraw/App/DrawUtil.h>
 #include <Mod/TechDraw/App/DrawViewPart.h>

@@ -27,7 +27,6 @@
 #include <App/Document.h>
 #include <App/DocumentObject.h>
 #include <App/Link.h>
-#include <Base/Console.h>
 #include <Base/Interpreter.h>
 
 #include "DrawViewCollection.h"

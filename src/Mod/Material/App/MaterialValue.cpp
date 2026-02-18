@@ -25,9 +25,8 @@
 #include <QRegularExpression>
 
 
-#include <App/Application.h>
 #include <Base/Quantity.h>
-#include <Gui/MetaTypes.h>
+#include <Base/Console.h>
 
 #include "Exceptions.h"
 #include "MaterialValue.h"

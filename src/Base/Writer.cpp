@@ -39,10 +39,8 @@
 #include "FileInfo.h"
 #include "Persistence.h"
 #include "Stream.h"
-#include "Tools.h"
 
 #include <boost/iostreams/filtering_stream.hpp>
-#include <zipios++/zipinputstream.h>
 
 using namespace Base;
 

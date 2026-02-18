@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Standard_Version.hxx>
 #include <TopoDS_Shape.hxx>
 
 

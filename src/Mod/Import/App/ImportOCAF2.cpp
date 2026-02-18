@@ -25,10 +25,7 @@
 #if defined(__MINGW32__)
 # define WNT  // avoid conflict with GUID
 #endif
-#include <Interface_Static.hxx>
 #include <Quantity_ColorRGBA.hxx>
-#include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <TDF_AttributeSequence.hxx>
 #include <TDF_Label.hxx>
 #include <TDF_LabelSequence.hxx>
@@ -41,18 +38,15 @@
 
 
 #include <boost/algorithm/string.hpp>
-#include <boost/format.hpp>
 
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <App/GroupExtension.h>
 #include <App/Link.h>
 #include <Base/Console.h>
 #include <Base/FileInfo.h>
 #include <Base/Parameter.h>
 #include <Mod/Part/App/FeatureCompound.h>
-#include <Mod/Part/App/Interface.h>
 #include <Mod/Part/App/OCAF/ImportExportSettings.h>
 
 #include "ImportOCAF2.h"

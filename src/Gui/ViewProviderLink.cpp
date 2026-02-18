@@ -39,8 +39,6 @@
 #include <Inventor/details/SoDetail.h>
 #include <Inventor/draggers/SoCenterballDragger.h>
 #include <Inventor/misc/SoChildList.h>
-#include <Inventor/nodes/SoAnnotation.h>
-#include <Inventor/nodes/SoCube.h>
 #include <Inventor/nodes/SoDrawStyle.h>
 #include <Inventor/nodes/SoPickStyle.h>
 #include <Inventor/nodes/SoSeparator.h>
@@ -54,7 +52,6 @@
 #include <QCheckBox>
 
 
-#include <boost/range.hpp>
 #include <App/ElementNamingUtils.h>
 #include <App/Document.h>
 #include <Base/BoundBoxPy.h>

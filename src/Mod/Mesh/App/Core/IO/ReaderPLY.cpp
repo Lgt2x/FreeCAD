@@ -21,14 +21,12 @@
  *                                                                         *
  **************************************************************************/
 
-#include <boost/lexical_cast.hpp>
 #include <istream>
 
 
 #include "Core/MeshIO.h"
 #include "Core/MeshKernel.h"
 #include <Base/Stream.h>
-#include <Base/Tools.h>
 
 #include "ReaderPLY.h"
 

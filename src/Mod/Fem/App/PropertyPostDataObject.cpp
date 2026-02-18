@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <Python.h>
 #include <vtkCompositeDataSet.h>
 #include <vtkMultiBlockDataSet.h>
 #include <vtkMultiPieceDataSet.h>

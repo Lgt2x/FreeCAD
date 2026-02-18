@@ -39,7 +39,6 @@
 #include <Inventor/bundles/SoTextureCoordinateBundle.h>
 #include <Inventor/elements/SoCoordinateElement.h>
 #include <Inventor/elements/SoLazyElement.h>
-#include <Inventor/errors/SoReadError.h>
 #include <Inventor/misc/SoState.h>
 
 #include "SoFCShapeObject.h"

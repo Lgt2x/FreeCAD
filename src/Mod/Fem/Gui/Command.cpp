@@ -38,7 +38,6 @@
 #include <Gui/BitmapFactory.h>
 #include <Gui/CommandT.h>
 #include <Gui/Document.h>
-#include <Gui/FileDialog.h>
 #include <Gui/MainWindow.h>
 #include <Gui/Selection/SelectionFilter.h>
 #include <Gui/Selection/SelectionObject.h>
@@ -48,7 +47,6 @@
 #include <Gui/WaitCursor.h>
 
 #include <Mod/Fem/App/FemAnalysis.h>
-#include <Mod/Fem/App/FemConstraint.h>
 #include <Mod/Fem/App/FemMeshObject.h>
 #include <Mod/Fem/App/FemSetElementNodesObject.h>
 #include <Mod/Fem/App/FemSetNodesObject.h>

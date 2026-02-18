@@ -28,13 +28,11 @@
 # include <QPainterPath>
 # include <QVector2D>
 
-#include <App/Document.h>
 #include <Base/Console.h>
 #include <Mod/TechDraw/App/ArrowPropEnum.h>
 #include <Mod/TechDraw/App/DrawLeaderLine.h>
 #include <Mod/TechDraw/App/DrawUtil.h>
 #include <Mod/TechDraw/App/LineGroup.h>
-#include <Mod/TechDraw/App/DrawViewPart.h>
 
 #include "QGILeaderLine.h"
 #include "PreferencesGui.h"

@@ -32,10 +32,8 @@
 #include <Base/Tools.h>
 
 #include "PropertyItemDelegate.h"
-#include "MDIView.h"
 #include "PropertyEditor.h"
 #include "PropertyItem.h"
-#include "Tree.h"
 
 
 FC_LOG_LEVEL_INIT("PropertyView", true, true)

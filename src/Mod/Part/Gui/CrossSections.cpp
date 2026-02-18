@@ -27,9 +27,6 @@
 #include <QFuture>
 #include <QKeyEvent>
 
-#include <BRep_Builder.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Compound.hxx>
 
 #include <Inventor/nodes/SoBaseColor.h>
 #include <Inventor/nodes/SoCoordinate3.h>
@@ -47,14 +44,12 @@
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
 #include <Gui/ViewProvider.h>
-#include <Mod/Part/App/CrossSection.h>
 #include <Mod/Part/App/PartFeature.h>
 
 #include "CrossSections.h"
 #include "ui_CrossSections.h"
 
 #include <QMessageBox>
-#include <Base/Interpreter.h>
 #include <Gui/MainWindow.h>
 
 

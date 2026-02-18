@@ -28,17 +28,14 @@
 #include <algorithm>
 #include <fastsignals/signal.h>
 
-#include <Base/Console.h>
 #include <Gui/Application.h>
 #include <Gui/DockWindowManager.h>
 #include <Gui/Document.h>
 #include <Gui/Selection/Selection.h>
 #include <Gui/ViewProvider.h>
-#include <Gui/WaitCursor.h>
 
 #include <Mod/Material/App/Exceptions.h>
 #include <Mod/Material/App/MaterialManager.h>
-#include <Mod/Material/App/ModelUuids.h>
 #include <Mod/Material/App/PropertyMaterial.h>
 
 #include "DlgMaterialImp.h"

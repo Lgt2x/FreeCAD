@@ -28,10 +28,8 @@
 #include <gp_Pnt.hxx>
 #include <gp_GTrsf.hxx>
 #include <gp_Trsf.hxx>
-#include <Precision.hxx>
 
 
-#include <Base/Exception.h>
 
 #include "FeatureScale.h"
 

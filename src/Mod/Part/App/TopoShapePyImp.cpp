@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <limits>
 #include <sstream>
 #include <boost/regex.hpp>
 
@@ -52,18 +51,13 @@
 #include <GProp_GProps.hxx>
 #include <HLRAppli_ReflectLines.hxx>
 #include <Precision.hxx>
-#include <Poly_Polygon3D.hxx>
-#include <Poly_Triangulation.hxx>
 #include <ShapeAnalysis_ShapeTolerance.hxx>
 #include <ShapeFix_ShapeTolerance.hxx>
 #include <Standard_Version.hxx>
 #include <TopExp.hxx>
-#include <TopExp_Explorer.hxx>
 #include <TopLoc_Location.hxx>
 #include <TopoDS.hxx>
-#include <TopoDS_Iterator.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
 #include <TopTools_ListOfShape.hxx>
 
 #include <App/PropertyStandard.h>
@@ -81,7 +75,6 @@
 #include <Mod/Part/App/TopoShapePy.h>
 #include <Mod/Part/App/TopoShapePy.cpp>
 
-#include <Mod/Part/App/GeometryPy.h>
 #include <Mod/Part/App/PlanePy.h>
 #include <Mod/Part/App/TopoShapeCompoundPy.h>
 #include <Mod/Part/App/TopoShapeCompSolidPy.h>

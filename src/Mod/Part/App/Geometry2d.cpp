@@ -37,7 +37,6 @@
 #include <gp_Lin2d.hxx>
 #include <gp_Parab2d.hxx>
 #include <Standard_ConstructionError.hxx>
-#include <Standard_Version.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TColgp_Array1OfVec2d.hxx>
 #include <TColgp_HArray1OfPnt2d.hxx>

@@ -25,14 +25,13 @@
 
 #include <App/Document.h>
 #include <App/VarSet.h>
-#include <App/Origin.h>
 #include <Base/Placement.h>
 
 #include "Body.h"
+#include "App/Datums.h"
 #include "BodyPy.h"
 #include "FeatureBase.h"
 #include "FeatureSketchBased.h"
-#include "FeatureSolid.h"
 #include "FeatureTransformed.h"
 #include "ShapeBinder.h"
 

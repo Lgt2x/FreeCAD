@@ -49,7 +49,6 @@
 #include "ExtrusionHelper.h"
 #include "TopoShape.h"
 #include "BRepOffsetAPI_MakeOffsetFix.h"
-#include "Geometry.h"
 
 using namespace Part;
 

@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <cmath>
-#include <iostream>
 
 
 #include "MeshFlatteningNurbs.h"

@@ -57,7 +57,6 @@
 #include <BRepBuilderAPI_Transform.hxx>
 #include <BRepCheck_Analyzer.hxx>
 #include <BRepClass_FaceClassifier.hxx>
-#include <BRepCheck_ListIteratorOfListOfStatus.hxx>
 #include <BRepCheck_Result.hxx>
 #include <BRepFill_CompatibleWires.hxx>
 #include <BRepGProp.hxx>
@@ -119,8 +118,6 @@
 #include <IGESData_GlobalSection.hxx>
 #include <IGESData_IGESModel.hxx>
 #include <Interface_Static.hxx>
-#include <Law_BSpline.hxx>
-#include <Law_BSpFunc.hxx>
 #include <Law_Constant.hxx>
 #include <ShapeAnalysis_FreeBoundsProperties.hxx>
 #include <ShapeExtend_Explorer.hxx>
@@ -139,10 +136,8 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
 #include <TopTools_HSequenceOfShape.hxx>
 #include <Transfer_FinderProcess.hxx>
-#include <Transfer_TransientProcess.hxx>
 #include <XSControl_TransferWriter.hxx>
 #include <XSControl_WorkSession.hxx>
 
@@ -160,7 +155,6 @@
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/core/ignore_unused.hpp>
 
-#include <App/Material.h>
 #include <App/ElementNamingUtils.h>
 #include <Base/BoundBox.h>
 #include <Base/Builder3D.h>

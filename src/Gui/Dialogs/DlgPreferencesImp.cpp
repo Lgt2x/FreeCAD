@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <algorithm>
-#include <cstring>
 #include <QAbstractButton>
 #include <QApplication>
 #include <QCheckBox>
@@ -62,13 +61,11 @@
 #include <App/Application.h>
 #include <Base/Console.h>
 #include <Base/Exception.h>
-#include <Base/Tools.h>
 
 #include "Dialogs/DlgPreferencesImp.h"
 #include "ui_DlgPreferences.h"
 #include "BitmapFactory.h"
 #include "MainWindow.h"
-#include "Tools.h"
 #include "WidgetFactory.h"
 
 using namespace Gui::Dialog;

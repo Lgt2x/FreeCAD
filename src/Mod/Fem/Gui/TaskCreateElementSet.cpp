@@ -47,8 +47,8 @@
 #include <Mod/Fem/App/FemMeshObject.h>
 #include <Mod/Fem/App/FemSetElementNodesObject.h>
 
-#include "FemSelectionGate.h"
 #include "TaskCreateElementSet.h"
+#include "App/Document.h"
 #include "ViewProviderFemMesh.h"
 #include "ui_TaskCreateElementSet.h"
 

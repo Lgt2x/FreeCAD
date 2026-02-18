@@ -44,7 +44,6 @@
 #include <Inventor/elements/SoModelMatrixElement.h>
 #include <Inventor/elements/SoViewportRegionElement.h>
 #include <Inventor/elements/SoViewVolumeElement.h>
-#include <Inventor/nodekits/SoShapeKit.h>
 #include <Inventor/nodes/SoBaseColor.h>
 #include <Inventor/nodes/SoCone.h>
 #include <Inventor/nodes/SoCoordinate3.h>

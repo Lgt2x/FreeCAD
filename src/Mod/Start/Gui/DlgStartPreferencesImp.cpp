@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include <Gui/Application.h>
 
 #include "DlgStartPreferencesImp.h"
 #include "ui_DlgStartPreferences.h"

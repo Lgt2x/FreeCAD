@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
 #include <BRepPrimAPI_MakeRevol.hxx>
 #include <BRepFeat_MakeRevol.hxx>
 #include <gp_Lin.hxx>
@@ -36,7 +35,6 @@
 #include <Base/Tools.h>
 
 #include "FeatureRevolution.h"
-#include "Mod/Part/App/TopoShapeOpCode.h"
 
 #include <Base/ProgramVersion.h>
 

@@ -26,7 +26,6 @@
 //! and its placement.
 
 
-#include <boost_regex.hpp>
 
 #include <BRep_Builder.hxx>
 #include <BRepTools.hxx>
@@ -36,16 +35,11 @@
 #include <TopLoc_Location.hxx>
 
 #include <App/Document.h>
-#include <App/DocumentObjectGroup.h>
 #include <App/Link.h>
 #include <App/GeoFeature.h>
-#include <App/GeoFeatureGroupExtension.h>
-#include <App/Part.h>
 #include <Base/Tools.h>
 
 #include <Mod/Part/App/PartFeature.h>
-#include <Mod/Part/App/AttachExtension.h>
-#include <Mod/Part/App/Attacher.h>
 
 #include "ShapeFinder.h"
 

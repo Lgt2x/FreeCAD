@@ -24,7 +24,6 @@
 
 #include <GCE2d_MakeEllipse.hxx>
 #include <Geom2d_Ellipse.hxx>
-#include <gp_Elips2d.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

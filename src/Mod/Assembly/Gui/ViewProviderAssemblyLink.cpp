@@ -25,14 +25,10 @@
 #include <QAction>
 #include <QMenu>
 #include <vector>
-#include <sstream>
-#include <iostream>
 
 
-#include <App/Link.h>
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <App/Part.h>
 
 #include <Gui/ActionFunction.h>
 #include <Gui/Application.h>

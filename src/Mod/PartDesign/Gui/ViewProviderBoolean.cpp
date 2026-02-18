@@ -25,7 +25,6 @@
  ***************************************************************************/
 
 #include <QMenu>
-#include <Inventor/nodes/SoTransform.h>
 
 #include "ViewProviderBoolean.h"
 
@@ -37,10 +36,8 @@
 #include <Gui/Application.h>
 #include <Gui/Control.h>
 #include <Gui/Command.h>
-#include <Gui/MainWindow.h>
 #include <Gui/Utilities.h>
 #include <Mod/PartDesign/App/Body.h>
-#include <Mod/Sketcher/Gui/TaskDlgEditSketch.h>
 
 
 using namespace PartDesignGui;

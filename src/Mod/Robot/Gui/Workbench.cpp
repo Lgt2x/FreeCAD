@@ -25,17 +25,13 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QMessageBox>
-#include <qobject.h>
 
 
-#include <App/Application.h>
 #include <Gui/Control.h>
-#include <Gui/MainWindow.h>
 #include <Gui/MenuManager.h>
 #include <Gui/TaskView/TaskView.h>
 #include <Gui/TaskView/TaskWatcher.h>
 #include <Gui/ToolBarManager.h>
-#include <Gui/WaitCursor.h>
 
 #include "TaskWatcher.h"
 #include "Workbench.h"

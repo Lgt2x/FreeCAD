@@ -18,7 +18,6 @@
 
 #include "error_stack.h"
 #include <stack>
-#include <vector>
 #include <string>
 #include <cstring>
 

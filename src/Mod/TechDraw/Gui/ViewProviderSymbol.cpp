@@ -22,7 +22,6 @@
  ***************************************************************************/
 
 
-#include <App/DocumentObject.h>
 
 #include <Mod/TechDraw/App/Preferences.h>
 

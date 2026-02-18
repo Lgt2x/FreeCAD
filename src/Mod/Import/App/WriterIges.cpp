@@ -26,12 +26,10 @@
 #include <IGESCAFControl_Writer.hxx>
 #include <IGESData_GlobalSection.hxx>
 #include <IGESData_IGESModel.hxx>
-#include <IGESToBRep_Actor.hxx>
 
 
 #include "WriterIges.h"
 #include <Base/Exception.h>
-#include <App/Application.h>
 #include <Mod/Part/App/encodeFilename.h>
 #include <Mod/Part/App/Interface.h>
 

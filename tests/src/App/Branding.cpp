@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
 #include <gtest/gtest.h>
-
-#include "App/Branding.h"
+#include <QString>
 
 TEST(Branding, one)
 {

@@ -25,7 +25,6 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
-#include <map>
 
 
 #include "Grid.h"

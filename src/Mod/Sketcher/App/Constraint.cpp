@@ -25,9 +25,7 @@
 #include <QDateTime>
 #include <boost/random.hpp>
 #include <algorithm>
-#include <cmath>
 #include <ranges>
-#include <stdexcept>
 #include <string>
 #include <vector>
 

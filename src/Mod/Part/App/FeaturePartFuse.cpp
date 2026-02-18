@@ -23,9 +23,7 @@
  ***************************************************************************/
 
 #include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
-#include <BRepCheck_Analyzer.hxx>
 #include <Standard_Failure.hxx>
-#include <TopoDS_Iterator.hxx>
 #include <TopExp.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 

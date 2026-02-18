@@ -37,7 +37,6 @@ DlgSettingsAdvanced.define()
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
-#include <Gui/TreeParams.h>
 #include <Gui/OverlayParams.h>
 // Auto generated code (Tools/params_utils.py:589)
 #include "Gui/PreferencePages/DlgSettingsAdvanced.h"

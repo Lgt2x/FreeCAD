@@ -34,7 +34,6 @@
 #include "UnitsApi.h"
 #include "UnitsSchema.h"
 #include "UnitsSchemasSpecs.h"
-#include "UnitsSchemasData.h"
 
 using Base::Quantity;
 using Base::UnitsSchema;

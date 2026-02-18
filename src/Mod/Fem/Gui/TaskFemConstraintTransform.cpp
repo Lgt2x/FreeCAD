@@ -30,7 +30,6 @@
 #include <QMessageBox>
 #include <TopoDS.hxx>
 #include <limits>
-#include <sstream>
 
 
 #include <Gui/Command.h>

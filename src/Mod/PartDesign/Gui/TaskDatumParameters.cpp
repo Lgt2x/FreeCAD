@@ -25,7 +25,6 @@
 
 
 #include <QMessageBox>
-#include <Standard_Failure.hxx>
 
 
 #include <App/DocumentObject.h>

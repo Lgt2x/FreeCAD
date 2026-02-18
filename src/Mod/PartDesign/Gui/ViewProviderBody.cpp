@@ -23,9 +23,6 @@
  ***************************************************************************/
 
 
-#include <Inventor/actions/SoGetBoundingBoxAction.h>
-#include <Inventor/nodes/SoSeparator.h>
-#include <Precision.hxx>
 #include <QMenu>
 
 
@@ -42,17 +39,14 @@
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
 #include <Gui/ViewProviderCoordinateSystem.h>
-#include <Gui/ViewProviderDatum.h>
 #include <Mod/PartDesign/App/Body.h>
-#include <Mod/PartDesign/App/DatumCS.h>
-#include <Mod/PartDesign/App/FeatureSketchBased.h>
 #include <Mod/PartDesign/App/FeatureBase.h>
 #include <Mod/PartDesign/App/ShapeBinder.h>
+#include <Mod/Part/App/Part2DObject.h>
 
 #include "ViewProviderBody.h"
 #include "Utils.h"
 #include "ViewProvider.h"
-#include "ViewProviderDatum.h"
 
 
 using namespace PartDesignGui;

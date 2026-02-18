@@ -37,10 +37,7 @@
 #include "FileCardDelegate.h"
 #include "../App/DisplayedFilesModel.h"
 #include "App/Application.h"
-#include <Base/Color.h>
 #include <Base/Console.h>
-#include <Gui/Application.h>
-#include <Gui/MainWindow.h>
 
 using namespace Start;
 

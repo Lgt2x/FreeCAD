@@ -24,10 +24,8 @@
 
 #include <limits>
 
-#include <Inventor/nodes/SoDepthBuffer.h>
 #include <Inventor/nodes/SoDrawStyle.h>
 #include <Inventor/nodes/SoLineSet.h>
-#include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoPickStyle.h>
 #include <Inventor/nodes/SoVertexProperty.h>
 #include <Inventor/nodes/SoSeparator.h>
@@ -36,7 +34,6 @@
 
 #include <QApplication>
 
-#include <Base/Parameter.h>
 #include <App/Application.h>
 #include <Mod/Part/App/PropertyTopoShape.h>
 

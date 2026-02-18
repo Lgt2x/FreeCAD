@@ -82,7 +82,6 @@
 #include <Mod/Mesh/App/Core/Iterator.h>
 #include <Mod/Mesh/App/Core/MeshIO.h>
 #include <Mod/Mesh/App/Core/Triangulation.h>
-#include <Mod/Mesh/App/Core/Trim.h>
 #include <Mod/Mesh/App/Core/Visitor.h>
 #include <Mod/Mesh/App/MeshFeature.h>
 #include <Mod/Mesh/Gui/ViewProviderMeshPy.h>

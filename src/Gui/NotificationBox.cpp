@@ -30,7 +30,6 @@
 #include <QTextDocument>
 #include <QTimer>
 #include <memory>
-#include <mutex>
 
 
 #include "NotificationBox.h"

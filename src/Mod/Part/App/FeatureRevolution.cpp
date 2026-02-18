@@ -26,14 +26,12 @@
 #include <gp_Ax1.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Lin.hxx>
-#include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 
 
 #include <App/Document.h>
 #include <Base/Tools.h>
 #include "FeatureRevolution.h"
-#include "FaceMaker.h"
 
 
 using namespace Part;

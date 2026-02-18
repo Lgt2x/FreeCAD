@@ -28,7 +28,6 @@
 #include <QLabel>
 #include <QObject>
 #include <QPushButton>
-#include <QtGui>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QVBoxLayout>
 
@@ -37,8 +36,6 @@
 
 #include <Gui/QuantitySpinBox.h>
 
-#include <Base/Console.h>
-#include <Base/Tools.h>
 
 #include "CompassDialWidget.h"
 #include "CompassWidget.h"

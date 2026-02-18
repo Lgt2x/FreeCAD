@@ -24,7 +24,6 @@
 
 #include <App/GeoFeaturePy.h>
 
-#include <Base/Tools.h>
 
 #include "ComplexGeoData.h"
 #include "Document.h"

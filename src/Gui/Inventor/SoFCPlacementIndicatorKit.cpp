@@ -21,13 +21,11 @@
  *                                                                          *
  ***************************************************************************/
 
-#include <sstream>
 
 #include <Inventor/nodes/SoBaseColor.h>
 #include <Inventor/nodes/SoComplexity.h>
 #include <Inventor/nodes/SoCone.h>
 #include <Inventor/nodes/SoCylinder.h>
-#include <Inventor/nodes/SoDrawStyle.h>
 #include <Inventor/nodes/SoLightModel.h>
 #include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoRotation.h>
@@ -35,11 +33,9 @@
 #include <Inventor/nodes/SoSphere.h>
 #include <Inventor/nodes/SoTransform.h>
 #include <Inventor/nodes/SoTranslation.h>
-#include <Inventor/nodes/SoFontStyle.h>
 
 #include "SoFCPlacementIndicatorKit.h"
 
-#include "So3DAnnotation.h"
 #include "SoAxisCrossKit.h"
 
 #include <SoTextLabel.h>

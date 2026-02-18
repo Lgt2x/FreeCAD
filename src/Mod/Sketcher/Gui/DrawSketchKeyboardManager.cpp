@@ -23,14 +23,12 @@
  ***************************************************************************/
 
 
-#include <Inventor/events/SoKeyboardEvent.h>
 #include <QApplication>
 #include <QEvent>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
 
-#include "ViewProviderSketch.h"
 
 #include "DrawSketchKeyboardManager.h"
 

@@ -23,8 +23,6 @@
  ***************************************************************************/
 
 
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
-#include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
 #include <BRepBndLib.hxx>
 #include <BRepBuilderAPI_Sewing.hxx>
 #include <BRepBuilderAPI_MakeSolid.hxx>
@@ -51,7 +49,6 @@
 #include "FeaturePipe.h"
 #include "Mod/Part/App/TopoShapeOpCode.h"
 #include "Mod/Part/App/TopoShapeMapper.h"
-#include "FeatureLoft.h"
 
 FC_LOG_LEVEL_INIT("PartDesign", true, true);
 

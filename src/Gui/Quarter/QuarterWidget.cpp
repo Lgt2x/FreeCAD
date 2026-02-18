@@ -75,10 +75,8 @@
 #include <QResizeEvent>
 #include <QWindow>
 
-#include <Inventor/C/basic.h>
 #include <Inventor/SbByteBuffer.h>
 
-#include <Inventor/SbColor.h>
 #include <Inventor/SbViewportRegion.h>
 #include <Inventor/SoDB.h>
 #include <Inventor/SoEventManager.h>

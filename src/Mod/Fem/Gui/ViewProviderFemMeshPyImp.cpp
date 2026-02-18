@@ -6,7 +6,6 @@
 
 #include <Base/GeometryPyCXX.h>
 #include <Base/VectorPy.h>
-#include <App/MaterialPy.h>
 #include <Mod/Fem/App/FemMeshObject.h>
 
 #include "ViewProviderFemMesh.h"

@@ -3,7 +3,6 @@
 #include "MillPathLine.h"
 #include "OpenGlWrapper.h"
 #include "GlUtils.h"
-#include "Shader.h"
 
 namespace MillSim
 {

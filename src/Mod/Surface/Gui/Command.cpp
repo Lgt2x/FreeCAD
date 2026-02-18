@@ -25,12 +25,7 @@
 
 #include <QApplication>
 #include <QMessageBox>
-#include <sstream>
 
-#include <BRepAdaptor_Curve.hxx>
-#include <GeomAPI_ProjectPointOnCurve.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Shape.hxx>
 
 #include "Mod/Part/App/PartFeature.h"
 #include <App/Document.h>

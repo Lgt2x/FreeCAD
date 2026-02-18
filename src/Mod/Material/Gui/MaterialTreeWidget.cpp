@@ -38,7 +38,6 @@
 #include <Mod/Material/App/Exceptions.h>
 #include <Mod/Material/App/MaterialFilter.h>
 #include <Mod/Material/App/MaterialFilterPy.h>
-#include <Mod/Material/App/ModelUuids.h>
 
 #include "MaterialTreeWidget.h"
 #include "MaterialsEditor.h"

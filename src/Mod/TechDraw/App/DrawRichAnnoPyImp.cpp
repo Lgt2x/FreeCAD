@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include "DrawRichAnno.h"
 // inclusion of the generated files (generated out of DrawRichAnnoPy.xml)
 #include <Mod/TechDraw/App/DrawRichAnnoPy.h>
 #include <Mod/TechDraw/App/DrawRichAnnoPy.cpp>

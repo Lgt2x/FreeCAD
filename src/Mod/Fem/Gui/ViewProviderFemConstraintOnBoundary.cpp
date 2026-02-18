@@ -28,7 +28,6 @@
 #include <Mod/Part/Gui/ReferenceHighlighter.h>
 #include <Mod/Part/Gui/ViewProvider.h>
 
-#include "TaskFemConstraintOnBoundary.h"
 #include "ViewProviderFemConstraintOnBoundary.h"
 
 

@@ -27,7 +27,6 @@
 #include "MeshFeature.h"
 // inclusion of the generated files (generated out of MeshFeaturePy.xml)
 // clang-format off
-#include <Mod/Mesh/App/MeshPy.h>
 #include <Mod/Mesh/App/MeshFeaturePy.h>
 #include <Mod/Mesh/App/MeshFeaturePy.cpp>
 // clang-format on

@@ -21,26 +21,19 @@
  *                                                                          *
  ***************************************************************************/
 
-#include <cmath>
 #include <vector>
 
 #include <App/Application.h>
 #include <App/Document.h>
-#include <App/DocumentObjectGroup.h>
 #include <App/FeaturePythonPyImp.h>
 #include <App/Link.h>
-#include <App/PropertyPythonObject.h>
 #include <App/Range.h>
 #include <Base/Console.h>
 #include <Base/Parameter.h>
-#include <Base/Placement.h>
-#include <Base/Rotation.h>
 #include <Base/Tools.h>
-#include <Base/Interpreter.h>
 #include <QObject>
 
 #include <Mod/Part/App/PartFeature.h>
-#include <Mod/PartDesign/App/Body.h>
 #include <Mod/Spreadsheet/App/Cell.h>
 
 #include "AssemblyObject.h"

@@ -26,11 +26,7 @@
 #include <numbers>
 
 #include <Inventor/SbRotation.h>
-#include <Inventor/engines/SoComposeVec3f.h>
 #include <Inventor/nodes/SoBaseColor.h>
-#include <Inventor/nodes/SoCone.h>
-#include <Inventor/nodes/SoAnnotation.h>
-#include <Inventor/engines/SoCalculator.h>
 #include <Inventor/nodes/SoTransform.h>
 
 #include "SoRotationDragger.h"

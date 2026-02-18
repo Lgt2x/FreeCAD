@@ -28,10 +28,6 @@
 
 
 #include <Gui/BitmapFactory.h>
-#include <Gui/Command.h>
-#include <Gui/Control.h>
-#include <Gui/MainWindow.h>
-#include <Gui/TaskView/TaskDialog.h>
 #include <Mod/PartDesign/App/FeaturePrimitive.h>
 
 #include "ViewProviderPrimitive.h"

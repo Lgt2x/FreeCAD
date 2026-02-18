@@ -24,8 +24,6 @@
  ***************************************************************************/
 
 
-#include <App/Document.h>
-#include <Base/Placement.h>
 
 #include "Origin.h"
 

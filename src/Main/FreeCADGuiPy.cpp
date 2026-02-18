@@ -21,6 +21,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "BitmapFactory.h"
 #include <FCConfig.h>
 
 #if HAVE_CONFIG_H
@@ -45,15 +46,12 @@
 // FreeCAD Base header
 #include <App/Application.h>
 #include <Base/Exception.h>
-#include <Base/Factory.h>
 #include <Base/Interpreter.h>
 #include <Base/PyObjectBase.h>
 #include <Gui/Application.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/MainWindow.h>
 #include <Gui/StartupProcess.h>
 #include <Gui/SoFCDB.h>
-#include <Gui/Quarter/Quarter.h>
 #include <Inventor/SoDB.h>
 #include <Inventor/SoInteraction.h>
 #include <Inventor/nodekits/SoNodeKit.h>

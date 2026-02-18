@@ -45,7 +45,6 @@
 #include <BOPAlgo_Builder.hxx>
 
 #include <Base/Console.h>
-#include <Base/Parameter.h>
 
 #include "DrawProjectSplit.h"
 #include "DrawUtil.h"

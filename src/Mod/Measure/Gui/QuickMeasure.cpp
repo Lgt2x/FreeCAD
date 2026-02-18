@@ -23,15 +23,12 @@
  ***************************************************************************/
 
 
-#include <cmath>
 #include <vector>
 #include <QTimer>
 
 
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <App/Link.h>
-#include <App/Part.h>
 #include <Base/UnitsApi.h>
 #include <Gui/Application.h>
 #include <Gui/MainWindow.h>
@@ -39,7 +36,6 @@
 #include <Gui/Control.h>
 
 #include <Mod/Part/App/PartFeature.h>
-#include <Mod/Part/App/TopoShape.h>
 #include <Mod/Part/App/DatumFeature.h>
 
 #include <Mod/Measure/App/Measurement.h>

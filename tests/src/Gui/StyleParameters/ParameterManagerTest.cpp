@@ -23,8 +23,6 @@
 
 #include <gtest/gtest.h>
 
-#include <Gui/Application.h>
-#include <Gui/Utilities.h>
 #include <Gui/StyleParameters/ParameterManager.h>
 
 using namespace Gui::StyleParameters;

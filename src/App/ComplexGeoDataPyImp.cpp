@@ -32,7 +32,6 @@
 #include <App/ComplexGeoDataPy.cpp>
 #include <App/StringHasherPy.h>
 #include <App/StringIDPy.h>
-#include <Base/BoundBoxPy.h>
 #include <Base/MatrixPy.h>
 #include <Base/PlacementPy.h>
 #include "Base/PyWrapParseTupleAndKeywords.h"

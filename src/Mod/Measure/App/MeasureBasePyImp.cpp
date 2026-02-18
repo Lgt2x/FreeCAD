@@ -8,7 +8,6 @@
 #include "MeasureBasePy.cpp"
 
 
-#include <Base/GeometryPyCXX.h>
 
 
 // returns a string which represents the object e.g. when printed in python

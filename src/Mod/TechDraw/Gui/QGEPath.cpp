@@ -28,7 +28,6 @@
 
 
 #include <Base/Console.h>
-#include <Mod/TechDraw/App/DrawLeaderLine.h>
 #include <Mod/TechDraw/App/DrawUtil.h>
 
 #include "QGEPath.h"

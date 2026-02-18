@@ -22,11 +22,9 @@
 
 
 #include <unordered_map>
-#include <stdexcept>
 
 
 #include <Base/Interpreter.h>
-#include <App/Document.h>
 
 #include "MDIViewPyWrap.h"
 #include "PythonWrapper.h"

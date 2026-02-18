@@ -25,9 +25,7 @@
 //! we are treating sketches like Part objects for now
 
 
-#include <App/Application.h>
 #include <App/MeasureManager.h>
-#include "Base/Console.h"
 #include "Measure.h"
 
 

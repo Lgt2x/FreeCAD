@@ -21,9 +21,7 @@
  ***************************************************************************/
 
 
-#include <sstream>
 #include <Inventor/SoPickedPoint.h>
-#include <Inventor/nodes/SoDrawStyle.h>
 
 
 #include <App/DocumentObject.h>

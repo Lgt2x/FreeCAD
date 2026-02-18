@@ -30,7 +30,6 @@
 #include <BRep_Tool.hxx>
 #include <BRepGProp.hxx>
 #include <gp_Pnt.hxx>
-#include <GProp_GProps.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>

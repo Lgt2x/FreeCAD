@@ -56,8 +56,6 @@
 #include <Mod/TechDraw/App/DrawSVGTemplate.h>
 #include <Mod/TechDraw/App/DrawViewArch.h>
 #include <Mod/TechDraw/App/DrawViewClip.h>
-#include <Mod/TechDraw/App/DrawViewDetail.h>
-#include <Mod/TechDraw/App/DrawViewDraft.h>
 #include <Mod/TechDraw/App/DrawViewPart.h>
 #include <Mod/TechDraw/App/DrawViewSymbol.h>
 #include <Mod/TechDraw/App/Preferences.h>

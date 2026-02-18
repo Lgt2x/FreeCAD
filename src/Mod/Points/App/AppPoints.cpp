@@ -26,7 +26,6 @@
 #include <Base/Console.h>
 #include <Base/Interpreter.h>
 
-#include "Points.h"
 #include "PointsPy.h"
 #include "Properties.h"
 #include "PropertyPointKernel.h"

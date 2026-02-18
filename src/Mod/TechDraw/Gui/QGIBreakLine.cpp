@@ -28,10 +28,6 @@
 # include <QStyleOptionGraphicsItem>
 
 
-#include <App/Application.h>
-#include <Base/Console.h>
-#include <Base/Parameter.h>
-#include <Base/Tools.h>
 
 #include <Mod/TechDraw/App/Preferences.h>
 #include <Mod/TechDraw/App/DrawUtil.h>

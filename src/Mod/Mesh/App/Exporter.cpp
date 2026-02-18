@@ -23,8 +23,6 @@
  ***************************************************************************/
 
 #include <algorithm>
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/core/ignore_unused.hpp>
 #include <vector>
 
 

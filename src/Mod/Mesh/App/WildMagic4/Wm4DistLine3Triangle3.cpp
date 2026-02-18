@@ -16,7 +16,6 @@
 //
 // Version: 4.0.1 (2006/07/23)
 
-#include "Wm4FoundationPCH.h"
 #include "Wm4DistLine3Triangle3.h"
 #include "Wm4DistLine3Segment3.h"
 

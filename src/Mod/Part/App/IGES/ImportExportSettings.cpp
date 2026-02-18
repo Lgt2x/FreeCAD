@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Interface_Static.hxx>
 
 
 #include "ImportExportSettings.h"

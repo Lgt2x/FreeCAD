@@ -36,7 +36,6 @@
 #include <Gui/WaitCursor.h>
 
 #include "DlgProcessorChooser.h"
-#include "ui_DlgProcessorChooser.h"
 
 
 namespace PathGui

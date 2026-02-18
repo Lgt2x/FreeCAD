@@ -30,7 +30,6 @@
 #include <QTreeWidget>
 #include <QStyledItemDelegate>
 
-#include <fmt/format.h>
 
 #include <App/Application.h>
 #include <App/Document.h>
@@ -45,7 +44,6 @@
 #include "ui_DlgExpressionInput.h"
 #include "Application.h"
 #include "Command.h"
-#include "Tools.h"
 #include "ExpressionBinding.h"
 #include "BitmapFactory.h"
 #include "ViewProviderDocumentObject.h"

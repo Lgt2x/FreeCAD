@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include "Core/Degeneration.h"
 #include "Core/Triangulation.h"
 #include <Base/Tools.h>
 

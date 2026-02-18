@@ -26,11 +26,9 @@
 
 #include <BRepMesh_IncrementalMesh.hxx>
 #include <BRepTools.hxx>
-#include <Standard_Version.hxx>
 #include <TopoDS_Shape.hxx>
 
 #include <Base/Console.h>
-#include <Base/Tools.h>
 #include <Mod/Mesh/App/Mesh.h>
 #include <Mod/Part/App/BRepMesh.h>
 #include <Mod/Part/App/TopoShape.h>

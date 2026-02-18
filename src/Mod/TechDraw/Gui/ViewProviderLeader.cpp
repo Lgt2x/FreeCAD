@@ -35,7 +35,6 @@
 
 #include <Mod/TechDraw/App/LineGroup.h>
 #include <Mod/TechDraw/App/DrawLeaderLine.h>
-#include <Mod/TechDraw/App/DrawRichAnno.h>
 #include <Mod/TechDraw/App/DrawWeldSymbol.h>
 
 #include "PreferencesGui.h"

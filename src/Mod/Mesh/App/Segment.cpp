@@ -23,11 +23,9 @@
  ***************************************************************************/
 
 #include <algorithm>
-#include <sstream>
 
 
 #include "Mesh.h"
-#include "MeshPy.h"
 #include "Segment.h"
 
 

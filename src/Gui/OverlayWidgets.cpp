@@ -45,8 +45,6 @@
 #include <QPainterPath>
 #include <QPropertyAnimation>
 
-#include <array>
-#include <unordered_map>
 
 #include "OverlayWidgets.h"
 
@@ -61,7 +59,6 @@
 #include "Control.h"
 #include "MainWindow.h"
 #include "MDIView.h"
-#include "NaviCube.h"
 #include "OverlayManager.h"
 #include "OverlayParams.h"
 #include "TaskView/TaskView.h"

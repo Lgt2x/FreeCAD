@@ -24,9 +24,6 @@
 
 #include <Standard_Version.hxx>
 #include <STEPCAFControl_Reader.hxx>
-#include <Transfer_TransientProcess.hxx>
-#include <XSControl_TransferReader.hxx>
-#include <XSControl_WorkSession.hxx>
 
 
 #include "ReaderStep.h"

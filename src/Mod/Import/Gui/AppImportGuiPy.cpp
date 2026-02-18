@@ -26,7 +26,6 @@
 # define WNT  // avoid conflict with GUID
 #endif
 
-#include <iostream>
 
 #include <QString>
 
@@ -37,8 +36,6 @@
 
 #include <OSD_Exception.hxx>
 #include <Standard_Version.hxx>
-#include <TColStd_IndexedDataMapOfStringString.hxx>
-#include <TDataXtd_Shape.hxx>
 #include <TDocStd_Document.hxx>
 #include <XCAFApp_Application.hxx>
 
@@ -60,7 +57,6 @@
 #include <Gui/Command.h>
 #include <Gui/Document.h>
 #include <Gui/MainWindow.h>
-#include <Gui/ViewProviderLink.h>
 #include <Mod/Import/App/ReaderGltf.h>
 #include <Mod/Import/App/ReaderIges.h>
 #include <Mod/Import/App/ReaderStep.h>

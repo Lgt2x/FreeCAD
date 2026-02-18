@@ -23,7 +23,6 @@
 #include <FCConfig.h>
 
 #include <boost/interprocess/sync/file_lock.hpp>
-#include <Inventor/errors/SoDebugError.h>
 #include <Inventor/errors/SoError.h>
 #include <QCheckBox>
 #include <QCloseEvent>
@@ -140,7 +139,6 @@
 #include "WidgetFactory.h"
 #include "3Dconnexion/navlib/NavlibInterface.h"
 #include "Inventor/SoFCPlacementIndicatorKit.h"
-#include "QtWidgets.h"
 
 #include <FreeCADStyle.h>
 #include <OverlayManager.h>

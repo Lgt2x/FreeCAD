@@ -53,10 +53,8 @@
 #include <Poly_Connect.hxx>
 #include <Poly_Triangulation.hxx>
 #include <Precision.hxx>
-#include <Standard_Mutex.hxx>
 #include <Standard_TypeMismatch.hxx>
 #include <Standard_Version.hxx>
-#include <TColStd_ListIteratorOfListOfTransient.hxx>
 #include <TColStd_ListOfTransient.hxx>
 #include <TColgp_SequenceOfXY.hxx>
 #include <TColgp_SequenceOfXYZ.hxx>

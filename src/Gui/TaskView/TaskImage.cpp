@@ -25,7 +25,6 @@
 #include <QPushButton>
 #include <QAction>
 #include <QKeyEvent>
-#include <map>
 #include <Inventor/SoPickedPoint.h>
 #include <Inventor/events/SoLocation2Event.h>
 #include <Inventor/events/SoButtonEvent.h>
@@ -35,11 +34,9 @@
 #include <Base/Console.h>
 #include <Base/Precision.h>
 #include <Base/Quantity.h>
-#include <Base/Tools.h>
 #include <App/Document.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
-#include <Gui/Camera.h>
 #include <Gui/Document.h>
 #include <Gui/EditableDatumLabel.h>
 #include <Gui/View3DInventor.h>

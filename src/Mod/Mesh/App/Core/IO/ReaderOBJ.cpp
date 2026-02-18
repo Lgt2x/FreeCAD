@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/tokenizer.hpp>
 #include <istream>
 #include <map>

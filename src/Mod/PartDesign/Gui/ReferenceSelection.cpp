@@ -32,7 +32,6 @@
 
 
 #include <App/Document.h>
-#include <App/Origin.h>
 #include <App/Datums.h>
 #include <App/Part.h>
 #include <Base/Tools.h>

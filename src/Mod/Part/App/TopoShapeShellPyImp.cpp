@@ -40,8 +40,6 @@
 #include "OCCError.h"
 #include "PartPyCXX.h"
 #include "Tools.h"
-#include "TopoShapeCompoundPy.h"
-#include "TopoShapeCompoundPy.h"
 #include "TopoShapeFacePy.h"
 #include "TopoShapeShellPy.h"
 #include "TopoShapeShellPy.cpp"

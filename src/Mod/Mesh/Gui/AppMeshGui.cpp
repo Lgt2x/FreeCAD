@@ -33,7 +33,6 @@
 #include <Base/Interpreter.h>
 #include <Base/PyObjectBase.h>
 #include <Gui/Application.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/Language/Translator.h>
 #include <Gui/WidgetFactory.h>
 

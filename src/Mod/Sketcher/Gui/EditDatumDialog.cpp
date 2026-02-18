@@ -24,7 +24,6 @@
 
 
 /// Qt Include Files
-#include <Inventor/sensors/SoSensor.h>
 #include <QApplication>
 #include <QDialog>
 
@@ -38,7 +37,6 @@
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
 #include <Gui/Document.h>
-#include <Mod/Sketcher/App/GeometryFacade.h>
 #include <Mod/Sketcher/App/SketchObject.h>
 #include <App/Datums.h>
 
@@ -49,7 +47,6 @@
 #include "SketcherSettings.h"
 #include "ui_InsertDatum.h"
 
-#include <numeric>
 
 
 using namespace SketcherGui;

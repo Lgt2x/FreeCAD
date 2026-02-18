@@ -22,8 +22,6 @@
  **************************************************************************/
 
 
-#include <boost/core/ignore_unused.hpp>
-#include <Standard_Version.hxx>
 #include <BRep_Builder.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Quantity_ColorRGBA.hxx>
@@ -37,10 +35,8 @@
 #include <XCAFDoc_VisMaterialTool.hxx>
 
 #include "ReaderGltf.h"
-#include "Tools.h"
 #include <Base/Exception.h>
 #include <Mod/Part/App/TopoShape.h>
-#include <Mod/Part/App/Tools.h>
 
 using namespace Import;
 

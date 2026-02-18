@@ -20,10 +20,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Python.h>
 
-#include <Base/FileInfo.h>
-#include <Base/UnitPy.h>
 
 // clang-format off
 #include "FemPostGroupExtension.h"

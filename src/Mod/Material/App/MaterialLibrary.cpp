@@ -27,14 +27,13 @@
 
 
 
-#include <App/Application.h>
 
+#include "Exceptions.h"
 #include "MaterialFilter.h"
 #include "MaterialLibrary.h"
 #include "MaterialLoader.h"
 #include "MaterialManager.h"
 #include "Materials.h"
-#include "ModelManager.h"
 
 
 using namespace Materials;

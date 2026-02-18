@@ -23,14 +23,7 @@
  ***************************************************************************/
 
 
-#include <Base/Exception.h>
-#include <Mod/Mesh/App/Core/Algorithm.h>
-#include <Mod/Mesh/App/Core/Elements.h>
-#include <Mod/Mesh/App/Core/MeshKernel.h>
-#include <Mod/Mesh/App/Mesh.h>
-#include <Mod/Points/App/Points.h>
 
-#include "SurfaceTriangulation.h"
 
 
 // http://svn.pointclouds.org/pcl/tags/pcl-1.5.1/test/

@@ -26,9 +26,7 @@
 #include <Base/VectorPy.h>
 
 #include "DrawBrokenView.h"
-#include "DrawViewPart.h"
 // inclusion of the generated files
-#include <Mod/TechDraw/App/DrawViewPartPy.h>
 #include <Mod/TechDraw/App/DrawBrokenViewPy.h>
 #include <Mod/TechDraw/App/DrawBrokenViewPy.cpp>
 

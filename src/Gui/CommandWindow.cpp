@@ -28,13 +28,10 @@
 #include "Action.h"
 #include "Application.h"
 #include "MainWindow.h"
-#include "View.h"
 #include "Document.h"
 #include "Dialogs/DlgActivateWindowImp.h"
-#include "DockWindowManager.h"
 #include "ToolBarManager.h"
 
-#include <Base/Exception.h>
 #include <App/Document.h>
 
 using namespace Gui;

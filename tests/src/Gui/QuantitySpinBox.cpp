@@ -3,10 +3,9 @@
 #include <QDebug>
 #include <QTest>
 
-#include <App/Application.h>
 
 #include "Gui/QuantitySpinBox.h"
-#include <src/App/InitApplication.h>
+#include "src/App/InitApplication.h"
 
 // NOLINTBEGIN(readability-magic-numbers)
 

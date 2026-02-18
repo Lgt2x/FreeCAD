@@ -23,11 +23,10 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "Mod/Fem/App/FemConstraintPlaneRotation.h"
+#include "Mod/Fem/Gui/ViewProviderFemConstraintPlaneRotation.h"
+#include "Mod/Fem/Gui/TaskFemConstraintPlaneRotation.h"
 #include <Gui/Control.h>
 
-#include "TaskFemConstraintPlaneRotation.h"
-#include "ViewProviderFemConstraintPlaneRotation.h"
 
 
 using namespace FemGui;

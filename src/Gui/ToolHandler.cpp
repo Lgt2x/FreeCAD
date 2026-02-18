@@ -20,19 +20,14 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cmath>
 
 #include <QGuiApplication>
 #include <QPainter>
 
-#include <Inventor/events/SoKeyboardEvent.h>
 
-#include <Base/Console.h>
-#include <Base/Exception.h>
 
 #include "Application.h"
 #include "BitmapFactory.h"
-#include "CommandT.h"
 #include "MainWindow.h"
 #include "View3DInventor.h"
 #include "View3DInventorViewer.h"

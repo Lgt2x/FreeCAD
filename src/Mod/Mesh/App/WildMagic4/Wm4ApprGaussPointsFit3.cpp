@@ -8,7 +8,6 @@
 //
 // File Version: 4.10.0 (2009/11/18)
 
-#include "Wm4FoundationPCH.h"
 #include "Wm4ApprGaussPointsFit3.h"
 #include "Wm4Eigen.h"
 

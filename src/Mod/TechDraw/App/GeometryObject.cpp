@@ -50,7 +50,6 @@
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Shape.hxx>
-#include <TopoDS_Vertex.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>
@@ -60,10 +59,8 @@
 #include <gp_Vec.hxx>
 
 #include <algorithm>
-#include <chrono>
 
 #include <Base/Console.h>
-#include <Mod/Part/App/PartFeature.h>
 
 #include "Cosmetic.h"
 #include "DrawUtil.h"

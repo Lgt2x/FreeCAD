@@ -34,7 +34,6 @@
 #include <BRepBuilderAPI_MakeEdge.hxx>
 #include <BRepBuilderAPI_MakeFace.hxx>
 #include <BRepBuilderAPI_MakeVertex.hxx>
-#include <BRepMesh_IncrementalMesh.hxx>
 #include <BRepOffsetAPI_NormalProjection.hxx>
 #include <BRepTools_WireExplorer.hxx>
 #include <BRep_Tool.hxx>
@@ -55,8 +54,6 @@
 #include <Geom_Parabola.hxx>
 #include <Geom_Plane.hxx>
 #include <Geom_TrimmedCurve.hxx>
-#include <Standard_Version.hxx>
-#include <TColStd_Array1OfInteger.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>

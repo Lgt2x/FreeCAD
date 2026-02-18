@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <App/Application.h>
 
 #include "DlgSettingsSelection.h"
 #include "ui_DlgSettingsSelection.h"

@@ -28,7 +28,6 @@
 #include <TopoDS.hxx>
 #include <TopoDS_Shape.hxx>
 #include <limits>
-#include <sstream>
 
 
 #include <App/Document.h>

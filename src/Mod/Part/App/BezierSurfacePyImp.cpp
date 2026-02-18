@@ -32,7 +32,6 @@
 #include <Base/GeometryPyCXX.h>
 #include <Base/VectorPy.h>
 
-#include "BezierCurvePy.h"
 #include "BezierSurfacePy.h"
 #include "BezierSurfacePy.cpp"
 #include "OCCError.h"

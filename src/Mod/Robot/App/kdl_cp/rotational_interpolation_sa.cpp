@@ -43,7 +43,6 @@
 
 
 #include "rotational_interpolation_sa.hpp"
-#include "trajectory.hpp"
 
 namespace KDL {
 

@@ -592,7 +592,6 @@ void ApplicationDirectories::migrateAllPaths(const std::vector<fs::path> &paths)
 #if defined(__OpenBSD__)
 #include <cstdio>
 #include <cstdlib>
-#include <sys/param.h>
 #include <QCoreApplication>
 
 fs::path ApplicationDirectories::findHomePath(const char* sCall)
@@ -630,7 +629,6 @@ fs::path ApplicationDirectories::findHomePath(const char* sCall)
 #elif defined (FC_OS_LINUX) || defined(FC_OS_CYGWIN) || defined(FC_OS_BSD)
 #include <cstdio>
 #include <cstdlib>
-#include <sys/param.h>
 #if defined(__FreeBSD__)
 #include <sys/sysctl.h>
 #endif
@@ -690,7 +688,6 @@ fs::path ApplicationDirectories::findHomePath(const char* sCall)
 #include <mach-o/dyld.h>
 #include <string>
 #include <cstdlib>
-#include <sys/param.h>
 
 fs::path ApplicationDirectories::findHomePath(const char* sCall)
 {

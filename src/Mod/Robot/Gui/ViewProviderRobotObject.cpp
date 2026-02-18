@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <QFile>
-#include <sstream>
 
 #include <Inventor/SbVec3f.h>
 #include <Inventor/SoDB.h>

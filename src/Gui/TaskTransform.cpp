@@ -21,17 +21,14 @@
  ***************************************************************************/
 
 #include <cassert>
-#include <limits>
 #include <QApplication>
 
 #include <View3DInventorViewer.h>
-#include <Utilities.h>
 
 #include <App/Document.h>
 #include <App/GeoFeature.h>
 #include <App/Services.h>
 #include <Base/Precision.h>
-#include <Base/ServiceProvider.h>
 #include <Base/Tools.h>
 
 #include "Document.h"  // must be before TaskTransform.h

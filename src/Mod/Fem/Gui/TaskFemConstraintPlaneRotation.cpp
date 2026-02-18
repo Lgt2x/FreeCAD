@@ -27,7 +27,6 @@
 #include <QAction>
 #include <QMessageBox>
 #include <TopoDS.hxx>
-#include <sstream>
 
 
 #include <App/DocumentObject.h>

@@ -33,9 +33,6 @@
 #include <Inventor/SbString.h>
 
 #include <App/Application.h>
-#include <Base/Console.h>
-#include <Base/Reader.h>
-#include <Base/Writer.h>
 #include <Gui/Action.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
@@ -50,15 +47,12 @@
 #include <Mod/Sketcher/App/SketchObject.h>
 #include <Mod/Sketcher/App/SolverGeometryExtension.h>
 #include <Gui/Application.h>
-#include <Base/ServiceProvider.h>
-#include <App/Services.h>
 
 #include "CommandSketcherTools.h"
 #include "DrawSketchHandler.h"
 #include "SketchRectangularArrayDialog.h"
 #include "Utils.h"
 #include "ViewProviderSketch.h"
-#include <Inventor/actions/SoGetBoundingBoxAction.h>
 
 
 #include "DrawSketchHandlerTranslate.h"

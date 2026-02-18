@@ -25,7 +25,6 @@
 #include <boost/math/special_functions/fpclassify.hpp>
 #include <limits>
 
-#include <Inventor/errors/SoDebugError.h>
 #include <Inventor/events/SoMouseButtonEvent.h>
 #include <Inventor/nodes/SoCamera.h>
 #include <Inventor/nodes/SoCoordinate3.h>

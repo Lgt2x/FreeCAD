@@ -30,7 +30,6 @@
 #include <gp_Pln.hxx>
 #include <gp_Pnt.hxx>
 #include <ShapeFix_Solid.hxx>
-#include <Standard_Failure.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Builder.hxx>

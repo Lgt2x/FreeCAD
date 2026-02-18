@@ -31,7 +31,6 @@
 
 #include "SurfaceOfExtrusionPy.h"
 #include "SurfaceOfExtrusionPy.cpp"
-#include "GeometryCurvePy.h"
 #include "OCCError.h"
 
 

@@ -26,16 +26,12 @@
 #include <QString>
 
 #include <App/Application.h>
-#include <Base/Quantity.h>
-#include <Gui/MetaTypes.h>
 #include <src/App/InitApplication.h>
 
 #include <Mod/Material/App/MaterialLibrary.h>
 #include <Mod/Material/App/MaterialManager.h>
 #include <Mod/Material/App/MaterialValue.h>
-#include <Mod/Material/App/Model.h>
 #include <Mod/Material/App/ModelManager.h>
-#include <Mod/Material/App/ModelUuids.h>
 
 // clang-format off
 

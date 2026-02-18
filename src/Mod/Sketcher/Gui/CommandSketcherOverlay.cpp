@@ -22,25 +22,17 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Inventor/SbString.h>
 #include <QApplication>
 
 #include <App/Application.h>
-#include <Base/Console.h>
 #include <Gui/Action.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/CommandT.h>
 #include <Gui/Document.h>
 #include <Gui/MainWindow.h>
-#include <Gui/Notifications.h>
-#include <Gui/Selection/Selection.h>
-#include <Gui/Selection/SelectionObject.h>
-#include <Mod/Sketcher/App/SketchObject.h>
 
-#include "DrawSketchHandler.h"
 #include "Utils.h"
-#include "ViewProviderSketch.h"
 
 using namespace std;
 using namespace SketcherGui;

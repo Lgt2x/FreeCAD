@@ -23,16 +23,11 @@
  ***************************************************************************/
 
 #include <limits>
-#include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
 #include <BRep_Builder.hxx>
-#include <BRepFeat_MakePrism.hxx>
 #include <BRepPrimAPI_MakePrism.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Ax2.hxx>
 #include <Precision.hxx>
-#include <TopExp_Explorer.hxx>
-#include <TopoDS_Compound.hxx>
-#include <TopoDS_Face.hxx>
 #include <TopoDS_Shape.hxx>
 
 #include <App/Document.h>

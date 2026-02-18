@@ -24,7 +24,6 @@
 
 #include "VectorListEditor.h"
 #include "ui_VectorListEditor.h"
-#include "QuantitySpinBox.h"
 
 #include <App/Application.h>
 #include <Base/Console.h>

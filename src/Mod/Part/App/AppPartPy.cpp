@@ -50,24 +50,16 @@
 #include <Geom_Circle.hxx>
 #include <Geom_Plane.hxx>
 #include <GeomFill_AppSurf.hxx>
-#include <GeomFill_Generator.hxx>
-#include <GeomFill_Line.hxx>
-#include <GeomFill_SectionGenerator.hxx>
 #include <Interface_Static.hxx>
-#include <NCollection_List.hxx>
 #include <Precision.hxx>
 #include <ShapeFix.hxx>
 #include <ShapeBuild_ReShape.hxx>
 #include <ShapeUpgrade_ShellSewing.hxx>
 #include <Standard_DomainError.hxx>
-#include <Standard_Version.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
-#include <TopoDS_Shell.hxx>
-#include <TopoDS_Solid.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
 
 #include <BRepFill_Generator.hxx>
 
@@ -84,20 +76,15 @@
 #include <Base/Tools.h>
 #include <Base/VectorPy.h>
 
-#include "BSplineSurfacePy.h"
 #include "edgecluster.h"
-#include "FaceMaker.h"
-#include "GeometryCurvePy.h"
 #include "GeometryPy.h"
 #include "ImportIges.h"
 #include "ImportStep.h"
 #include "Interface.h"
-#include "modelRefine.h"
 #include "OCCError.h"
 #include "PartFeature.h"
 #include "PartPyCXX.h"
 #include "Tools.h"
-#include "TopoShapeCompoundPy.h"
 #include "TopoShapePy.h"
 #include "TopoShapeEdgePy.h"
 #include "TopoShapeFacePy.h"

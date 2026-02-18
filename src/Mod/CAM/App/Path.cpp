@@ -25,7 +25,6 @@
 #include <App/Application.h>
 #include <Base/Console.h>
 #include <Base/Reader.h>
-#include <Base/Stream.h>
 #include <Base/Writer.h>
 #include <Mod/CAM/App/PathSegmentWalker.h>
 

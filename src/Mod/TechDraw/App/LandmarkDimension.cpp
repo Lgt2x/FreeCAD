@@ -34,7 +34,6 @@
 
 
 #include <App/Document.h>
-#include <Base/Console.h>
 
 #include "LandmarkDimension.h"
 #include "DrawUtil.h"

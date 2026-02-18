@@ -34,7 +34,6 @@
 #include <BRepBuilderAPI_MakeVertex.hxx>
 #include <BRepBuilderAPI_MakeShape.hxx>
 #include <BRepBuilderAPI_MakeVertex.hxx>
-#include <BRepExtrema_DistShapeShape.hxx>
 #include <BRepGProp.hxx>
 #include <BRepGProp_Face.hxx>
 #include <BRepIntCurveSurface_Inter.hxx>
@@ -45,15 +44,12 @@
 #include <gp_Pln.hxx>
 #include <gp_Trsf.hxx>
 #include <GProp_GProps.hxx>
-#include <IntCurveSurface_IntersectionPoint.hxx>
 #include <Precision.hxx>
 #include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
 
 
 #include <App/Application.h>

@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <Python.h>
 #include <SMDSAbs_ElementType.hxx>
 #include <SMDS_MeshElement.hxx>
 #include <SMESHDS_Group.hxx>

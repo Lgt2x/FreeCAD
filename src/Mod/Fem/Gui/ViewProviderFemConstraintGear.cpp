@@ -30,7 +30,6 @@
 
 
 #include "Gui/Control.h"
-#include <Base/Console.h>
 #include <Base/Tools.h>
 #include <Mod/Fem/App/FemConstraintGear.h>
 

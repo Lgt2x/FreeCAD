@@ -27,7 +27,6 @@
 # include <QRectF>
 # include <QStyleOptionGraphicsItem>
 
-#include <Base/Console.h>
 #include <Base/Parameter.h>
 #include <Mod/TechDraw/App/Preferences.h>
 

@@ -26,7 +26,6 @@
 
 #include <QMenu>
 #include <QString>
-#include <sstream>
 
 
 #include <Gui/Application.h>

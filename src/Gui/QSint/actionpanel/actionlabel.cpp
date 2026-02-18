@@ -12,7 +12,6 @@
 #include <QStyleOptionToolButton>
 #include <QAction>
 #include <QPainter>
-#include <cmath>
 
 namespace QSint
 {

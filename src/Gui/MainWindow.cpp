@@ -73,7 +73,6 @@
 #include <App/DocumentObjectGroup.h>
 #include <App/ImagePlane.h>
 #include <App/SafeMode.h>
-#include <Base/ConsoleObserver.h>
 #include <Base/Parameter.h>
 #include <Base/Exception.h>
 #include <Base/FileInfo.h>
@@ -106,7 +105,6 @@
 #include "SplashScreen.h"
 #include "StatusBarLabel.h"
 #include "ToolBarManager.h"
-#include "ToolBoxManager.h"
 #include "Tree.h"
 #include "WaitCursor.h"
 #include "WorkbenchManager.h"
@@ -121,7 +119,6 @@
 #include "Dialogs/DlgObjectSelection.h"
 
 #include <Base/Color.h>
-#include "QtWidgets.h"
 
 FC_LOG_LEVEL_INIT("MainWindow", false, true, true)
 

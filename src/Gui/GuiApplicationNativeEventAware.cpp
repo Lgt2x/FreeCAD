@@ -26,8 +26,8 @@
 
 #include <QMainWindow>
 #include <FCConfig.h>
-#include "Application.h"
 #include "GuiApplicationNativeEventAware.h"
+#include "App/Application.h"
 #include "SpaceballEvent.h"
 
 

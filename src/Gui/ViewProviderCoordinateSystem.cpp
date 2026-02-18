@@ -31,15 +31,12 @@
 #include <App/Document.h>
 #include <App/Origin.h>
 #include "Base/Console.h"
-#include <Base/Vector3D.h>
 
 #include "ViewProviderCoordinateSystem.h"
 #include "Application.h"
 #include "Command.h"
 #include "Document.h"
-#include "ViewProviderLine.h"
 #include "ViewProviderPlane.h"
-#include "ViewProviderPoint.h"
 
 
 using namespace Gui;

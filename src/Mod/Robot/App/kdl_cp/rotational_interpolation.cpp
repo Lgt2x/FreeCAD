@@ -45,7 +45,6 @@
 #include "utilities/error_stack.h"
 #include "rotational_interpolation.hpp"
 #include "rotational_interpolation_sa.hpp"
-#include <memory>
 #include <cstring>
 
 namespace KDL {

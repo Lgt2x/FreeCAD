@@ -24,7 +24,6 @@
 #include <QImage>
 #include <QImageReader>
 
-#include <Inventor/nodes/SoGroup.h>
 #include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoOrthographicCamera.h>
 #include <Inventor/nodes/SoSeparator.h>

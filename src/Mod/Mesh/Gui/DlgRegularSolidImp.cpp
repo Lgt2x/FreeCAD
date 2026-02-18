@@ -27,7 +27,6 @@
 
 #include <App/Document.h>
 #include <Base/Interpreter.h>
-#include <Base/PyObjectBase.h>
 #include <Gui/Application.h>
 #include <Gui/Command.h>
 #include <Gui/Document.h>

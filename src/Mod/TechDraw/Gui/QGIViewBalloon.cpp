@@ -42,7 +42,6 @@
 #include <Mod/TechDraw/App/DrawUtil.h>
 #include <Mod/TechDraw/App/DrawViewBalloon.h>
 #include <Mod/TechDraw/App/DrawViewPart.h>
-#include <Mod/TechDraw/App/Geometry.h>
 
 #include "QGIViewBalloon.h"
 #include "PreferencesGui.h"

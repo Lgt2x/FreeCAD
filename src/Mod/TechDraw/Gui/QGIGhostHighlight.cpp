@@ -23,7 +23,6 @@
 # include <QGraphicsSceneEvent>
 
 
-#include <Mod/TechDraw/App/DrawUtil.h>
 
 #include "QGIGhostHighlight.h"
 #include "PreferencesGui.h"

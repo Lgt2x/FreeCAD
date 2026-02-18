@@ -37,9 +37,7 @@
 #include <App/FeaturePythonPyImp.h>
 #include <App/PropertyPythonObject.h>
 #include <App/Link.h>
-#include <App/Part.h>
 #include <Base/Console.h>
-#include <Base/Parameter.h>
 #include <Base/Placement.h>
 #include <Mod/Part/App/PartFeature.h>
 #include <Mod/Part/App/PrimitiveFeature.h>

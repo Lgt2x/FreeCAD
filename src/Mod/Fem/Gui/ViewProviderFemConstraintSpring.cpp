@@ -21,11 +21,11 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "Mod/Fem/App/FemConstraintSpring.h"
+#include "Mod/Fem/Gui/ViewProviderFemConstraintSpring.h"
+#include "Mod/Fem/Gui/TaskFemConstraintSpring.h"
+
 #include <Gui/Control.h>
 
-#include "TaskFemConstraintSpring.h"
-#include "ViewProviderFemConstraintSpring.h"
 
 
 using namespace FemGui;

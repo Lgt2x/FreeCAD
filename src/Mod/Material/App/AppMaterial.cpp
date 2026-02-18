@@ -25,7 +25,6 @@
 #include <Base/Interpreter.h>
 #include <Base/PyObjectBase.h>
 
-#include <App/CleanupProcess.h>
 
 #include "MaterialLoader.h"
 #include "MaterialManagerLocal.h"

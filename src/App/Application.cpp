@@ -57,7 +57,6 @@
 #endif
 
 #if defined(FC_OS_BSD)
-#include <sys/param.h>
 #include <sys/sysctl.h>
 #endif
 
@@ -3333,7 +3332,6 @@ void Application::ExtractUserPath()
 #if defined(__OpenBSD__)
 #include <cstdio>
 #include <cstdlib>
-#include <sys/param.h>
 #include <QCoreApplication>
 
 std::string Application::FindHomePath(const char* sCall)
@@ -3371,7 +3369,6 @@ std::string Application::FindHomePath(const char* sCall)
 #elif defined (FC_OS_LINUX) || defined(FC_OS_CYGWIN) || defined(FC_OS_BSD)
 #include <cstdio>
 #include <cstdlib>
-#include <sys/param.h>
 
 std::string Application::FindHomePath(const char* sCall)
 {
@@ -3428,7 +3425,6 @@ std::string Application::FindHomePath(const char* sCall)
 #include <mach-o/dyld.h>
 #include <string>
 #include <cstdlib>
-#include <sys/param.h>
 
 std::string Application::FindHomePath(const char* sCall)
 {

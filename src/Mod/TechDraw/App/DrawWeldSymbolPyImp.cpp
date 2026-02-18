@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include "DrawWeldSymbol.h"
 // inclusion of the generated files (generated out of DrawWeldSymbolPy.xml)
 #include <Mod/TechDraw/App/DrawWeldSymbolPy.h>
 #include <Mod/TechDraw/App/DrawWeldSymbolPy.cpp>

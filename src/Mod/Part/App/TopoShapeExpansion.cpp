@@ -98,7 +98,6 @@
 #include "FaceMaker.h"
 #include "Geometry.h"
 #include "BRepOffsetAPI_MakeOffsetFix.h"
-#include "Base/BoundBox.h"
 #include "Base/Exception.h"
 #include "Base/Tools.h"
 #include "OCCTProgressIndicator.h"

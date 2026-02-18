@@ -22,11 +22,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <TopoDS_Shape.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS.hxx>
 #include <gp_Pln.hxx>
-#include <gp_Ax1.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Dir.hxx>
 #include <GeomAPI_ProjectPointOnSurf.hxx>

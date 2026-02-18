@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cmath>
 #include <limits>
 #include <QButtonGroup>
 #include <QDoubleValidator>
@@ -32,7 +31,6 @@
 
 #include "Dialogs/DlgSettingsColorGradientImp.h"
 #include "ui_DlgSettingsColorGradient.h"
-#include "SpinBox.h"
 #include "Tools.h"
 
 

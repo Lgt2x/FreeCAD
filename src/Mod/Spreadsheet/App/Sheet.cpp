@@ -44,7 +44,6 @@
 #include <App/FeaturePythonPyImp.h>
 #include <Base/Exception.h>
 #include <Base/FileInfo.h>
-#include <Base/Reader.h>
 #include <Base/Stream.h>
 
 #include "Sheet.h"

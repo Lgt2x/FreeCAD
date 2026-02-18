@@ -27,13 +27,12 @@
 
 #include <App/Application.h>
 #include <Base/FileInfo.h>
-#include <Base/Interpreter.h>
 #include <Base/Stream.h>
 
 
+#include "Exceptions.h"
 #include "Model.h"
 #include "ModelLoader.h"
-#include "ModelManager.h"
 
 
 using namespace Materials;

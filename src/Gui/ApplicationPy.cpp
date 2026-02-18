@@ -24,7 +24,6 @@
 #include <QDir>
 #include <QPrinter>
 #include <QFileInfo>
-#include <Inventor/SoInput.h>
 #include <Inventor/actions/SoGetPrimitiveCountAction.h>
 #include <Inventor/nodes/SoSeparator.h>
 #include <xercesc/util/TranscodingException.hpp>
@@ -34,10 +33,8 @@
 
 #include <App/DocumentObjectPy.h>
 #include <App/DocumentPy.h>
-#include <App/PropertyFile.h>
 #include <Base/Interpreter.h>
 #include <Base/Console.h>
-#include <Base/PyWrapParseTupleAndKeywords.h>
 #include <CXX/Objects.hxx>
 
 #include <Gui/PreferencePages/DlgSettingsPDF.h>
@@ -55,7 +52,6 @@
 #include "Macro.h"
 #include "MainWindow.h"
 #include "MainWindowPy.h"
-#include "PythonEditor.h"
 #include "PythonWrapper.h"
 #include "SoFCDB.h"
 #include "SplitView3DInventor.h"

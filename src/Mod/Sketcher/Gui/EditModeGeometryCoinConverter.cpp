@@ -31,7 +31,6 @@
 #include "EditModeGeometryCoinConverter.h"
 #include "Utils.h"
 #include "ViewProviderSketchCoinAttorney.h"
-#include "ViewProviderSketchGeometryExtension.h"
 
 
 using namespace SketcherGui;

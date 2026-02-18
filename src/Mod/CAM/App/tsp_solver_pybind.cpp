@@ -22,7 +22,6 @@
  ***************************************************************************/
 
 #include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
 #include "tsp_solver.h"
 
 namespace py = pybind11;

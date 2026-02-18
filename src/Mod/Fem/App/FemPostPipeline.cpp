@@ -22,8 +22,6 @@
 
 #include <cmath>
 
-#include <Python.h>
-#include <vtkAppendFilter.h>
 #include <vtkDataSetReader.h>
 #include <vtkImageData.h>
 #include <vtkPointData.h>
@@ -41,7 +39,6 @@
 #include <vtkFloatArray.h>
 #include <vtkStringArray.h>
 #include <vtkInformation.h>
-#include <vtkInformationVector.h>
 
 #include <Base/Console.h>
 #include <Base/Reader.h>

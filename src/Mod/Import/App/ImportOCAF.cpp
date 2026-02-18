@@ -26,12 +26,9 @@
 # define WNT  // avoid conflict with GUID
 #endif
 #include <BRepBndLib.hxx>
-#include <BRepExtrema_DistShapeShape.hxx>
 #include <BRep_Builder.hxx>
 #include <Bnd_Box.hxx>
 #include <Quantity_ColorRGBA.hxx>
-#include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <TDF_ChildIterator.hxx>
 #include <TDF_Label.hxx>
 #include <TDF_LabelSequence.hxx>
@@ -42,16 +39,14 @@
 #include <TopoDS_Iterator.hxx>
 #include <XCAFDoc_DocumentTool.hxx>
 #include <XCAFDoc_Location.hxx>
-#include <gp_Pln.hxx>  // for Precision::Confusion()
 #include <gp_Trsf.hxx>
 
 
 #include <App/Application.h>
 #include <App/Document.h>
-#include <Base/Console.h>
-#include <Base/Parameter.h>
-#include <Mod/Part/App/FeatureCompound.h>
 #include <Mod/Part/App/ShapeMapHasher.h>
+#include <Mod/Part/App/TopoShape.h>
+#include <Mod/Part/App/PartFeature.h>
 
 #include "ImportOCAF.h"
 #include "Tools.h"

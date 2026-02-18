@@ -39,7 +39,6 @@
 #include <Gui/Selection/SelectionObject.h>
 #include <Gui/Tools.h>
 #include <Gui/Widgets.h>
-#include <Mod/Part/Gui/ViewProvider.h>
 
 #include "TaskSections.h"
 

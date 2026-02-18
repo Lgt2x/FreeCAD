@@ -26,11 +26,11 @@
 #include <boost/graph/graphviz.hpp>
 #include <random>
 
+#include "App/Expression.h"
 #include "Application.h"
 #include "Document.h"
 #include "private/DocumentP.h"
 #include "DocumentObject.h"
-#include "ExpressionParser.h"
 #include "GeoFeatureGroupExtension.h"
 #include "Origin.h"
 #include "OriginGroupExtension.h"

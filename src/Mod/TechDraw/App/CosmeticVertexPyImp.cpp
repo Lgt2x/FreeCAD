@@ -25,7 +25,6 @@
 #include <Base/Vector3D.h>
 #include <Base/VectorPy.h>
 
-#include "Cosmetic.h"
 #include "CosmeticVertex.h"
 #include "CosmeticVertexPy.h"
 #include "CosmeticVertexPy.cpp"

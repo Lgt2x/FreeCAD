@@ -40,7 +40,6 @@
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Builder.hxx>
-#include <sstream>
 
 
 #include "FeatureProjectOnSurface.h"

@@ -23,9 +23,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "Mod/Fem/App/FemConstraintContact.h"
-#include "TaskFemConstraintContact.h"
-#include "ViewProviderFemConstraintContact.h"
+#include "Mod/Fem/Gui/ViewProviderFemConstraintContact.h"
+#include "Mod/Fem/Gui/TaskFemConstraintContact.h"
 #include <Gui/Control.h>
 
 

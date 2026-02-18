@@ -28,21 +28,15 @@
 #include <QMenu>
 #include <QString>
 #include <vector>
-#include <sstream>
-#include <iostream>
 #include <Inventor/nodes/SoSeparator.h>
 #include <Inventor/draggers/SoDragger.h>
 #include <Inventor/events/SoKeyboardEvent.h>
 #include <Inventor/nodes/SoSwitch.h>
-#include <Inventor/nodes/SoTransform.h>
-#include <Inventor/sensors/SoFieldSensor.h>
-#include <Inventor/sensors/SoSensor.h>
 
 
 #include <chrono>
 #include <set>
 #include <algorithm>
-#include <iterator>
 #include <Inventor/SoPath.h>
 #include <Inventor/details/SoDetail.h>
 
@@ -74,7 +68,7 @@
 #include <Mod/Assembly/App/JointGroup.h>
 #include <Mod/Assembly/App/ViewGroup.h>
 #include <Mod/Assembly/App/BomGroup.h>
-#include <Mod/PartDesign/App/Body.h>
+#include <Mod/Part/App/PartFeature.h>
 
 #include "TaskAssemblyMessages.h"
 

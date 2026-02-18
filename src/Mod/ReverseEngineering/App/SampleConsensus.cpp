@@ -22,13 +22,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <boost/math/special_functions/fpclassify.hpp>
 
 
-#include <Base/Exception.h>
-#include <Mod/Points/App/Points.h>
 
-#include "SampleConsensus.h"
 
 
 #if defined(HAVE_PCL_SAMPLE_CONSENSUS)

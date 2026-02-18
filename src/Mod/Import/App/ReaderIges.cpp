@@ -24,11 +24,8 @@
 
 #include <IGESControl_Controller.hxx>
 #include <IGESCAFControl_Reader.hxx>
-#include <IGESData_GlobalSection.hxx>
 #include <IGESData_IGESModel.hxx>
 #include <IGESToBRep_Actor.hxx>
-#include <Standard_Version.hxx>
-#include <Transfer_TransientProcess.hxx>
 #include <XSControl_TransferReader.hxx>
 #include <XSControl_WorkSession.hxx>
 

@@ -46,8 +46,6 @@
 # include <QTextList>
 
 
-#include <App/Application.h>
-#include <Base/Console.h>
 #include <Gui/FileDialog.h>
 #include <Mod/TechDraw/App/Preferences.h>
 

@@ -27,11 +27,9 @@
 # include <QPainter>
 # include <QStyleOptionGraphicsItem>
 
-#include <App/Application.h>
 
 #include <Gui/Selection/Selection.h>
 
-#include <Mod/TechDraw/App/DrawView.h>
 
 #include "QGIPrimPath.h"
 #include "PreferencesGui.h"

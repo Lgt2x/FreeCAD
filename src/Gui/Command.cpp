@@ -20,9 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Inventor/SbSphere.h>
-#include <Inventor/actions/SoGetBoundingBoxAction.h>
-#include <Inventor/nodes/SoOrthographicCamera.h>
 #include <sstream>
 #include <QApplication>
 #include <QByteArray>
@@ -48,18 +45,14 @@
 #include "Application.h"
 #include "BitmapFactory.h"
 #include "Control.h"
-#include "Dialogs/DlgUndoRedo.h"
 #include "Document.h"
-#include "frameobject.h"
 #include "Macro.h"
 #include "MainWindow.h"
-#include "Python.h"
 #include "Selection.h"
 #include "View3DInventor.h"
 #include "View3DInventorViewer.h"
 #include "ViewProviderLink.h"
 #include "WaitCursor.h"
-#include "WhatsThis.h"
 #include "WorkbenchManager.h"
 #include "Workbench.h"
 #include "ShortcutManager.h"
@@ -69,7 +62,6 @@ FC_LOG_LEVEL_INIT("Command", true, true)
 
 using Base::Interpreter;
 using namespace Gui;
-using namespace Gui::Dialog;
 using namespace Gui::DockWnd;
 
 /** \defgroup commands Command Framework

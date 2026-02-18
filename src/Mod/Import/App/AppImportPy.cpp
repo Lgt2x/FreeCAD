@@ -32,17 +32,12 @@
 # pragma clang diagnostic push
 # pragma clang diagnostic ignored "-Wextra-semi"
 #endif
-#include <Interface_Static.hxx>
 #include <OSD_Exception.hxx>
-#include <Standard_Version.hxx>
-#include <TColStd_IndexedDataMapOfStringString.hxx>
 #include <TDocStd_Document.hxx>
-#include <Transfer_TransientProcess.hxx>
 #include <XCAFApp_Application.hxx>
 #include <XCAFDoc_DocumentTool.hxx>
 #include <XSControl_TransferReader.hxx>
 #include <XSControl_WorkSession.hxx>
-#include <Message_ProgressRange.hxx>
 
 #if defined(__clang__)
 # pragma clang diagnostic pop
@@ -58,11 +53,9 @@
 #include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Mod/Part/App/ImportIges.h>
 #include <Mod/Part/App/ImportStep.h>
-#include <Mod/Part/App/Interface.h>
 #include <Mod/Part/App/OCAF/ImportExportSettings.h>
 #include <Mod/Part/App/PartFeaturePy.h>
 #include <Mod/Part/App/TopoShapePy.h>
-#include <Mod/Part/App/encodeFilename.h>
 
 #include "ImportOCAF2.h"
 #include "ReaderGltf.h"

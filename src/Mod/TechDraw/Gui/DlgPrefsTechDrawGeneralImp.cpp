@@ -26,7 +26,6 @@
 #include "DlgPrefsTechDrawGeneralImp.h"
 #include "ui_DlgPrefsTechDrawGeneral.h"
 #include "PreferencesGui.h"
-#include "DrawGuiUtil.h"
 
 
 using namespace TechDrawGui;

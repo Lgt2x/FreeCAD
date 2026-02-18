@@ -27,7 +27,6 @@
 
 #include <App/Application.h>
 #include <Base/Parameter.h>
-#include <Mod/TechDraw/App/DrawPage.h>
 #include <Mod/TechDraw/App/Preferences.h>
 
 #include "QGSPage.h"

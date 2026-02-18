@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include "Mod/TechDraw/App/CosmeticExtension.h"
 // inclusion of the generated files (generated out of CosmeticExtensionPy.xml)
 #include "CosmeticExtensionPy.h"
 #include "CosmeticExtensionPy.cpp"

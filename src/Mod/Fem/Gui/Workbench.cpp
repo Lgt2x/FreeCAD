@@ -22,10 +22,8 @@
  ***************************************************************************/
 
 
-#include <qobject.h>
 
 
-#include <App/Application.h>
 #include <Gui/MenuManager.h>
 #include <Gui/ToolBarManager.h>
 #include <Mod/Fem/App/FemTools.h>

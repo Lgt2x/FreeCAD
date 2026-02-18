@@ -26,7 +26,6 @@
 # include <QPainterPath>
 # include <QStyleOptionGraphicsItem>
 
-#include <App/Material.h>
 #include <Base/Parameter.h>
 #include <Mod/TechDraw/App/Preferences.h>
 

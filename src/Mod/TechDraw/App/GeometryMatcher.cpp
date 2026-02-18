@@ -39,7 +39,6 @@
 #include <TopoDS_Vertex.hxx>
 
 #include <Base/Console.h>
-#include <Base/Tools.h>
 
 #include <Mod/Part/App/TopoShape.h>
 #include <Mod/TechDraw/App/ShapeUtils.h>

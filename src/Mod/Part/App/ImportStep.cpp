@@ -22,20 +22,16 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <fcntl.h>
 #include <sstream>
 #include <Quantity_Color.hxx>
 #include <BRep_Builder.hxx>
 #include <STEPControl_Reader.hxx>
-#include <StepData_StepModel.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Shape.hxx>
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopExp_Explorer.hxx>
-#include <Standard_Version.hxx>
-#include <Transfer_TransientProcess.hxx>
 #include <XSControl_TransferReader.hxx>
 #include <XSControl_WorkSession.hxx>
 

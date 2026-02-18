@@ -38,7 +38,6 @@
 #include <BRepBndLib.hxx>
 #include <BRepBuilderAPI_Copy.hxx>
 #include <BRepCheck_Analyzer.hxx>
-#include <BRepCheck_ListIteratorOfListOfStatus.hxx>
 #include <BRepCheck_Result.hxx>
 #include <BRepTools_ShapeSet.hxx>
 #include <ShapeAnalysis_FreeBounds.hxx>
@@ -56,7 +55,6 @@
 #include <Inventor/nodes/SoTransform.h>
 
 #include <Base/Interpreter.h>
-#include <Base/TimeInfo.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/Document.h>

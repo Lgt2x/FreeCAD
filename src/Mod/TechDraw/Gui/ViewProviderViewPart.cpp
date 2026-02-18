@@ -40,7 +40,6 @@
 #include <Mod/TechDraw/App/DrawGeomHatch.h>
 #include <Mod/TechDraw/App/DrawHatch.h>
 #include <Mod/TechDraw/App/DrawLeaderLine.h>
-#include <Mod/TechDraw/App/DrawRichAnno.h>
 #include <Mod/TechDraw/App/DrawViewBalloon.h>
 #include <Mod/TechDraw/App/DrawViewDetail.h>
 #include <Mod/TechDraw/App/DrawViewDimension.h>

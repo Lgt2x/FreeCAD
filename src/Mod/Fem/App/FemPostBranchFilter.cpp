@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Python.h>
 
 #include "FemPostBranchFilter.h"
 #include "FemPostBranchFilterPy.h"

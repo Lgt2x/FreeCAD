@@ -26,7 +26,6 @@
 #include <App/Document.h>
 #include <App/DocumentObject.h>
 #include <Gui/Application.h>
-#include <Gui/CommandT.h>
 #include <Gui/Document.h>
 #include <Gui/Selection/Selection.h>
 
@@ -34,6 +33,7 @@
 #include <Mod/Assembly/App/AssemblyUtils.h>
 
 #include "Commands.h"
+#include "Command.h"
 #include "ViewProviderAssembly.h"
 
 

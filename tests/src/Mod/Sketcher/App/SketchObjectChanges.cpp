@@ -8,7 +8,6 @@
 #include <App/Document.h>
 #include <App/Expression.h>
 #include <App/ObjectIdentifier.h>
-#include <Mod/Part/App/FeaturePartBox.h>
 #include <Mod/Sketcher/App/GeoEnum.h>
 #include <Mod/Sketcher/App/SketchObject.h>
 #include "SketcherTestHelpers.h"

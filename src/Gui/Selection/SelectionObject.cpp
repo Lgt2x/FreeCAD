@@ -24,14 +24,12 @@
 
 #include <sstream>
 
-#include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObject.h>
 #include <Gui/Selection/SelectionObjectPy.h>
 
 #include "SelectionObject.h"
 #include "Selection.h"
-#include "Application.h"
 #include "Command.h"
 
 

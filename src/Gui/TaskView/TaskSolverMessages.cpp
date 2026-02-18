@@ -24,8 +24,6 @@
 #include <QAction>
 #include <QMenu>
 
-#include <Gui/Application.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>
 #include <Gui/ViewProvider.h>
 

@@ -37,19 +37,17 @@
 #include <QTimer>
 #include <QToolTip>
 
-
 #include <Base/Exception.h>
 #include <Base/Interpreter.h>
 #include <App/ExpressionParser.h>
-#include <App/Material.h>
 
+#include "FileDialog.h"
 #include "Widgets.h"
 #include "Action.h"
 #include "Application.h"
 #include "BitmapFactory.h"
 #include "Command.h"
 #include "Dialogs/DlgExpressionInput.h"
-#include "PrefWidgets.h"
 #include "QuantitySpinBox_p.h"
 #include "Tools.h"
 #include "Dialogs/ui_DlgTreeWidget.h"

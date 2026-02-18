@@ -20,11 +20,10 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <sstream>
 
-#include "ViewProviderDocumentObject.h"
 
 // generated out of ViewProviderExtension.pyi
+#include "App/ExtensionContainer.h"
 #include "ViewProviderExtensionPy.h"
 #include "ViewProviderExtensionPy.cpp"
 

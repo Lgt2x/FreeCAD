@@ -25,9 +25,7 @@
 #include <FCConfig.h>
 
 #include <BRepFilletAPI_MakeFillet.hxx>
-#include <Precision.hxx>
 #include <TopExp.hxx>
-#include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>

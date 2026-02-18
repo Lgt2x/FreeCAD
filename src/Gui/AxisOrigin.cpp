@@ -21,8 +21,6 @@
  ****************************************************************************/
 
 #include <Inventor/nodes/SoCoordinate3.h>
-#include <Inventor/nodes/SoSeparator.h>
-#include <Inventor/nodes/SoSwitch.h>
 #include <Inventor/SoPickedPoint.h>
 #include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoMaterialBinding.h>

@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <vector>
 
 #include <App/Application.h>
 #include <Base/Parameter.h>

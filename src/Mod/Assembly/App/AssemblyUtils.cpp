@@ -39,7 +39,6 @@
 
 #include <Base/Placement.h>
 #include <Base/Tools.h>
-#include <Base/Interpreter.h>
 
 #include <Mod/Part/App/DatumFeature.h>
 #include <Mod/Part/App/PartFeature.h>

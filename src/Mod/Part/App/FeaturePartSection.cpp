@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <Mod/Part/App/FCBRepAlgoAPI_Section.h>
-#include <Standard_Version.hxx>
 
 
 #include "FeaturePartSection.h"

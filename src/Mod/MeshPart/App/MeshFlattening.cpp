@@ -30,7 +30,6 @@
 #include <Geom_BSplineSurface.hxx>
 #include <Geom_Surface.hxx>
 #include <Poly_Triangulation.hxx>
-#include <Standard_Version.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TopLoc_Location.hxx>
 

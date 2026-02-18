@@ -25,7 +25,6 @@
 #include <Precision.hxx>
 
 
-#include <App/Link.h>
 
 #include "FeatureOffset.h"
 #include <App/Document.h>

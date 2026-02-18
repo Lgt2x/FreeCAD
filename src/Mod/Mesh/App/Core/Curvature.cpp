@@ -22,6 +22,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "Core/Algorithm.h"
 #include <algorithm>
 #include <functional>
 #include <limits>
@@ -44,7 +45,6 @@
 #include "Curvature.h"
 #include "Iterator.h"
 #include "MeshKernel.h"
-#include "Tools.h"
 
 
 using namespace MeshCore;

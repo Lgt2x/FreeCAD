@@ -23,10 +23,8 @@
  ***************************************************************************/
 
 
-#include <Base/PlacementPy.h>
 #include <Base/PyWrapParseTupleAndKeywords.h>
 
-#include <Mod/Mesh/App/MeshPy.h>
 #include <Mod/CAM/App/CommandPy.h>
 #include <Mod/Part/App/TopoShapePy.h>
 

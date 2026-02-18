@@ -6,11 +6,7 @@
 #include "Mod/Part/App/TopoShapeMapper.h"
 
 #include <BRepBuilderAPI_MakeEdge.hxx>
-#include <BRepBuilderAPI_MakeShape.hxx>
 #include <BRepPrimAPI_MakeBox.hxx>
-#include <BRepTools_History.hxx>
-#include <BRepTools_ReShape.hxx>
-#include <TopTools_ListOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 
 // NOLINTBEGIN(readability-magic-numbers,cppcoreguidelines-avoid-magic-numbers)

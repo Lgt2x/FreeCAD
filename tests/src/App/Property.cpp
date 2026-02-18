@@ -40,7 +40,6 @@
 #include <App/PropertyStandard.h>
 #include <App/VarSet.h>
 
-#include <src/App/InitApplication.h>
 
 #include <xercesc/util/PlatformUtils.hpp>
 

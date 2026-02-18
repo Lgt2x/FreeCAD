@@ -23,9 +23,7 @@
  ******************************************************************************/
 
 
-#include <Bnd_Box.hxx>
 #include <BRep_Tool.hxx>
-#include <BRepMesh_IncrementalMesh.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <QMenu>
@@ -41,7 +39,6 @@
 #include "ViewProviderTransformed.h"
 #include "TaskTransformedParameters.h"
 
-#include <BRep_Builder.hxx>
 #include <Inventor/nodes/SoTransform.h>
 
 using namespace PartDesignGui;

@@ -42,7 +42,7 @@
 // ??? is option 1 actually working?  Not used in practice?
 
 #include <BRepAdaptor_Curve.hxx>
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
+#include <BRepAlgoAPI_Cut.hxx>
 #include <BRepBndLib.hxx>
 #include <BRepBuilderAPI_Copy.hxx>
 #include <BRepBuilderAPI_MakeFace.hxx>
@@ -51,16 +51,13 @@
 #include <BRepTools.hxx>
 #include <BRep_Builder.hxx>
 #include <Bnd_Box.hxx>
-#include <GCPnts_AbscissaPoint.hxx>
 #include <QtConcurrentRun>
 #include <ShapeAnalysis.hxx>
-#include <ShapeFix_Shape.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
 #include <TopoDS_Shape.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>
@@ -69,10 +66,8 @@
 #include <gp_Pnt.hxx>
 
 #include <App/Document.h>
-#include <Base/BoundBox.h>
 #include <Base/Console.h>
 #include <Base/Converter.h>
-#include <Base/FileInfo.h>
 #include <Base/Parameter.h>
 
 #include <Mod/Part/App/PartFeature.h>

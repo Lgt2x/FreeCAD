@@ -35,7 +35,6 @@
 #include <boost/core/ignore_unused.hpp>
 #include <cmath>
 #include <cstring>
-#include <limits>
 
 #include <App/Application.h>
 #include <App/Document.h>

@@ -22,7 +22,6 @@
  ***************************************************************************/
 
 #include <App/DocumentObject.h>
-#include <Base/Parameter.h>
 #include <Gui/Application.h>
 #include <Gui/Control.h>
 #include <Gui/Document.h>
@@ -34,7 +33,6 @@
 
 #include "QGIView.h"
 #include "TaskGeomHatch.h"
-#include "PreferencesGui.h"
 #include "ViewProviderDrawingView.h"
 #include "ViewProviderGeomHatch.h"
 

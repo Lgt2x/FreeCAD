@@ -35,7 +35,6 @@
 #include <Base/VectorPy.h>
 #include <Base/Writer.h>
 
-#include "Points.h"
 #include "Properties.h"
 
 #ifdef _MSC_VER

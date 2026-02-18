@@ -29,9 +29,7 @@
 # include <windows.h>
 #endif
 #include <cstring>
-#include <Python.h>
 
-#include <frameobject.h>
 
 #include "ConsoleObserver.h"
 #include "Interpreter.h"

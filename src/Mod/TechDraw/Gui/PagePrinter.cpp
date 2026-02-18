@@ -37,7 +37,6 @@
 #include <App/Document.h>
 #include <App/DocumentObject.h>
 #include <Base/Console.h>
-#include <Base/Stream.h>
 #include <Base/Tools.h>
 #include <Gui/Application.h>
 #include <Gui/Command.h>
@@ -46,7 +45,6 @@
 #include <Gui/PreferencePages/DlgSettingsPDF.h>
 
 #include <Mod/TechDraw/App/DrawPage.h>
-#include <Mod/TechDraw/App/DrawPagePy.h>
 #include <Mod/TechDraw/App/DrawTemplate.h>
 #include <Mod/TechDraw/App/DrawUtil.h>
 #include <Mod/TechDraw/App/Preferences.h>

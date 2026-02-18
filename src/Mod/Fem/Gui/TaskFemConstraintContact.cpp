@@ -24,7 +24,6 @@
  ***************************************************************************/
 
 #include <limits>
-#include <sstream>
 
 #include <QAction>
 #include <QMessageBox>

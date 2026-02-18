@@ -25,7 +25,6 @@
 #include <QCoreApplication>
 #include <QTcpSocket>
 #include <memory>
-#include <stdexcept>
 
 
 #include <Base/Exception.h>

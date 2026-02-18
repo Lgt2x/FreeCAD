@@ -35,7 +35,6 @@
 
 
 #include <App/Application.h>
-#include <App/Metadata.h>
 #include <Base/Console.h>
 
 #include "BitmapFactory.h"

@@ -32,7 +32,6 @@
 #include <Inventor/elements/SoModelMatrixElement.h>
 #include <Inventor/elements/SoViewportRegionElement.h>
 #include <Inventor/elements/SoViewVolumeElement.h>
-#include <Inventor/nodes/SoCamera.h>
 
 
 #include "SoAutoZoomTranslation.h"

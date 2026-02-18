@@ -20,8 +20,6 @@
 
 #include <QMessageBox>
 
-#include <App/DocumentObject.h>
-#include <Base/Console.h>
 #include <Gui/Action.h>
 #include <Gui/Command.h>
 #include <Gui/Document.h>

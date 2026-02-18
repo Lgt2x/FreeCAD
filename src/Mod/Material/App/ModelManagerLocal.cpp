@@ -24,7 +24,6 @@
 #include <QDirIterator>
 #include <QMutexLocker>
 
-#include <Base/Console.h>
 
 #include "Model.h"
 #include "ModelLoader.h"

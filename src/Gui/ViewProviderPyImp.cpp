@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Inventor/SbRotation.h>
 #include <Inventor/SoFullPath.h>
 #include <Inventor/details/SoDetail.h>
 #include <Inventor/nodes/SoSeparator.h>

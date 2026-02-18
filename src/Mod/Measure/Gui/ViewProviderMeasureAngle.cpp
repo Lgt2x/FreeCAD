@@ -23,34 +23,16 @@
  **************************************************************************/
 
 
-#include <sstream>
 #include <QApplication>
 #include <Inventor/draggers/SoTranslate2Dragger.h>
-#include <Inventor/nodes/SoAnnotation.h>
-#include <Inventor/nodes/SoBaseColor.h>
 #include <Inventor/nodes/SoCoordinate3.h>
-#include <Inventor/nodes/SoDrawStyle.h>
-#include <Inventor/nodes/SoFontStyle.h>
-#include <Inventor/nodes/SoIndexedLineSet.h>
-#include <Inventor/nodes/SoPickStyle.h>
-#include <Inventor/nodes/SoText2.h>
-#include <Inventor/nodes/SoTranslation.h>
 #include <Inventor/engines/SoCalculator.h>
-#include <Inventor/engines/SoComposeVec3f.h>
-#include <Inventor/engines/SoConcatenate.h>
 #include <Inventor/engines/SoComposeMatrix.h>
-#include <Inventor/engines/SoComposeRotation.h>
 #include <Inventor/engines/SoComposeRotationFromTo.h>
-#include <Inventor/engines/SoDecomposeRotation.h>
 #include <Inventor/engines/SoTransformVec3f.h>
-#include <Inventor/nodekits/SoShapeKit.h>
-#include <Inventor/nodes/SoFont.h>
 #include <Inventor/nodes/SoLineSet.h>
-#include <Inventor/nodes/SoMatrixTransform.h>
 #include <Inventor/nodes/SoSeparator.h>
 #include <Inventor/nodes/SoTransform.h>
-#include <Inventor/nodes/SoVertexProperty.h>
-#include <Inventor/nodekits/SoBaseKit.h>
 
 
 #include <Precision.hxx>
@@ -62,18 +44,11 @@
 #include <GeomAPI_ExtremaCurveCurve.hxx>
 #include <GeomAPI_ProjectPointOnCurve.hxx>
 
-#include <App/Application.h>
-#include <App/Document.h>
 #include <Base/Console.h>
 #include <Base/Exception.h>
-#include <Base/Quantity.h>
 #include <Base/Tools.h>
 #include <Gui/ArcEngine.h>
-#include <Gui/Command.h>
-#include <Gui/Document.h>
-#include <Gui/ViewParams.h>
 
-#include <Mod/Measure/App/Preferences.h>
 
 #include "ViewProviderMeasureAngle.h"
 

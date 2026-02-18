@@ -29,7 +29,6 @@
 #include <gp_Ax2.hxx>
 #include <gp_Pnt.hxx>
 #include <HLRAlgo_Projector.hxx>
-#include <Standard_Version.hxx>
 
 #include <boost/math/special_functions/fpclassify.hpp>
 

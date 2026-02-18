@@ -33,14 +33,12 @@
 #include <Precision.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
-#include <TopoDS_CompSolid.hxx>
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Pnt.hxx>
 #include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 
 
 #include <Base/GeometryPyCXX.h>
@@ -51,7 +49,6 @@
 #include "Tools.h"
 
 // inclusion of the generated files (generated out of TopoShapeSolidPy.xml)
-#include "TopoShapeShellPy.h"
 #include "TopoShapeSolidPy.h"
 #include "TopoShapeSolidPy.cpp"
 

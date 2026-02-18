@@ -24,10 +24,7 @@
 
 #include <QMetaType>
 
-#include <Base/Quantity.h>
-#include <Base/QuantityPy.h>
 #include <CXX/Objects.hxx>
-#include <Gui/MetaTypes.h>
 
 #include "MaterialFilter.h"
 

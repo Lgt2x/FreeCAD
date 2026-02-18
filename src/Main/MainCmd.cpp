@@ -30,7 +30,6 @@
 
 #include <Build/Version.h>  // For FCCopyrightYear
 
-#include <cstdio>
 #include <ostream>
 #include <QString>
 

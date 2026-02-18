@@ -26,7 +26,6 @@
 #include <QApplication>
 
 #include <App/Application.h>
-#include <Base/Console.h>
 #include <Gui/Action.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>

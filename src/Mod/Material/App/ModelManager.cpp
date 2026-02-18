@@ -28,7 +28,6 @@
 #include <Base/Console.h>
 
 #include "Model.h"
-#include "ModelLoader.h"
 #include "ModelManager.h"
 
 #include "ModelManagerLocal.h"

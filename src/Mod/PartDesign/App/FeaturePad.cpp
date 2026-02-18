@@ -23,16 +23,9 @@
  ***************************************************************************/
 
 
-#include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
-#include <Precision.hxx>
-#include <TopExp_Explorer.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Face.hxx>
 
 
 #include <App/DocumentObject.h>
-#include <Base/Console.h>
-#include <Base/Exception.h>
 
 #include "FeaturePad.h"
 

@@ -22,20 +22,16 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <Inventor/nodes/SoAnnotation.h>
 
 #include <App/Document.h>
 #include <Base/ServiceProvider.h>
-#include <Gui/Application.h>
 #include <Gui/Utilities.h>
-#include <Mod/Sketcher/App/SketchObject.h>
 #include <Mod/PartDesign/App/FeatureSketchBased.h>
 
 #include "ViewProviderSketchBased.h"
 #include "StyleParameters.h"
 
 #include <Gui/Inventor/So3DAnnotation.h>
-#include <Mod/Part/App/BodyBase.h>
 
 
 using namespace PartDesignGui;

@@ -23,13 +23,9 @@
  ***************************************************************************/
 
 
-#include <App/Application.h>
 #include <Mod/Part/PartGlobal.h>
 #include "VectorAdapter.h"
-#include "Base/Console.h"
-#include <string>
 
-#include "PrimitiveFeature.h"
 #include "PartFeature.h"
 #include "Attacher.h"
 

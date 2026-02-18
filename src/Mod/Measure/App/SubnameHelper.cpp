@@ -24,9 +24,7 @@
 //! a class to perform common operations on subelement names.
 
 
-#include <boost_regex.hpp>
 
-#include <Base/Tools.h>
 
 #include "SubnameHelper.h"
 

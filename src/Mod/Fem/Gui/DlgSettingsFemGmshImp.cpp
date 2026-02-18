@@ -27,7 +27,6 @@
 #include <QThread>
 
 
-#include <App/Application.h>
 #include "DlgSettingsFemGmshImp.h"
 #include "ui_DlgSettingsFemGmsh.h"
 

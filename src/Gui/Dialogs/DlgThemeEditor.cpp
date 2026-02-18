@@ -28,7 +28,6 @@
 #include "ui_DlgThemeEditor.h"
 #include "BitmapFactory.h"
 
-#include <Utilities.h>
 #include <Base/ServiceProvider.h>
 #include <Base/Tools.h>
 

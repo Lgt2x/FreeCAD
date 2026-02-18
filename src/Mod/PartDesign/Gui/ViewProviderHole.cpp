@@ -27,12 +27,9 @@
 #include <QMessageBox>
 
 
-#include <Gui/Application.h>
 #include <Gui/Control.h>
 #include <Gui/Command.h>
-#include <Gui/MainWindow.h>
 #include <Mod/PartDesign/App/FeatureHole.h>
-#include <Mod/Sketcher/App/SketchObject.h>
 
 #include "ViewProviderHole.h"
 #include "TaskHoleParameters.h"

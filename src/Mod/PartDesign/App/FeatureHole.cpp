@@ -28,7 +28,6 @@
 #include <gp_Dir.hxx>
 #include <gp_Cylinder.hxx>
 #include <BRep_Builder.hxx>
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
 #include <Mod/Part/App/FCBRepAlgoAPI_Fuse.h>
 #include <BRepBuilderAPI_MakeEdge.hxx>
 #include <BRepBuilderAPI_MakeFace.hxx>
@@ -44,7 +43,6 @@
 #include <Geom_Circle.hxx>
 #include <GC_MakeArcOfCircle.hxx>
 #include <Geom_TrimmedCurve.hxx>
-#include <Standard_Version.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Wire.hxx>

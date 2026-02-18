@@ -22,9 +22,6 @@
  ***************************************************************************/
 
 
-#include <Python.h>
-#include <charconv>
-#include <cmath>
 #include <cstdlib>
 #include <map>
 #include <memory>
@@ -55,7 +52,6 @@
 #include <vtkStringArray.h>
 #include <vtkTetra.h>
 #include <vtkTriangle.h>
-#include <vtkUnsignedCharArray.h>
 #include <vtkUnstructuredGrid.h>
 #include <vtkWedge.h>
 #include <vtkXMLMultiBlockDataWriter.h>

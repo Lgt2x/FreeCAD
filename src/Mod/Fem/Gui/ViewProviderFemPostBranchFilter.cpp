@@ -23,7 +23,6 @@
 #include "TaskPostBoxes.h"
 #include "ViewProviderFemPostBranchFilter.h"
 #include <Mod/Fem/App/FemPostGroupExtension.h>
-#include <Gui/BitmapFactory.h>
 
 
 using namespace FemGui;

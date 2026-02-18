@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kdl_cp/chain.hpp"
 
 
 #include <Base/Reader.h>
@@ -33,7 +32,6 @@
 
 using namespace Robot;
 using namespace Base;
-using namespace KDL;
 
 
 TYPESYSTEM_SOURCE(Robot::Waypoint, Base::Persistence)

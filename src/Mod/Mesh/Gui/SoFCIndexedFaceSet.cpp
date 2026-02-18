@@ -58,7 +58,6 @@
 #include <Inventor/errors/SoDebugError.h>
 #include <Inventor/nodes/SoCoordinate3.h>
 
-#include <Inventor/C/glue/gl.h>
 
 #include <Gui/GLBuffer.h>
 #include <Gui/SoFCInteractiveElement.h>

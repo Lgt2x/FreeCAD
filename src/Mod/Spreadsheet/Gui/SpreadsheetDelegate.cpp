@@ -29,7 +29,6 @@
 #include <QPainter>
 
 
-#include <App/DocumentObject.h>
 #include <Base/Console.h>
 #include <Mod/Spreadsheet/App/Sheet.h>
 

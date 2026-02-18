@@ -27,17 +27,14 @@
 #include <QMessageBox>
 
 #include <App/DocumentObject.h>
-#include <App/Link.h>
 
 #include <Gui/Command.h>
 #include <Gui/MainWindow.h>
 #include <Gui/Selection/Selection.h>
 #include <Gui/Selection/SelectionObject.h>
 
-#include <Mod/TechDraw/App/DrawPage.h>
 #include <Mod/TechDraw/App/DrawView.h>
 #include <Mod/TechDraw/App/DrawViewPart.h>
-#include <Mod/TechDraw/App/DrawViewSpreadsheet.h>
 #include <Mod/TechDraw/App/DrawUtil.h>
 #include <Mod/TechDraw/App/Preferences.h>
 

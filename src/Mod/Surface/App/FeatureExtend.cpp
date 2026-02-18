@@ -30,7 +30,6 @@
 #include <GeomAPI_PointsToBSplineSurface.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Precision.hxx>
-#include <Standard_Version.hxx>
 #include <TColgp_Array2OfPnt.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>

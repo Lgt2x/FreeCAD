@@ -31,7 +31,6 @@
 #include <BRepMesh_IncrementalMesh.hxx>
 #include <gp_Trsf.hxx>
 #include <Precision.hxx>
-#include <Poly_Array1OfTriangle.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
 #include <Poly_Triangulation.hxx>
@@ -56,7 +55,6 @@
 #include <Inventor/details/SoFaceDetail.h>
 #include <Inventor/details/SoLineDetail.h>
 #include <Inventor/details/SoPointDetail.h>
-#include <Inventor/errors/SoDebugError.h>
 #include <Inventor/nodes/SoCoordinate3.h>
 #include <Inventor/nodes/SoDrawStyle.h>
 #include <Inventor/nodes/SoMaterial.h>

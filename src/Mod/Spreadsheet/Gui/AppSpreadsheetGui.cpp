@@ -37,7 +37,6 @@
 #include <Mod/Spreadsheet/App/Sheet.h>
 
 #include "DlgSettingsImp.h"
-#include "SheetTableViewAccessibleInterface.h"
 #include "ViewProviderSpreadsheet.h"
 #include "Workbench.h"
 

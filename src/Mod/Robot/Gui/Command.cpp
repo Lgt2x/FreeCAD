@@ -36,7 +36,6 @@
 #include <Mod/Robot/App/TrajectoryObject.h>
 
 #include "TaskDlgSimulate.h"
-#include "TrajectorySimulate.h"
 
 
 using namespace std;

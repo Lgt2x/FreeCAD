@@ -24,9 +24,7 @@
 
 #include <Mod/Part/PartGlobal.h>
 
-#include <Standard_Version.hxx>
 #include <TopoDS.hxx>
-#include <TopoDS_Solid.hxx>
 #include <Message_ProgressRange.hxx>
 
 #include "ShapeFix/ShapeFix_SolidPy.h"

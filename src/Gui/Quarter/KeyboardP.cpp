@@ -30,7 +30,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 \**************************************************************************/
 
-#include <Inventor/errors/SoDebugError.h>
 
 #include "KeyboardP.h"
 #include "devices/Keyboard.h"

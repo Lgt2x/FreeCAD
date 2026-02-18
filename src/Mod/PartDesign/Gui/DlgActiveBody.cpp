@@ -28,8 +28,6 @@
 #include <QMessageBox>
 
 
-#include <App/Application.h>
-#include <Gui/Application.h>
 
 #include "ui_DlgActiveBody.h"
 #include "DlgActiveBody.h"

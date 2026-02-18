@@ -21,14 +21,12 @@
  *                                                                         *
  **************************************************************************/
 
-#include <random>
 
 #include <QDirIterator>
 #include <QMutex>
 #include <QMutexLocker>
 
 #include <App/Application.h>
-#include <App/Material.h>
 
 #include "Exceptions.h"
 #include "MaterialConfigLoader.h"
@@ -37,7 +35,6 @@
 #include "MaterialLoader.h"
 #include "MaterialManagerLocal.h"
 #include "ModelManager.h"
-#include "ModelUuids.h"
 
 
 using namespace Materials;

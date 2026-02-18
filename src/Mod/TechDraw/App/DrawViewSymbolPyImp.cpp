@@ -25,9 +25,7 @@
 #include <Base/Stream.h>
 
 #include "DrawViewSymbol.h"
-#include "DrawView.h"
 // inclusion of the generated files
-#include <Mod/TechDraw/App/DrawViewPy.h>
 #include <Mod/TechDraw/App/DrawViewSymbolPy.h>
 #include <Mod/TechDraw/App/DrawViewSymbolPy.cpp>
 

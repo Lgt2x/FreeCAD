@@ -28,7 +28,6 @@
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <App/Metadata.h>
 #include <Base/Color.h>
 #include <Base/Console.h>
 #include <Gui/Application.h>

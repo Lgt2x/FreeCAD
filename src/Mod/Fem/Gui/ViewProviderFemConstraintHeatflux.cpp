@@ -23,11 +23,11 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "Mod/Fem/App/FemConstraintHeatflux.h"
+#include "Mod/Fem/Gui/ViewProviderFemConstraintHeatflux.h"
+#include "Mod/Fem/Gui/TaskFemConstraintHeatflux.h"
+
 #include <Gui/Control.h>
 
-#include "TaskFemConstraintHeatflux.h"
-#include "ViewProviderFemConstraintHeatflux.h"
 
 
 using namespace FemGui;

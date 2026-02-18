@@ -22,8 +22,6 @@
 
 
 #include <limits>
-#include <unordered_map>
-#include <list>
 #include <QAction>
 #include <QApplication>
 #include <QDir>
@@ -143,7 +141,6 @@
 
 #include "PythonWrapper.h"
 #include "UiLoader.h"
-#include "MetaTypes.h"
 
 // NOLINTBEGIN
 #if defined(HAVE_SHIBOKEN2)

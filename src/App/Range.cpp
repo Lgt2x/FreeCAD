@@ -24,10 +24,10 @@
 
 #include <boost/regex.hpp>
 #include <cassert>
+#include <cstring>
 #include <sstream>
 #include <string>
 #include <cmath>
-#include <regex>
 
 #include <string_view>
 #include <Base/Exception.h>

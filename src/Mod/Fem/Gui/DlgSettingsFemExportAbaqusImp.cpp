@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include <Gui/Application.h>
 
 #include "DlgSettingsFemExportAbaqusImp.h"
 #include "ui_DlgSettingsFemExportAbaqus.h"

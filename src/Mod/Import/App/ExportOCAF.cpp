@@ -26,8 +26,6 @@
 # define WNT  // avoid conflict with GUID
 #endif
 #include <Quantity_ColorRGBA.hxx>
-#include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <TDF_Label.hxx>
 #include <TDF_LabelSequence.hxx>
 #include <TDataStd_Name.hxx>
@@ -38,7 +36,6 @@
 #include <XCAFDoc_Location.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Dir.hxx>
-#include <gp_Pln.hxx>  // for Precision::Confusion()
 #include <gp_Trsf.hxx>
 
 

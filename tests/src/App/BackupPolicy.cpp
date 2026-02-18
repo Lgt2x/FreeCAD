@@ -22,7 +22,6 @@
  ***************************************************************************/
 
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 
 #include "InitApplication.h"
 
@@ -32,7 +31,6 @@
 #include <array>
 #include <fstream>
 #include <random>
-#include <regex>
 #include <string>
 
 #if defined(__cpp_lib_chrono) && __cpp_lib_chrono >= 201907L && defined(_LIBCPP_VERSION) \

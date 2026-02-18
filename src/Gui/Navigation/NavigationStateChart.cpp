@@ -21,11 +21,7 @@
  *                                                                         *
  **************************************************************************/
 
-#include <boost/statechart/custom_reaction.hpp>
-#include <boost/statechart/state_machine.hpp>
-#include <boost/statechart/state.hpp>
 
-#include "Camera.h"
 #include "NavigationStateChart.h"
 #include "View3DInventorViewer.h"
 

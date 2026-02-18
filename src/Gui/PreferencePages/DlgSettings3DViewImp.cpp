@@ -32,8 +32,6 @@
 #include <Base/Parameter.h>
 #include <Base/Tools.h>
 #include <Gui/Multisample.h>
-#include <Gui/View3DInventorViewer.h>
-#include <Gui/ViewParams.h>
 
 #include "DlgSettings3DViewImp.h"
 #include "ui_DlgSettings3DView.h"

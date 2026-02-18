@@ -24,7 +24,6 @@
 
 #include <QAction>
 #include <QMenu>
-#include <sstream>
 
 #include <Inventor/nodes/SoBaseColor.h>
 #include <Inventor/nodes/SoCoordinate3.h>

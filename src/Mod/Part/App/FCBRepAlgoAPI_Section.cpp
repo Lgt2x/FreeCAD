@@ -31,8 +31,6 @@
 #include <Bnd_Box.hxx>
 #include <BRepCheck_Analyzer.hxx>
 #include <TopoDS_Shape.hxx>
-#include <Precision.hxx>
-#include <FuzzyHelper.h>
 
 FCBRepAlgoAPI_Section::FCBRepAlgoAPI_Section()
 {

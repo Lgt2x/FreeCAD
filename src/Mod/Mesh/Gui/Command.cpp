@@ -37,7 +37,6 @@
 #include <qmessagebox.h>
 #include <qstringlist.h>
 
-#include <Gui/InventorAll.h>
 
 #include <App/DocumentObject.h>
 #include <App/DocumentObjectGroup.h>
@@ -55,7 +54,6 @@
 #include <Gui/Selection/Selection.h>
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
-#include <Gui/WaitCursor.h>
 
 #include <Mod/Mesh/App/Core/Smoothing.h>
 #include <Mod/Mesh/App/FeatureMeshCurvature.h>

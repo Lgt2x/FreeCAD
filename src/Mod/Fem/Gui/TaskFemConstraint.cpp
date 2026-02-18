@@ -26,11 +26,9 @@
 #include <QKeyEvent>
 #include <QListWidget>
 #include <QMessageBox>
-#include <sstream>
 
 
 #include <App/Document.h>
-#include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>
 #include <Gui/Document.h>
@@ -40,7 +38,6 @@
 #include <Mod/Fem/App/FemConstraint.h>
 
 #include "TaskFemConstraint.h"
-#include "ui_TaskFemConstraint.h"
 
 
 using namespace FemGui;

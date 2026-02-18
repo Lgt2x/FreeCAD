@@ -28,16 +28,12 @@
 #include <BRepBuilderAPI_MakeVertex.hxx>
 #include <TopExp.hxx>
 
-#include <App/GeoFeature.h>
 #include <App/DocumentObject.h>
 #include <App/Document.h>
-#include <App/Link.h>
 #include <Base/Console.h>
 
 #include <Mod/Measure/App/ShapeFinder.h>
 #include <Mod/Part/App/TopoShape.h>
-#include <Mod/PartDesign/App/Body.h>
-#include <Mod/PartDesign/App/Feature.h>
 
 #include "DimensionReferences.h"
 #include "DrawUtil.h"

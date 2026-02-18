@@ -29,9 +29,7 @@
 #include <QMessageBox>
 #include <QTimer>
 
-#include <Base/Parameter.h>
 #include <Base/Tools.h>
-#include <Base/Console.h>
 
 #include "Dialogs/DlgKeyboardImp.h"
 #include "ui_DlgKeyboard.h"
@@ -39,7 +37,6 @@
 #include "Application.h"
 #include "BitmapFactory.h"
 #include "Command.h"
-#include "Window.h"
 #include "PrefWidgets.h"
 #include "ShortcutManager.h"
 #include "CommandCompleter.h"

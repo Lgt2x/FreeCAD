@@ -26,7 +26,6 @@
 #include <QDir>
 #include <QMessageBox>
 
-#include <App/Document.h>
 
 #include "Dialogs/DlgProjectUtility.h"
 #include "ui_DlgProjectUtility.h"

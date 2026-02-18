@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <array>
 #include <boost/core/ignore_unused.hpp>
 
 #include <App/Application.h>

@@ -22,15 +22,11 @@
 
 
 #include <Precision.hxx>
-#include <cstdlib>
 #include <cstring>
 #include <limits>
-#include <sstream>
 
 
 #include <App/Application.h>
-#include <Base/Parameter.h>
-#include <Mod/Measure/App/Measurement.h>
 
 #include "ArrowPropEnum.h"
 #include "DrawViewBalloon.h"

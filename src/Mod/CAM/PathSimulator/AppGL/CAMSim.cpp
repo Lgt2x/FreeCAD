@@ -28,7 +28,6 @@
 
 #include "CAMSim.h"
 #include "DlgCAMSimulator.h"
-#include <Mod/Part/App/BRepMesh.h>
 
 
 using namespace Base;

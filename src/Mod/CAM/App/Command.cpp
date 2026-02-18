@@ -21,7 +21,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cinttypes>
 #include <iomanip>
 #include <boost/algorithm/string.hpp>
 

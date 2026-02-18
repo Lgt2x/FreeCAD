@@ -27,7 +27,6 @@
 
 
 #include <Gui/Document.h>
-#include <Gui/MainWindow.h>
 
 #include "ViewProviderAnalysis.h"
 #include "ViewProviderSolver.h"

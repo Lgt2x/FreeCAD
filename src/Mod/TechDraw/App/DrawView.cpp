@@ -32,7 +32,6 @@
 #include <App/Document.h>
 #include <App/Link.h>
 #include <Base/Reader.h>
-#include <Base/Tools.h>
 #include <Mod/TechDraw/App/DrawViewPy.h>  // generated from DrawViewPy.xml
 
 #include "DrawView.h"

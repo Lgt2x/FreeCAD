@@ -26,7 +26,6 @@
 #include <QString>
 
 #include <App/Application.h>
-#include <Gui/MetaTypes.h>
 
 #include <Mod/Material/App/MaterialManager.h>
 #include <Mod/Material/App/Model.h>

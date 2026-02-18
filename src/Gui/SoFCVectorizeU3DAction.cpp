@@ -22,7 +22,6 @@
 
 
 #include <qglobal.h>
-#include <iomanip>
 #include <ios>
 #include <Inventor/SbBSPTree.h>
 

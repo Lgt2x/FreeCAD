@@ -5,11 +5,9 @@
 #include "Mod/Part/App/FeatureRevolution.h"
 #include <src/App/InitApplication.h>
 
-#include "Base/Interpreter.h"
 
 #include "BRepBuilderAPI_MakeEdge.hxx"
 
-#include "TopoDS_Iterator.hxx"
 
 #include "PartTestHelpers.h"
 

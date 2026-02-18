@@ -29,7 +29,6 @@
 #include <QTimer>
 
 
-#include <ranges>
 
 #include <fmt/format.h>
 

@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cmath>
 
 #include <Gui/Application.h>
 #include <Gui/Control.h>

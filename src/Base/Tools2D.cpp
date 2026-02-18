@@ -27,7 +27,6 @@
 #include <set>
 
 #include "Tools2D.h"
-#include "Vector3D.h"
 
 using namespace Base;
 

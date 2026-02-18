@@ -27,7 +27,6 @@
 
 
 #include <App/Application.h>
-#include <Gui/MetaTypes.h>
 
 #include "Materials.h"
 

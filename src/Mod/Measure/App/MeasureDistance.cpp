@@ -26,11 +26,9 @@
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/MeasureManager.h>
-#include <Base/Tools.h>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepExtrema_DistShapeShape.hxx>
-#include <gp_Circ.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Wire.hxx>

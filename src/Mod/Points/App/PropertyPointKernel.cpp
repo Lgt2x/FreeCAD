@@ -24,8 +24,6 @@
 
 
 #include <algorithm>
-#include <cmath>
-#include <iostream>
 
 
 #include <Base/Matrix.h>

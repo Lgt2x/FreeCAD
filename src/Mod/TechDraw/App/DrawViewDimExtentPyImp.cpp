@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include "DrawViewDimExtent.h"
 // inclusion of the generated files (generated out of DrawViewDimExtentPy.xml)
 #include <Mod/TechDraw/App/DrawViewDimExtentPy.h>
 #include <Mod/TechDraw/App/DrawViewDimExtentPy.cpp>

@@ -26,8 +26,6 @@
 # define WNT  // avoid conflict with GUID
 #endif
 #include <Quantity_ColorRGBA.hxx>
-#include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <TDF_AttributeSequence.hxx>
 #include <TDF_Label.hxx>
 #include <TDF_LabelSequence.hxx>
@@ -40,7 +38,6 @@
 #include <XCAFDoc_ShapeMapTool.hxx>
 
 #include <boost/algorithm/string.hpp>
-#include <boost/format.hpp>
 
 #include <App/Application.h>
 #include <App/Document.h>

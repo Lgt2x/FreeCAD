@@ -1,6 +1,5 @@
 
 #include <App/Application.h>
-#include <Base/Console.h>
 
 #include "DlgSettingsPDF.h"
 #include "ui_DlgSettingsPDF.h"

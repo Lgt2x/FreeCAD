@@ -35,12 +35,10 @@
 #include <Precision.hxx>
 #include <Standard_Failure.hxx>
 #include <TopoDS.hxx>
-#include <TopExp_Explorer.hxx>
 #include <QtGlobal>
 #include <TopExp.hxx>
 
 #include "FaceMakerBullseye.h"
-#include "FaceMakerCheese.h"
 
 #include "TopoShape.h"
 #include "WireJoiner.h"

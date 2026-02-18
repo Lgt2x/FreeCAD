@@ -38,7 +38,6 @@
 #include <App/Application.h>
 #include <App/ProjectFile.h>
 #include <Base/FileInfo.h>
-#include <Base/TimeInfo.h>
 #include <Base/Stream.h>
 
 

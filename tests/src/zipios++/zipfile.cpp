@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 #include <cstdio>
-#include <memory>
 #include <zipios++/zipfile.h>
 
 // NOLINTBEGIN(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)

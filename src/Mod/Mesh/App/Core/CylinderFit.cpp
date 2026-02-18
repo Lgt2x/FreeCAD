@@ -61,7 +61,6 @@
 #include <iterator>
 #include <limits>
 
-#include <Base/Console.h>
 #include <Base/Converter.h>
 #include <Mod/Mesh/App/WildMagic4/Wm4ApprLineFit3.h>
 

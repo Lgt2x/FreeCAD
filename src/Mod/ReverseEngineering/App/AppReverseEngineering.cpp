@@ -27,7 +27,6 @@
 
 
 #include <Base/Console.h>
-#include <Base/Converter.h>
 #include <Base/GeometryPyCXX.h>
 #include <Base/Interpreter.h>
 #include <Base/PyWrapParseTupleAndKeywords.h>
@@ -41,7 +40,6 @@
 #endif
 
 #include "ApproxSurface.h"
-#include "BSplineFitting.h"
 #include "RegionGrowing.h"
 #include "SampleConsensus.h"
 #include "Segmentation.h"

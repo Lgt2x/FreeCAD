@@ -32,7 +32,6 @@
 #include <Base/Stream.h>
 #include <Base/Tools.h>
 #include <Gui/Application.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>
 #include <Gui/Control.h>
 #include <Gui/Document.h>
@@ -41,9 +40,9 @@
 #include <Mod/Mesh/App/MeshFeature.h>
 #include <Mod/Mesh/Gui/ViewProvider.h>
 #include <Mod/Part/App/BodyBase.h>
-#include <Mod/Part/Gui/ViewProvider.h>
 
 #include "Tessellation.h"
+#include "Mod/Part/Gui/ViewProviderExt.h"
 #include "ui_Tessellation.h"
 
 

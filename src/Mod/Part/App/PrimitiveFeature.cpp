@@ -40,8 +40,6 @@
 #include <gp_Elips.hxx>
 #include <gp_GTrsf.hxx>
 #include <Precision.hxx>
-#include <Standard_Real.hxx>
-#include <Standard_Version.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Vertex.hxx>
 

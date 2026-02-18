@@ -25,8 +25,6 @@
 #include <limits>
 
 #include <boost/algorithm/string/predicate.hpp>
-#include <boost/range.hpp>
-#include <boost/property_map/property_map.hpp>
 
 #include <Base/Tools.h>
 #include <Base/Uuid.h>
@@ -36,7 +34,6 @@
 #include "ComplexGeoDataPy.h"
 #include "Document.h"
 #include "DocumentObserver.h"
-#include "GeoFeatureGroupExtension.h"
 #include "Link.h"
 #include "LinkBaseExtensionPy.h"
 

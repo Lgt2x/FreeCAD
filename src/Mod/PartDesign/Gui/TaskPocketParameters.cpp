@@ -25,7 +25,6 @@
 #include <Precision.hxx>
 
 
-#include <Mod/PartDesign/App/FeaturePocket.h>
 
 #include "ui_TaskPadPocketParameters.h"
 #include "TaskPocketParameters.h"

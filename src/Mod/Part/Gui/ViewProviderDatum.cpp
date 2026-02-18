@@ -22,13 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <App/Document.h>
-#include <App/DocumentObjectGroup.h>
-#include <Gui/Application.h>
-#include <Gui/Command.h>
-#include <Gui/Control.h>
-#include <Gui/View3DInventor.h>
-#include <Gui/View3DInventorViewer.h>
 
 #include "ViewProviderDatum.h"
 

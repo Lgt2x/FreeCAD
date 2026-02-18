@@ -23,7 +23,6 @@
 
 
 
-#include <Precision.hxx>
 
 
 #include <App/DocumentObject.h>

@@ -33,10 +33,7 @@
 #include "DlgInspectAppearance.h"
 #include "DlgInspectMaterial.h"
 #include "DlgMaterialImp.h"
-#include "MaterialSave.h"
 #include "MaterialsEditor.h"
-#include "ModelSelect.h"
-#include "TaskMigrateExternal.h"
 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

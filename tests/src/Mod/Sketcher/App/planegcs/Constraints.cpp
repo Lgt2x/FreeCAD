@@ -7,7 +7,6 @@
 
 #include "Mod/Sketcher/App/planegcs/GCS.h"
 #include "Mod/Sketcher/App/planegcs/Geo.h"
-#include "Mod/Sketcher/App/planegcs/Constraints.h"
 
 class SystemTest: public GCS::System
 {

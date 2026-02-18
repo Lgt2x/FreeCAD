@@ -23,8 +23,6 @@
  ***************************************************************************/
 
 #include "SolidObject.h"
-#include "Shader.h"
-#include <algorithm>
 
 #define NUM_PROFILE_POINTS 4
 using namespace MillSim;

@@ -26,7 +26,6 @@
 #include <Inventor/nodes/SoMaterial.h>
 #include <Inventor/nodes/SoPickStyle.h>
 #include <Inventor/nodes/SoPolygonOffset.h>
-#include <Inventor/nodes/SoTransform.h>
 
 #include "ViewProviderPreviewExtension.h"
 #include "ViewProviderExt.h"

@@ -26,7 +26,6 @@
 
 #include <Inventor/nodes/SoAnnotation.h>
 #include <Inventor/nodes/SoBaseColor.h>
-#include <Inventor/nodes/SoDepthBuffer.h>
 #include <Inventor/nodes/SoDrawStyle.h>
 #include <Inventor/nodes/SoLineSet.h>
 #include <Inventor/nodes/SoMaterial.h>

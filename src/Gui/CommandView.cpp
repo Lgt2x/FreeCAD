@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <sstream>
 #include <Inventor/events/SoMouseButtonEvent.h>
 #include <Inventor/nodes/SoOrthographicCamera.h>
 #include <Inventor/nodes/SoPerspectiveCamera.h>
@@ -44,7 +43,6 @@
 #include <App/DocumentObject.h>
 #include <App/DocumentObjectGroup.h>
 #include <App/DocumentObserver.h>
-#include <App/GeoFeature.h>
 #include <App/GeoFeatureGroupExtension.h>
 #include <App/Part.h>
 #include <App/Link.h>
@@ -66,7 +64,6 @@
 #include "Macro.h"
 #include "MainWindow.h"
 #include "Navigation/NavigationStyle.h"
-#include "OverlayParams.h"
 #include "OverlayManager.h"
 #include "SceneInspector.h"
 #include "Selection.h"

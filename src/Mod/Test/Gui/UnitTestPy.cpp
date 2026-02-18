@@ -24,7 +24,6 @@
 #include <QEventLoop>
 
 
-#include <Base/Exception.h>
 
 #include "UnitTestImp.h"
 #include "UnitTestPy.h"

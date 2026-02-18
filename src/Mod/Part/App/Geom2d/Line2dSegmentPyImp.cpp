@@ -25,7 +25,6 @@
 #include <GCE2d_MakeSegment.hxx>
 #include <Geom2d_Line.hxx>
 #include <Geom2d_TrimmedCurve.hxx>
-#include <gp_Lin2d.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

@@ -28,14 +28,9 @@
 #include <Base/Quantity.h>
 #include <Base/QuantityPy.h>
 #include <CXX/Objects.hxx>
-#include <Gui/MetaTypes.h>
 
 #include "Array2DPy.h"
 #include "Exceptions.h"
-#include "Model.h"
-#include "ModelLibrary.h"
-#include "ModelPropertyPy.h"
-#include "ModelUuids.h"
 
 #include "Array2DPy.cpp"
 

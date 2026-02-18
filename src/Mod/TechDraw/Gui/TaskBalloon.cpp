@@ -24,7 +24,6 @@
 # include <cmath>
 
 #include <App/Document.h>
-#include <Base/Console.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>
 #include <Gui/Document.h>

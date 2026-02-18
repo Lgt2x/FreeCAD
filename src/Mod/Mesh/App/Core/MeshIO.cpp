@@ -33,7 +33,6 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/convert.hpp>
 #include <boost/convert/spirit.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
 
 #include "IO/Reader3MF.h"

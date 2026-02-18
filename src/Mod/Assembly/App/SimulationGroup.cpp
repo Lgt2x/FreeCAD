@@ -23,11 +23,7 @@
 
 
 #include <App/Application.h>
-#include <App/Document.h>
-#include <App/FeaturePythonPyImp.h>
-#include <App/PropertyPythonObject.h>
 #include <Base/Console.h>
-#include <Base/Tools.h>
 
 #include "SimulationGroup.h"
 #include "SimulationGroupPy.h"

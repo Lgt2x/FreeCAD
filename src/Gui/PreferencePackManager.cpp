@@ -22,7 +22,6 @@
 
 
 #include <memory>
-#include <string_view>
 #include <mutex>
 
 
@@ -42,8 +41,6 @@
 #include <App/Application.h>
 
 #include <ctime>  // For generating a timestamped filename
-#include <Base/ServiceProvider.h>
-#include <Dialogs/DlgThemeEditor.h>
 
 
 using namespace Gui;

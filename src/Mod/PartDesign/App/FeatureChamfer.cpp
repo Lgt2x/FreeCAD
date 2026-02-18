@@ -25,20 +25,12 @@
 #include <limits>
 
 #include <BRepAlgo.hxx>
-#include <BRepFilletAPI_MakeChamfer.hxx>
-#include <TopExp.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <TopTools_ListOfShape.hxx>
-#include <ShapeFix_Shape.hxx>
 #include <ShapeFix_ShapeTolerance.hxx>
-#include <Standard_Version.hxx>
 
 
 #include <Base/Exception.h>
 #include <Base/Reader.h>
-#include <Base/Tools.h>
 #include <Mod/Part/App/TopoShape.h>
 
 #include "FeatureChamfer.h"

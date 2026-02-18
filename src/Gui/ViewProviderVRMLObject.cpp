@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <sstream>
 #include <Inventor/SoDB.h>
 #include <Inventor/SoFullPath.h>
 #include <Inventor/SoInput.h>

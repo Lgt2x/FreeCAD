@@ -22,10 +22,12 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "Dialogs/DlgEditFileIncludePropertyExternal.h"
-#include "Application.h"
-#include "FileDialog.h"
-
+ #include "Dialogs/DlgEditFileIncludePropertyExternal.h"
+ #include "Application.h"
+ 
+ #include <QFileInfo>
+ #include <QFile>
+ #include <QDir>
 
 using namespace Gui::Dialog;
 

@@ -44,14 +44,12 @@
 #include <Inventor/fields/SoSFString.h>
 #include <Inventor/nodes/SoOrthographicCamera.h>
 #include <Inventor/nodes/SoPerspectiveCamera.h>
-#include <Inventor/nodes/SoSeparator.h>
 #include <Inventor/SoPickedPoint.h>
 
 
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/GeoFeature.h>
-#include <Base/Builder3D.h>
 #include <Base/Console.h>
 #include <Base/Interpreter.h>
 
@@ -69,7 +67,6 @@
 #include "Navigation/NavigationStyle.h"
 #include "SoFCDB.h"
 #include "SoFCSelectionAction.h"
-#include "SoFCVectorizeSVGAction.h"
 #include "View3DInventorViewer.h"
 #include "View3DPy.h"
 #include "ViewProvider.h"

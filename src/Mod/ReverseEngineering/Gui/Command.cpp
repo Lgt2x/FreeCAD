@@ -32,6 +32,7 @@
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObjectGroup.h>
+#include <Base/Converter.h>
 #include <Base/CoordinateSystem.h>
 #include <Base/Tools.h>
 #include <Gui/Application.h>

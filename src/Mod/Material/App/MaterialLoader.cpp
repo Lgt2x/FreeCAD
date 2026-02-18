@@ -29,18 +29,14 @@
 #include <QString>
 
 
-#include <App/Application.h>
-#include <Base/Interpreter.h>
 #include <Base/Stream.h>
-#include <Gui/MetaTypes.h>
 
+#include "Exceptions.h"
 #include "Materials.h"
 
 #include "MaterialConfigLoader.h"
 #include "MaterialLibrary.h"
 #include "MaterialLoader.h"
-#include "Model.h"
-#include "ModelManager.h"
 
 
 using namespace Materials;

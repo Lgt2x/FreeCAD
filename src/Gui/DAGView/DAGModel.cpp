@@ -22,7 +22,6 @@
  ***************************************************************************/
 
 #include <boost/graph/topological_sort.hpp>
-#include <boost_graph_reverse_graph.hpp>
 #include <memory>
 #include <QBrush>
 #include <QColor>

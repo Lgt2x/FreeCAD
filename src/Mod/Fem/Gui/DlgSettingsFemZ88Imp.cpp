@@ -25,7 +25,6 @@
 #include <QMessageBox>
 #include <QStandardPaths>
 
-#include <Gui/Application.h>
 
 #include "DlgSettingsFemZ88Imp.h"
 #include "ui_DlgSettingsFemZ88.h"

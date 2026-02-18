@@ -19,7 +19,6 @@
  *                                                                                                 *
  **************************************************************************************************/
 
-#include <Python.h>
 #include <filesystem>
 #include <string>
 #include <vector>

@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <algorithm>
-#include <climits>
 #include <sstream>
 #include <QHeaderView>
 #include <QItemDelegate>

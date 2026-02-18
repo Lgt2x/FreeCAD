@@ -22,14 +22,10 @@
 
 
 #include <cmath>
-#include <iomanip>
 #include <sstream>
 #include <stdexcept>
 
 
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopExp.hxx>
 
 #include <Base/Console.h>
 #include <Base/Stream.h>

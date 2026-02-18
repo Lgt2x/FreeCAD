@@ -73,7 +73,6 @@
 #include <BRepTools.hxx>
 #include <BRep_Builder.hxx>
 #include <Bnd_Box.hxx>
-#include <Bnd_OBB.hxx>
 #include <GC_MakeArcOfCircle.hxx>
 #include <GProp_GProps.hxx>
 #include <Geom_Plane.hxx>
@@ -106,15 +105,9 @@
 
 #include <App/Application.h>
 #include <App/Document.h>
-#include <App/Material.h>
-#include <Base/BoundBox.h>
 #include <Base/Console.h>
 #include <Base/Converter.h>
 #include <Base/Exception.h>
-#include <Base/FileInfo.h>
-#include <Base/Interpreter.h>
-#include <Base/Parameter.h>
-#include <Base/Tools.h>
 
 #include <Mod/Part/App/PartFeature.h>
 

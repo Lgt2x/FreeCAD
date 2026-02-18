@@ -29,7 +29,6 @@
 
 #include "Geom2d/Conic2dPy.h"
 #include "Geom2d/Conic2dPy.cpp"
-#include "OCCError.h"
 
 
 using namespace Part;

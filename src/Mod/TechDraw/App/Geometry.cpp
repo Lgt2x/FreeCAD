@@ -70,17 +70,14 @@
 
 #include <Base/Console.h>
 #include <Base/Converter.h>
-#include <Base/Parameter.h>
 #include <Base/Reader.h>
 #include <Base/Tools.h>
 #include <Base/Writer.h>
 
 #include <Mod/Part/App/FaceMakerCheese.h>
-#include <Mod/Part/App/Geometry.h>
 #include <Mod/Part/App/TopoShape.h>
 
 #include "DrawViewPart.h"
-#include "Geometry.h"
 #include "ShapeUtils.h"
 #include "DrawUtil.h"
 

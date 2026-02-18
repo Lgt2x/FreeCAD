@@ -39,7 +39,6 @@
 #include <BRepBuilderAPI_MakeVertex.hxx>
 #include <BRepExtrema_DistShapeShape.hxx>
 #include <BRepLProp_CLProps.hxx>
-#include <GeomAPI_ExtremaCurveCurve.hxx>
 #include <gp_Circ.hxx>
 #include <gp_Elips.hxx>
 #include <gp_Pnt.hxx>
@@ -58,12 +57,10 @@
 #include <Base/Console.h>
 #include <Base/Converter.h>
 #include <Base/Parameter.h>
-#include <Base/Quantity.h>
 #include <Base/Tools.h>
 #include <Base/UnitsApi.h>
 
 #include <Mod/Measure/App/Measurement.h>
-#include <Mod/Part/App/Geometry.h>
 #include <Mod/Part/App/TopoShape.h>
 
 #include <Mod/TechDraw/App/DrawViewDimensionPy.h>  // generated from DrawViewDimensionPy.xml
@@ -72,7 +69,6 @@
 #include "DimensionFormatter.h"
 #include "DrawUtil.h"
 #include "DrawViewPart.h"
-#include "Geometry.h"
 #include "GeometryMatcher.h"
 #include "Preferences.h"
 #include "DimensionAutoCorrect.h"

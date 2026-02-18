@@ -34,11 +34,9 @@
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>
 #include <Gui/Selection/Selection.h>
 #include <Gui/Tools.h>
-#include <Gui/WaitCursor.h>
 #include <Mod/PartDesign/App/Body.h>
 #include <Mod/PartDesign/Gui/ReferenceSelection.h>
 

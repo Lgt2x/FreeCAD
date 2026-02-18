@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
 #include "gtest/gtest.h"
-#include <gmock/gmock.h>
 
 #include <src/App/InitApplication.h>
 
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <App/GeoFeatureGroupExtension.h>
 #include <Base/Interpreter.h>
 
 using namespace App;

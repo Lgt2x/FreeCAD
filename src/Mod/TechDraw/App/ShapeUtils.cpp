@@ -34,7 +34,6 @@
 #include <BRepLProp_CLProps.hxx>
 #include <BRepLProp_CurveTool.hxx>
 #include <BRepLib.hxx>
-#include <BRepMesh_IncrementalMesh.hxx>
 #include <BRepTools.hxx>
 #include <BRep_Builder.hxx>
 #include <BRep_Tool.hxx>
@@ -56,11 +55,9 @@
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>
 #include <gp_Dir.hxx>
-#include <gp_Pln.hxx>
 #include <gp_Trsf.hxx>
 #include <gp_Vec.hxx>
 
-#include <Base/Console.h>
 #include <Base/Tools.h>
 
 #include "DrawUtil.h"

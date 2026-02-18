@@ -22,14 +22,12 @@
  ***************************************************************************/
 
 
-#include <iomanip>
 #include <sstream>
 #include <boost_regex.hpp>
 
 
 #include <App/Property.h>
 #include <Base/Console.h>
-#include <Base/Tools.h>
 
 #include <Mod/Spreadsheet/App/Cell.h>
 #include <Mod/Spreadsheet/App/Sheet.h>

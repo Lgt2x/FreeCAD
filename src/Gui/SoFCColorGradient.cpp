@@ -29,12 +29,10 @@
 #include <Inventor/nodes/SoFont.h>
 #include <Inventor/nodes/SoIndexedFaceSet.h>
 #include <Inventor/nodes/SoMaterial.h>
-#include <Inventor/nodes/SoText2.h>
 #include <Inventor/nodes/SoTransform.h>
 #include <Inventor/nodes/SoTransparencyType.h>
 
 
-#include <Base/Parameter.h>
 #include "SoFCColorGradient.h"
 #include "SoTextLabel.h"
 #include "Dialogs/DlgSettingsColorGradientImp.h"

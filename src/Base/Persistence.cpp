@@ -25,8 +25,6 @@
 #include <algorithm>
 #include <array>
 #include <cassert>
-#include <codecvt>
-#include <locale>
 
 #include <zipios++/zipinputstream.h>
 

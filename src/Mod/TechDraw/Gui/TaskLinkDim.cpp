@@ -25,7 +25,6 @@
 
 #include <App/Document.h>
 #include <App/DocumentObject.h>
-#include <Base/Console.h>
 
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>

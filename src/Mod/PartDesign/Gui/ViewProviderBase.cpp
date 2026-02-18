@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include <App/Document.h>
 #include <Gui/CommandT.h>
 #include <Mod/PartDesign/App/FeatureBase.h>
 

@@ -28,7 +28,6 @@
 #include <QThread>
 
 
-#include <App/Application.h>
 
 #include "DlgSettingsFemCcxImp.h"
 #include "ui_DlgSettingsFemCcx.h"

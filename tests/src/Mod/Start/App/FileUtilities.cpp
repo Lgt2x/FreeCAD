@@ -3,7 +3,6 @@
 #include <gtest/gtest.h>
 #include "src/App/InitApplication.h"
 
-#include <memory>
 
 #include <Mod/Start/App/FileUtilities.h>
 

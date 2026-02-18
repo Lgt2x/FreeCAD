@@ -23,14 +23,15 @@
  ***************************************************************************/
 
 
+ #include <App/ObjectIdentifier.h>
 #include <Base/GeometryPyCXX.h>
 #include <Base/MatrixPy.h>
 #include <Base/PlacementPy.h>
 #include <Base/PyWrapParseTupleAndKeywords.h>
 
+#include "App/Expression.h"
 #include "DocumentObject.h"
 #include "Document.h"
-#include "ExpressionParser.h"
 #include "GeoFeature.h"
 #include "GeoFeatureGroupExtension.h"
 #include "GroupExtension.h"

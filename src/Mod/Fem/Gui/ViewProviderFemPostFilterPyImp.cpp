@@ -21,9 +21,7 @@
  ***************************************************************************/
 
 // clang-format off
-#include <Gui/Control.h>
 #include <Gui/PythonWrapper.h>
-#include "ViewProviderFemPostFilter.h"
 #include "TaskPostBoxes.h"
 #ifdef FC_USE_VTK_PYTHON
 #include "TaskPostExtraction.h"
@@ -31,7 +29,6 @@
 // inclusion of the generated files (generated out of ViewProviderFemPostFilterPy.xml)
 #include "ViewProviderFemPostFilterPy.h"
 #include "ViewProviderFemPostFilterPy.cpp"
-#include <Base/PyWrapParseTupleAndKeywords.h>
 // clang-format on
 
 

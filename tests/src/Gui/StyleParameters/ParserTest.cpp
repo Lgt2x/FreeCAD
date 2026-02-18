@@ -23,7 +23,6 @@
 
 #include <gtest/gtest.h>
 
-#include <Gui/Utilities.h>
 
 #include <Gui/StyleParameters/Parser.h>
 #include <Gui/StyleParameters/ParameterManager.h>

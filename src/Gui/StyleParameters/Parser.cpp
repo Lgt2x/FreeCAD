@@ -24,13 +24,11 @@
 #include "Parser.h"
 #include "ParameterManager.h"
 
-#include <Utilities.h>
 #include <Base/Tools.h>
 
 #include <QColor>
 #include <QRegularExpression>
 #include <QString>
-#include <ranges>
 #include <variant>
 
 namespace Gui::StyleParameters

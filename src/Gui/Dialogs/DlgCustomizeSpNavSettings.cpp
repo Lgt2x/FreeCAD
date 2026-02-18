@@ -25,7 +25,6 @@
 
 #include "Dialogs/DlgCustomizeSpNavSettings.h"
 #include "ui_DlgCustomizeSpNavSettings.h"
-#include "Application.h"
 #include "GuiApplicationNativeEventAware.h"
 
 

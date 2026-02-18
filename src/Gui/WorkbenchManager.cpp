@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <Base/Console.h>
 
 #include "WorkbenchManager.h"
 #include "Workbench.h"

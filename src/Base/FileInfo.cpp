@@ -26,7 +26,6 @@
 #include <FCConfig.h>
 
 #include <algorithm>
-#include <codecvt>
 #include <cstring>
 #include <fstream>
 #include <iostream>

@@ -28,7 +28,6 @@
 #include <Inventor/nodes/SoPerspectiveCamera.h>
 
 
-#include <Base/Builder3D.h>
 #include <Base/Interpreter.h>
 
 #include "SplitView3DInventor.h"
@@ -36,9 +35,7 @@
 #include "Camera.h"
 #include "Document.h"
 #include "Navigation/NavigationStyle.h"
-#include "SoFCSelectionAction.h"
 #include "View3DInventorViewer.h"
-#include "View3DPy.h"
 #include "View3DSettings.h"
 
 

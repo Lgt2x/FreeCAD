@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "FCGlobal.h"
 
 #include <QFontMetrics>
 #include <QMessageBox>

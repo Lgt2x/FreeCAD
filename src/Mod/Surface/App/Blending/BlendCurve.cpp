@@ -25,7 +25,6 @@
 
 #include <BSplCLib.hxx>
 #include <Geom_BezierCurve.hxx>
-#include <Precision.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <gp_Pnt.hxx>
@@ -33,9 +32,9 @@
 #include <math_Matrix.hxx>
 
 #include "Blending/BlendCurve.h"
-#include "Blending/BlendCurvePy.h"
+#include "Base/PyObjectBase.h"
+#include <Base/Exception.h>
 #include <Base/Vector3D.h>
-#include <Mod/Part/App/Geometry.h>
 
 using namespace Surface;
 

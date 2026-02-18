@@ -22,9 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <algorithm>
-#include <cstdlib>
-#include <iterator>
 #include <limits>
 
 #include "SphereFit.h"

@@ -21,7 +21,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cmath>
 #include <regex>
 #include <sstream>
 #include <string>
@@ -35,11 +34,8 @@
 #include <QVBoxLayout>
 
 #include "ViewProviderAnnotation.h"
-#include <App/Application.h>
 #include <Base/Console.h>
 #include <Base/Tools.h>
-#include <Gui/MainWindow.h>
-#include <Gui/Widgets.h>
 #include <Mod/TechDraw/App/DrawViewAnnotation.h>
 #include <Mod/TechDraw/App/Preferences.h>
 

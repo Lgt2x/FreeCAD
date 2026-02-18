@@ -26,7 +26,6 @@
 #include <QDoubleValidator>
 #include <QLocale>
 #include <QMessageBox>
-#include <algorithm>
 #include <array>
 
 #include <Inventor/nodes/SoBaseColor.h>

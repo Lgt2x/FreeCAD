@@ -22,7 +22,6 @@
  *                                                                          *
  ****************************************************************************/
 
-#include <iostream>
 
 #include "VarSet.h"
 #include "DocumentObject.h"

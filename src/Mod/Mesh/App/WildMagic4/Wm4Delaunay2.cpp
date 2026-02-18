@@ -16,7 +16,6 @@
 //
 // Version: 4.0.0 (2006/06/28)
 
-#include "Wm4FoundationPCH.h"
 #include "Wm4Delaunay2.h"
 #include "Wm4DelPolygonEdge.h"
 #include "Wm4Mapper2.h"

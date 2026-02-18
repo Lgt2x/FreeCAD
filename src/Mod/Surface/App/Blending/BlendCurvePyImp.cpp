@@ -28,7 +28,6 @@
 #include "Blending/BlendCurvePy.cpp"
 #include "Blending/BlendPointPy.h"
 // clang-format on
-#include <Base/VectorPy.h>
 #include <Mod/Part/App/BezierCurvePy.h>
 
 using namespace Surface;

@@ -23,8 +23,6 @@
 
 #include <Mod/Measure/MeasureGlobal.h>
 
-#include <App/PropertyGeo.h>
-#include <Base/PlacementPy.h>
 #include <App/FeaturePythonPyImp.h>
 #include <App/DocumentObjectPy.h>
 

@@ -39,8 +39,6 @@
 #include <Gui/MainWindow.h>
 #include <Gui/Selection/Selection.h>
 #include <Gui/Selection/SelectionObject.h>
-#include <Gui/Workbench.h>
-#include <Gui/WorkbenchManager.h>
 #include <Mod/Fem/App/FemAnalysis.h>
 #include <Mod/Fem/App/FemConstraint.h>
 #include <Mod/Fem/App/FemMeshObject.h>
@@ -51,7 +49,6 @@
 # include <Mod/Fem/App/FemPostObject.h>
 #endif
 
-#include "TaskDlgAnalysis.h"
 #include "ViewProviderAnalysis.h"
 
 

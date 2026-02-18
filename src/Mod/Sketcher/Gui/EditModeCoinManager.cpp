@@ -44,7 +44,6 @@
 #include <Base/Exception.h>
 #include <Gui/Inventor/MarkerBitmaps.h>
 #include <Gui/Inventor/SoFCBoundingBox.h>
-#include <Mod/Sketcher/App/Constraint.h>
 #include <Mod/Sketcher/App/GeoList.h>
 
 #include "EditModeCoinManager.h"

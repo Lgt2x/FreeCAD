@@ -30,7 +30,6 @@
 #include <App/Application.h>
 #include <App/Datums.h>
 #include <App/Document.h>
-#include <App/DocumentObjectGroup.h>
 #include <App/FeaturePythonPyImp.h>
 #include <App/Link.h>
 #include <App/PropertyPythonObject.h>
@@ -40,11 +39,9 @@
 #include <Base/Tools.h>
 #include <Base/Interpreter.h>
 
-#include <Mod/Part/App/TopoShape.h>
 #include <Mod/Part/App/AttachExtension.h>
 
 #include <OndselSolver/CREATE.h>
-#include <OndselSolver/ASMTSimulationParameters.h>
 #include <OndselSolver/ASMTAssembly.h>
 #include <OndselSolver/ASMTMarker.h>
 #include <OndselSolver/ASMTPart.h>
@@ -59,7 +56,6 @@
 #include <OndselSolver/ASMTParallelAxesJoint.h>
 #include <OndselSolver/ASMTPerpendicularJoint.h>
 #include <OndselSolver/ASMTPointInPlaneJoint.h>
-#include <OndselSolver/ASMTPointInLineJoint.h>
 #include <OndselSolver/ASMTLineInPlaneJoint.h>
 #include <OndselSolver/ASMTPlanarJoint.h>
 #include <OndselSolver/ASMTRevCylJoint.h>
@@ -72,10 +68,7 @@
 #include <OndselSolver/ASMTGeneralMotion.h>
 #include <OndselSolver/ASMTScrewJoint.h>
 #include <OndselSolver/ASMTSphSphJoint.h>
-#include <OndselSolver/ASMTTime.h>
-#include <OndselSolver/ASMTConstantGravity.h>
 #include <OndselSolver/ExternalSystem.h>
-#include <OndselSolver/enum.h>
 
 #include "AssemblyLink.h"
 #include "AssemblyObject.h"

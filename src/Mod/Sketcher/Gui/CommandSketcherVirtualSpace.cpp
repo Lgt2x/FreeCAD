@@ -22,11 +22,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <App/Application.h>
-#include <Base/Console.h>
 #include <Gui/Action.h>
-#include <Gui/Application.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/CommandT.h>
 #include <Gui/Document.h>
 #include <Gui/MainWindow.h>
@@ -37,7 +33,6 @@
 #include "DrawSketchHandler.h"
 #include "ViewProviderSketch.h"
 
-#include <Mod/Part/App/Geometry.h>
 #include <Mod/Sketcher/App/SketchObject.h>
 
 #include "Utils.h"

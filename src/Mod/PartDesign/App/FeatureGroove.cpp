@@ -23,7 +23,6 @@
  ******************************************************************************/
 
 
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
 #include <BRepPrimAPI_MakeRevol.hxx>
 #include <BRepFeat_MakeRevol.hxx>
 #include <gp_Lin.hxx>
@@ -35,7 +34,6 @@
 #include <Base/Tools.h>
 
 #include "FeatureGroove.h"
-#include "Mod/Part/App/TopoShapeOpCode.h"
 
 using namespace PartDesign;
 

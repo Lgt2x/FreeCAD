@@ -42,7 +42,6 @@
 
 #include <Mod/TechDraw/App/Preferences.h>
 #include <Mod/TechDraw/App/DrawUtil.h>
-#include <Mod/TechDraw/App/LineNameEnum.h>
 
 #include "Preferences.h"
 #include "LineGenerator.h"

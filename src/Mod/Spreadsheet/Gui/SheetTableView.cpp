@@ -47,7 +47,6 @@
 
 #include "DlgBindSheet.h"
 #include "DlgSheetConf.h"
-#include "LineEdit.h"
 #include "PropertiesDialog.h"
 #include "SheetTableView.h"
 

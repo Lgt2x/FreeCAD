@@ -30,11 +30,11 @@
 #include <QTime>
 #include <QTimer>
 #include <QWindow>
+#include <QProgressDialog>
 
 
 #include "ProgressBar.h"
 #include "MainWindow.h"
-#include "ProgressDialog.h"
 #include "WaitCursor.h"
 
 

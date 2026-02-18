@@ -30,7 +30,6 @@
 
 #include <Base/GeometryPyCXX.h>
 #include <Base/PyWrapParseTupleAndKeywords.h>
-#include <Base/VectorPy.h>
 #include <Base/Vector3D.h>
 
 #include "PlateSurfacePy.h"

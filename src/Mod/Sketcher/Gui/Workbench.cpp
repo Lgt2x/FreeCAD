@@ -25,11 +25,9 @@
 
 #include "Utils.h"
 #include "Workbench.h"
-#include <Base/Console.h>
 #include <Gui/Application.h>
 #include <Gui/Document.h>
 #include <Gui/WorkbenchManager.h>
-#include <Mod/Sketcher/App/Constraint.h>
 
 using namespace SketcherGui;
 

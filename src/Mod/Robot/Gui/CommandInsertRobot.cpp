@@ -32,7 +32,6 @@
 #include <Gui/Selection/Selection.h>
 #include <Mod/Robot/App/RobotObject.h>
 
-#include "TrajectorySimulate.h"
 
 
 using namespace std;

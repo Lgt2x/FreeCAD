@@ -21,12 +21,9 @@
  *                                                                         *
  **************************************************************************/
 
-#include <string>
 
 
 #include <App/Application.h>
-#include <App/Material.h>
-#include <Base/Console.h>
 #include <Base/Parameter.h>
 
 #include "Preferences.h"

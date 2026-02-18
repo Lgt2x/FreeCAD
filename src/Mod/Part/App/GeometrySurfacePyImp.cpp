@@ -39,7 +39,6 @@
 #include <Precision.hxx>
 #include <ShapeAnalysis_Surface.hxx>
 #include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

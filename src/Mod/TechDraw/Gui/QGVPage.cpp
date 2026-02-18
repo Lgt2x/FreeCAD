@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cmath>
 
 #include <QApplication>
 #include <QBitmap>
@@ -34,17 +33,13 @@
 #include <QWheelEvent>
 
 #include <App/Application.h>
-#include <App/Document.h>
 #include <Base/Parameter.h>
 #include <Gui/BitmapFactory.h>
-#include <Gui/Document.h>
 #include <Gui/Navigation/NavigationStyle.h>
-#include <Gui/Selection/Selection.h>
 #include <Gui/View3DInventor.h>
 #include <Gui/View3DInventorViewer.h>
 
 #include <Mod/TechDraw/App/DrawPage.h>
-#include <Mod/TechDraw/App/DrawSVGTemplate.h>
 
 #include "MDIViewPage.h"
 #include "PreferencesGui.h"

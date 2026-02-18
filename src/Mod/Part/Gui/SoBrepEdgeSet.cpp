@@ -32,7 +32,6 @@
 #else
 # include <GL/gl.h>
 #endif
-#include <algorithm>
 #include <limits>
 #include <Inventor/SoPickedPoint.h>
 #include <Inventor/SoPrimitiveVertex.h>
@@ -42,15 +41,11 @@
 #include <Inventor/details/SoLineDetail.h>
 #include <Inventor/elements/SoCoordinateElement.h>
 #include <Inventor/elements/SoGLCoordinateElement.h>
-#include <Inventor/elements/SoLineWidthElement.h>
 #include <Inventor/errors/SoDebugError.h>
 #include <Inventor/misc/SoState.h>
-#include <Inventor/nodes/SoGroup.h>
-#include <Inventor/actions/SoSearchAction.h>
 
 #include <Gui/Selection/SoFCUnifiedSelection.h>
 #include <Gui/Selection/Selection.h>
-#include <Base/Console.h>
 #include "SoBrepEdgeSet.h"
 #include "SoBrepFaceSet.h"
 #include "ViewProviderExt.h"

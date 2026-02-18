@@ -22,7 +22,6 @@
  **************************************************************************/
 
 #include <gtest/gtest.h>
-#include "gmock/gmock.h"
 
 #include <App/Application.h>
 #include <App/Document.h>

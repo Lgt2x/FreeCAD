@@ -26,7 +26,6 @@
 
 #include "Type.h"
 #include "Interpreter.h"
-#include "Console.h"
 
 
 using namespace Base;

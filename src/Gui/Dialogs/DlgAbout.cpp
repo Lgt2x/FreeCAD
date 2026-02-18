@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cstdlib>
 #include <QApplication>
 #include <QClipboard>
 #include <QDir>
@@ -38,18 +37,11 @@
 #include <QTextBrowser>
 #include <QTextStream>
 #include <QTimer>
-#include <Inventor/C/basic.h>
 
 #include <App/Application.h>
-#include <App/Metadata.h>
-#include <Base/Console.h>
-#include <Base/Interpreter.h>
 #include <CXX/WrapPython.h>
 #include <Gui/Application.h>
 
-#include <filesystem>
-#include <LibraryVersions.h>
-#include <zlib.h>
 
 #include "BitmapFactory.h"
 #include "Dialogs/DlgAbout.h"

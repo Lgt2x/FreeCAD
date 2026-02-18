@@ -25,14 +25,7 @@
 #include <limits>
 
 #include <BRepAlgo.hxx>
-#include <BRepFilletAPI_MakeFillet.hxx>
-#include <BRep_Tool.hxx>
-#include <Geom_Circle.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopExp_Explorer.hxx>
 #include <TopTools_ListOfShape.hxx>
-#include <ShapeFix_Shape.hxx>
 #include <ShapeFix_ShapeTolerance.hxx>
 
 #include <Base/Exception.h>

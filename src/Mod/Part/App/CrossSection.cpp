@@ -24,7 +24,6 @@
 
 #include <algorithm>
 #include <BRepAdaptor_Surface.hxx>
-#include <Mod/Part/App/FCBRepAlgoAPI_Common.h>
 #include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
 #include <Mod/Part/App/FCBRepAlgoAPI_Section.h>
 #include <BRepBuilderAPI_MakeFace.hxx>

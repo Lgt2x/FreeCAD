@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <bitset>
-#include <stack>
 #include <deque>
 #include <iostream>
 #include <utility>
@@ -56,7 +55,6 @@
 #include <Base/Console.h>
 #include <Base/Exception.h>
 #include <Base/FileInfo.h>
-#include <Base/TimeInfo.h>
 #include <Base/Reader.h>
 #include <Base/Writer.h>
 #include <Base/Profiler.h>
@@ -82,10 +80,7 @@
 #ifdef _MSC_VER
 #include <zipios++/zipios-config.h>
 #endif
-#include <zipios++/zipfile.h>
 #include <zipios++/zipinputstream.h>
-#include <zipios++/zipoutputstream.h>
-#include <zipios++/meta-iostreams.h>
 
 
 FC_LOG_LEVEL_INIT("App", true, true, true)

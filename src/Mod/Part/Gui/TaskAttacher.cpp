@@ -36,7 +36,6 @@
 #include <App/ElementNamingUtils.h>
 #include <App/ObjectIdentifier.h>
 #include <App/Datums.h>
-#include <App/Part.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/CommandT.h>
@@ -51,9 +50,9 @@
 #include <Mod/Part/Gui/TaskAttacher.h>
 
 #include "TaskAttacher.h"
-#include "ViewProviderDatum.h"
 #include "ViewProvider2DObject.h"
 
+#include "ViewProviderPlane.h"
 #include "ui_TaskAttacher.h"
 
 #include <Gui/ViewParams.h>

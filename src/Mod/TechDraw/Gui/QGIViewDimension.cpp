@@ -32,9 +32,7 @@
 # include <QPainterPath>
 # include <QSvgGenerator>
 
-#include <App/Application.h>
 #include <Base/Console.h>
-#include <Base/Parameter.h>
 #include <Base/Tools.h>
 #include <Base/UnitsApi.h>
 #include <Gui/Command.h>
@@ -44,7 +42,6 @@
 #include <Mod/TechDraw/App/Geometry.h>
 #include <Mod/TechDraw/App/ArrowPropEnum.h>
 
-#include "Enums.h"
 #include "QGIViewDimension.h"
 #include "PreferencesGui.h"
 #include "QGIArrow.h"

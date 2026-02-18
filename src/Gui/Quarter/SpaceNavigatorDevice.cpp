@@ -46,7 +46,6 @@
 #include <spnav.h>
 #endif
 
-#include "NativeEvent.h"
 #include "devices/SpaceNavigatorDevice.h"
 
 

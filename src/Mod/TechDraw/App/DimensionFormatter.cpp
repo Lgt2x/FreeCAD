@@ -24,7 +24,6 @@
 #include <QRegularExpression>
 #include <QString>
 
-#include <fmt/format.h>
 
 #include <Base/Console.h>
 #include <Base/UnitsApi.h>

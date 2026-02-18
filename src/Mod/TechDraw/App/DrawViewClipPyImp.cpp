@@ -21,7 +21,6 @@
  ***************************************************************************/
 
 
-#include <App/DocumentObject.h>
 #include <Base/Console.h>
 
 #include "DrawViewClip.h"

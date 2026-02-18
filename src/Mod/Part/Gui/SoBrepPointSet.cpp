@@ -32,7 +32,6 @@
 #else
 # include <GL/gl.h>
 #endif
-#include <algorithm>
 #include <limits>
 #include <Inventor/actions/SoGetBoundingBoxAction.h>
 #include <Inventor/actions/SoGLRenderAction.h>

@@ -24,11 +24,11 @@
  ***************************************************************************/
 
 
-#include "Mod/Fem/App/FemConstraintInitialTemperature.h"
+#include "Mod/Fem/Gui/ViewProviderFemConstraintInitialTemperature.h"
+#include "Mod/Fem/Gui/TaskFemConstraintInitialTemperature.h"
+
 #include <Gui/Control.h>
 
-#include "TaskFemConstraintInitialTemperature.h"
-#include "ViewProviderFemConstraintInitialTemperature.h"
 
 
 using namespace FemGui;

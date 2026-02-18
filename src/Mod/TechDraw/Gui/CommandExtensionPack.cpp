@@ -31,7 +31,6 @@
 #include <App/Document.h>
 #include <App/DocumentObject.h>
 #include <Base/Console.h>
-#include <Base/Type.h>
 #include <Gui/Action.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
@@ -47,7 +46,6 @@
 #include <Mod/TechDraw/App/Cosmetic.h>
 #include <Mod/TechDraw/App/DrawPage.h>
 #include <Mod/TechDraw/App/DrawProjGroup.h>
-#include <Mod/TechDraw/App/DrawProjGroupItem.h>
 #include <Mod/TechDraw/App/DrawUtil.h>
 #include <Mod/TechDraw/App/DrawViewBalloon.h>
 #include <Mod/TechDraw/App/DrawViewDimension.h>

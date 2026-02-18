@@ -25,10 +25,11 @@
 #include <boost/algorithm/string/regex.hpp>
 #include <boost/format.hpp>
 
+#include <fmt/format.h>
+
 #include <Base/Exception.h>
 #include <Mod/Sketcher/App/Constraint.h>
 #include <Mod/Sketcher/App/GeometryFacade.h>
-#include <Mod/Sketcher/App/SketchObject.h>
 
 #include "PythonConverter.h"
 

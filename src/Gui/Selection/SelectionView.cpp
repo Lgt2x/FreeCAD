@@ -36,7 +36,6 @@
 #include <App/Document.h>
 #include <App/ElementNamingUtils.h>
 #include <App/GeoFeature.h>
-#include <App/IndexedName.h>
 #include <Base/Console.h>
 
 #include "SelectionView.h"

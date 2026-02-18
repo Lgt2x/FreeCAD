@@ -22,22 +22,14 @@
  ***************************************************************************/
 
 
-#include <Inventor/actions/SoGetBoundingBoxAction.h>
-#include <Inventor/nodes/SoSeparator.h>
 
 
 #include <App/Document.h>
-#include <App/Origin.h>
 #include <App/OriginGroupExtension.h>
-#include <Base/Console.h>
 
 #include "ViewProviderOriginGroupExtension.h"
 #include "Application.h"
 #include "Document.h"
-#include "View3DInventor.h"
-#include "View3DInventorViewer.h"
-#include "ViewProviderCoordinateSystem.h"
-#include "ViewProviderDatum.h"
 
 
 using namespace Gui;

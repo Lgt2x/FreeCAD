@@ -25,10 +25,8 @@
 
 #include <BRep_Tool.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <GeomLib_IsPlanarSurface.hxx>
 #include <QMessageBox>
 #include <TopExp_Explorer.hxx>
-#include <TopLoc_Location.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>
 
@@ -44,27 +42,20 @@
 #include <Gui/MainWindow.h>
 #include <Gui/Selection/Selection.h>
 #include <Gui/Selection/SelectionObject.h>
-#include <Mod/Sketcher/App/SketchObject.h>
 #include <Mod/PartDesign/App/Body.h>
-#include <Mod/PartDesign/App/FeatureBoolean.h>
 #include <Mod/PartDesign/App/FeatureGroove.h>
 #include <Mod/PartDesign/App/FeatureMultiTransform.h>
 #include <Mod/PartDesign/App/FeatureRevolution.h>
 #include <Mod/PartDesign/App/FeatureTransformed.h>
-#include <Mod/PartDesign/App/DatumLine.h>
-#include <Mod/PartDesign/App/DatumPlane.h>
-#include <Mod/PartDesign/App/DatumPoint.h>
 #include <Mod/PartDesign/App/FeatureDressUp.h>
 #include <Mod/PartDesign/App/ShapeBinder.h>
 
-#include "DlgActiveBody.h"
 #include "ReferenceSelection.h"
 #include "SketchWorkflow.h"
 #include "TaskFeaturePick.h"
 #include "Utils.h"
 #include "WorkflowManager.h"
 #include "ViewProvider.h"
-#include "ViewProviderBody.h"
 
 
 // TODO Remove this header after fixing code so it won;t be needed here (2015-10-20, Fat-Zer)

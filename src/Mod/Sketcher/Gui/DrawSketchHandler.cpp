@@ -31,12 +31,8 @@
 
 #include <Base/Console.h>
 #include <Base/Exception.h>
-#include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/CommandT.h>
-#include <Gui/MainWindow.h>
-#include <Gui/View3DInventor.h>
-#include <Gui/View3DInventorViewer.h>
 #include <Mod/Sketcher/App/SketchObject.h>
 
 #include "CommandConstraints.h"

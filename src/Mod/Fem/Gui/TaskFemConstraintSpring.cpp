@@ -25,7 +25,6 @@
 #include <QAction>
 #include <QMessageBox>
 #include <limits>
-#include <sstream>
 
 
 #include <Gui/Command.h>

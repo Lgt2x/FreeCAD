@@ -31,7 +31,6 @@
 
 
 #include "ViewProviderTextureExtension.h"
-#include <Gui/BitmapFactory.h>
 #include <App/Material.h>
 
 

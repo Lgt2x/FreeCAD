@@ -26,7 +26,6 @@
 #include <QMenu>
 
 
-#include <App/Document.h>
 #include <Gui/Application.h>
 #include <Mod/PartDesign/App/FeatureExtrude.h>
 #include <Mod/Part/Gui/ReferenceHighlighter.h>

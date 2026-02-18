@@ -39,7 +39,6 @@
 #include <App/GeoFeature.h>
 #include <App/PropertyGeo.h>
 
-#include "Application.h"
 #include "Document.h"
 #include "Inventor/SoFCBoundingBox.h"
 #include "SoFCSelection.h"

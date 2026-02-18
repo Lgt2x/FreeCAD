@@ -24,10 +24,11 @@
 #include <App/DocumentObjectGroup.h>
 #include <App/GroupExtension.h>
 #include <App/Part.h>
+#include "App/Document.h"
 #include "Application.h"
 #include "Action.h"
 #include "cet_lut.hpp"
-#include "CommandT.h"
+#include "Command.h"
 #include "DockWindowManager.h"
 #include "Document.h"
 #include "PythonConsole.h"

@@ -23,15 +23,9 @@
  ***************************************************************************/
 
 
-#include <Mod/Part/App/FCBRepAlgoAPI_Cut.h>
-#include <gp_Dir.hxx>
-#include <Precision.hxx>
-#include <TopExp_Explorer.hxx>
-#include <TopoDS_Face.hxx>
 
 
 #include <App/DocumentObject.h>
-#include <Base/Exception.h>
 
 #include "FeaturePocket.h"
 

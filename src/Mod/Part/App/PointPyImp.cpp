@@ -23,12 +23,12 @@
  ***************************************************************************/
 
 #include <BRepBuilderAPI_MakeVertex.hxx>
-#include <GC_MakeLine.hxx>
 #include <Geom_CartesianPoint.hxx>
 #include <TopoDS_Vertex.hxx>
 
 
 #include <Base/VectorPy.h>
+#include <gce_ErrorType.hxx>
 
 #include "PointPy.h"
 #include "PointPy.cpp"

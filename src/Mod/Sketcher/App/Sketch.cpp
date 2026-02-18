@@ -23,13 +23,11 @@
  ***************************************************************************/
 
 #include <cmath>
-#include <iostream>
 
 #include <BRepBuilderAPI_MakeWire.hxx>
 #include <BRep_Builder.hxx>
 #include <Precision.hxx>
 #include <ShapeFix_Wire.hxx>
-#include <Standard_Version.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
@@ -47,9 +45,7 @@
 #include <Mod/Part/App/BSplineCurvePy.h>
 #include <Mod/Part/App/CirclePy.h>
 #include <Mod/Part/App/EllipsePy.h>
-#include <Mod/Part/App/HyperbolaPy.h>
 #include <Mod/Part/App/LineSegmentPy.h>
-#include <Mod/Part/App/ParabolaPy.h>
 
 #include "Constraint.h"
 #include "GeometryFacade.h"

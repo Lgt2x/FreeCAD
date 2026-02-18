@@ -27,16 +27,14 @@
 #include <Inventor/nodes/SoCoordinate3.h>
 #include <Inventor/nodes/SoSeparator.h>
 #include <Inventor/nodes/SoMarkerSet.h>
-#include <Inventor/nodes/SoVertexProperty.h>
 
 
 #include <App/Application.h>
 #include <Gui/Inventor/MarkerBitmaps.h>
 #include <Gui/ViewProviderBuilder.h>
 #include <Gui/Selection/SoFCSelection.h>
-#include <Mod/PartDesign/App/DatumPoint.h>
+#include <Mod/PartDesign/Gui/ViewProviderDatumPoint.h>
 
-#include "ViewProviderDatumPoint.h"
 
 using namespace PartDesignGui;
 

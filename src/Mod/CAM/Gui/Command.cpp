@@ -22,17 +22,17 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <TopExp_Explorer.hxx>
-
-
-#include <Base/Console.h>
-#include <Gui/Application.h>
-#include <Gui/Command.h>
-#include <Gui/Document.h>
-#include <Gui/Selection/Selection.h>
-#include <Gui/Selection/SelectionObject.h>
-#include <Mod/CAM/App/FeatureArea.h>
-#include <Mod/CAM/App/FeaturePathShape.h>
+ #include <TopExp_Explorer.hxx>
+ 
+ 
+ #include <Base/Console.h>
+ #include <Gui/Application.h>
+ #include <Gui/Command.h>
+ #include <Gui/Document.h>
+ #include <Gui/Selection/Selection.h>
+ #include <Gui/Selection/SelectionObject.h>
+ #include <Mod/CAM/App/FeatureArea.h>
+ #include <Mod/CAM/App/FeaturePath.h>
 
 
 // Path Area

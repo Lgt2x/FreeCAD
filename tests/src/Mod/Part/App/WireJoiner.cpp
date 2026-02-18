@@ -7,7 +7,6 @@
 
 #include "PartTestHelpers.h"
 
-#include <BRepBuilderAPI_MakeShape.hxx>
 
 // NOLINTBEGIN(readability-magic-numbers,cppcoreguidelines-avoid-magic-numbers)
 

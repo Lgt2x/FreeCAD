@@ -30,9 +30,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "GlUtils.h"
 #include "Shader.h"
-#include <iostream>
 #include <Base/Console.h>
 
 namespace MillSim

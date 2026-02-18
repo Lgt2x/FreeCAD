@@ -30,7 +30,6 @@
 
 #include <App/Document.h>
 #include <App/Datums.h>
-#include <App/Origin.h>
 
 #include "ViewProviderDatum.h"
 #include "Inventor/SoAxisCrossKit.h"

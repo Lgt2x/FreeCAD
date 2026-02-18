@@ -22,28 +22,16 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <memory>
-#include <BRepAdaptor_CompCurve.hxx>
-#include <BRepAdaptor_Curve.hxx>
 #include <BRepBuilderAPI_Copy.hxx>
-#include <BRepBuilderAPI_MakeWire.hxx>
 #include <BRepFill.hxx>
-#include <BRepLib_MakeWire.hxx>
 #include <BRepOffsetAPI_MakePipeShell.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Precision.hxx>
 #include <ShapeAnalysis.hxx>
 #include <ShapeAnalysis_FreeBounds.hxx>
-#include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Iterator.hxx>
-#include <TopoDS_Shell.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
 
 
-#include <App/Link.h>
 
 #include <App/Document.h>
 #include "PartFeatures.h"

@@ -25,7 +25,6 @@
 #include "Base/Unit.h"
 #include "Base/Quantity.h"
 #include "Base/UnitsApi.h"
-#include "Base/UnitsSchemasData.h"
 #include "Base/UnitsSchemas.h"
 
 #include <QLocale>

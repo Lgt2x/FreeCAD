@@ -20,18 +20,14 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <memory>
 #include <ranges>
 #include <string>
 #include <QAction>
 #include <QMenu>
 #include <Inventor/draggers/SoDragger.h>
-#include <Inventor/nodes/SoPickStyle.h>
 #include <Inventor/nodes/SoTransform.h>
 
 #include <App/GeoFeature.h>
-#include <App/DocumentObjectGroup.h>
-#include <Base/Tools.h>
 #include <Base/Placement.h>
 #include <Base/Vector3D.h>
 #include <Base/Converter.h>

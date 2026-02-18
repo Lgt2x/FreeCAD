@@ -25,12 +25,9 @@
 #include <QMessageBox>
 
 
-#include <Gui/Application.h>
 #include <Gui/Command.h>
-#include <Gui/MainWindow.h>
 #include <Gui/Tools.h>
 
-#include <Mod/Material/App/Exceptions.h>
 #include <Mod/Material/App/Materials.h>
 
 #include "Array2D.h"

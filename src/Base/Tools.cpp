@@ -30,7 +30,6 @@
 #include <QDateTime>
 #include <QTimeZone>
 
-#include "PyExport.h"
 #include "Interpreter.h"
 #include "Tools.h"
 

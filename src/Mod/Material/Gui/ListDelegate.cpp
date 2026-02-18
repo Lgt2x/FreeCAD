@@ -30,25 +30,12 @@
 #include <QStringList>
 #include <QTextStream>
 #include <QVariant>
-#include <limits>
 
 
-#include <App/Application.h>
-#include <Base/Interpreter.h>
-#include <Base/Quantity.h>
-#include <Gui/Application.h>
-#include <Gui/Command.h>
-#include <Gui/InputField.h>
-#include <Gui/PrefWidgets.h>
-#include <Gui/SpinBox.h>
-#include <Gui/WaitCursor.h>
 
-#include <Mod/Material/App/Exceptions.h>
-#include <Mod/Material/App/ModelManager.h>
 
 #include "ListDelegate.h"
 #include "ListModel.h"
-#include "MaterialSave.h"
 
 
 using namespace MatGui;

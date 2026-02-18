@@ -27,8 +27,6 @@
 #include <QMenu>
 #include <QAction>
 #include <QMessageBox>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopExp.hxx>
 
 
 #include <Gui/Application.h>

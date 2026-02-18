@@ -25,7 +25,6 @@
 # include <sstream>
 
 
-#include <Base/Console.h>
 #include <Base/Interpreter.h>
 
 #include "DrawViewDraft.h"

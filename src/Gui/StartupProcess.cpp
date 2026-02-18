@@ -41,9 +41,7 @@
 
 #include <Inventor/SoDB.h>
 
-#include <set>
 #include <string>
-#include <ranges>
 
 #include "StartupProcess.h"
 #include "PreferencePackManager.h"
@@ -55,7 +53,6 @@
 #include "MainWindow.h"
 #include "Language/Translator.h"
 #include "Dialogs/DlgVersionMigrator.h"
-#include "FreeCADStyle.h"
 
 #include <App/Application.h>
 #include <App/ApplicationDirectories.h>

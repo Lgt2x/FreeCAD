@@ -24,7 +24,6 @@
 #include <QKeyEvent>
 #include <QGraphicsTransform>
 #include <cstdio>
-#include <qmath.h>
 
 #include <App/Application.h>
 #include <App/Document.h>

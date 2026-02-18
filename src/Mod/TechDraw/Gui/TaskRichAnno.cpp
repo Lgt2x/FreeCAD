@@ -41,7 +41,6 @@
 #include "mrichtextedit.h"
 #include "PreferencesGui.h"
 #include "QGIView.h"
-#include "QGMText.h"
 #include "QGSPage.h"
 #include "Rez.h"
 #include "ViewProviderPage.h"

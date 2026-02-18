@@ -33,7 +33,6 @@
 #include <QToolButton>
 #include <QToolTip>
 
-#include <Base/Exception.h>
 #include <Base/Interpreter.h>
 #include <Base/Tools.h>
 #include <App/Document.h>
@@ -49,8 +48,6 @@
 #include "ModuleIO.h"
 #include "MainWindow.h"
 #include "PythonEditor.h"
-#include "WhatsThis.h"
-#include "Widgets.h"
 #include "Workbench.h"
 #include "WorkbenchManager.h"
 #include "WorkbenchSelector.h"

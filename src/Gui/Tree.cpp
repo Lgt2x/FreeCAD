@@ -42,7 +42,6 @@
 
 #include <Base/Console.h>
 #include <Base/Reader.h>
-#include <Base/Sequencer.h>
 #include <Base/Tools.h>
 #include <Base/Writer.h>
 

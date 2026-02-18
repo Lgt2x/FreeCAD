@@ -25,7 +25,6 @@
 #include "Parser.h"
 
 #include <QFile>
-#include <fstream>
 #include <yaml-cpp/yaml.h>
 
 #include <QColor>

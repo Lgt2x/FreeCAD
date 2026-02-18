@@ -23,19 +23,12 @@
  ***************************************************************************/
 
 
-#include <cmath>
 #include <limits>
 
-#include <gp_Ax2.hxx>
-#include <gp_Circ.hxx>
-#include <gp_Dir.hxx>
-#include <gp_Pnt.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <Geom_Plane.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Face.hxx>
-#include <TopExp_Explorer.hxx>
 
 #include <QMessageBox>
 #include <QRegularExpression>

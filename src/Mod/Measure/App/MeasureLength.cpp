@@ -26,7 +26,6 @@
 #include <App/Document.h>
 #include <App/MeasureManager.h>
 
-#include <Mod/Part/App/PartFeature.h>
 
 #include "MeasureLength.h"
 

@@ -36,7 +36,6 @@
 #include <QPrintPreviewDialog>
 #include <QPrinter>
 #include <fastsignals/signal.h>
-#include <cmath>
 
 
 #include <App/Application.h>
@@ -53,7 +52,6 @@
 #include <Gui/Selection/SelectionObject.h>
 #include <Gui/ViewProvider.h>
 #include <Gui/WaitCursor.h>
-#include <Gui/Window.h>
 #include <Mod/TechDraw/App/DrawPage.h>
 #include <Mod/TechDraw/App/DrawPagePy.h>
 #include <Mod/TechDraw/App/DrawTemplate.h>

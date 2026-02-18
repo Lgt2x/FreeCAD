@@ -30,7 +30,6 @@
 
 #include <Base/Console.h>
 #include <Mod/TechDraw/App/DrawViewClip.h>
-#include <Mod/TechDraw/App/DrawViewPart.h>
 
 #include "QGIViewClip.h"
 #include "QGCustomClip.h"

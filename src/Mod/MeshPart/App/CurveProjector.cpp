@@ -33,7 +33,6 @@
 #include <BRepBuilderAPI_MakeVertex.hxx>
 #include <BRepExtrema_DistShapeShape.hxx>
 #include <BRep_Tool.hxx>
-#include <BndLib_Add3dCurve.hxx>
 #include <Bnd_Box.hxx>
 #include <GCPnts_AbscissaPoint.hxx>
 #include <GCPnts_UniformAbscissa.hxx>

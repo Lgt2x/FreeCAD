@@ -22,13 +22,10 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <BRepAdaptor_Curve.hxx>
 #include <BRep_Tool.hxx>
-#include <Precision.hxx>
 #include <ShapeExtend_Explorer.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopoDS.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <QTreeWidget>

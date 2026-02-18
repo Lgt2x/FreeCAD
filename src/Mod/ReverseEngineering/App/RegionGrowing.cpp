@@ -22,13 +22,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <boost/math/special_functions/fpclassify.hpp>
 
 
-#include <Base/Tools.h>
-#include <Mod/Points/App/Points.h>
 
-#include "RegionGrowing.h"
 
 
 #if defined(HAVE_PCL_FILTERS)

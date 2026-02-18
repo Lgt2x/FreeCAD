@@ -32,7 +32,6 @@
 #include <QDialog>
 
 #include <App/Document.h>
-#include <Base/Console.h>
 #include <Base/Tools.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>

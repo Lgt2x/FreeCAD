@@ -26,11 +26,9 @@
 
 #include <Mod/Part/PartGlobal.h>
 
-#include <string>
 
 #include <TopoDS.hxx>
 #include <TopoDS_Vertex.hxx>
-#include <TopAbs.hxx>
 #include <BRepTools.hxx>
 #include <BRep_Tool.hxx>
 #include <BRepGProp.hxx>

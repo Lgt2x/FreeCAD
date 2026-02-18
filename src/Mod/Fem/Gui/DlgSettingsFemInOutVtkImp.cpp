@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include <Gui/Application.h>
 
 #include "DlgSettingsFemInOutVtkImp.h"
 #include "ui_DlgSettingsFemInOutVtk.h"

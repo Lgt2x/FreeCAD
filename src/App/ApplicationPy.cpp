@@ -33,9 +33,9 @@
 #include <Base/PyWrapParseTupleAndKeywords.h>
 #include <Base/Sequencer.h>
 
+#include "App/Document.h"
 #include "Application.h"
 #include "ApplicationPy.h"
-#include "DocumentPy.h"
 #include "DocumentObserverPython.h"
 #include "DocumentObjectPy.h"
 

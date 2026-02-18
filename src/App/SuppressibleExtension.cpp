@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 
-#include <Base/Tools.h>
 
 #include "Extension.h"
 #include "SuppressibleExtension.h"

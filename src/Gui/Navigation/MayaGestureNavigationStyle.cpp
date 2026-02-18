@@ -61,7 +61,6 @@
 #include <QApplication>
 
 
-#include <Base/Console.h>
 
 #include "Navigation/NavigationStyle.h"
 #include "SoTouchEvents.h"

@@ -21,13 +21,10 @@
  ***************************************************************************/
 
 
-#include "BitmapFactory.h"
 #include "WidgetFactory.h"
-#include "Workbench.h"
 
 // INCLUDE YOUR PREFERENCE PAGES HERE
 //
-#include "Dialogs/DlgPreferencesImp.h"
 #include "PreferencePages/DlgSettings3DViewImp.h"
 #include "PreferencePages/DlgSettingsCacheDirectory.h"
 #include "PreferencePages/DlgSettingsDocumentImp.h"
@@ -58,7 +55,6 @@
 #include "InputField.h"
 #include "QuantitySpinBox.h"
 #include "PrefWidgets.h"
-#include "ToolBarManager.h"
 
 using namespace Gui;
 using namespace Gui::Dialog;

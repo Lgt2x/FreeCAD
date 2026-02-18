@@ -28,9 +28,7 @@
 #include <gp_Ax2.hxx>
 #include <gp_Dir.hxx>
 #include <gp_Pnt.hxx>
-#include <Standard_Version.hxx>
 #include <TopoDS.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

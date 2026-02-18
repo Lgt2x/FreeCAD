@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include "App/ComplexGeoData.h"
 #include "App/MappedName.h"
 
 #include <string>

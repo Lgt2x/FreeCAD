@@ -37,7 +37,6 @@
 #include <algorithm>
 
 #include "So3DAnnotation.h"
-#include <Gui/Selection/Selection.h>
 
 using namespace Gui;
 

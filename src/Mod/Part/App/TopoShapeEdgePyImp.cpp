@@ -54,7 +54,6 @@
 #include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 #include <ShapeAnalysis_Edge.hxx>
 #include <Standard_Failure.hxx>
-#include <Standard_Version.hxx>
 #include <GProp_GProps.hxx>
 #include <GCPnts_AbscissaPoint.hxx>
 #include <GCPnts_QuasiUniformAbscissa.hxx>
@@ -921,7 +920,6 @@ Py::Float TopoShapeEdgePy::getLength() const
 }
 
 #include <App/Application.h>
-#include <Mod/Part/App/LineSegmentPy.h>
 
 Py::Object TopoShapeEdgePy::getCurve() const
 {

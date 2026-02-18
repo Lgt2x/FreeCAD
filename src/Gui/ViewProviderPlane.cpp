@@ -42,8 +42,6 @@
 
 #include <Utilities.h>
 #include <Base/Tools.h>
-#include <Inventor/SoPickedPoint.h>
-#include <Inventor/events/SoEvent.h>
 #include <Inventor/nodes/SoFontStyle.h>
 
 

@@ -20,7 +20,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cmath>
 
 #include <QGuiApplication>
 #include <QPainter>
@@ -28,15 +27,9 @@
 #include <QMouseEvent>
 #include <QTimer>
 
-#include <Inventor/events/SoKeyboardEvent.h>
 
-#include <Base/Console.h>
-#include <Base/Exception.h>
 #include <Gui/Application.h>
-#include <Gui/CommandT.h>
 #include <Gui/MainWindow.h>
-#include <Gui/View3DInventor.h>
-#include <Gui/View3DInventorViewer.h>
 
 #include "MDIViewPage.h"
 #include "QGVPage.h"

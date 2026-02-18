@@ -25,7 +25,6 @@
 #include <Inventor/events/SoMouseButtonEvent.h>
 #include <QInputDialog>
 #include <QMessageBox>
-#include <algorithm>
 
 
 #include <App/Application.h>
@@ -50,7 +49,6 @@
 #include "../App/Structured.h"
 #include "../App/Tools.h"
 
-#include "DlgPointsReadImp.h"
 #include "ViewProvider.h"
 
 

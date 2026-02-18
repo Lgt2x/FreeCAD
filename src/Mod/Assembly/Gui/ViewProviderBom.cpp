@@ -22,17 +22,14 @@
  ***************************************************************************/
 
 
-#include <vector>
 
 
 #include <App/Document.h>
 #include <App/DocumentObject.h>
 
-#include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/Command.h>
 
-#include <Base/Interpreter.h>
 
 #include "ViewProviderBom.h"
 

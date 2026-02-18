@@ -40,7 +40,6 @@
 
 #include <vtkCellArray.h>
 #include <vtkCellData.h>
-#include <vtkDoubleArray.h>
 #include <vtkImplicitFunction.h>
 #include <vtkPointData.h>
 

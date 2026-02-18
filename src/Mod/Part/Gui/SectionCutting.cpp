@@ -27,7 +27,6 @@
 
 #include <Inventor/actions/SoGetBoundingBoxAction.h>
 #include <Inventor/nodes/SoCamera.h>
-#include <Inventor/nodes/SoOrthographicCamera.h>
 #include <QDialog>
 #include <QDockWidget>
 #include <QDoubleSpinBox>

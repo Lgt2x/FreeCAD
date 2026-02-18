@@ -25,12 +25,9 @@
 #include <QMessageBox>
 
 
-#include <Gui/MainWindow.h>
 
-#include <Mod/Material/App/Exceptions.h>
 #include <Mod/Material/App/Materials.h>
 
-#include "ArrayModel.h"
 #include "ListDelegate.h"
 #include "ListEdit.h"
 #include "ListModel.h"

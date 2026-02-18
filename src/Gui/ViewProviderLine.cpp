@@ -22,7 +22,6 @@
  ***************************************************************************/
 
 
-#include <Inventor/nodes/SoText2.h>
 #include <Inventor/nodes/SoCoordinate3.h>
 #include <Inventor/nodes/SoIndexedLineSet.h>
 #include <Inventor/nodes/SoPickStyle.h>

@@ -27,7 +27,6 @@
 #include <QCompleter>
 #include <algorithm>
 #include <memory>
-#include <array>
 
 #include <App/Application.h>
 #include <App/Document.h>

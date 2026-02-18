@@ -28,7 +28,6 @@
 #include "OCCError.h"
 
 // inclusion of the generated files (generated out of RectangularTrimmedSurfacePy.xml)
-#include "GeometryCurvePy.h"
 #include "RectangularTrimmedSurfacePy.h"
 #include "RectangularTrimmedSurfacePy.cpp"
 

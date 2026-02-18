@@ -30,7 +30,6 @@
 # endif
 #endif
 
-#include <algorithm>
 #include <limits>
 #include <map>
 #include <Inventor/SoPickedPoint.h>
@@ -44,12 +43,10 @@
 #include <Inventor/elements/SoCoordinateElement.h>
 #include <Inventor/elements/SoGLCoordinateElement.h>
 #include <Inventor/elements/SoGLCacheContextElement.h>
-#include <Inventor/elements/SoGLVBOElement.h>
 #include <Inventor/errors/SoDebugError.h>
 #include <Inventor/details/SoFaceDetail.h>
 #include <Inventor/misc/SoState.h>
 #include <Inventor/misc/SoContextHandler.h>
-#include <Inventor/elements/SoCacheElement.h>
 #include <Inventor/elements/SoTextureEnabledElement.h>
 
 #ifdef FC_OS_WIN32

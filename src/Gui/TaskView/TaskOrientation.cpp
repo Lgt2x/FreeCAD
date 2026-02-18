@@ -24,11 +24,9 @@
 #include <QDialog>
 #include <map>
 
-#include <Base/Tools.h>
 #include <App/Document.h>
 #include <Gui/BitmapFactory.h>
 #include <Gui/Camera.h>
-#include <Gui/TaskView/TaskView.h>
 
 #include "TaskOrientation.h"
 #include "ui_TaskOrientation.h"

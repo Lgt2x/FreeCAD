@@ -8,7 +8,6 @@
 #include <BRepBuilderAPI_MakeEdge.hxx>
 #include <gp_Circ.hxx>
 #include <TopoDS_Edge.hxx>
-#include <TopoDS_Wire.hxx>
 
 class MeasureDistance: public ::testing::Test
 {

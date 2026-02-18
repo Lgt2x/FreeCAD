@@ -22,18 +22,11 @@
  **************************************************************************/
 
 
-#include <TopExp_Explorer.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Wire.hxx>
-#include <BRepAdaptor_Curve.hxx>
-#include <BRepLProp_CLProps.hxx>
 
 #include <App/Application.h>
 #include <App/Document.h>
 #include <App/MeasureManager.h>
 
-#include <Mod/Part/App/PartFeature.h>
 
 #include "MeasureRadius.h"
 

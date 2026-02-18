@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <algorithm>
 #include <sstream>
 #include <QStyledItemDelegate>
 #include <QTreeWidgetItem>

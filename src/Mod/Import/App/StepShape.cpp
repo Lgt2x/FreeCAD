@@ -28,11 +28,7 @@
 #include <Base/Exception.h>
 #include <Base/FileInfo.h>
 
-#include <Interface_Static.hxx>
-#include <Message_Messenger.hxx>
-#include <Message_PrinterOStream.hxx>
 #include <STEPControl_Reader.hxx>
-#include <Standard_Version.hxx>
 #include <StepData_StepModel.hxx>
 
 #include "StepShape.h"

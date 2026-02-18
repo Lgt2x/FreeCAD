@@ -23,15 +23,12 @@
 #include <QPushButton>
 
 
-#include <Gui/Application.h>
-#include <Gui/ParamHandler.h>
 
 #include "DlgSettingsUI.h"
 #include "ui_DlgSettingsUI.h"
 
 #include "Dialogs/DlgThemeEditor.h"
 
-#include <Base/ServiceProvider.h>
 
 
 using namespace Gui::Dialog;

@@ -23,7 +23,6 @@
  ***************************************************************************/
 
 #include <array>
-#include <boost/math/constants/constants.hpp>
 #include <cmath>
 #include <numbers>
 

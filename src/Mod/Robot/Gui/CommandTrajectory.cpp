@@ -38,11 +38,9 @@
 #include <Mod/Robot/App/TrajectoryDressUpObject.h>
 #include <Mod/Robot/App/TrajectoryObject.h>
 
-#include "TaskDlgEdge2Trac.h"
 
 
 using namespace std;
-using namespace RobotGui;
 
 // #####################################################################################################
 

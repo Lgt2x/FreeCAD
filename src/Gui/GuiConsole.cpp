@@ -26,7 +26,6 @@
 # include "io.h"
 # include <windows.h>
 #endif
-#include <fcntl.h>
 #include <iostream>
 
 #include "GuiConsole.h"

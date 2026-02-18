@@ -26,7 +26,6 @@
   #include <QLineEdit>
   #include <QTextDocument>
 
-#include <Base/Console.h>
 #include <Gui/MainWindow.h>
 
 #include <Mod/TechDraw/App/DrawTemplate.h>

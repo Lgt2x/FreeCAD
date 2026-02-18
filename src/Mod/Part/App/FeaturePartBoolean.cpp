@@ -28,7 +28,6 @@
 
 #include <Mod/Part/App/FCBRepAlgoAPI_BooleanOperation.h>
 #include <BRepCheck_Analyzer.hxx>
-#include <Standard_Failure.hxx>
 
 #include <App/Application.h>
 #include <Base/Exception.h>
@@ -36,7 +35,6 @@
 
 #include "FeaturePartBoolean.h"
 #include "TopoShapeOpCode.h"
-#include "modelRefine.h"
 
 
 using namespace Part;

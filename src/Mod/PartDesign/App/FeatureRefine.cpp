@@ -26,7 +26,6 @@
 #include <App/Application.h>
 #include <App/FeaturePythonPyImp.h>
 #include <Base/Parameter.h>
-#include <Mod/Part/App/modelRefine.h>
 
 #include "FeatureRefine.h"
 #include "FeaturePy.h"

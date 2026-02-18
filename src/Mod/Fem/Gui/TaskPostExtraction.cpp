@@ -22,8 +22,6 @@
 
 #include <Gui/PythonWrapper.h>
 #include <Gui/BitmapFactory.h>
-#include <Mod/Fem/App/FemPostFilter.h>
-#include <Mod/Fem/App/FemPostPipeline.h>
 
 #include <QString>
 #include <QTableView>

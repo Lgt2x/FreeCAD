@@ -45,7 +45,6 @@
 #include <TopoDS.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <cmath>  //OvG: Required for log10
-#include <gp_Cylinder.hxx>
 #include <gp_Pln.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Vec.hxx>

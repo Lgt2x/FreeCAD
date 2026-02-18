@@ -3,9 +3,7 @@
 #include <gtest/gtest.h>
 #include "src/App/InitApplication.h"
 
-#include <memory>
 
-#include <Mod/Start/App/ThumbnailSource.h>
 
 class ThumbnailSourceTest: public ::testing::Test
 {

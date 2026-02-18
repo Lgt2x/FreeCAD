@@ -40,7 +40,6 @@
 #include <App/Application.h>
 #include <App/DocumentObject.h>
 #include <Base/Parameter.h>
-#include <Base/Stream.h>
 #include <Mod/CAM/App/Command.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>

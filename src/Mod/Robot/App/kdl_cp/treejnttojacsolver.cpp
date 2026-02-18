@@ -8,8 +8,6 @@
  */
 
 #include "treejnttojacsolver.hpp"
-#include <iostream>
-#include "kinfam_io.hpp"
 
 namespace KDL {
 

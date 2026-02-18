@@ -21,25 +21,12 @@
  ***************************************************************************/
 
 #include "ArcEngine.h"
+#include <Inventor/fields/SoMFVec3f.h>
+#include <Inventor/fields/SoSFInt32.h>
 #include <limits>
 #include <vector>
 
-#include <Inventor/engines/SoCalculator.h>
-#include <Inventor/engines/SoComposeVec3f.h>
-#include <Inventor/engines/SoConcatenate.h>
-#include <Inventor/engines/SoComposeRotation.h>
-#include <Inventor/engines/SoComposeRotationFromTo.h>
 
-#include <Inventor/nodekits/SoShapeKit.h>
-#include <Inventor/nodes/SoCone.h>
-#include <Inventor/nodes/SoFont.h>
-#include <Inventor/nodes/SoLineSet.h>
-#include <Inventor/nodes/SoMaterial.h>
-#include <Inventor/nodes/SoMatrixTransform.h>
-#include <Inventor/nodes/SoResetTransform.h>
-#include <Inventor/nodes/SoSeparator.h>
-#include <Inventor/nodes/SoTransform.h>
-#include <Inventor/nodes/SoVertexProperty.h>
 
 using namespace Gui;
 

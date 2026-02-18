@@ -29,7 +29,6 @@
 #include <Base/GeometryPyCXX.h>
 #include <Base/VectorPy.h>
 
-#include "OCCError.h"
 #include "ToroidPy.h"
 #include "ToroidPy.cpp"
 

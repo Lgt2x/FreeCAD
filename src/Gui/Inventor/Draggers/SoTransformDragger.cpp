@@ -28,29 +28,13 @@
 #include <Inventor/SbRotation.h>
 #include <Inventor/actions/SoGLRenderAction.h>
 #include <Inventor/engines/SoComposeVec3f.h>
-#include <Inventor/nodes/SoLightModel.h>
-#include <Inventor/nodes/SoDrawStyle.h>
 #include <Inventor/nodes/SoBaseColor.h>
-#include <Inventor/nodes/SoCone.h>
-#include <Inventor/nodes/SoCoordinate3.h>
-#include <Inventor/nodes/SoCylinder.h>
-#include <Inventor/nodes/SoCube.h>
-#include <Inventor/nodes/SoGroup.h>
-#include <Inventor/nodes/SoLineSet.h>
 #include <Inventor/nodes/SoOrthographicCamera.h>
 #include <Inventor/nodes/SoPerspectiveCamera.h>
 #include <Inventor/nodes/SoPickStyle.h>
 #include <Inventor/nodes/SoRotation.h>
-#include <Inventor/nodes/SoSeparator.h>
-#include <Inventor/nodes/SoSphere.h>
 #include <Inventor/nodes/SoSwitch.h>
-#include <Inventor/nodes/SoTranslation.h>
-#include <Inventor/nodes/SoText2.h>
-#include <Inventor/nodes/SoAnnotation.h>
-#include <Inventor/nodes/SoFontStyle.h>
 
-#include <Base/Quantity.h>
-#include <Base/Converter.h>
 
 #include "SoTransformDragger.h"
 #include "SoLinearDragger.h"
@@ -58,7 +42,6 @@
 #include "SoRotationDragger.h"
 #include "Utilities.h"
 
-#include <SoTextLabel.h>
 
 
 /*

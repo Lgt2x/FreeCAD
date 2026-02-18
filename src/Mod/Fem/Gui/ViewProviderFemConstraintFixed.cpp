@@ -21,11 +21,11 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "Gui/Control.h"
-#include <Mod/Fem/App/FemConstraintFixed.h>
+#include "Mod/Fem/Gui/ViewProviderFemConstraintFixed.h"
+#include "Mod/Fem/Gui/TaskFemConstraintFixed.h"
 
-#include "TaskFemConstraintFixed.h"
-#include "ViewProviderFemConstraintFixed.h"
+#include "Gui/Control.h"
+
 
 
 using namespace FemGui;

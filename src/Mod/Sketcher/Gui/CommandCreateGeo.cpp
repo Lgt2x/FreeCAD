@@ -22,35 +22,23 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <cstdlib>
 #include <memory>
 
 #include <QApplication>
 #include <QString>
 
-#include <App/Datums.h>
 #include <Gui/Action.h>
 #include <Gui/Application.h>
 #include <Gui/BitmapFactory.h>
-#include <Gui/CommandT.h>
 #include <Gui/Document.h>
 #include <Gui/MainWindow.h>
-#include <Gui/Selection/SelectionFilter.h>
-#include <Gui/View3DInventor.h>
-#include <Gui/View3DInventorViewer.h>
 #include <Gui/Window.h>
-#include <Mod/Part/App/DatumFeature.h>
-#include <Mod/Part/App/Geometry2d.h>
-#include <Mod/Sketcher/App/Constraint.h>
-#include <Mod/Sketcher/App/SketchObject.h>
 
 #include "CircleEllipseConstructionMethod.h"
 #include "GeometryCreationMode.h"
 #include "Utils.h"
-#include "ViewProviderSketch.h"
 
 // DrawSketchHandler* must be last includes
-#include "DrawSketchHandler.h"
 #include "DrawSketchHandlerArc.h"
 #include "DrawSketchHandlerArcOfEllipse.h"
 #include "DrawSketchHandlerArcOfHyperbola.h"

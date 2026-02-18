@@ -22,7 +22,6 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <algorithm>
 
 #include <Inventor/nodes/SoBaseColor.h>
 #include <Inventor/nodes/SoCoordinate3.h>

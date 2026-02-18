@@ -60,7 +60,6 @@
 #include "OverlayWidgets.h"
 #include "TaskView/TaskView.h"
 #include "Tree.h"
-#include "TreeParams.h"
 #include "View3DInventorViewer.h"
 
 FC_LOG_LEVEL_INIT("Dock", true, true);

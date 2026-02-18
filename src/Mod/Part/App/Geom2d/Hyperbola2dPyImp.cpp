@@ -24,7 +24,6 @@
 
 #include <GCE2d_MakeHyperbola.hxx>
 #include <Geom2d_Hyperbola.hxx>
-#include <gp_Hypr2d.hxx>
 
 
 #include <Base/GeometryPyCXX.h>

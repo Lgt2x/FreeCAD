@@ -28,7 +28,6 @@
 
 #include <App/Application.h>
 #include <Base/Writer.h>
-#include <Gui/MetaTypes.h>
 
 #include "MaterialManager.h"
 #include "MaterialPy.h"

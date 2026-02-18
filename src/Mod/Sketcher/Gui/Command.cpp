@@ -38,7 +38,6 @@
 #include <App/Datums.h>
 #include <Gui/Action.h>
 #include <Gui/Application.h>
-#include <Gui/BitmapFactory.h>
 #include <Gui/CommandT.h>
 #include <Gui/Control.h>
 #include <Gui/Document.h>

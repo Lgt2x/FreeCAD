@@ -22,27 +22,19 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <fcntl.h>
 #include <BRep_Builder.hxx>
-#include <IGESBasic_Group.hxx>
-#include <IGESBasic_SingularSubfigure.hxx>
 #include <IGESControl_Controller.hxx>
 #include <IGESControl_Reader.hxx>
-#include <IGESSolid_ManifoldSolid.hxx>
 #include <Message_MsgFile.hxx>
-#include <Standard_Version.hxx>
-#include <TColStd_HSequenceOfTransient.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Shape.hxx>
-#include <Transfer_TransientProcess.hxx>
 #include <XSControl_TransferReader.hxx>
 #include <XSControl_WorkSession.hxx>
 
 
 #include <Base/Console.h>
 #include <App/Document.h>
-#include <Base/Sequencer.h>
 
 #include "ImportIges.h"
 #include "PartFeature.h"
