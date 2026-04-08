@@ -59,16 +59,6 @@ static TPolygon2 ToClipper2(const TPolygon& poly1)
     return poly2;
 }
 
-static TPolyPolygon2 ToClipper2(const TPolyPolygon& pp1)
-{
-    TPolyPolygon2 pp2;
-    pp2.reserve(pp1.size());
-    for (const auto& poly : pp1) {
-        pp2.push_back(ToClipper2(poly));
-    }
-    return pp2;
-}
-
 // Convert Clipper2 to Clipper1
 static ClipperLib::IntPoint ToClipper1(const Clipper2Lib::Point64& p2)
 {
@@ -83,16 +73,6 @@ static TPolygon ToClipper1(const TPolygon2& poly2)
         poly1.push_back(ToClipper1(pt));
     }
     return poly1;
-}
-
-static TPolyPolygon ToClipper1(const TPolyPolygon2& pp2)
-{
-    TPolyPolygon pp1;
-    pp1.reserve(pp2.size());
-    for (const auto& poly : pp2) {
-        pp1.push_back(ToClipper1(poly));
-    }
-    return pp1;
 }
 
 // Convert Clipper1 enums to Clipper2 enums
