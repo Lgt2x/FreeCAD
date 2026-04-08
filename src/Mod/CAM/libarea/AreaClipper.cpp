@@ -564,9 +564,7 @@ void CArea::Union(const CArea& a2)
 // static
 CArea CArea::UniteCurves(std::list<CCurve>& curves)
 {
-    Clipper c;
-    c.StrictlySimple(CArea::m_clipper_simple);
-
+    // Use Clipper2
     TPolyPolygon pp;
 
     for (std::list<CCurve>::iterator It = curves.begin(); It != curves.end(); It++) {
@@ -576,9 +574,17 @@ CArea CArea::UniteCurves(std::list<CCurve>& curves)
         pp.push_back(p);
     }
 
-    c.AddPaths(pp, ptSubject, true);
-    TPolyPolygon solution;
-    c.Execute(ctUnion, solution, pftNonZero, pftNonZero);
+    // Convert to Clipper2
+    TPolyPolygon2 pp_c2 = ToClipper2(pp);
+
+    // Use Clipper2 API - Note: original Clipper1 implementation uses NonZero fill rule
+    Clipper2Lib::Clipper64 c;
+    c.AddSubject(pp_c2);
+    TPolyPolygon2 solution_c2;
+    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution_c2);
+
+    // Convert back to Clipper1 format
+    TPolyPolygon solution = ToClipper1(solution_c2);
     CArea area;
     SetFromResult(area, solution);
     return area;
