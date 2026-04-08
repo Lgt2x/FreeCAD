@@ -13,6 +13,7 @@ endif(MSVC)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/src/Mod/Import/App/dxf
+    ${CMAKE_SOURCE_DIR}/src/3rdParty/Clipper2/CPP/Clipper2Lib/include
 )
 
 link_directories(${OCC_LIBRARY_DIR})
@@ -121,7 +122,7 @@ else(MSVC)
     endif(BUILD_DYNAMIC_LINK_PYTHON)
 endif(MSVC)
 
-target_link_libraries(area-native ${area_native_LIBS} Import)
+target_link_libraries(area-native ${area_native_LIBS} Import Clipper2Z)
 SET_BIN_DIR(area-native area-native /Mod/CAM)
 
 target_link_libraries(area area-native ${area_LIBS} ${area_native_LIBS})
