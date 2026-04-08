@@ -7,11 +7,10 @@
 #include "Area.h"
 #include "clipper.hpp"
 #include "clipper2/clipper.h"
-using namespace ClipperLib;
-// Note: Cannot use "using namespace Clipper2Lib;" due to name conflicts (Path, Paths, etc.)
+// Note: Cannot use "using namespace Clipper2Lib;" due to name conflicts (Point)
 
-#define TPolygon Path
-#define TPolyPolygon Paths
+#define TPolygon ClipperLib::Path
+#define TPolyPolygon ClipperLib::Paths
 
 // Clipper2 type aliases for progressive migration
 #define TPolygon2 Clipper2Lib::Path64
@@ -25,7 +24,7 @@ bool CArea::HolesLinked()
 // static const double PI = 3.1415926535897932;
 double CArea::m_clipper_scale = 10000.0;
 
-// Convert between PointD (double) and Point64 (int64) with scaling
+// Convert between Clipper2Lib::PointD (double) and Clipper2Lib::Point64 (int64) with scaling
 static Clipper2Lib::Point64 ToPoint64(const Clipper2Lib::PointD& p)
 {
     return Clipper2Lib::Point64(
@@ -45,7 +44,7 @@ static Clipper2Lib::PointD ToPointD(const Clipper2Lib::Point64& p)
 // Clipper1 <-> Clipper2 conversion helpers for progressive migration
 
 // Convert Clipper1 to Clipper2
-static Clipper2Lib::Point64 ToClipper2(const IntPoint& p1)
+static Clipper2Lib::Point64 ToClipper2(const ClipperLib::IntPoint& p1)
 {
     return Clipper2Lib::Point64(p1.X, p1.Y);
 }
@@ -71,9 +70,9 @@ static TPolyPolygon2 ToClipper2(const TPolyPolygon& pp1)
 }
 
 // Convert Clipper2 to Clipper1
-static IntPoint ToClipper1(const Clipper2Lib::Point64& p2)
+static ClipperLib::IntPoint ToClipper1(const Clipper2Lib::Point64& p2)
 {
-    return IntPoint(p2.x, p2.y);
+    return ClipperLib::IntPoint(p2.x, p2.y);
 }
 
 static TPolygon ToClipper1(const TPolygon2& poly2)
@@ -97,63 +96,63 @@ static TPolyPolygon ToClipper1(const TPolyPolygon2& pp2)
 }
 
 // Convert Clipper1 enums to Clipper2 enums
-static Clipper2Lib::ClipType ToClipper2ClipType(ClipType op)
+static Clipper2Lib::ClipType ToClipper2ClipType(ClipperLib::ClipType op)
 {
     switch (op) {
-        case ctUnion:
+        case ClipperLib::ctUnion:
             return Clipper2Lib::ClipType::Union;
-        case ctDifference:
+        case ClipperLib::ctDifference:
             return Clipper2Lib::ClipType::Difference;
-        case ctIntersection:
+        case ClipperLib::ctIntersection:
             return Clipper2Lib::ClipType::Intersection;
-        case ctXor:
+        case ClipperLib::ctXor:
             return Clipper2Lib::ClipType::Xor;
         default:
             return Clipper2Lib::ClipType::Union;
     }
 }
 
-static Clipper2Lib::FillRule ToClipper2FillRule(PolyFillType fillType)
+static Clipper2Lib::FillRule ToClipper2FillRule(ClipperLib::PolyFillType fillType)
 {
     switch (fillType) {
-        case pftNonZero:
+        case ClipperLib::pftNonZero:
             return Clipper2Lib::FillRule::NonZero;
-        case pftPositive:
+        case ClipperLib::pftPositive:
             return Clipper2Lib::FillRule::Positive;
-        case pftNegative:
+        case ClipperLib::pftNegative:
             return Clipper2Lib::FillRule::Negative;
-        case pftEvenOdd:
+        case ClipperLib::pftEvenOdd:
         default:
             return Clipper2Lib::FillRule::EvenOdd;
     }
 }
 
-static Clipper2Lib::JoinType ToClipper2JoinType(JoinType joinType)
+static Clipper2Lib::JoinType ToClipper2JoinType(ClipperLib::JoinType joinType)
 {
     switch (joinType) {
-        case jtSquare:
+        case ClipperLib::jtSquare:
             return Clipper2Lib::JoinType::Square;
-        case jtRound:
+        case ClipperLib::jtRound:
             return Clipper2Lib::JoinType::Round;
-        case jtMiter:
+        case ClipperLib::jtMiter:
             return Clipper2Lib::JoinType::Miter;
         default:
             return Clipper2Lib::JoinType::Square;
     }
 }
 
-static Clipper2Lib::EndType ToClipper2EndType(EndType endType)
+static Clipper2Lib::EndType ToClipper2EndType(ClipperLib::EndType endType)
 {
     switch (endType) {
-        case etClosedPolygon:
+        case ClipperLib::etClosedPolygon:
             return Clipper2Lib::EndType::Polygon;
-        case etClosedLine:
+        case ClipperLib::etClosedLine:
             return Clipper2Lib::EndType::Joined;
-        case etOpenButt:
+        case ClipperLib::etOpenButt:
             return Clipper2Lib::EndType::Butt;
-        case etOpenSquare:
+        case ClipperLib::etOpenSquare:
             return Clipper2Lib::EndType::Square;
-        case etOpenRound:
+        case ClipperLib::etOpenRound:
             return Clipper2Lib::EndType::Round;
         default:
             return Clipper2Lib::EndType::Polygon;
@@ -663,14 +662,14 @@ void CArea::Offset(double inwards_value)
     this->Reorder();
 }
 
-void CArea::PopulateClipper(Clipper& c, PolyType type) const
+void CArea::PopulateClipper(ClipperLib::Clipper& c, ClipperLib::PolyType type) const
 {
     int skipped = 0;
     for (std::list<CCurve>::const_iterator It = m_curves.begin(); It != m_curves.end(); It++) {
         const CCurve& curve = *It;
         bool closed = curve.IsClosed();
         if (!closed) {
-            if (type == ptClip) {
+            if (type == ClipperLib::ptClip) {
                 ++skipped;
                 continue;
             }
@@ -685,13 +684,18 @@ void CArea::PopulateClipper(Clipper& c, PolyType type) const
     }
 }
 
-void CArea::Clip(ClipType op, const CArea* a, PolyFillType subjFillType, PolyFillType clipFillType)
+void CArea::Clip(
+    ClipperLib::ClipType op,
+    const CArea* a,
+    ClipperLib::PolyFillType subjFillType,
+    ClipperLib::PolyFillType clipFillType
+)
 {
     // Use Clipper2
     // Convert Clipper1 enums to Clipper2
     Clipper2Lib::ClipType op_c2 = ToClipper2ClipType(op);
 
-    // Use subject fill type as primary (Clipper2 uses single FillRule)
+    // Use subject fill type as primary (Clipper2 uses single Clipper2Lib::FillRule)
     Clipper2Lib::FillRule fillRule_c2 = ToClipper2FillRule(subjFillType);
 
     // Build polygons with Clipper2
@@ -721,8 +725,8 @@ void CArea::Clip(ClipType op, const CArea* a, PolyFillType subjFillType, PolyFil
 
 void CArea::OffsetWithClipper(
     double offset,
-    JoinType joinType /* =jtRound */,
-    EndType endType /* =etOpenRound */,
+    ClipperLib::JoinType joinType /* =jtRound */,
+    ClipperLib::EndType endType /* =etOpenRound */,
     double miterLimit /*  = 5.0 */,
     double arcTolerance /*  = 0.0 */
 )
