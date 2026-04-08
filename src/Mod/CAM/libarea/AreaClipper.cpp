@@ -6,10 +6,16 @@
 
 #include "Area.h"
 #include "clipper.hpp"
+#include "clipper2/clipper.h"
 using namespace ClipperLib;
 
 #define TPolygon Path
 #define TPolyPolygon Paths
+
+// Clipper2 type aliases for progressive migration
+#define TPolygon2 Clipper2Lib::Path64
+#define TPolyPolygon2 Clipper2Lib::Paths64
+#define TPoint2 Clipper2Lib::Point64
 
 bool CArea::HolesLinked()
 {
@@ -39,6 +45,60 @@ public:
         return IntPoint((long64)(X * CArea::m_clipper_scale), (long64)(Y * CArea::m_clipper_scale));
     }
 };
+
+// Clipper1 <-> Clipper2 conversion helpers for progressive migration
+
+// Convert Clipper1 to Clipper2
+static TPoint2 ToClipper2(const IntPoint& p1)
+{
+    return TPoint2(p1.X, p1.Y);
+}
+
+static TPolygon2 ToClipper2(const TPolygon& poly1)
+{
+    TPolygon2 poly2;
+    poly2.reserve(poly1.size());
+    for (const auto& pt : poly1) {
+        poly2.push_back(ToClipper2(pt));
+    }
+    return poly2;
+}
+
+static TPolyPolygon2 ToClipper2(const TPolyPolygon& pp1)
+{
+    TPolyPolygon2 pp2;
+    pp2.reserve(pp1.size());
+    for (const auto& poly : pp1) {
+        pp2.push_back(ToClipper2(poly));
+    }
+    return pp2;
+}
+
+// Convert Clipper2 to Clipper1
+static IntPoint ToClipper1(const TPoint2& p2)
+{
+    return IntPoint(p2.x, p2.y);
+}
+
+static TPolygon ToClipper1(const TPolygon2& poly2)
+{
+    TPolygon poly1;
+    poly1.reserve(poly2.size());
+    for (const auto& pt : poly2) {
+        poly1.push_back(ToClipper1(pt));
+    }
+    return poly1;
+}
+
+static TPolyPolygon ToClipper1(const TPolyPolygon2& pp2)
+{
+    TPolyPolygon pp1;
+    pp1.reserve(pp2.size());
+    for (const auto& poly : pp2) {
+        pp1.push_back(ToClipper1(poly));
+    }
+    return pp1;
+}
 
 static std::list<DoubleAreaPoint> pts_for_AddVertex;
 
