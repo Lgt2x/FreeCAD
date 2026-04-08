@@ -23,6 +23,7 @@
 
 import TestApp
 
+from CAMTests.TestAreaOperations import TestAreaOperations
 from CAMTests.TestCAMSanity import TestCAMSanity
 
 from CAMTests.TestLinkingGenerator import TestGetLinkingMoves
