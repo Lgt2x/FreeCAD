@@ -294,7 +294,7 @@ static void MakeLoop(
     CArea::m_units = save_units;
 }
 
-static void OffsetWithLoops(const TPolyPolygon& pp, TPolyPolygon& pp_new, double inwards_value)
+static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, double inwards_value)
 {
     // Use Clipper2
     Clipper2Lib::Clipper64 c;
@@ -319,7 +319,7 @@ static void OffsetWithLoops(const TPolyPolygon& pp, TPolyPolygon& pp_new, double
     }
 
     for (unsigned int i = 0; i < pp.size(); i++) {
-        const TPolygon& p = pp[i];
+        const TPolygon2& p = pp[i];
 
         pts_for_AddVertex.clear();
 
@@ -354,11 +354,10 @@ static void OffsetWithLoops(const TPolyPolygon& pp, TPolyPolygon& pp_new, double
     }
 
     // Execute union with Clipper2
-    TPolyPolygon2 solution_c2;
-    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution_c2);
+    TPolyPolygon2 solution;
+    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution);
 
-    // Convert back
-    pp_new = ToClipper1(solution_c2);
+    pp_new = solution;
 
     if (inwards) {
         // remove the large square
@@ -368,12 +367,12 @@ static void OffsetWithLoops(const TPolyPolygon& pp, TPolyPolygon& pp_new, double
     }
     else {
         // reverse all the resulting polygons
-        TPolyPolygon copy = pp_new;
+        TPolyPolygon2 copy = pp_new;
         pp_new.clear();
         pp_new.resize(copy.size());
         for (unsigned int i = 0; i < copy.size(); i++) {
-            const TPolygon& p = copy[i];
-            TPolygon p_new;
+            const TPolygon2& p = copy[i];
+            TPolygon2 p_new;
             p_new.resize(p.size());
             std::size_t size_minus_one = p.size() - 1;
             for (std::size_t j = 0; j < p.size(); j++) {
@@ -472,7 +471,7 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon& pp_new, dou
     }
 }
 
-static void MakePoly(const CCurve& curve, TPolygon& p, bool reverse = false)
+static void MakePoly(const CCurve& curve, TPolygon2& p, bool reverse = false)
 {
     pts_for_AddVertex.clear();
     const CVertex* prev_vertex = NULL;
@@ -500,7 +499,7 @@ static void MakePoly(const CCurve& curve, TPolygon& p, bool reverse = false)
         for (std::list<DoubleAreaPoint>::iterator It = pts_for_AddVertex.begin();
              It != pts_for_AddVertex.end();
              It++, i--) {
-            p[i] = ToClipper1(It->int_point());
+            p[i] = It->int_point();
         }
     }
     else {
@@ -508,18 +507,18 @@ static void MakePoly(const CCurve& curve, TPolygon& p, bool reverse = false)
         for (std::list<DoubleAreaPoint>::iterator It = pts_for_AddVertex.begin();
              It != pts_for_AddVertex.end();
              It++, i++) {
-            p[i] = ToClipper1(It->int_point());
+            p[i] = It->int_point();
         }
     }
 }
 
-static void MakePolyPoly(const CArea& area, TPolyPolygon& pp, bool reverse = true)
+static void MakePolyPoly(const CArea& area, TPolyPolygon2& pp, bool reverse = true)
 {
     pp.clear();
 
     for (std::list<CCurve>::const_iterator It = area.m_curves.begin(); It != area.m_curves.end();
          It++) {
-        pp.push_back(TPolygon());
+        pp.push_back(TPolygon2());
         MakePoly(*It, pp.back(), reverse);
     }
 }
@@ -581,130 +580,112 @@ static void SetFromResult(
 void CArea::Subtract(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon pp1, pp2;
+    TPolyPolygon2 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Convert to Clipper2
-    TPolyPolygon2 pp1_c2 = ToClipper2(pp1);
-    TPolyPolygon2 pp2_c2 = ToClipper2(pp2);
-
     // Use Clipper2 API
     Clipper2Lib::Clipper64 c;
-    c.AddSubject(pp1_c2);
-    c.AddClip(pp2_c2);
-    TPolyPolygon2 solution_c2;
-    c.Execute(Clipper2Lib::ClipType::Difference, Clipper2Lib::FillRule::EvenOdd, solution_c2);
+    c.AddSubject(pp1);
+    c.AddClip(pp2);
+    TPolyPolygon2 solution;
+    c.Execute(Clipper2Lib::ClipType::Difference, Clipper2Lib::FillRule::EvenOdd, solution);
 
     // Convert back to Clipper1 format
-    TPolyPolygon solution = ToClipper1(solution_c2);
-    SetFromResult(*this, solution);
+    TPolyPolygon solution_c1 = ToClipper1(solution);
+    SetFromResult(*this, solution_c1);
 }
 
 void CArea::Intersect(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon pp1, pp2;
+    TPolyPolygon2 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Convert to Clipper2
-    TPolyPolygon2 pp1_c2 = ToClipper2(pp1);
-    TPolyPolygon2 pp2_c2 = ToClipper2(pp2);
-
     // Use Clipper2 API
     Clipper2Lib::Clipper64 c;
-    c.AddSubject(pp1_c2);
-    c.AddClip(pp2_c2);
-    TPolyPolygon2 solution_c2;
-    c.Execute(Clipper2Lib::ClipType::Intersection, Clipper2Lib::FillRule::EvenOdd, solution_c2);
+    c.AddSubject(pp1);
+    c.AddClip(pp2);
+    TPolyPolygon2 solution;
+    c.Execute(Clipper2Lib::ClipType::Intersection, Clipper2Lib::FillRule::EvenOdd, solution);
 
     // Convert back to Clipper1 format
-    TPolyPolygon solution = ToClipper1(solution_c2);
-    SetFromResult(*this, solution);
+    TPolyPolygon solution_c1 = ToClipper1(solution);
+    SetFromResult(*this, solution_c1);
 }
 
 void CArea::Union(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon pp1, pp2;
+    TPolyPolygon2 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Convert to Clipper2
-    TPolyPolygon2 pp1_c2 = ToClipper2(pp1);
-    TPolyPolygon2 pp2_c2 = ToClipper2(pp2);
-
     // Use Clipper2 API
     Clipper2Lib::Clipper64 c;
-    c.AddSubject(pp1_c2);
-    c.AddClip(pp2_c2);
-    TPolyPolygon2 solution_c2;
-    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::EvenOdd, solution_c2);
+    c.AddSubject(pp1);
+    c.AddClip(pp2);
+    TPolyPolygon2 solution;
+    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::EvenOdd, solution);
 
     // Convert back to Clipper1 format
-    TPolyPolygon solution = ToClipper1(solution_c2);
-    SetFromResult(*this, solution);
+    TPolyPolygon solution_c1 = ToClipper1(solution);
+    SetFromResult(*this, solution_c1);
 }
 
 // static
 CArea CArea::UniteCurves(std::list<CCurve>& curves)
 {
     // Use Clipper2
-    TPolyPolygon pp;
+    TPolyPolygon2 pp;
 
     for (std::list<CCurve>::iterator It = curves.begin(); It != curves.end(); It++) {
         CCurve& curve = *It;
-        TPolygon p;
+        TPolygon2 p;
         MakePoly(curve, p);
         pp.push_back(p);
     }
 
-    // Convert to Clipper2
-    TPolyPolygon2 pp_c2 = ToClipper2(pp);
-
     // Use Clipper2 API - Note: original Clipper1 implementation uses NonZero fill rule
     Clipper2Lib::Clipper64 c;
-    c.AddSubject(pp_c2);
-    TPolyPolygon2 solution_c2;
-    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution_c2);
+    c.AddSubject(pp);
+    TPolyPolygon2 solution;
+    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution);
 
     // Convert back to Clipper1 format
-    TPolyPolygon solution = ToClipper1(solution_c2);
+    TPolyPolygon solution_c1 = ToClipper1(solution);
     CArea area;
-    SetFromResult(area, solution);
+    SetFromResult(area, solution_c1);
     return area;
 }
 
 void CArea::Xor(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon pp1, pp2;
+    TPolyPolygon2 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Convert to Clipper2
-    TPolyPolygon2 pp1_c2 = ToClipper2(pp1);
-    TPolyPolygon2 pp2_c2 = ToClipper2(pp2);
-
     // Use Clipper2 API
     Clipper2Lib::Clipper64 c;
-    c.AddSubject(pp1_c2);
-    c.AddClip(pp2_c2);
-    TPolyPolygon2 solution_c2;
-    c.Execute(Clipper2Lib::ClipType::Xor, Clipper2Lib::FillRule::EvenOdd, solution_c2);
+    c.AddSubject(pp1);
+    c.AddClip(pp2);
+    TPolyPolygon2 solution;
+    c.Execute(Clipper2Lib::ClipType::Xor, Clipper2Lib::FillRule::EvenOdd, solution);
 
     // Convert back to Clipper1 format
-    TPolyPolygon solution = ToClipper1(solution_c2);
-    SetFromResult(*this, solution);
+    TPolyPolygon solution_c1 = ToClipper1(solution);
+    SetFromResult(*this, solution_c1);
 }
 
 void CArea::Offset(double inwards_value)
 {
-    TPolyPolygon pp, pp2;
+    TPolyPolygon2 pp, pp2;
     MakePolyPoly(*this, pp, false);
     OffsetWithLoops(pp, pp2, inwards_value * m_units);
-    SetFromResult(*this, pp2, false);
+    TPolyPolygon pp2_c1 = ToClipper1(pp2);
+    SetFromResult(*this, pp2_c1, false);
     this->Reorder();
 }
 
@@ -720,8 +701,9 @@ void CArea::PopulateClipper(Clipper& c, PolyType type) const
                 continue;
             }
         }
-        TPolygon p;
-        MakePoly(curve, p, false);
+        TPolygon2 p2;
+        MakePoly(curve, p2, false);
+        TPolygon p = ToClipper1(p2);
         c.AddPath(p, type, closed);
     }
     if (skipped) {
@@ -738,18 +720,16 @@ void CArea::Clip(ClipType op, const CArea* a, PolyFillType subjFillType, PolyFil
     // Use subject fill type as primary (Clipper2 uses single FillRule)
     Clipper2Lib::FillRule fillRule_c2 = ToClipper2FillRule(subjFillType);
 
-    // Build polygons and convert to Clipper2
-    TPolyPolygon pp1, pp2;
+    // Build polygons with Clipper2
+    TPolyPolygon2 pp1, pp2;
     MakePolyPoly(*this, pp1);
-    TPolyPolygon2 pp1_c2 = ToClipper2(pp1);
 
     Clipper2Lib::Clipper64 c;
-    c.AddSubject(pp1_c2);
+    c.AddSubject(pp1);
 
     if (a) {
         MakePolyPoly(*a, pp2);
-        TPolyPolygon2 pp2_c2 = ToClipper2(pp2);
-        c.AddClip(pp2_c2);
+        c.AddClip(pp2);
     }
 
     // Execute with PolyTree to preserve hierarchy
@@ -757,9 +737,9 @@ void CArea::Clip(ClipType op, const CArea* a, PolyFillType subjFillType, PolyFil
     c.Execute(op_c2, fillRule_c2, tree);
 
     // Extract closed paths from polytree
-    TPolyPolygon2 closed_c2 = Clipper2Lib::PolyTreeToPaths64(tree);
-    TPolyPolygon closed = ToClipper1(closed_c2);
-    SetFromResult(*this, closed);
+    TPolyPolygon2 closed = Clipper2Lib::PolyTreeToPaths64(tree);
+    TPolyPolygon closed_c1 = ToClipper1(closed);
+    SetFromResult(*this, closed_c1);
 
     // Note: Clipper2 handles open paths differently
     // For now, we only extract closed paths as the primary result
@@ -794,26 +774,25 @@ void CArea::OffsetWithClipper(
     // Create Clipper2 offset object
     Clipper2Lib::ClipperOffset clipper(miterLimit, arcTolerance);
 
-    // Build and convert polygons
-    TPolyPolygon pp;
+    // Build polygons with Clipper2
+    TPolyPolygon2 pp;
     MakePolyPoly(*this, pp, false);
-    TPolyPolygon2 pp_c2 = ToClipper2(pp);
 
     // Add paths with appropriate end types
     int i = 0;
     for (const CCurve& c : m_curves) {
         Clipper2Lib::EndType et_c2 = c.IsClosed() ? Clipper2Lib::EndType::Polygon
                                                   : ToClipper2EndType(endType);
-        clipper.AddPath(pp_c2[i++], ToClipper2JoinType(joinType), et_c2);
+        clipper.AddPath(pp[i++], ToClipper2JoinType(joinType), et_c2);
     }
 
     // Execute offset
-    TPolyPolygon2 pp2_c2;
-    clipper.Execute(offset, pp2_c2);
+    TPolyPolygon2 pp2;
+    clipper.Execute(offset, pp2);
 
     // Convert back and set result
-    TPolyPolygon pp2 = ToClipper1(pp2_c2);
-    SetFromResult(*this, pp2, false);
+    TPolyPolygon pp2_c1 = ToClipper1(pp2);
+    SetFromResult(*this, pp2_c1, false);
     this->Reorder();
 }
 
