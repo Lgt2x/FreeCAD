@@ -409,14 +409,16 @@ static void MakeObround(const Point& pt0, const CVertex& vt1, double radius)
 
 static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon& pp_new, double radius)
 {
-    Clipper c;
-    c.StrictlySimple(CArea::m_clipper_simple);
+    // Use Clipper2
+    Clipper2Lib::Clipper64 c;
     pp_new.clear();
 
     for (std::list<CCurve>::const_iterator It = area.m_curves.begin(); It != area.m_curves.end();
          It++) {
         c.Clear();
-        c.AddPaths(pp_new, ptSubject, true);
+        // Add existing results back to clipper
+        TPolyPolygon2 pp_new_c2 = ToClipper2(pp_new);
+        c.AddSubject(pp_new_c2);
         pp_new.clear();
         pts_for_AddVertex.clear();
 
@@ -436,12 +438,17 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon& pp_new, dou
                      It++) {
                     loopy_polygon.push_back(It->int_point());
                 }
-                c.AddPath(loopy_polygon, ptSubject, true);
+                // Convert and add to Clipper2 immediately
+                TPolygon2 loopy_polygon_c2 = ToClipper2(loopy_polygon);
+                c.AddSubject({loopy_polygon_c2});
                 pts_for_AddVertex.clear();
             }
             prev_vertex = &vertex;
         }
-        c.Execute(ctUnion, pp_new, pftNonZero, pftNonZero);
+        // Execute union with Clipper2
+        TPolyPolygon2 solution_c2;
+        c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution_c2);
+        pp_new = ToClipper1(solution_c2);
     }
 
 
