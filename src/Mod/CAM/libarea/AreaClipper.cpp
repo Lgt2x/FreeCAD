@@ -16,7 +16,6 @@ using namespace ClipperLib;
 // Clipper2 type aliases for progressive migration
 #define TPolygon2 Clipper2Lib::Path64
 #define TPolyPolygon2 Clipper2Lib::Paths64
-#define TPoint2 Clipper2Lib::Point64
 
 bool CArea::HolesLinked()
 {
@@ -41,18 +40,26 @@ public:
         X = (double)(p.X) / CArea::m_clipper_scale;
         Y = (double)(p.Y) / CArea::m_clipper_scale;
     }
-    IntPoint int_point()
+    DoubleAreaPoint(const Clipper2Lib::Point64& p)
     {
-        return IntPoint((long64)(X * CArea::m_clipper_scale), (long64)(Y * CArea::m_clipper_scale));
+        X = (double)(p.x) / CArea::m_clipper_scale;
+        Y = (double)(p.y) / CArea::m_clipper_scale;
+    }
+    Clipper2Lib::Point64 int_point()
+    {
+        return Clipper2Lib::Point64(
+            (long64)(X * CArea::m_clipper_scale),
+            (long64)(Y * CArea::m_clipper_scale)
+        );
     }
 };
 
 // Clipper1 <-> Clipper2 conversion helpers for progressive migration
 
 // Convert Clipper1 to Clipper2
-static TPoint2 ToClipper2(const IntPoint& p1)
+static Clipper2Lib::Point64 ToClipper2(const IntPoint& p1)
 {
-    return TPoint2(p1.X, p1.Y);
+    return Clipper2Lib::Point64(p1.X, p1.Y);
 }
 
 static TPolygon2 ToClipper2(const TPolygon& poly1)
@@ -76,7 +83,7 @@ static TPolyPolygon2 ToClipper2(const TPolyPolygon& pp1)
 }
 
 // Convert Clipper2 to Clipper1
-static IntPoint ToClipper1(const TPoint2& p2)
+static IntPoint ToClipper1(const Clipper2Lib::Point64& p2)
 {
     return IntPoint(p2.x, p2.y);
 }
@@ -298,15 +305,14 @@ static void OffsetWithLoops(const TPolyPolygon& pp, TPolyPolygon& pp_new, double
 
     if (inwards) {
         // add a large square on the outside, to be removed later
-        TPolygon p;
+        TPolygon2 p;
         p.push_back(DoubleAreaPoint(-10000.0, -10000.0).int_point());
         p.push_back(DoubleAreaPoint(-10000.0, 10000.0).int_point());
         p.push_back(DoubleAreaPoint(10000.0, 10000.0).int_point());
         p.push_back(DoubleAreaPoint(10000.0, -10000.0).int_point());
 
-        // Convert and add to Clipper2
-        TPolygon2 p_c2 = ToClipper2(p);
-        c.AddSubject({p_c2});
+        // Add to Clipper2
+        c.AddSubject({p});
     }
     else {
         reverse = true;
@@ -333,7 +339,7 @@ static void OffsetWithLoops(const TPolyPolygon& pp, TPolyPolygon& pp_new, double
                 }
             }
 
-            TPolygon loopy_polygon;
+            TPolygon2 loopy_polygon;
             loopy_polygon.reserve(pts_for_AddVertex.size());
             for (std::list<DoubleAreaPoint>::iterator It = pts_for_AddVertex.begin();
                  It != pts_for_AddVertex.end();
@@ -341,9 +347,8 @@ static void OffsetWithLoops(const TPolyPolygon& pp, TPolyPolygon& pp_new, double
                 loopy_polygon.push_back(It->int_point());
             }
 
-            // Convert and add to Clipper2 immediately
-            TPolygon2 loopy_polygon_c2 = ToClipper2(loopy_polygon);
-            c.AddSubject({loopy_polygon_c2});
+            // Add to Clipper2 immediately
+            c.AddSubject({loopy_polygon});
             pts_for_AddVertex.clear();
         }
     }
@@ -431,16 +436,15 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon& pp_new, dou
             if (prev_vertex) {
                 MakeObround(prev_vertex->m_p, vertex, radius);
 
-                TPolygon loopy_polygon;
+                TPolygon2 loopy_polygon;
                 loopy_polygon.reserve(pts_for_AddVertex.size());
                 for (std::list<DoubleAreaPoint>::iterator It = pts_for_AddVertex.begin();
                      It != pts_for_AddVertex.end();
                      It++) {
                     loopy_polygon.push_back(It->int_point());
                 }
-                // Convert and add to Clipper2 immediately
-                TPolygon2 loopy_polygon_c2 = ToClipper2(loopy_polygon);
-                c.AddSubject({loopy_polygon_c2});
+                // Add to Clipper2 immediately
+                c.AddSubject({loopy_polygon});
                 pts_for_AddVertex.clear();
             }
             prev_vertex = &vertex;
@@ -496,7 +500,7 @@ static void MakePoly(const CCurve& curve, TPolygon& p, bool reverse = false)
         for (std::list<DoubleAreaPoint>::iterator It = pts_for_AddVertex.begin();
              It != pts_for_AddVertex.end();
              It++, i--) {
-            p[i] = It->int_point();
+            p[i] = ToClipper1(It->int_point());
         }
     }
     else {
@@ -504,7 +508,7 @@ static void MakePoly(const CCurve& curve, TPolygon& p, bool reverse = false)
         for (std::list<DoubleAreaPoint>::iterator It = pts_for_AddVertex.begin();
              It != pts_for_AddVertex.end();
              It++, i++) {
-            p[i] = It->int_point();
+            p[i] = ToClipper1(It->int_point());
         }
     }
 }
@@ -528,7 +532,7 @@ static void SetFromResult(CCurve& curve, TPolygon& p, bool reverse = true, bool 
 
     for (unsigned int j = 0; j < p.size(); j++) {
         const IntPoint& pt = p[j];
-        DoubleAreaPoint dp(pt);
+        DoubleAreaPoint dp(ToClipper2(pt));
         CVertex vertex(0, Point(dp.X / CArea::m_units, dp.Y / CArea::m_units), Point(0.0, 0.0));
         if (reverse) {
             curve.m_vertices.push_front(vertex);
