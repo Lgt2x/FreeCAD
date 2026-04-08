@@ -508,15 +508,15 @@ static void MakePolyPoly(const CArea& area, TPolyPolygon2& pp, bool reverse = tr
     }
 }
 
-static void SetFromResult(CCurve& curve, TPolygon& p, bool reverse = true, bool is_closed = true)
+static void SetFromResult(CCurve& curve, TPolygon2& p, bool reverse = true, bool is_closed = true)
 {
     if (CArea::m_clipper_clean_distance >= Point::tolerance) {
-        CleanPolygon(p, CArea::m_clipper_clean_distance);
+        p = Clipper2Lib::SimplifyPath(p, CArea::m_clipper_clean_distance, is_closed);
     }
 
     for (unsigned int j = 0; j < p.size(); j++) {
-        const IntPoint& pt = p[j];
-        Clipper2Lib::PointD dp = ToPointD(ToClipper2(pt));
+        const Clipper2Lib::Point64& pt = p[j];
+        Clipper2Lib::PointD dp = ToPointD(pt);
         CVertex vertex(0, Point(dp.x / CArea::m_units, dp.y / CArea::m_units), Point(0.0, 0.0));
         if (reverse) {
             curve.m_vertices.push_front(vertex);
@@ -542,7 +542,7 @@ static void SetFromResult(CCurve& curve, TPolygon& p, bool reverse = true, bool 
 
 static void SetFromResult(
     CArea& area,
-    TPolyPolygon& pp,
+    TPolyPolygon2& pp,
     bool reverse = true,
     bool is_closed = true,
     bool clear = true
@@ -554,7 +554,7 @@ static void SetFromResult(
     }
 
     for (unsigned int i = 0; i < pp.size(); i++) {
-        TPolygon& p = pp[i];
+        TPolygon2& p = pp[i];
 
         area.m_curves.emplace_back();
         CCurve& curve = area.m_curves.back();
@@ -576,9 +576,7 @@ void CArea::Subtract(const CArea& a2)
     TPolyPolygon2 solution;
     c.Execute(Clipper2Lib::ClipType::Difference, Clipper2Lib::FillRule::EvenOdd, solution);
 
-    // Convert back to Clipper1 format
-    TPolyPolygon solution_c1 = ToClipper1(solution);
-    SetFromResult(*this, solution_c1);
+    SetFromResult(*this, solution);
 }
 
 void CArea::Intersect(const CArea& a2)
@@ -595,9 +593,7 @@ void CArea::Intersect(const CArea& a2)
     TPolyPolygon2 solution;
     c.Execute(Clipper2Lib::ClipType::Intersection, Clipper2Lib::FillRule::EvenOdd, solution);
 
-    // Convert back to Clipper1 format
-    TPolyPolygon solution_c1 = ToClipper1(solution);
-    SetFromResult(*this, solution_c1);
+    SetFromResult(*this, solution);
 }
 
 void CArea::Union(const CArea& a2)
@@ -614,9 +610,7 @@ void CArea::Union(const CArea& a2)
     TPolyPolygon2 solution;
     c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::EvenOdd, solution);
 
-    // Convert back to Clipper1 format
-    TPolyPolygon solution_c1 = ToClipper1(solution);
-    SetFromResult(*this, solution_c1);
+    SetFromResult(*this, solution);
 }
 
 // static
@@ -638,10 +632,8 @@ CArea CArea::UniteCurves(std::list<CCurve>& curves)
     TPolyPolygon2 solution;
     c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution);
 
-    // Convert back to Clipper1 format
-    TPolyPolygon solution_c1 = ToClipper1(solution);
     CArea area;
-    SetFromResult(area, solution_c1);
+    SetFromResult(area, solution);
     return area;
 }
 
@@ -659,9 +651,7 @@ void CArea::Xor(const CArea& a2)
     TPolyPolygon2 solution;
     c.Execute(Clipper2Lib::ClipType::Xor, Clipper2Lib::FillRule::EvenOdd, solution);
 
-    // Convert back to Clipper1 format
-    TPolyPolygon solution_c1 = ToClipper1(solution);
-    SetFromResult(*this, solution_c1);
+    SetFromResult(*this, solution);
 }
 
 void CArea::Offset(double inwards_value)
@@ -669,8 +659,7 @@ void CArea::Offset(double inwards_value)
     TPolyPolygon2 pp, pp2;
     MakePolyPoly(*this, pp, false);
     OffsetWithLoops(pp, pp2, inwards_value * m_units);
-    TPolyPolygon pp2_c1 = ToClipper1(pp2);
-    SetFromResult(*this, pp2_c1, false);
+    SetFromResult(*this, pp2, false);
     this->Reorder();
 }
 
@@ -723,8 +712,7 @@ void CArea::Clip(ClipType op, const CArea* a, PolyFillType subjFillType, PolyFil
 
     // Extract closed paths from polytree
     TPolyPolygon2 closed = Clipper2Lib::PolyTreeToPaths64(tree);
-    TPolyPolygon closed_c1 = ToClipper1(closed);
-    SetFromResult(*this, closed_c1);
+    SetFromResult(*this, closed);
 
     // Note: Clipper2 handles open paths differently
     // For now, we only extract closed paths as the primary result
@@ -775,9 +763,7 @@ void CArea::OffsetWithClipper(
     TPolyPolygon2 pp2;
     clipper.Execute(offset, pp2);
 
-    // Convert back and set result
-    TPolyPolygon pp2_c1 = ToClipper1(pp2);
-    SetFromResult(*this, pp2_c1, false);
+    SetFromResult(*this, pp2, false);
     this->Reorder();
 }
 
@@ -785,8 +771,7 @@ void CArea::Thicken(double value)
 {
     TPolyPolygon2 pp;
     OffsetSpansWithObrounds(*this, pp, value * m_units);
-    TPolyPolygon pp_c1 = ToClipper1(pp);
-    SetFromResult(*this, pp_c1, false);
+    SetFromResult(*this, pp, false);
     this->Reorder();
 }
 
