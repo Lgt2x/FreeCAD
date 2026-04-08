@@ -399,7 +399,7 @@ static void MakeObround(const Point& pt0, const CVertex& vt1, double radius)
     CArea::m_units = save_units;
 }
 
-static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon& pp_new, double radius)
+static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, double radius)
 {
     // Use Clipper2
     Clipper2Lib::Clipper64 c;
@@ -409,8 +409,7 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon& pp_new, dou
          It++) {
         c.Clear();
         // Add existing results back to clipper
-        TPolyPolygon2 pp_new_c2 = ToClipper2(pp_new);
-        c.AddSubject(pp_new_c2);
+        c.AddSubject(pp_new);
         pp_new.clear();
         pts_for_AddVertex.clear();
 
@@ -437,19 +436,17 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon& pp_new, dou
             prev_vertex = &vertex;
         }
         // Execute union with Clipper2
-        TPolyPolygon2 solution_c2;
-        c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution_c2);
-        pp_new = ToClipper1(solution_c2);
+        c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, pp_new);
     }
 
 
     // reverse all the resulting polygons
-    TPolyPolygon copy = pp_new;
+    TPolyPolygon2 copy = pp_new;
     pp_new.clear();
     pp_new.resize(copy.size());
     for (unsigned int i = 0; i < copy.size(); i++) {
-        const TPolygon& p = copy[i];
-        TPolygon p_new;
+        const TPolygon2& p = copy[i];
+        TPolygon2 p_new;
         p_new.resize(p.size());
         std::size_t size_minus_one = p.size() - 1;
         for (std::size_t j = 0; j < p.size(); j++) {
@@ -786,9 +783,10 @@ void CArea::OffsetWithClipper(
 
 void CArea::Thicken(double value)
 {
-    TPolyPolygon pp;
+    TPolyPolygon2 pp;
     OffsetSpansWithObrounds(*this, pp, value * m_units);
-    SetFromResult(*this, pp, false);
+    TPolyPolygon pp_c1 = ToClipper1(pp);
+    SetFromResult(*this, pp_c1, false);
     this->Reorder();
 }
 
