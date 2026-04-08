@@ -81,7 +81,7 @@ public:
         ClipperLib::JoinType joinType = ClipperLib::jtRound,
         ClipperLib::EndType endType = ClipperLib::etOpenRound,
         double miterLimit = 5.0,
-        double roundPrecision = 0.0
+        double arcTolerance = 0.0
     );
     void Thicken(double value);
     void FitArcs();

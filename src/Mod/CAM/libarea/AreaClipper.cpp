@@ -8,6 +8,7 @@
 #include "clipper.hpp"
 #include "clipper2/clipper.h"
 using namespace ClipperLib;
+// Note: Cannot use "using namespace Clipper2Lib;" due to name conflicts (Path, Paths, etc.)
 
 #define TPolygon Path
 #define TPolyPolygon Paths
@@ -129,6 +130,38 @@ static Clipper2Lib::FillRule ToClipper2FillRule(PolyFillType fillType)
         case pftEvenOdd:
         default:
             return Clipper2Lib::FillRule::EvenOdd;
+    }
+}
+
+static Clipper2Lib::JoinType ToClipper2JoinType(JoinType joinType)
+{
+    switch (joinType) {
+        case jtSquare:
+            return Clipper2Lib::JoinType::Square;
+        case jtRound:
+            return Clipper2Lib::JoinType::Round;
+        case jtMiter:
+            return Clipper2Lib::JoinType::Miter;
+        default:
+            return Clipper2Lib::JoinType::Square;
+    }
+}
+
+static Clipper2Lib::EndType ToClipper2EndType(EndType endType)
+{
+    switch (endType) {
+        case etClosedPolygon:
+            return Clipper2Lib::EndType::Polygon;
+        case etClosedLine:
+            return Clipper2Lib::EndType::Joined;
+        case etOpenButt:
+            return Clipper2Lib::EndType::Butt;
+        case etOpenSquare:
+            return Clipper2Lib::EndType::Square;
+        case etOpenRound:
+            return Clipper2Lib::EndType::Round;
+        default:
+            return Clipper2Lib::EndType::Polygon;
     }
 }
 
@@ -717,12 +750,12 @@ void CArea::OffsetWithClipper(
     JoinType joinType /* =jtRound */,
     EndType endType /* =etOpenRound */,
     double miterLimit /*  = 5.0 */,
-    double roundPrecision /*  = 0.0 */
+    double arcTolerance /*  = 0.0 */
 )
 {
     offset *= m_units * m_clipper_scale;
-    if (roundPrecision == 0.0) {
-        // Clipper roundPrecision definition: https://goo.gl/4odfQh
+    if (arcTolerance == 0.0) {
+        // Clipper arc tolerance definition: https://goo.gl/4odfQh
         double dphi = acos(1.0 - m_accuracy * m_clipper_scale / fabs(offset));
         int Segments = (int)ceil(PI / dphi);
         if (Segments < 2 * CArea::m_min_arc_points) {
@@ -731,20 +764,34 @@ void CArea::OffsetWithClipper(
         // if (Segments > CArea::m_max_arc_points)
         //     Segments=CArea::m_max_arc_points;
         dphi = PI / Segments;
-        roundPrecision = (1.0 - cos(dphi)) * fabs(offset);
+        arcTolerance = (1.0 - cos(dphi)) * fabs(offset);
     }
     else {
-        roundPrecision *= m_clipper_scale;
+        arcTolerance *= m_clipper_scale;
     }
 
-    ClipperOffset clipper(miterLimit, roundPrecision);
-    TPolyPolygon pp, pp2;
+    // Create Clipper2 offset object
+    Clipper2Lib::ClipperOffset clipper(miterLimit, arcTolerance);
+
+    // Build and convert polygons
+    TPolyPolygon pp;
     MakePolyPoly(*this, pp, false);
+    TPolyPolygon2 pp_c2 = ToClipper2(pp);
+
+    // Add paths with appropriate end types
     int i = 0;
     for (const CCurve& c : m_curves) {
-        clipper.AddPath(pp[i++], joinType, c.IsClosed() ? etClosedPolygon : endType);
+        Clipper2Lib::EndType et_c2 = c.IsClosed() ? Clipper2Lib::EndType::Polygon
+                                                  : ToClipper2EndType(endType);
+        clipper.AddPath(pp_c2[i++], ToClipper2JoinType(joinType), et_c2);
     }
-    clipper.Execute(pp2, (long64)(offset));
+
+    // Execute offset
+    TPolyPolygon2 pp2_c2;
+    clipper.Execute(offset, pp2_c2);
+
+    // Convert back and set result
+    TPolyPolygon pp2 = ToClipper1(pp2_c2);
     SetFromResult(*this, pp2, false);
     this->Reorder();
 }
