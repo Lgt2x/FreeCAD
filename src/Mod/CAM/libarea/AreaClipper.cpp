@@ -35,11 +35,6 @@ public:
         X = x;
         Y = y;
     }
-    DoubleAreaPoint(const IntPoint& p)
-    {
-        X = (double)(p.X) / CArea::m_clipper_scale;
-        Y = (double)(p.Y) / CArea::m_clipper_scale;
-    }
     DoubleAreaPoint(const Clipper2Lib::Point64& p)
     {
         X = (double)(p.x) / CArea::m_clipper_scale;
