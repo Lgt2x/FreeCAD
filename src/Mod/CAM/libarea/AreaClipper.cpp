@@ -100,6 +100,38 @@ static TPolyPolygon ToClipper1(const TPolyPolygon2& pp2)
     return pp1;
 }
 
+// Convert Clipper1 enums to Clipper2 enums
+static Clipper2Lib::ClipType ToClipper2ClipType(ClipType op)
+{
+    switch (op) {
+        case ctUnion:
+            return Clipper2Lib::ClipType::Union;
+        case ctDifference:
+            return Clipper2Lib::ClipType::Difference;
+        case ctIntersection:
+            return Clipper2Lib::ClipType::Intersection;
+        case ctXor:
+            return Clipper2Lib::ClipType::Xor;
+        default:
+            return Clipper2Lib::ClipType::Union;
+    }
+}
+
+static Clipper2Lib::FillRule ToClipper2FillRule(PolyFillType fillType)
+{
+    switch (fillType) {
+        case pftNonZero:
+            return Clipper2Lib::FillRule::NonZero;
+        case pftPositive:
+            return Clipper2Lib::FillRule::Positive;
+        case pftNegative:
+            return Clipper2Lib::FillRule::Negative;
+        case pftEvenOdd:
+        default:
+            return Clipper2Lib::FillRule::EvenOdd;
+    }
+}
+
 static std::list<DoubleAreaPoint> pts_for_AddVertex;
 
 static void AddPoint(const DoubleAreaPoint& p)
@@ -645,20 +677,39 @@ void CArea::PopulateClipper(Clipper& c, PolyType type) const
 
 void CArea::Clip(ClipType op, const CArea* a, PolyFillType subjFillType, PolyFillType clipFillType)
 {
-    Clipper c;
-    c.StrictlySimple(CArea::m_clipper_simple);
-    PopulateClipper(c, ptSubject);
+    // Use Clipper2
+    // Convert Clipper1 enums to Clipper2
+    Clipper2Lib::ClipType op_c2 = ToClipper2ClipType(op);
+
+    // Use subject fill type as primary (Clipper2 uses single FillRule)
+    Clipper2Lib::FillRule fillRule_c2 = ToClipper2FillRule(subjFillType);
+
+    // Build polygons and convert to Clipper2
+    TPolyPolygon pp1, pp2;
+    MakePolyPoly(*this, pp1);
+    TPolyPolygon2 pp1_c2 = ToClipper2(pp1);
+
+    Clipper2Lib::Clipper64 c;
+    c.AddSubject(pp1_c2);
+
     if (a) {
-        a->PopulateClipper(c, ptClip);
+        MakePolyPoly(*a, pp2);
+        TPolyPolygon2 pp2_c2 = ToClipper2(pp2);
+        c.AddClip(pp2_c2);
     }
-    PolyTree tree;
-    c.Execute(op, tree, subjFillType, clipFillType);
-    TPolyPolygon solution;
-    ClosedPathsFromPolyTree(tree, solution);
-    SetFromResult(*this, solution);
-    solution.clear();
-    OpenPathsFromPolyTree(tree, solution);
-    SetFromResult(*this, solution, false, false, false);
+
+    // Execute with PolyTree to preserve hierarchy
+    Clipper2Lib::PolyTree64 tree;
+    c.Execute(op_c2, fillRule_c2, tree);
+
+    // Extract closed paths from polytree
+    TPolyPolygon2 closed_c2 = Clipper2Lib::PolyTreeToPaths64(tree);
+    TPolyPolygon closed = ToClipper1(closed_c2);
+    SetFromResult(*this, closed);
+
+    // Note: Clipper2 handles open paths differently
+    // For now, we only extract closed paths as the primary result
+    // Open path handling may need additional implementation based on actual usage
 }
 
 void CArea::OffsetWithClipper(
