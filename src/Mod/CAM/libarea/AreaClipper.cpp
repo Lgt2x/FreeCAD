@@ -531,15 +531,24 @@ void CArea::Intersect(const CArea& a2)
 
 void CArea::Union(const CArea& a2)
 {
-    Clipper c;
-    c.StrictlySimple(CArea::m_clipper_simple);
+    // Use Clipper2
     TPolyPolygon pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
-    c.AddPaths(pp1, ptSubject, true);
-    c.AddPaths(pp2, ptClip, true);
-    TPolyPolygon solution;
-    c.Execute(ctUnion, solution);
+
+    // Convert to Clipper2
+    TPolyPolygon2 pp1_c2 = ToClipper2(pp1);
+    TPolyPolygon2 pp2_c2 = ToClipper2(pp2);
+
+    // Use Clipper2 API
+    Clipper2Lib::Clipper64 c;
+    c.AddSubject(pp1_c2);
+    c.AddClip(pp2_c2);
+    TPolyPolygon2 solution_c2;
+    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::EvenOdd, solution_c2);
+
+    // Convert back to Clipper1 format
+    TPolyPolygon solution = ToClipper1(solution_c2);
     SetFromResult(*this, solution);
 }
 
