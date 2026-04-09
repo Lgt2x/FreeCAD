@@ -76,7 +76,6 @@ public:
     void Subtract(const CArea& a2);
     void Intersect(const CArea& a2);
     void Union(const CArea& a2);
-    static CArea UniteCurves(std::list<CCurve>& curves);
     void Xor(const CArea& a2);
     void Offset(double inwards_value);
     void OffsetWithClipper(

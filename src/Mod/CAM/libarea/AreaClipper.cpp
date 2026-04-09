@@ -482,30 +482,6 @@ void CArea::Union(const CArea& a2)
     SetFromResult(*this, solution);
 }
 
-// static
-CArea CArea::UniteCurves(std::list<CCurve>& curves)
-{
-    // Use Clipper2
-    Paths64 pp;
-
-    for (std::list<CCurve>::iterator It = curves.begin(); It != curves.end(); It++) {
-        CCurve& curve = *It;
-        Path64 p;
-        MakePoly(curve, p);
-        pp.push_back(p);
-    }
-
-    // Use Clipper2 API - Note: original Clipper1 implementation uses NonZero fill rule
-    Clipper64 c;
-    c.AddSubject(pp);
-    Paths64 solution;
-    c.Execute(ClipType::Union, FillRule::NonZero, solution);
-
-    CArea area;
-    SetFromResult(area, solution);
-    return area;
-}
-
 void CArea::Xor(const CArea& a2)
 {
     // Use Clipper2
