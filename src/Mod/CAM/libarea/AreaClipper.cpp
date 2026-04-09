@@ -11,9 +11,6 @@
 using namespace heeks;
 using namespace Clipper2Lib;
 
-#define TPolygon ClipperLib::Path
-#define TPolyPolygon ClipperLib::Paths
-
 // Clipper2 type aliases for progressive migration
 #define TPolygon2 Path64
 #define TPolyPolygon2 Paths64
@@ -45,7 +42,7 @@ static Point64 ToClipper2(const ClipperLib::IntPoint& p1)
     return Point64(p1.X, p1.Y);
 }
 
-static TPolygon2 ToClipper2(const TPolygon& poly1)
+static TPolygon2 ToClipper2(const ClipperLib::Path& poly1)
 {
     TPolygon2 poly2;
     poly2.reserve(poly1.size());
@@ -61,9 +58,9 @@ static ClipperLib::IntPoint ToClipper1(const Point64& p2)
     return ClipperLib::IntPoint(p2.x, p2.y);
 }
 
-static TPolygon ToClipper1(const TPolygon2& poly2)
+static ClipperLib::Path ToClipper1(const TPolygon2& poly2)
 {
-    TPolygon poly1;
+    ClipperLib::Path poly1;
     poly1.reserve(poly2.size());
     for (const auto& pt : poly2) {
         poly1.push_back(ToClipper1(pt));
@@ -651,7 +648,7 @@ void CArea::PopulateClipper(ClipperLib::Clipper& c, ClipperLib::PolyType type) c
         }
         TPolygon2 p2;
         MakePoly(curve, p2, false);
-        TPolygon p = ToClipper1(p2);
+        ClipperLib::Path p = ToClipper1(p2);
         c.AddPath(p, type, closed);
     }
     if (skipped) {
