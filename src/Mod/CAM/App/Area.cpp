@@ -78,6 +78,7 @@
 #include <Mod/Part/App/PartFeature.h>
 #include <Mod/CAM/App/PathSegmentWalker.h>
 #include <Mod/CAM/libarea/Area.h>
+#include <Mod/CAM/libarea/clipper.hpp>
 
 #include "Area.h"
 
@@ -115,6 +116,70 @@ FC_LOG_LEVEL_INIT("Path.Area", true, true)
 
 using namespace Path;
 using namespace heeks;
+
+// Convert Clipper1 enums to Clipper2 enums
+static Clipper2Lib::ClipType ToClipper2ClipType(ClipperLib::ClipType op)
+{
+    switch (op) {
+        case ClipperLib::ctUnion:
+            return Clipper2Lib::ClipType::Union;
+        case ClipperLib::ctDifference:
+            return Clipper2Lib::ClipType::Difference;
+        case ClipperLib::ctIntersection:
+            return Clipper2Lib::ClipType::Intersection;
+        case ClipperLib::ctXor:
+            return Clipper2Lib::ClipType::Xor;
+        default:
+            return Clipper2Lib::ClipType::Union;
+    }
+}
+
+static Clipper2Lib::FillRule ToClipper2FillRule(ClipperLib::PolyFillType fillType)
+{
+    switch (fillType) {
+        case ClipperLib::pftNonZero:
+            return Clipper2Lib::FillRule::NonZero;
+        case ClipperLib::pftPositive:
+            return Clipper2Lib::FillRule::Positive;
+        case ClipperLib::pftNegative:
+            return Clipper2Lib::FillRule::Negative;
+        case ClipperLib::pftEvenOdd:
+        default:
+            return Clipper2Lib::FillRule::EvenOdd;
+    }
+}
+
+static Clipper2Lib::JoinType ToClipper2JoinType(ClipperLib::JoinType joinType)
+{
+    switch (joinType) {
+        case ClipperLib::jtSquare:
+            return Clipper2Lib::JoinType::Square;
+        case ClipperLib::jtRound:
+            return Clipper2Lib::JoinType::Round;
+        case ClipperLib::jtMiter:
+            return Clipper2Lib::JoinType::Miter;
+        default:
+            return Clipper2Lib::JoinType::Square;
+    }
+}
+
+static Clipper2Lib::EndType ToClipper2EndType(ClipperLib::EndType endType)
+{
+    switch (endType) {
+        case ClipperLib::etClosedPolygon:
+            return Clipper2Lib::EndType::Polygon;
+        case ClipperLib::etClosedLine:
+            return Clipper2Lib::EndType::Joined;
+        case ClipperLib::etOpenButt:
+            return Clipper2Lib::EndType::Butt;
+        case ClipperLib::etOpenSquare:
+            return Clipper2Lib::EndType::Square;
+        case ClipperLib::etOpenRound:
+            return Clipper2Lib::EndType::Round;
+        default:
+            return Clipper2Lib::EndType::Polygon;
+    }
+}
 
 CAreaParams::CAreaParams()
     : PARAM_INIT(PARAM_FNAME, AREA_PARAMS_CAREA)
@@ -769,23 +834,46 @@ std::shared_ptr<Area> Area::getRestArea(std::vector<std::shared_ptr<Area>> clear
     }
 
     CArea clearable(*myArea);
-    clearable.OffsetWithClipper(-diameter / 2, JoinType, EndType, params.MiterLimit, roundPrecision);
-    clearable.OffsetWithClipper(diameter / 2, JoinType, EndType, params.MiterLimit, roundPrecision);
+    clearable.OffsetWithClipper(
+        -diameter / 2,
+        ToClipper2JoinType(JoinType),
+        ToClipper2EndType(EndType),
+        params.MiterLimit,
+        roundPrecision
+    );
+    clearable.OffsetWithClipper(
+        diameter / 2,
+        ToClipper2JoinType(JoinType),
+        ToClipper2EndType(EndType),
+        params.MiterLimit,
+        roundPrecision
+    );
 
     // remaining = clearable - prevCleared
     CArea remaining(clearable);
     remaining.Clip(
-        toClipperOp(Area::OperationDifference),
+        ToClipper2ClipType(toClipperOp(Area::OperationDifference)),
         &*(clearedAreasInPlane.myArea),
-        SubjectFill,
-        ClipFill
+        ToClipper2FillRule(SubjectFill),
+        ToClipper2FillRule(ClipFill)
     );
 
     // rest = intersect(clearable, offset(remaining, dTool))
     // add buffer to dTool to compensate for oversizing in getClearedArea
     CArea restCArea(remaining);
-    restCArea.OffsetWithClipper(diameter + buffer, JoinType, EndType, params.MiterLimit, roundPrecision);
-    restCArea.Clip(toClipperOp(Area::OperationIntersection), &clearable, SubjectFill, ClipFill);
+    restCArea.OffsetWithClipper(
+        diameter + buffer,
+        ToClipper2JoinType(JoinType),
+        ToClipper2EndType(EndType),
+        params.MiterLimit,
+        roundPrecision
+    );
+    restCArea.Clip(
+        ToClipper2ClipType(toClipperOp(Area::OperationIntersection)),
+        &clearable,
+        ToClipper2FillRule(SubjectFill),
+        ToClipper2FillRule(ClipFill)
+    );
 
     if (restCArea.m_curves.size() == 0) {
         return {};
@@ -2115,7 +2203,12 @@ void Area::build()
                         myArea->m_curves.splice(myArea->m_curves.end(), areaClip.m_curves);
                     }
                     else {
-                        myArea->Clip(toClipperOp(op), &areaClip, SubjectFill, ClipFill);
+                        myArea->Clip(
+                            ToClipper2ClipType(toClipperOp(op)),
+                            &areaClip,
+                            ToClipper2FillRule(SubjectFill),
+                            ToClipper2FillRule(ClipFill)
+                        );
                         areaClip.m_curves.clear();
                     }
                 }
@@ -2139,7 +2232,12 @@ void Area::build()
                 myArea->m_curves.splice(myArea->m_curves.end(), areaClip.m_curves);
             }
             else {
-                myArea->Clip(toClipperOp(op), &areaClip, SubjectFill, ClipFill);
+                myArea->Clip(
+                    ToClipper2ClipType(toClipperOp(op)),
+                    &areaClip,
+                    ToClipper2FillRule(SubjectFill),
+                    ToClipper2FillRule(ClipFill)
+                );
             }
         }
         myArea->m_curves.splice(myArea->m_curves.end(), myAreaOpen->m_curves);
@@ -2397,13 +2495,24 @@ std::shared_ptr<CArea> Area::performSingleOffset(double offset)
             area->Offset(-offset);
             if (areaOpen.m_curves.size()) {
                 areaOpen.Thicken(offset);
-                area->Clip(ClipperLib::ctUnion, &areaOpen, SubjectFill, ClipFill);
+                area->Clip(
+                    ToClipper2ClipType(ClipperLib::ctUnion),
+                    &areaOpen,
+                    ToClipper2FillRule(SubjectFill),
+                    ToClipper2FillRule(ClipFill)
+                );
             }
             break;
         case Area::AlgoClipperOffset:
 #endif
             *area = *myArea;
-            area->OffsetWithClipper(offset, JoinType, EndType, myParams.MiterLimit, myParams.RoundPrecision);
+            area->OffsetWithClipper(
+                offset,
+                ToClipper2JoinType(JoinType),
+                ToClipper2EndType(EndType),
+                myParams.MiterLimit,
+                myParams.RoundPrecision
+            );
 #ifdef AREA_OFFSET_ALGO
             break;
     }
@@ -2450,8 +2559,8 @@ void Area::makeOffset(
     bool check_gaps = !myParams.ForceMaxStepover && abs(stepover) > tool_radius;
     const double gap_tolerance = myParams.Accuracy;
     double sign_stepover = (stepover > 0) ? 1.0 : -1.0;
-    auto jt = static_cast<ClipperLib::JoinType>(JoinType);
-    auto et = static_cast<ClipperLib::EndType>(EndType);
+    auto jt = ToClipper2JoinType(static_cast<ClipperLib::JoinType>(JoinType));
+    auto et = ToClipper2EndType(static_cast<ClipperLib::EndType>(EndType));
 
     for (int i = 0; count < 0 || i < count; ++i, offset += stepover) {
         double prevOffset = offset - stepover;
@@ -2708,12 +2817,17 @@ TopoDS_Shape Area::makePocket(int index, PARAM_ARGS(PARAM_FARG, AREA_PARAMS_POCK
             auto area = *myArea;
             area.OffsetWithClipper(
                 -tool_radius - extra_offset,
-                JoinType,
-                EndType,
+                ToClipper2JoinType(JoinType),
+                ToClipper2EndType(EndType),
                 myParams.MiterLimit,
                 myParams.RoundPrecision
             );
-            out.Clip(toClipperOp(OperationIntersection), &area, SubjectFill, ClipFill);
+            out.Clip(
+                ToClipper2ClipType(toClipperOp(OperationIntersection)),
+                &area,
+                ToClipper2FillRule(SubjectFill),
+                ToClipper2FillRule(ClipFill)
+            );
             done = true;
             break;
         }

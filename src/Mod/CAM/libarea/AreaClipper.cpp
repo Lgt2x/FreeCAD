@@ -34,70 +34,6 @@ static PointD ToPointD(const Point64& p)
     return PointD((double)p.x / CArea::m_clipper_scale, (double)p.y / CArea::m_clipper_scale);
 }
 
-// Convert Clipper1 enums to Clipper2 enums
-static ClipType ToClipper2ClipType(ClipperLib::ClipType op)
-{
-    switch (op) {
-        case ClipperLib::ctUnion:
-            return ClipType::Union;
-        case ClipperLib::ctDifference:
-            return ClipType::Difference;
-        case ClipperLib::ctIntersection:
-            return ClipType::Intersection;
-        case ClipperLib::ctXor:
-            return ClipType::Xor;
-        default:
-            return ClipType::Union;
-    }
-}
-
-static FillRule ToClipper2FillRule(ClipperLib::PolyFillType fillType)
-{
-    switch (fillType) {
-        case ClipperLib::pftNonZero:
-            return FillRule::NonZero;
-        case ClipperLib::pftPositive:
-            return FillRule::Positive;
-        case ClipperLib::pftNegative:
-            return FillRule::Negative;
-        case ClipperLib::pftEvenOdd:
-        default:
-            return FillRule::EvenOdd;
-    }
-}
-
-static JoinType ToClipper2JoinType(ClipperLib::JoinType joinType)
-{
-    switch (joinType) {
-        case ClipperLib::jtSquare:
-            return JoinType::Square;
-        case ClipperLib::jtRound:
-            return JoinType::Round;
-        case ClipperLib::jtMiter:
-            return JoinType::Miter;
-        default:
-            return JoinType::Square;
-    }
-}
-
-static EndType ToClipper2EndType(ClipperLib::EndType endType)
-{
-    switch (endType) {
-        case ClipperLib::etClosedPolygon:
-            return EndType::Polygon;
-        case ClipperLib::etClosedLine:
-            return EndType::Joined;
-        case ClipperLib::etOpenButt:
-            return EndType::Butt;
-        case ClipperLib::etOpenSquare:
-            return EndType::Square;
-        case ClipperLib::etOpenRound:
-            return EndType::Round;
-        default:
-            return EndType::Polygon;
-    }
-}
-
 static std::list<PointD> pts_for_AddVertex;
 
 static void AddPoint(const PointD& p)
@@ -600,20 +536,8 @@ void CArea::Offset(double inwards_value)
     this->Reorder();
 }
 
-void CArea::Clip(
-    ClipperLib::ClipType op,
-    const CArea* a,
-    ClipperLib::PolyFillType subjFillType,
-    ClipperLib::PolyFillType clipFillType
-)
+void CArea::Clip(ClipType op, const CArea* a, FillRule subjFillType, FillRule clipFillType)
 {
-    // Use Clipper2
-    // Convert Clipper1 enums to Clipper2
-    ClipType op_c2 = ToClipper2ClipType(op);
-
-    // Use subject fill type as primary (Clipper2 uses single FillRule)
-    FillRule fillRule_c2 = ToClipper2FillRule(subjFillType);
-
     // Build polygons with Clipper2
     TPolyPolygon2 pp1, pp2;
     MakePolyPoly(*this, pp1);
@@ -628,7 +552,7 @@ void CArea::Clip(
 
     // Execute with PolyTree to preserve hierarchy
     PolyTree64 tree;
-    c.Execute(op_c2, fillRule_c2, tree);
+    c.Execute(op, subjFillType, tree);
 
     // Extract closed paths from polytree
     TPolyPolygon2 closed = PolyTreeToPaths64(tree);
@@ -641,10 +565,10 @@ void CArea::Clip(
 
 void CArea::OffsetWithClipper(
     double offset,
-    ClipperLib::JoinType joinType /* =jtRound */,
-    ClipperLib::EndType endType /* =etOpenRound */,
-    double miterLimit /*  = 5.0 */,
-    double arcTolerance /*  = 0.0 */
+    JoinType joinType,
+    EndType endType,
+    double miterLimit,
+    double arcTolerance
 )
 {
     offset *= m_units * m_clipper_scale;
@@ -674,8 +598,8 @@ void CArea::OffsetWithClipper(
     // Add paths with appropriate end types
     int i = 0;
     for (const CCurve& c : m_curves) {
-        EndType et_c2 = c.IsClosed() ? EndType::Polygon : ToClipper2EndType(endType);
-        clipper.AddPath(pp[i++], ToClipper2JoinType(joinType), et_c2);
+        EndType et = c.IsClosed() ? EndType::Polygon : endType;
+        clipper.AddPath(pp[i++], joinType, et);
     }
 
     // Execute offset
