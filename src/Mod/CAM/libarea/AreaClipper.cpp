@@ -11,10 +11,6 @@
 using namespace heeks;
 using namespace Clipper2Lib;
 
-// Clipper2 type aliases for progressive migration
-#define TPolygon2 Path64
-#define TPolyPolygon2 Paths64
-
 bool CArea::HolesLinked()
 {
     return false;
@@ -151,7 +147,7 @@ static void MakeLoop(const PointD& pt0, const PointD& pt1, const PointD& pt2, do
     CArea::m_units = save_units;
 }
 
-static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, double inwards_value)
+static void OffsetWithLoops(const Paths64& pp, Paths64& pp_new, double inwards_value)
 {
     // Use Clipper2
     Clipper64 c;
@@ -162,7 +158,7 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
 
     if (inwards) {
         // add a large square on the outside, to be removed later
-        TPolygon2 p;
+        Path64 p;
         p.push_back(ToPoint64(PointD(-10000.0, -10000.0)));
         p.push_back(ToPoint64(PointD(-10000.0, 10000.0)));
         p.push_back(ToPoint64(PointD(10000.0, 10000.0)));
@@ -176,7 +172,7 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
     }
 
     for (unsigned int i = 0; i < pp.size(); i++) {
-        const TPolygon2& p = pp[i];
+        const Path64& p = pp[i];
 
         pts_for_AddVertex.clear();
 
@@ -196,7 +192,7 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
                 }
             }
 
-            TPolygon2 loopy_polygon;
+            Path64 loopy_polygon;
             loopy_polygon.reserve(pts_for_AddVertex.size());
             for (std::list<PointD>::iterator It = pts_for_AddVertex.begin();
                  It != pts_for_AddVertex.end();
@@ -211,7 +207,7 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
     }
 
     // Execute union with Clipper2
-    TPolyPolygon2 solution;
+    Paths64 solution;
     c.Execute(ClipType::Union, FillRule::NonZero, solution);
 
     pp_new = solution;
@@ -224,12 +220,12 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
     }
     else {
         // reverse all the resulting polygons
-        TPolyPolygon2 copy = pp_new;
+        Paths64 copy = pp_new;
         pp_new.clear();
         pp_new.resize(copy.size());
         for (unsigned int i = 0; i < copy.size(); i++) {
-            const TPolygon2& p = copy[i];
-            TPolygon2 p_new;
+            const Path64& p = copy[i];
+            Path64 p_new;
             p_new.resize(p.size());
             std::size_t size_minus_one = p.size() - 1;
             for (std::size_t j = 0; j < p.size(); j++) {
@@ -268,7 +264,7 @@ static void MakeObround(const heeks::Point& pt0, const CVertex& vt1, double radi
     CArea::m_units = save_units;
 }
 
-static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, double radius)
+static void OffsetSpansWithObrounds(const CArea& area, Paths64& pp_new, double radius)
 {
     // Use Clipper2
     Clipper64 c;
@@ -291,7 +287,7 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, do
             if (prev_vertex) {
                 MakeObround(prev_vertex->m_p, vertex, radius);
 
-                TPolygon2 loopy_polygon;
+                Path64 loopy_polygon;
                 loopy_polygon.reserve(pts_for_AddVertex.size());
                 for (std::list<PointD>::iterator It = pts_for_AddVertex.begin();
                      It != pts_for_AddVertex.end();
@@ -310,12 +306,12 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, do
 
 
     // reverse all the resulting polygons
-    TPolyPolygon2 copy = pp_new;
+    Paths64 copy = pp_new;
     pp_new.clear();
     pp_new.resize(copy.size());
     for (unsigned int i = 0; i < copy.size(); i++) {
-        const TPolygon2& p = copy[i];
-        TPolygon2 p_new;
+        const Path64& p = copy[i];
+        Path64 p_new;
         p_new.resize(p.size());
         std::size_t size_minus_one = p.size() - 1;
         for (std::size_t j = 0; j < p.size(); j++) {
@@ -325,7 +321,7 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, do
     }
 }
 
-static void MakePoly(const CCurve& curve, TPolygon2& p, bool reverse = false)
+static void MakePoly(const CCurve& curve, Path64& p, bool reverse = false)
 {
     pts_for_AddVertex.clear();
     const CVertex* prev_vertex = NULL;
@@ -366,18 +362,18 @@ static void MakePoly(const CCurve& curve, TPolygon2& p, bool reverse = false)
     }
 }
 
-static void MakePolyPoly(const CArea& area, TPolyPolygon2& pp, bool reverse = true)
+static void MakePolyPoly(const CArea& area, Paths64& pp, bool reverse = true)
 {
     pp.clear();
 
     for (std::list<CCurve>::const_iterator It = area.m_curves.begin(); It != area.m_curves.end();
          It++) {
-        pp.push_back(TPolygon2());
+        pp.push_back(Path64());
         MakePoly(*It, pp.back(), reverse);
     }
 }
 
-static void SetFromResult(CCurve& curve, TPolygon2& p, bool reverse = true, bool is_closed = true)
+static void SetFromResult(CCurve& curve, Path64& p, bool reverse = true, bool is_closed = true)
 {
     if (CArea::m_clipper_clean_distance >= heeks::Point::tolerance) {
         p = SimplifyPath(p, CArea::m_clipper_clean_distance, is_closed);
@@ -415,7 +411,7 @@ static void SetFromResult(CCurve& curve, TPolygon2& p, bool reverse = true, bool
 
 static void SetFromResult(
     CArea& area,
-    TPolyPolygon2& pp,
+    Paths64& pp,
     bool reverse = true,
     bool is_closed = true,
     bool clear = true
@@ -427,7 +423,7 @@ static void SetFromResult(
     }
 
     for (unsigned int i = 0; i < pp.size(); i++) {
-        TPolygon2& p = pp[i];
+        Path64& p = pp[i];
 
         area.m_curves.emplace_back();
         CCurve& curve = area.m_curves.back();
@@ -438,7 +434,7 @@ static void SetFromResult(
 void CArea::Subtract(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon2 pp1, pp2;
+    Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
@@ -446,7 +442,7 @@ void CArea::Subtract(const CArea& a2)
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
-    TPolyPolygon2 solution;
+    Paths64 solution;
     c.Execute(ClipType::Difference, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
@@ -455,7 +451,7 @@ void CArea::Subtract(const CArea& a2)
 void CArea::Intersect(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon2 pp1, pp2;
+    Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
@@ -463,7 +459,7 @@ void CArea::Intersect(const CArea& a2)
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
-    TPolyPolygon2 solution;
+    Paths64 solution;
     c.Execute(ClipType::Intersection, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
@@ -472,7 +468,7 @@ void CArea::Intersect(const CArea& a2)
 void CArea::Union(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon2 pp1, pp2;
+    Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
@@ -480,7 +476,7 @@ void CArea::Union(const CArea& a2)
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
-    TPolyPolygon2 solution;
+    Paths64 solution;
     c.Execute(ClipType::Union, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
@@ -490,11 +486,11 @@ void CArea::Union(const CArea& a2)
 CArea CArea::UniteCurves(std::list<CCurve>& curves)
 {
     // Use Clipper2
-    TPolyPolygon2 pp;
+    Paths64 pp;
 
     for (std::list<CCurve>::iterator It = curves.begin(); It != curves.end(); It++) {
         CCurve& curve = *It;
-        TPolygon2 p;
+        Path64 p;
         MakePoly(curve, p);
         pp.push_back(p);
     }
@@ -502,7 +498,7 @@ CArea CArea::UniteCurves(std::list<CCurve>& curves)
     // Use Clipper2 API - Note: original Clipper1 implementation uses NonZero fill rule
     Clipper64 c;
     c.AddSubject(pp);
-    TPolyPolygon2 solution;
+    Paths64 solution;
     c.Execute(ClipType::Union, FillRule::NonZero, solution);
 
     CArea area;
@@ -513,7 +509,7 @@ CArea CArea::UniteCurves(std::list<CCurve>& curves)
 void CArea::Xor(const CArea& a2)
 {
     // Use Clipper2
-    TPolyPolygon2 pp1, pp2;
+    Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
@@ -521,7 +517,7 @@ void CArea::Xor(const CArea& a2)
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
-    TPolyPolygon2 solution;
+    Paths64 solution;
     c.Execute(ClipType::Xor, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
@@ -529,7 +525,7 @@ void CArea::Xor(const CArea& a2)
 
 void CArea::Offset(double inwards_value)
 {
-    TPolyPolygon2 pp, pp2;
+    Paths64 pp, pp2;
     MakePolyPoly(*this, pp, false);
     OffsetWithLoops(pp, pp2, inwards_value * m_units);
     SetFromResult(*this, pp2, false);
@@ -539,7 +535,7 @@ void CArea::Offset(double inwards_value)
 void CArea::Clip(ClipType op, const CArea* a, FillRule subjFillType, FillRule clipFillType)
 {
     // Build polygons with Clipper2
-    TPolyPolygon2 pp1, pp2;
+    Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
 
     Clipper64 c;
@@ -551,8 +547,8 @@ void CArea::Clip(ClipType op, const CArea* a, FillRule subjFillType, FillRule cl
     }
 
     // Execute to get both closed and open paths
-    TPolyPolygon2 closed_paths;
-    TPolyPolygon2 open_paths;
+    Paths64 closed_paths;
+    Paths64 open_paths;
     c.Execute(op, subjFillType, closed_paths, open_paths);
 
     // Set closed paths as result
@@ -591,7 +587,7 @@ void CArea::OffsetWithClipper(
     ClipperOffset clipper(miterLimit, arcTolerance);
 
     // Build polygons with Clipper2
-    TPolyPolygon2 pp;
+    Paths64 pp;
     MakePolyPoly(*this, pp, false);
 
     // Add paths with appropriate end types
@@ -602,7 +598,7 @@ void CArea::OffsetWithClipper(
     }
 
     // Execute offset
-    TPolyPolygon2 pp2;
+    Paths64 pp2;
     clipper.Execute(offset, pp2);
 
     SetFromResult(*this, pp2, false);
@@ -611,7 +607,7 @@ void CArea::OffsetWithClipper(
 
 void CArea::Thicken(double value)
 {
-    TPolyPolygon2 pp;
+    Paths64 pp;
     OffsetSpansWithObrounds(*this, pp, value * m_units);
     SetFromResult(*this, pp, false);
     this->Reorder();
