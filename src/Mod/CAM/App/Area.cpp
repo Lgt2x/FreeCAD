@@ -114,6 +114,7 @@ BOOST_GEOMETRY_REGISTER_POINT_3D_GET_SET(gp_Pnt, double, bg::cs::cartesian, X, Y
 FC_LOG_LEVEL_INIT("Path.Area", true, true)
 
 using namespace Path;
+using namespace heeks;
 
 CAreaParams::CAreaParams()
     : PARAM_INIT(PARAM_FNAME, AREA_PARAMS_CAREA)

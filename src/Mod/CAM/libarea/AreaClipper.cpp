@@ -7,14 +7,16 @@
 #include "Area.h"
 #include "clipper.hpp"
 #include "clipper2/clipper.h"
-// Note: Cannot use "using namespace Clipper2Lib;" due to name conflicts (Point)
+
+using namespace heeks;
+using namespace Clipper2Lib;
 
 #define TPolygon ClipperLib::Path
 #define TPolyPolygon ClipperLib::Paths
 
 // Clipper2 type aliases for progressive migration
-#define TPolygon2 Clipper2Lib::Path64
-#define TPolyPolygon2 Clipper2Lib::Paths64
+#define TPolygon2 Path64
+#define TPolyPolygon2 Paths64
 
 bool CArea::HolesLinked()
 {
@@ -24,29 +26,23 @@ bool CArea::HolesLinked()
 // static const double PI = 3.1415926535897932;
 double CArea::m_clipper_scale = 10000.0;
 
-// Convert between Clipper2Lib::PointD (double) and Clipper2Lib::Point64 (int64) with scaling
-static Clipper2Lib::Point64 ToPoint64(const Clipper2Lib::PointD& p)
+// Convert between PointD (double) and Point64 (int64) with scaling
+static Point64 ToPoint64(const PointD& p)
 {
-    return Clipper2Lib::Point64(
-        (int64_t)(p.x * CArea::m_clipper_scale),
-        (int64_t)(p.y * CArea::m_clipper_scale)
-    );
+    return Point64((int64_t)(p.x * CArea::m_clipper_scale), (int64_t)(p.y * CArea::m_clipper_scale));
 }
 
-static Clipper2Lib::PointD ToPointD(const Clipper2Lib::Point64& p)
+static PointD ToPointD(const Point64& p)
 {
-    return Clipper2Lib::PointD(
-        (double)p.x / CArea::m_clipper_scale,
-        (double)p.y / CArea::m_clipper_scale
-    );
+    return PointD((double)p.x / CArea::m_clipper_scale, (double)p.y / CArea::m_clipper_scale);
 }
 
 // Clipper1 <-> Clipper2 conversion helpers for progressive migration
 
 // Convert Clipper1 to Clipper2
-static Clipper2Lib::Point64 ToClipper2(const ClipperLib::IntPoint& p1)
+static Point64 ToClipper2(const ClipperLib::IntPoint& p1)
 {
-    return Clipper2Lib::Point64(p1.X, p1.Y);
+    return Point64(p1.X, p1.Y);
 }
 
 static TPolygon2 ToClipper2(const TPolygon& poly1)
@@ -60,7 +56,7 @@ static TPolygon2 ToClipper2(const TPolygon& poly1)
 }
 
 // Convert Clipper2 to Clipper1
-static ClipperLib::IntPoint ToClipper1(const Clipper2Lib::Point64& p2)
+static ClipperLib::IntPoint ToClipper1(const Point64& p2)
 {
     return ClipperLib::IntPoint(p2.x, p2.y);
 }
@@ -76,72 +72,72 @@ static TPolygon ToClipper1(const TPolygon2& poly2)
 }
 
 // Convert Clipper1 enums to Clipper2 enums
-static Clipper2Lib::ClipType ToClipper2ClipType(ClipperLib::ClipType op)
+static ClipType ToClipper2ClipType(ClipperLib::ClipType op)
 {
     switch (op) {
         case ClipperLib::ctUnion:
-            return Clipper2Lib::ClipType::Union;
+            return ClipType::Union;
         case ClipperLib::ctDifference:
-            return Clipper2Lib::ClipType::Difference;
+            return ClipType::Difference;
         case ClipperLib::ctIntersection:
-            return Clipper2Lib::ClipType::Intersection;
+            return ClipType::Intersection;
         case ClipperLib::ctXor:
-            return Clipper2Lib::ClipType::Xor;
+            return ClipType::Xor;
         default:
-            return Clipper2Lib::ClipType::Union;
+            return ClipType::Union;
     }
 }
 
-static Clipper2Lib::FillRule ToClipper2FillRule(ClipperLib::PolyFillType fillType)
+static FillRule ToClipper2FillRule(ClipperLib::PolyFillType fillType)
 {
     switch (fillType) {
         case ClipperLib::pftNonZero:
-            return Clipper2Lib::FillRule::NonZero;
+            return FillRule::NonZero;
         case ClipperLib::pftPositive:
-            return Clipper2Lib::FillRule::Positive;
+            return FillRule::Positive;
         case ClipperLib::pftNegative:
-            return Clipper2Lib::FillRule::Negative;
+            return FillRule::Negative;
         case ClipperLib::pftEvenOdd:
         default:
-            return Clipper2Lib::FillRule::EvenOdd;
+            return FillRule::EvenOdd;
     }
 }
 
-static Clipper2Lib::JoinType ToClipper2JoinType(ClipperLib::JoinType joinType)
+static JoinType ToClipper2JoinType(ClipperLib::JoinType joinType)
 {
     switch (joinType) {
         case ClipperLib::jtSquare:
-            return Clipper2Lib::JoinType::Square;
+            return JoinType::Square;
         case ClipperLib::jtRound:
-            return Clipper2Lib::JoinType::Round;
+            return JoinType::Round;
         case ClipperLib::jtMiter:
-            return Clipper2Lib::JoinType::Miter;
+            return JoinType::Miter;
         default:
-            return Clipper2Lib::JoinType::Square;
+            return JoinType::Square;
     }
 }
 
-static Clipper2Lib::EndType ToClipper2EndType(ClipperLib::EndType endType)
+static EndType ToClipper2EndType(ClipperLib::EndType endType)
 {
     switch (endType) {
         case ClipperLib::etClosedPolygon:
-            return Clipper2Lib::EndType::Polygon;
+            return EndType::Polygon;
         case ClipperLib::etClosedLine:
-            return Clipper2Lib::EndType::Joined;
+            return EndType::Joined;
         case ClipperLib::etOpenButt:
-            return Clipper2Lib::EndType::Butt;
+            return EndType::Butt;
         case ClipperLib::etOpenSquare:
-            return Clipper2Lib::EndType::Square;
+            return EndType::Square;
         case ClipperLib::etOpenRound:
-            return Clipper2Lib::EndType::Round;
+            return EndType::Round;
         default:
-            return Clipper2Lib::EndType::Polygon;
+            return EndType::Polygon;
     }
 }
 
-static std::list<Clipper2Lib::PointD> pts_for_AddVertex;
+static std::list<PointD> pts_for_AddVertex;
 
-static void AddPoint(const Clipper2Lib::PointD& p)
+static void AddPoint(const PointD& p)
 {
     pts_for_AddVertex.push_back(p);
 }
@@ -149,7 +145,7 @@ static void AddPoint(const Clipper2Lib::PointD& p)
 static void AddVertex(const CVertex& vertex, const CVertex* prev_vertex)
 {
     if (vertex.m_type == 0 || prev_vertex == NULL) {
-        AddPoint(Clipper2Lib::PointD(vertex.m_p.x * CArea::m_units, vertex.m_p.y * CArea::m_units));
+        AddPoint(PointD(vertex.m_p.x * CArea::m_units, vertex.m_p.y * CArea::m_units));
     }
     else {
         if (vertex.m_p != prev_vertex->m_p) {
@@ -220,7 +216,7 @@ static void AddVertex(const CVertex& vertex, const CVertex* prev_vertex)
                 double nx = vertex.m_c.x * CArea::m_units + radius * cos(phi - dphi);
                 double ny = vertex.m_c.y * CArea::m_units + radius * sin(phi - dphi);
 
-                AddPoint(Clipper2Lib::PointD(nx, ny));
+                AddPoint(PointD(nx, ny));
 
                 px = nx;
                 py = ny;
@@ -229,28 +225,23 @@ static void AddVertex(const CVertex& vertex, const CVertex* prev_vertex)
     }
 }
 
-static void MakeLoop(
-    const Clipper2Lib::PointD& pt0,
-    const Clipper2Lib::PointD& pt1,
-    const Clipper2Lib::PointD& pt2,
-    double radius
-)
+static void MakeLoop(const PointD& pt0, const PointD& pt1, const PointD& pt2, double radius)
 {
-    Point p0(pt0.x, pt0.y);
-    Point p1(pt1.x, pt1.y);
-    Point p2(pt2.x, pt2.y);
-    Point forward0 = p1 - p0;
-    Point right0(forward0.y, -forward0.x);
+    heeks::Point p0(pt0.x, pt0.y);
+    heeks::Point p1(pt1.x, pt1.y);
+    heeks::Point p2(pt2.x, pt2.y);
+    heeks::Point forward0 = p1 - p0;
+    heeks::Point right0(forward0.y, -forward0.x);
     right0.normalize();
-    Point forward1 = p2 - p1;
-    Point right1(forward1.y, -forward1.x);
+    heeks::Point forward1 = p2 - p1;
+    heeks::Point right1(forward1.y, -forward1.x);
     right1.normalize();
 
     int arc_dir = (radius > 0) ? 1 : -1;
 
-    CVertex v0(0, p1 + right0 * radius, Point(0, 0));
+    CVertex v0(0, p1 + right0 * radius, heeks::Point(0, 0));
     CVertex v1(arc_dir, p1 + right1 * radius, p1);
-    CVertex v2(0, p2 + right1 * radius, Point(0, 0));
+    CVertex v2(0, p2 + right1 * radius, heeks::Point(0, 0));
 
     double save_units = CArea::m_units;
     CArea::m_units = 1.0;
@@ -264,7 +255,7 @@ static void MakeLoop(
 static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, double inwards_value)
 {
     // Use Clipper2
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
 
     bool inwards = (inwards_value > 0);
     bool reverse = false;
@@ -273,10 +264,10 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
     if (inwards) {
         // add a large square on the outside, to be removed later
         TPolygon2 p;
-        p.push_back(ToPoint64(Clipper2Lib::PointD(-10000.0, -10000.0)));
-        p.push_back(ToPoint64(Clipper2Lib::PointD(-10000.0, 10000.0)));
-        p.push_back(ToPoint64(Clipper2Lib::PointD(10000.0, 10000.0)));
-        p.push_back(ToPoint64(Clipper2Lib::PointD(10000.0, -10000.0)));
+        p.push_back(ToPoint64(PointD(-10000.0, -10000.0)));
+        p.push_back(ToPoint64(PointD(-10000.0, 10000.0)));
+        p.push_back(ToPoint64(PointD(10000.0, 10000.0)));
+        p.push_back(ToPoint64(PointD(10000.0, -10000.0)));
 
         // Add to Clipper2
         c.AddSubject({p});
@@ -308,7 +299,7 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
 
             TPolygon2 loopy_polygon;
             loopy_polygon.reserve(pts_for_AddVertex.size());
-            for (std::list<Clipper2Lib::PointD>::iterator It = pts_for_AddVertex.begin();
+            for (std::list<PointD>::iterator It = pts_for_AddVertex.begin();
                  It != pts_for_AddVertex.end();
                  It++) {
                 loopy_polygon.push_back(ToPoint64(*It));
@@ -322,7 +313,7 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
 
     // Execute union with Clipper2
     TPolyPolygon2 solution;
-    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution);
+    c.Execute(ClipType::Union, FillRule::NonZero, solution);
 
     pp_new = solution;
 
@@ -350,13 +341,13 @@ static void OffsetWithLoops(const TPolyPolygon2& pp, TPolyPolygon2& pp_new, doub
     }
 }
 
-static void MakeObround(const Point& pt0, const CVertex& vt1, double radius)
+static void MakeObround(const heeks::Point& pt0, const CVertex& vt1, double radius)
 {
     Span span(pt0, vt1);
-    Point forward0 = span.GetVector(0.0);
-    Point forward1 = span.GetVector(1.0);
-    Point right0(forward0.y, -forward0.x);
-    Point right1(forward1.y, -forward1.x);
+    heeks::Point forward0 = span.GetVector(0.0);
+    heeks::Point forward1 = span.GetVector(1.0);
+    heeks::Point right0(forward0.y, -forward0.x);
+    heeks::Point right1(forward1.y, -forward1.x);
     right0.normalize();
     right1.normalize();
 
@@ -381,7 +372,7 @@ static void MakeObround(const Point& pt0, const CVertex& vt1, double radius)
 static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, double radius)
 {
     // Use Clipper2
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
     pp_new.clear();
 
     for (std::list<CCurve>::const_iterator It = area.m_curves.begin(); It != area.m_curves.end();
@@ -403,7 +394,7 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, do
 
                 TPolygon2 loopy_polygon;
                 loopy_polygon.reserve(pts_for_AddVertex.size());
-                for (std::list<Clipper2Lib::PointD>::iterator It = pts_for_AddVertex.begin();
+                for (std::list<PointD>::iterator It = pts_for_AddVertex.begin();
                      It != pts_for_AddVertex.end();
                      It++) {
                     loopy_polygon.push_back(ToPoint64(*It));
@@ -415,7 +406,7 @@ static void OffsetSpansWithObrounds(const CArea& area, TPolyPolygon2& pp_new, do
             prev_vertex = &vertex;
         }
         // Execute union with Clipper2
-        c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, pp_new);
+        c.Execute(ClipType::Union, FillRule::NonZero, pp_new);
     }
 
 
@@ -460,7 +451,7 @@ static void MakePoly(const CCurve& curve, TPolygon2& p, bool reverse = false)
     p.resize(pts_for_AddVertex.size());
     if (reverse) {
         std::size_t i = pts_for_AddVertex.size() - 1;  // clipper wants them the opposite way to CArea
-        for (std::list<Clipper2Lib::PointD>::iterator It = pts_for_AddVertex.begin();
+        for (std::list<PointD>::iterator It = pts_for_AddVertex.begin();
              It != pts_for_AddVertex.end();
              It++, i--) {
             p[i] = ToPoint64(*It);
@@ -468,7 +459,7 @@ static void MakePoly(const CCurve& curve, TPolygon2& p, bool reverse = false)
     }
     else {
         unsigned int i = 0;
-        for (std::list<Clipper2Lib::PointD>::iterator It = pts_for_AddVertex.begin();
+        for (std::list<PointD>::iterator It = pts_for_AddVertex.begin();
              It != pts_for_AddVertex.end();
              It++, i++) {
             p[i] = ToPoint64(*It);
@@ -489,14 +480,18 @@ static void MakePolyPoly(const CArea& area, TPolyPolygon2& pp, bool reverse = tr
 
 static void SetFromResult(CCurve& curve, TPolygon2& p, bool reverse = true, bool is_closed = true)
 {
-    if (CArea::m_clipper_clean_distance >= Point::tolerance) {
-        p = Clipper2Lib::SimplifyPath(p, CArea::m_clipper_clean_distance, is_closed);
+    if (CArea::m_clipper_clean_distance >= heeks::Point::tolerance) {
+        p = SimplifyPath(p, CArea::m_clipper_clean_distance, is_closed);
     }
 
     for (unsigned int j = 0; j < p.size(); j++) {
-        const Clipper2Lib::Point64& pt = p[j];
-        Clipper2Lib::PointD dp = ToPointD(pt);
-        CVertex vertex(0, Point(dp.x / CArea::m_units, dp.y / CArea::m_units), Point(0.0, 0.0));
+        const Point64& pt = p[j];
+        PointD dp = ToPointD(pt);
+        CVertex vertex(
+            0,
+            heeks::Point(dp.x / CArea::m_units, dp.y / CArea::m_units),
+            heeks::Point(0.0, 0.0)
+        );
         if (reverse) {
             curve.m_vertices.push_front(vertex);
         }
@@ -549,11 +544,11 @@ void CArea::Subtract(const CArea& a2)
     MakePolyPoly(a2, pp2);
 
     // Use Clipper2 API
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
     TPolyPolygon2 solution;
-    c.Execute(Clipper2Lib::ClipType::Difference, Clipper2Lib::FillRule::EvenOdd, solution);
+    c.Execute(ClipType::Difference, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
 }
@@ -566,11 +561,11 @@ void CArea::Intersect(const CArea& a2)
     MakePolyPoly(a2, pp2);
 
     // Use Clipper2 API
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
     TPolyPolygon2 solution;
-    c.Execute(Clipper2Lib::ClipType::Intersection, Clipper2Lib::FillRule::EvenOdd, solution);
+    c.Execute(ClipType::Intersection, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
 }
@@ -583,11 +578,11 @@ void CArea::Union(const CArea& a2)
     MakePolyPoly(a2, pp2);
 
     // Use Clipper2 API
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
     TPolyPolygon2 solution;
-    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::EvenOdd, solution);
+    c.Execute(ClipType::Union, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
 }
@@ -606,10 +601,10 @@ CArea CArea::UniteCurves(std::list<CCurve>& curves)
     }
 
     // Use Clipper2 API - Note: original Clipper1 implementation uses NonZero fill rule
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
     c.AddSubject(pp);
     TPolyPolygon2 solution;
-    c.Execute(Clipper2Lib::ClipType::Union, Clipper2Lib::FillRule::NonZero, solution);
+    c.Execute(ClipType::Union, FillRule::NonZero, solution);
 
     CArea area;
     SetFromResult(area, solution);
@@ -624,11 +619,11 @@ void CArea::Xor(const CArea& a2)
     MakePolyPoly(a2, pp2);
 
     // Use Clipper2 API
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
     TPolyPolygon2 solution;
-    c.Execute(Clipper2Lib::ClipType::Xor, Clipper2Lib::FillRule::EvenOdd, solution);
+    c.Execute(ClipType::Xor, FillRule::EvenOdd, solution);
 
     SetFromResult(*this, solution);
 }
@@ -673,16 +668,16 @@ void CArea::Clip(
 {
     // Use Clipper2
     // Convert Clipper1 enums to Clipper2
-    Clipper2Lib::ClipType op_c2 = ToClipper2ClipType(op);
+    ClipType op_c2 = ToClipper2ClipType(op);
 
-    // Use subject fill type as primary (Clipper2 uses single Clipper2Lib::FillRule)
-    Clipper2Lib::FillRule fillRule_c2 = ToClipper2FillRule(subjFillType);
+    // Use subject fill type as primary (Clipper2 uses single FillRule)
+    FillRule fillRule_c2 = ToClipper2FillRule(subjFillType);
 
     // Build polygons with Clipper2
     TPolyPolygon2 pp1, pp2;
     MakePolyPoly(*this, pp1);
 
-    Clipper2Lib::Clipper64 c;
+    Clipper64 c;
     c.AddSubject(pp1);
 
     if (a) {
@@ -691,11 +686,11 @@ void CArea::Clip(
     }
 
     // Execute with PolyTree to preserve hierarchy
-    Clipper2Lib::PolyTree64 tree;
+    PolyTree64 tree;
     c.Execute(op_c2, fillRule_c2, tree);
 
     // Extract closed paths from polytree
-    TPolyPolygon2 closed = Clipper2Lib::PolyTreeToPaths64(tree);
+    TPolyPolygon2 closed = PolyTreeToPaths64(tree);
     SetFromResult(*this, closed);
 
     // Note: Clipper2 handles open paths differently
@@ -729,7 +724,7 @@ void CArea::OffsetWithClipper(
     }
 
     // Create Clipper2 offset object
-    Clipper2Lib::ClipperOffset clipper(miterLimit, arcTolerance);
+    ClipperOffset clipper(miterLimit, arcTolerance);
 
     // Build polygons with Clipper2
     TPolyPolygon2 pp;
@@ -738,8 +733,7 @@ void CArea::OffsetWithClipper(
     // Add paths with appropriate end types
     int i = 0;
     for (const CCurve& c : m_curves) {
-        Clipper2Lib::EndType et_c2 = c.IsClosed() ? Clipper2Lib::EndType::Polygon
-                                                  : ToClipper2EndType(endType);
+        EndType et_c2 = c.IsClosed() ? EndType::Polygon : ToClipper2EndType(endType);
         clipper.AddPath(pp[i++], ToClipper2JoinType(joinType), et_c2);
     }
 
@@ -773,11 +767,14 @@ void UnFitArcs(CCurve& curve)
 
     curve.m_vertices.clear();
 
-    for (std::list<Clipper2Lib::PointD>::iterator It = pts_for_AddVertex.begin();
-         It != pts_for_AddVertex.end();
+    for (std::list<PointD>::iterator It = pts_for_AddVertex.begin(); It != pts_for_AddVertex.end();
          It++) {
-        Clipper2Lib::PointD& pt = *It;
-        CVertex vertex(0, Point(pt.x / CArea::m_units, pt.y / CArea::m_units), Point(0.0, 0.0));
+        PointD& pt = *It;
+        CVertex vertex(
+            0,
+            heeks::Point(pt.x / CArea::m_units, pt.y / CArea::m_units),
+            heeks::Point(0.0, 0.0)
+        );
         curve.m_vertices.push_back(vertex);
     }
 }
