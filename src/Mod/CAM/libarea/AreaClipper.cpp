@@ -550,17 +550,16 @@ void CArea::Clip(ClipType op, const CArea* a, FillRule subjFillType, FillRule cl
         c.AddClip(pp2);
     }
 
-    // Execute with PolyTree to preserve hierarchy
-    PolyTree64 tree;
-    c.Execute(op, subjFillType, tree);
+    // Execute to get both closed and open paths
+    TPolyPolygon2 closed_paths;
+    TPolyPolygon2 open_paths;
+    c.Execute(op, subjFillType, closed_paths, open_paths);
 
-    // Extract closed paths from polytree
-    TPolyPolygon2 closed = PolyTreeToPaths64(tree);
-    SetFromResult(*this, closed);
+    // Set closed paths as result
+    SetFromResult(*this, closed_paths);
 
-    // Note: Clipper2 handles open paths differently
-    // For now, we only extract closed paths as the primary result
-    // Open path handling may need additional implementation based on actual usage
+    // Append open paths to result
+    SetFromResult(*this, open_paths, false, false, false);
 }
 
 void CArea::OffsetWithClipper(
