@@ -123,7 +123,6 @@ public:
     CAREA_PARAM_DECLARE(double, clipper_scale)
 
     // Following functions is add to operate on possible open curves
-    void PopulateClipper(ClipperLib::Clipper& c, ClipperLib::PolyType type) const;
     void Clip(
         ClipperLib::ClipType op,
         const CArea* a,

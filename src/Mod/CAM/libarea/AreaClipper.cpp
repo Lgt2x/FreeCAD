@@ -34,40 +34,6 @@ static PointD ToPointD(const Point64& p)
     return PointD((double)p.x / CArea::m_clipper_scale, (double)p.y / CArea::m_clipper_scale);
 }
 
-// Clipper1 <-> Clipper2 conversion helpers for progressive migration
-
-// Convert Clipper1 to Clipper2
-static Point64 ToClipper2(const ClipperLib::IntPoint& p1)
-{
-    return Point64(p1.X, p1.Y);
-}
-
-static TPolygon2 ToClipper2(const ClipperLib::Path& poly1)
-{
-    TPolygon2 poly2;
-    poly2.reserve(poly1.size());
-    for (const auto& pt : poly1) {
-        poly2.push_back(ToClipper2(pt));
-    }
-    return poly2;
-}
-
-// Convert Clipper2 to Clipper1
-static ClipperLib::IntPoint ToClipper1(const Point64& p2)
-{
-    return ClipperLib::IntPoint(p2.x, p2.y);
-}
-
-static ClipperLib::Path ToClipper1(const TPolygon2& poly2)
-{
-    ClipperLib::Path poly1;
-    poly1.reserve(poly2.size());
-    for (const auto& pt : poly2) {
-        poly1.push_back(ToClipper1(pt));
-    }
-    return poly1;
-}
-
 // Convert Clipper1 enums to Clipper2 enums
 static ClipType ToClipper2ClipType(ClipperLib::ClipType op)
 {
@@ -632,28 +598,6 @@ void CArea::Offset(double inwards_value)
     OffsetWithLoops(pp, pp2, inwards_value * m_units);
     SetFromResult(*this, pp2, false);
     this->Reorder();
-}
-
-void CArea::PopulateClipper(ClipperLib::Clipper& c, ClipperLib::PolyType type) const
-{
-    int skipped = 0;
-    for (std::list<CCurve>::const_iterator It = m_curves.begin(); It != m_curves.end(); It++) {
-        const CCurve& curve = *It;
-        bool closed = curve.IsClosed();
-        if (!closed) {
-            if (type == ClipperLib::ptClip) {
-                ++skipped;
-                continue;
-            }
-        }
-        TPolygon2 p2;
-        MakePoly(curve, p2, false);
-        ClipperLib::Path p = ToClipper1(p2);
-        c.AddPath(p, type, closed);
-    }
-    if (skipped) {
-        std::cout << "libarea: warning skipped " << skipped << " open wires" << std::endl;
-    }
 }
 
 void CArea::Clip(
