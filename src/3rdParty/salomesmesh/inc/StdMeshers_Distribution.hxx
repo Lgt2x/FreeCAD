@@ -33,8 +33,9 @@
 
 #include <vector>
 #include <math_Function.hxx>
-#include <ExprIntrp_GenExp.hxx>
-#include <Expr_Array1OfNamedUnknown.hxx>
+#include <TCollection_HAsciiString.hxx>
+// #include <ExprIntrp_GenExp.hxx>
+// #include <Expr_Array1OfNamedUnknown.hxx>
 #include <TColStd_Array1OfReal.hxx>
 
 namespace StdMeshers
@@ -97,8 +98,8 @@ public:
   virtual double integral( const double, const double ) const;
 
 private:
-  Handle(ExprIntrp_GenExp)    myExpr;
-  Expr_Array1OfNamedUnknown   myVars;
+  // Handle(ExprIntrp_GenExp)    myExpr;
+  // Expr_Array1OfNamedUnknown   myVars;
   TColStd_Array1OfReal        myValues;
 };
 

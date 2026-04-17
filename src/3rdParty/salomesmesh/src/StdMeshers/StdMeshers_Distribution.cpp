@@ -36,12 +36,12 @@
 #endif
 
 #include <Standard_Failure.hxx>
-#include <Expr_NamedUnknown.hxx>
+// #include <Expr_NamedUnknown.hxx>
 
 #ifdef NO_CAS_CATCH
 #include <Standard_ErrorHandler.hxx>
 #endif
-#include <Expr_NamedUnknown.hxx>
+// #include <Expr_NamedUnknown.hxx>
 using namespace std;
 
 namespace StdMeshers {
@@ -186,7 +186,7 @@ bool FunctionTable::findBounds( const double x, int& x_ind_1, int& x_ind_2 ) con
 
 FunctionExpr::FunctionExpr( const char* str, const int conv )
 : Function( conv ),
-  myVars( 1, 1 ),
+  // myVars( 1, 1 ),
   myValues( 1, 1 )
 {
   bool ok = true;
@@ -194,16 +194,16 @@ FunctionExpr::FunctionExpr( const char* str, const int conv )
 #ifdef NO_CAS_CATCH
     OCC_CATCH_SIGNALS;
 #endif
-    myExpr = ExprIntrp_GenExp::Create();
-    myExpr->Process( ( Standard_CString )str );
+    // myExpr = ExprIntrp_GenExp::Create();
+    // myExpr->Process( ( Standard_CString )str );
   } catch(Standard_Failure&) {
     ok = false;
   }
 
-  if( !ok || !myExpr->IsDone() )
-    myExpr.Nullify();
+  // if( !ok || !myExpr->IsDone() )
+  //   myExpr.Nullify();
 
-  myVars.ChangeValue( 1 ) = new Expr_NamedUnknown( "t" );
+  // myVars.ChangeValue( 1 ) = new Expr_NamedUnknown( "t" );
 }
 
 FunctionExpr::~FunctionExpr()
@@ -220,22 +220,22 @@ Standard_Boolean FunctionExpr::Value( const Standard_Real T, Standard_Real& F )
 
 bool FunctionExpr::value( const double t, double& f ) const
 {
-  if( myExpr.IsNull() )
-    return false;
+//   if( myExpr.IsNull() )
+//     return false;
 
-  ( ( TColStd_Array1OfReal& )myValues ).ChangeValue( 1 ) = t;
-  bool ok = true;
-  try {
-#ifdef NO_CAS_CATCH
-    OCC_CATCH_SIGNALS;
-#endif
-    f = myExpr->Expression()->Evaluate( myVars, myValues );
-  } catch(Standard_Failure&) {
-    f = 0.0;
-    ok = false;
-  }
+//   ( ( TColStd_Array1OfReal& )myValues ).ChangeValue( 1 ) = t;
+//   bool ok = true;
+//   try {
+// #ifdef NO_CAS_CATCH
+//     OCC_CATCH_SIGNALS;
+// #endif
+//     f = myExpr->Expression()->Evaluate( myVars, myValues );
+//   } catch(Standard_Failure&) {
+//     f = 0.0;
+//     ok = false;
+//   }
 
-  ok = Function::value( t, f ) && ok;
+  bool ok = Function::value( t, f );
   return ok;
 }
 

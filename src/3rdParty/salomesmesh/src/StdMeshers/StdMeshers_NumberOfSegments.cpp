@@ -33,9 +33,9 @@
 #include "SMESH_Mesh.hxx"
 #include "SMESH_Comment.hxx"
 
-#include <ExprIntrp_GenExp.hxx>
-#include <Expr_Array1OfNamedUnknown.hxx>
-#include <Expr_NamedUnknown.hxx>
+// #include <ExprIntrp_GenExp.hxx>
+// #include <Expr_Array1OfNamedUnknown.hxx>
+// #include <Expr_NamedUnknown.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TopExp.hxx>
@@ -285,27 +285,27 @@ const vector<double>& StdMeshers_NumberOfSegments::GetTableFunction() const
 /*! check if only 't' is unknown variable in expression
  */
 //================================================================================
-bool isCorrectArg( const Handle( Expr_GeneralExpression )& expr )
-{
-  Handle( Expr_NamedUnknown ) sub = Handle( Expr_NamedUnknown )::DownCast( expr );
-  if( !sub.IsNull() )
-    return sub->GetName()=="t";
+// bool isCorrectArg( const Handle( Expr_GeneralExpression )& expr )
+// {
+  // Handle( Expr_NamedUnknown ) sub = Handle( Expr_NamedUnknown )::DownCast( expr );
+  // if( !sub.IsNull() )
+  //   return sub->GetName()=="t";
 
-  bool res = true;
-  for( int i=1, n=expr->NbSubExpressions(); i<=n && res; i++ )
-  {
-    Handle( Expr_GeneralExpression ) sub = expr->SubExpression( i );
-    Handle( Expr_NamedUnknown ) name = Handle( Expr_NamedUnknown )::DownCast( sub );
-    if( !name.IsNull() )
-    {
-      if( name->GetName()!="t" )
-        res = false;
-    }
-    else
-      res = isCorrectArg( sub );
-  }
-  return res;
-}
+  // bool res = true;
+  // for( int i=1, n=expr->NbSubExpressions(); i<=n && res; i++ )
+  // {
+    // Handle( Expr_GeneralExpression ) sub = expr->SubExpression( i );
+    // Handle( Expr_NamedUnknown ) name = Handle( Expr_NamedUnknown )::DownCast( sub );
+    // if( !name.IsNull() )
+    // {
+    //   if( name->GetName()!="t" )
+    //     res = false;
+    // }
+    // else
+    //   res = isCorrectArg( sub );
+//   }
+//   return res;
+// }
 
 //================================================================================
 /*! this function parses the expression 'str' in order to check if syntax is correct
@@ -319,58 +319,59 @@ bool process( const TCollection_AsciiString& str, int convMode,
 {
   Kernel_Utils::Localizer loc;
 
-  bool parsed_ok = true;
-  Handle( ExprIntrp_GenExp ) myExpr;
-  try {
-#ifdef NO_CAS_CATCH
-    OCC_CATCH_SIGNALS;
-#endif
-    myExpr = ExprIntrp_GenExp::Create();
-    myExpr->Process( str.ToCString() );
-  } catch(Standard_Failure&) {
-    parsed_ok = false;
-  }
+//   bool parsed_ok = true;
+//   Handle( ExprIntrp_GenExp ) myExpr;
+//   try {
+// #ifdef NO_CAS_CATCH
+//     OCC_CATCH_SIGNALS;
+// #endif
+//     myExpr = ExprIntrp_GenExp::Create();
+//     myExpr->Process( str.ToCString() );
+//   } catch(Standard_Failure&) {
+//     parsed_ok = false;
+//   }
 
-  syntax = false;
-  args = false;
-  if( parsed_ok && myExpr->IsDone() )
-  {
-    syntax = true;
-    args = isCorrectArg( myExpr->Expression() );
-  }
+//   syntax = false;
+//   args = false;
+//   if( parsed_ok && myExpr->IsDone() )
+//   {
+//     syntax = true;
+//     args = isCorrectArg( myExpr->Expression() );
+//   }
 
-  bool res = parsed_ok && syntax && args;
-  if( !res )
-    myExpr.Nullify();
+//   bool res = parsed_ok && syntax && args;
+//   if( !res )
+//     myExpr.Nullify();
 
-  non_neg = true;
-  singulars = false;
-  non_zero = false;
+//   non_neg = true;
+//   singulars = false;
+//   non_zero = false;
 
-  if( res )
-  {
-    FunctionExpr f( str.ToCString(), convMode );
-    const int max = 500;
-    for( int i=0; i<=max; i++ )
-    {
-      double t = double(i)/double(max), val;
-      if( !f.value( t, val ) )
-      {
-        sing_point = t;
-        singulars = true;
-        break;
-      }
-      if( val<0 )
-      {
-        non_neg = false;
-        break;
-      }
-      if( val>PRECISION )
-        non_zero = true;
-    }
-  }
+//   if( res )
+//   {
+//     FunctionExpr f( str.ToCString(), convMode );
+//     const int max = 500;
+//     for( int i=0; i<=max; i++ )
+//     {
+//       double t = double(i)/double(max), val;
+//       if( !f.value( t, val ) )
+//       {
+//         sing_point = t;
+//         singulars = true;
+//         break;
+//       }
+//       if( val<0 )
+//       {
+//         non_neg = false;
+//         break;
+//       }
+//       if( val>PRECISION )
+//         non_zero = true;
+//     }
+//   }
 
-  return res && non_neg && non_zero && ( !singulars );
+  // return res && non_neg && non_zero && ( !singulars );
+  return true;
 }
 
 //================================================================================
