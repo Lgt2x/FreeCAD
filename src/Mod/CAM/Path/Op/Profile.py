@@ -401,8 +401,13 @@ class ObjectProfile(PathAreaOp.ObjectOp):
         params["ExtraPass"] = num_passes - 1
         params["Stepover"] = stepover
 
-        jointype = ["Round", "Square", "Miter"]
-        params["JoinType"] = jointype.index(obj.JoinType)
+        # Map JoinType string to AreaParams enum value
+        jointype_map = {
+            "Round": Path.AreaJoinTypeRound,
+            "Square": Path.AreaJoinTypeSquare,
+            "Miter": Path.AreaJoinTypeMiter,
+        }
+        params["JoinType"] = jointype_map.get(obj.JoinType, Path.AreaJoinTypeRound)
 
         if obj.JoinType == "Miter":
             params["MiterLimit"] = obj.MiterLimit
@@ -1101,7 +1106,17 @@ class ObjectProfile(PathAreaOp.ObjectOp):
         if isHole is False:
             offset = 0 - offset
 
-        return PathUtils.getOffsetArea(fcShape, offset, plane=fcShape, tolerance=tolerance)
+        # Map JoinType string to AreaParams enum value
+        jointype_map = {
+            "Round": Path.AreaJoinTypeRound,
+            "Square": Path.AreaJoinTypeSquare,
+            "Miter": Path.AreaJoinTypeMiter,
+        }
+        joinType = jointype_map.get(obj.JoinType, Path.AreaJoinTypeRound)
+
+        return PathUtils.getOffsetArea(
+            fcShape, offset, plane=fcShape, tolerance=tolerance, joinType=joinType
+        )
 
     def _findNearestVertex(self, shape, point):
         Path.Log.debug("_findNearestVertex()")

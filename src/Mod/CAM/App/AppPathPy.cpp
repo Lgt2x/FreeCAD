@@ -168,6 +168,13 @@ public:
         initialize("This module is the Path module.");  // register with Python
 
         PyModule_AddObject(m_module, "Voronoi", voronoi.module().ptr());
+
+        // Add AreaParams enum constants for JoinType
+        // These match the AreaParams.h order: (Round)(Square)(Miter) = 0, 1, 2
+        // AreaParams converts these to ClipperLib values via PARAM_ENUM_CONVERT
+        PyModule_AddIntConstant(m_module, "AreaJoinTypeRound", 0);
+        PyModule_AddIntConstant(m_module, "AreaJoinTypeSquare", 1);
+        PyModule_AddIntConstant(m_module, "AreaJoinTypeMiter", 2);
     }
 
     ~Module() override

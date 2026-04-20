@@ -310,6 +310,7 @@ class TestPathOpenProfile(PathTestBase):
         # Set operation properties
         cls.profile.Direction = "CCW"
         cls.profile.Side = "Outside"
+        cls.profile.JoinType = "Round"
 
         # Set depth properties for open edge profiling
         # Clear expressions first, then set values
