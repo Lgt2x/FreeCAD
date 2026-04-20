@@ -566,12 +566,21 @@ void CArea::OffsetWithClipper(
     Paths64 pp;
     MakePolyPoly(*this, pp, false);
 
+    // Collect closed paths to add together (holes must be added with outer boundary)
+    Paths64 closedPaths;
+
     // Add paths with appropriate end types
     int i = 0;
     for (const CCurve& c : m_curves) {
-        EndType et = c.IsClosed() ? EndType::Polygon : endType;
-        clipper.AddPath(pp[i++], joinType, et);
+        if (c.IsClosed()) {
+            closedPaths.push_back(pp[i]);
+        }
+        else {
+            clipper.AddPath(pp[i], joinType, endType);
+        }
+        i++;
     }
+    clipper.AddPaths(closedPaths, joinType, EndType::Polygon);
 
     // Execute offset
     Paths64 pp2;
