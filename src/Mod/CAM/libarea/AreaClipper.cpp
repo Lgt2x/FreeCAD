@@ -5,7 +5,6 @@
 // implements CArea methods using Angus Johnson's "Clipper"
 
 #include "Area.h"
-#include "clipper.hpp"
 #include "clipper2/clipper.h"
 
 using namespace heeks;
