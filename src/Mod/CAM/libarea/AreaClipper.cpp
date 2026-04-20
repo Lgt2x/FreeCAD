@@ -148,7 +148,6 @@ static void MakeLoop(const PointD& pt0, const PointD& pt1, const PointD& pt2, do
 
 static void OffsetWithLoops(const Paths64& pp, Paths64& pp_new, double inwards_value)
 {
-    // Use Clipper2
     Clipper64 c;
 
     bool inwards = (inwards_value > 0);
@@ -163,7 +162,6 @@ static void OffsetWithLoops(const Paths64& pp, Paths64& pp_new, double inwards_v
         p.push_back(ToPoint64(PointD(10000.0, 10000.0)));
         p.push_back(ToPoint64(PointD(10000.0, -10000.0)));
 
-        // Add to Clipper2
         c.AddSubject({p});
     }
     else {
@@ -199,13 +197,11 @@ static void OffsetWithLoops(const Paths64& pp, Paths64& pp_new, double inwards_v
                 loopy_polygon.push_back(ToPoint64(*It));
             }
 
-            // Add to Clipper2 immediately
             c.AddSubject({loopy_polygon});
             pts_for_AddVertex.clear();
         }
     }
 
-    // Execute union with Clipper2
     Paths64 solution;
     c.Execute(ClipType::Union, FillRule::NonZero, solution);
 
@@ -265,7 +261,6 @@ static void MakeObround(const heeks::Point& pt0, const CVertex& vt1, double radi
 
 static void OffsetSpansWithObrounds(const CArea& area, Paths64& pp_new, double radius)
 {
-    // Use Clipper2
     Clipper64 c;
     pp_new.clear();
 
@@ -293,13 +288,11 @@ static void OffsetSpansWithObrounds(const CArea& area, Paths64& pp_new, double r
                      It++) {
                     loopy_polygon.push_back(ToPoint64(*It));
                 }
-                // Add to Clipper2 immediately
                 c.AddSubject({loopy_polygon});
                 pts_for_AddVertex.clear();
             }
             prev_vertex = &vertex;
         }
-        // Execute union with Clipper2
         c.Execute(ClipType::Union, FillRule::NonZero, pp_new);
     }
 
@@ -432,12 +425,10 @@ static void SetFromResult(
 
 void CArea::Subtract(const CArea& a2)
 {
-    // Use Clipper2
     Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Use Clipper2 API
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
@@ -449,12 +440,10 @@ void CArea::Subtract(const CArea& a2)
 
 void CArea::Intersect(const CArea& a2)
 {
-    // Use Clipper2
     Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Use Clipper2 API
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
@@ -466,12 +455,10 @@ void CArea::Intersect(const CArea& a2)
 
 void CArea::Union(const CArea& a2)
 {
-    // Use Clipper2
     Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Use Clipper2 API
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
@@ -483,12 +470,10 @@ void CArea::Union(const CArea& a2)
 
 void CArea::Xor(const CArea& a2)
 {
-    // Use Clipper2
     Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
     MakePolyPoly(a2, pp2);
 
-    // Use Clipper2 API
     Clipper64 c;
     c.AddSubject(pp1);
     c.AddClip(pp2);
@@ -509,7 +494,6 @@ void CArea::Offset(double inwards_value)
 
 void CArea::Clip(ClipType op, const CArea* a, FillRule subjFillType, FillRule clipFillType)
 {
-    // Build polygons with Clipper2
     Paths64 pp1, pp2;
     MakePolyPoly(*this, pp1);
 
@@ -558,10 +542,8 @@ void CArea::OffsetWithClipper(
         arcTolerance *= m_clipper_scale;
     }
 
-    // Create Clipper2 offset object
     ClipperOffset clipper(miterLimit, arcTolerance);
 
-    // Build polygons with Clipper2
     Paths64 pp;
     MakePolyPoly(*this, pp, false);
 
