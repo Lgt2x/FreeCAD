@@ -35,21 +35,21 @@ endif()
 if (NOT FREECAD_USE_EXTERNAL_COIN_PIVY)
     set(USE_EXTERNAL_EXPAT ON)
     set(FREETYPE_RUNTIME_LINKING OFF)
-    add_subdirectory(coin)
+    # add_subdirectory(coin)
     # This is needed because Coin3D fails to build if UNICODE support is enabled in win32 api
-    if (MSVC)
-        target_compile_options(Coin PRIVATE /UUNICODE /U_UNICODE)
-        target_compile_options(CoinTests PRIVATE /UUNICODE /U_UNICODE)
-    endif()
+    # if (MSVC)
+    #     target_compile_options(Coin PRIVATE /UUNICODE /U_UNICODE)
+    #     target_compile_options(CoinTests PRIVATE /UUNICODE /U_UNICODE)
+    # endif()
 
     set(PIVY_USE_QT6 ON)
     set(PIVY_USE_SOQT OFF)
     add_subdirectory(pivy)
-    set_target_properties(coin PROPERTIES
-        AUTOMOC OFF
-        AUTOUIC OFF
-        AUTORCC OFF
-    )
+    # set_target_properties(coin PROPERTIES
+    #     AUTOMOC OFF
+    #     AUTOUIC OFF
+    #     AUTORCC OFF
+    # )
 
     # TODO: Currently these commands run everytime because the target coin does the
     # same This is not very ideal for continuous development and should be improved
@@ -62,7 +62,7 @@ if (NOT FREECAD_USE_EXTERNAL_COIN_PIVY)
             ${PROJECT_BINARY_DIR}/pivy
             ${PROJECT_BINARY_DIR}/Mod/pivy
 
-        DEPENDS coin
+        # DEPENDS coin
     )
 
     # The cmake target pivy uses to generate the bindings is called "coin"

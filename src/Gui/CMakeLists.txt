@@ -163,6 +163,7 @@ target_include_directories(
     ${YAML_CPP_INCLUDE_DIRS}
 )
 
+message("FREETYPESS ${FREETYPE_LIBRARIES}")
 list(APPEND FreeCADGui_LIBS
     ${QtCore_LIBRARIES}
     ${QtWidgets_LIBRARIES}
@@ -173,6 +174,7 @@ list(APPEND FreeCADGui_LIBS
     ${QtSvgWidgets_LIBRARIES}
     ${QtNetwork_LIBRARIES}
     ${QtUiTools_LIBRARIES}
+    Freetype::Freetype
 )
 
 link_directories(${YAML_CPP_LIBRARY_DIR})

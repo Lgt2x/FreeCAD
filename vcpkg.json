@@ -7,9 +7,16 @@
     "qtbase",
     "qtsvg",
     "qttools",
-    "xcb",
     "boost",
     "xerces-c",
-    "yaml-cpp"
+    "yaml-cpp",
+    "freetype",
+    "libspnav",
+    "libx11",
+    "libxkbcommon",
+    "harfbuzz",
+    "libpng",
+    "coin",
+    "tiff"
 ]
 }

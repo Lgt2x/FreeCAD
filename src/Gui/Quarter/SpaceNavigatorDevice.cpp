@@ -95,7 +95,7 @@ SpaceNavigatorDevice::SpaceNavigatorDevice(QuarterWidget* quarter) :
     fprintf(stderr, "Quarter:: Could not hook up to Spacenav device.\n");
   }
   else {
-    spnav_client_name("FreeCAD");
+    // spnav_client_name("FreeCAD");
   }
 
 #endif // HAVE_SPACENAV_LIB

@@ -39,7 +39,7 @@ if(FREETYPE_FOUND)
 
     set(Part_LIBS
         ${Part_LIBS}
-        ${FREETYPE_LIBRARIES}
+        Freetype::Freetype
     )
 
     set(Part_LIBS ${Part_LIBS} harfbuzz::harfbuzz)
