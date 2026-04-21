@@ -51,37 +51,8 @@ namespace Path
 using heeks::CArea;
 using heeks::CCurve;
 
-/** Store libarea algorithm configuration */
-struct PathExport CAreaParams
-{
-    PARAM_DECLARE(PARAM_FNAME, AREA_PARAMS_CAREA)
-    CAreaParams();
-};
-
-/** Store all Area configurations */
-struct PathExport AreaParams: CAreaParams
-{
-
-    PARAM_DECLARE(PARAM_FNAME, AREA_PARAMS_AREA)
-
-    bool operator==(const AreaParams& other) const
-    {
-#define AREA_COMPARE(_param) \
-    if (PARAM_FIELD(NAME, _param) != other.PARAM_FIELD(NAME, _param)) \
-        return false;
-        PARAM_FOREACH(AREA_COMPARE, AREA_PARAMS_CAREA);
-        PARAM_FOREACH(AREA_COMPARE, AREA_PARAMS_AREA);
-        return true;
-    }
-    bool operator!=(const AreaParams& other) const
-    {
-        return !(*this == other);
-    }
-
-    void dump(const char*) const;
-
-    AreaParams();
-};
+// Expanded C++ structs (AreaParamsExpanded.h replaces macro-generated structs)
+#include "AreaParamsExpanded.h"
 
 struct PathExport AreaStaticParams: AreaParams
 {
