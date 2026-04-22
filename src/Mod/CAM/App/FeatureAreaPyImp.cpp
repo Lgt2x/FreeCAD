@@ -81,7 +81,9 @@ PyObject* FeatureAreaPy::setParams(PyObject* args, PyObject* keywds)
     }
 
 #define AREA_GET(_param) \
-    feature->PARAM_FNAME(_param).setValue(PARAM_TYPED(PARAM_CAST_PY_, _param)(PARAM_FNAME(_param)));
+    feature->PARAM_FNAME(_param).setValue( \
+        PARAM_TYPED(PARAM_CAST_PY_, _param)(PARAM_FNAME(_param), _param) \
+    );
     // populate properties with the CONF variables
     PARAM_FOREACH(AREA_GET, AREA_PARAMS_CONF)
 

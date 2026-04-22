@@ -207,8 +207,7 @@
 #define PARAM_FSEQ(_param) PARAM_FIELD(SEQ, _param)
 #define PARAM_FPROP(_param) PARAM_FIELD(PROP, _param)
 #define PARAM_FINFO(_param) PARAM_FIELD(INFO, _param)
-#define PARAM_FENUM_TYPE(_param) BOOST_PP_TUPLE_ELEM(0, PARAM_FINFO(_param))
-#define PARAM_FENUM_PREFIX(_param) BOOST_PP_TUPLE_ELEM(1, PARAM_FINFO(_param))
+#define PARAM_FENUM_TYPE(_param) PARAM_FINFO(_param)
 /** @} */
 
 
@@ -294,19 +293,19 @@
  * \ingroup ParamHelper
  */
 
-#define PARAM_TYPE_short short
-#define PARAM_TYPE_long long
-#define PARAM_TYPE_double double
-#define PARAM_TYPE_bool bool
-#define PARAM_TYPE_enum short
-#define PARAM_TYPE_enum2 short
+#define PARAM_TYPE_short(_1) short
+#define PARAM_TYPE_long(_1) long
+#define PARAM_TYPE_double(_1) double
+#define PARAM_TYPE_bool(_1) bool
+#define PARAM_TYPE_enum(_1) short
+#define PARAM_TYPE_enum2(_param) PARAM_FENUM_TYPE(_param)
 
 /** Obtain parameter type
  *
  * The main purpose is to alias enum type to short
  * \ingroup ParamCommon
  */
-#define PARAM_TYPE(_param) PARAM_TYPED(PARAM_TYPE_, _param)
+#define PARAM_TYPE(_param) PARAM_TYPED(PARAM_TYPE_, _param)(_param)
 
 
 /** Helper for #PARAM_DECLARE */
@@ -367,7 +366,7 @@
 #define PARAM_ENUM_DECLARE_long(_param)
 #define PARAM_ENUM_DECLARE_double(_param)
 #define PARAM_ENUM_DECLARE_bool(_param)
-#define PARAM_ENUM_DECLARE_enum2 PARAM_ENUM_DECLARE_enum
+#define PARAM_ENUM_DECLARE_enum2(_param)
 
 /** \defgroup ParamEnumHelper Enum convert helpers
  * \ingroup ParamCommon
@@ -420,16 +419,7 @@
  * i.e. not double but single parenthesis
  */
 #define PARAM_ENUM_CONVERT_SINGLE(_src, _dst, _default, _param) \
-    PARAM_FENUM_TYPE(_param) _dst(_param); \
-    switch (_src(_param)) { \
-        BOOST_PP_SEQ_FOR_EACH_I( \
-            PARAM_ENUM_CONVERT__, \
-            (_dst(_param), PARAM_FNAME(_param), PARAM_FENUM_PREFIX(_param)), \
-            PARAM_FSEQ(_param) \
-        ) \
-        default: \
-            _default(_param); \
-    }
+    PARAM_FENUM_TYPE(_param) _dst(_param) = _src(_param);
 
 /** Default handling in #PARAM_ENUM_CONVERT and #PARAM_ENUM_CHECK*/
 #define PARAM_ENUM_EXCEPT(_param) \
@@ -509,10 +499,14 @@
 #define PARAM_ENUM_CHECK_double(...)
 #define PARAM_ENUM_CHECK_bool(...)
 #define PARAM_ENUM_CHECK_enum PARAM_ENUM_CHECK_SINGLE
-#define PARAM_ENUM_CHECK_enum2 PARAM_ENUM_CHECK_SINGLE
+#define PARAM_ENUM_CHECK_enum2 PARAM_ENUM2_CHECK_SINGLE
 
 #define PARAM_ENUM_CHECK_enum_(_1, _name, _i, _elem) \
     case BOOST_PP_CAT(_name, _elem): \
+        break;
+
+#define PARAM_ENUM2_CHECK_enum_(_1, _name, _i, _elem) \
+    case (_elem): \
         break;
 
 #define PARAM_ENUM_CHECK_(_1, _args, _param) \
@@ -522,6 +516,13 @@
 #define PARAM_ENUM_CHECK_SINGLE(_src, _default, _param) \
     switch (_src(_param)) { \
         BOOST_PP_SEQ_FOR_EACH_I(PARAM_ENUM_CHECK_enum_, PARAM_FNAME(_param), PARAM_FSEQ(_param)) \
+        default: \
+            _default(_param); \
+    }
+
+#define PARAM_ENUM2_CHECK_SINGLE(_src, _default, _param) \
+    switch (_src(_param)) { \
+        BOOST_PP_SEQ_FOR_EACH_I(PARAM_ENUM2_CHECK_enum_, PARAM_FNAME(_param), PARAM_FSEQ(_param)) \
         default: \
             _default(_param); \
     }
@@ -730,19 +731,19 @@
 #define PARAM_PY_CAST_double(_v) (_v)
 #define PARAM_PY_CAST_bool(_v) ((_v) ? Py_True : Py_False)
 #define PARAM_PY_CAST_enum(_v) (_v)
-#define PARAM_PY_CAST_enum2(_v) (_v)
+#define PARAM_PY_CAST_enum2(_v) (static_cast<short>(_v))
 
-#define PARAM_CAST_PY_short(_v) (_v)
-#define PARAM_CAST_PY_long(_v) (_v)
-#define PARAM_CAST_PY_double(_v) (_v)
-#define PARAM_CAST_PY_bool(_v) (PyObject_IsTrue(_v) ? true : false)
-#define PARAM_CAST_PY_enum(_v) (_v)
-#define PARAM_CAST_PY_enum2(_v) (_v)
+#define PARAM_CAST_PY_short(_v, _param) (_v)
+#define PARAM_CAST_PY_long(_v, _param) (_v)
+#define PARAM_CAST_PY_double(_v, _param) (_v)
+#define PARAM_CAST_PY_bool(_v, _param) (PyObject_IsTrue(_v) ? true : false)
+#define PARAM_CAST_PY_enum(_v, _param) (_v)
+#define PARAM_CAST_PY_enum2(_v, _param) (static_cast<PARAM_FENUM_TYPE(_param)>(_v))
 
 
 /** Helper for #PARAM_PY_FIELDS */
 #define PARAM_PY_FIELDS_(_1, _src, _i, _param) \
-    BOOST_PP_COMMA_IF(_i) PARAM_TYPED(PARAM_CAST_PY_, _param)(_src(_param))
+    BOOST_PP_COMMA_IF(_i) PARAM_TYPED(PARAM_CAST_PY_, _param)(_src(_param), _param)
 
 /** Expand to a comma separated list of the given field in the sequence
  *
@@ -801,7 +802,7 @@
 #define PARAM_PY_INIT_double(_v) _v
 #define PARAM_PY_INIT_bool(_v) ((_v) ? Py_True : Py_False)
 #define PARAM_PY_INIT_enum(_v) _v
-#define PARAM_PY_INIT_enum2(_v) _v
+#define PARAM_PY_INIT_enum2(_v) static_cast<short>(_v)
 
 /** Helper for #PARAM_PY_DECLARE_INIT */
 #define PARAM_PY_DECLARE_INIT_(_1, _src, _param) \
@@ -836,7 +837,7 @@
 #define PARAM_CAST_PYOBJ_double(_v) PyFloat_FromDouble(_v)
 #define PARAM_CAST_PYOBJ_bool(_v) ((_v) ? Py_True : Py_False)
 #define PARAM_CAST_PYOBJ_enum PARAM_CAST_PYOBJ_short
-#define PARAM_CAST_PYOBJ_enum2 PARAM_CAST_PYOBJ_short
+#define PARAM_CAST_PYOBJ_enum2(_v) PARAM_CAST_PYOBJ_short(static_cast<short>(_v))
 
 
 /** Stringize field to a Python string

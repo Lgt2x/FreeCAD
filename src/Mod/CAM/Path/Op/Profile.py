@@ -403,11 +403,11 @@ class ObjectProfile(PathAreaOp.ObjectOp):
 
         # Map JoinType string to AreaParams enum value
         jointype_map = {
-            "Round": Path.AreaJoinTypeRound,
-            "Square": Path.AreaJoinTypeSquare,
-            "Miter": Path.AreaJoinTypeMiter,
+            "Round": Path.ClipperJoinTypeRound,
+            "Square": Path.ClipperJoinTypeSquare,
+            "Miter": Path.ClipperJoinTypeMiter,
         }
-        params["JoinType"] = jointype_map.get(obj.JoinType, Path.AreaJoinTypeRound)
+        params["JoinType"] = jointype_map.get(obj.JoinType, Path.ClipperJoinTypeRound)
 
         if obj.JoinType == "Miter":
             params["MiterLimit"] = obj.MiterLimit
@@ -1108,11 +1108,11 @@ class ObjectProfile(PathAreaOp.ObjectOp):
 
         # Map JoinType string to AreaParams enum value
         jointype_map = {
-            "Round": Path.AreaJoinTypeRound,
-            "Square": Path.AreaJoinTypeSquare,
-            "Miter": Path.AreaJoinTypeMiter,
+            "Round": Path.ClipperJoinTypeRound,
+            "Square": Path.ClipperJoinTypeSquare,
+            "Miter": Path.ClipperJoinTypeMiter,
         }
-        joinType = jointype_map.get(obj.JoinType, Path.AreaJoinTypeRound)
+        joinType = jointype_map.get(obj.JoinType, Path.ClipperJoinTypeRound)
 
         return PathUtils.getOffsetArea(
             fcShape, offset, plane=fcShape, tolerance=tolerance, joinType=joinType

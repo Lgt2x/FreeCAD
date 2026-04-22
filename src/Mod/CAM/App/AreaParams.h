@@ -32,23 +32,25 @@
  */
 
 #include "ParamsHelper.h"
+#include <Mod/CAM/libarea/clipper.hpp>
 
 /** clipper fill type */
 #define AREA_CLIPPER_FILL_TYPE \
-    (NonZero)(EvenOdd)(Positive)(Negative), (ClipperLib::PolyFillType, ClipperLib::pft)
+    (ClipperLib::pftNonZero)(ClipperLib::pftEvenOdd)(ClipperLib::pftPositive)(ClipperLib::pftNegative), \
+        ClipperLib::PolyFillType
 
 /** Parameters of clipper fill types */
 #define AREA_PARAMS_CLIPPER_FILL \
     ((enum2, \
       subject_fill, \
       SubjectFill, \
-      0, \
+      ClipperLib::pftNonZero, \
       "ClipperLib subject fill type. \nSee https://goo.gl/5pYQQP", \
       AREA_CLIPPER_FILL_TYPE))( \
         (enum2, \
          clip_fill, \
          ClipFill, \
-         0, \
+         ClipperLib::pftNonZero, \
          "ClipperLib clip fill type. \nSee https://goo.gl/5pYQQP", \
          AREA_CLIPPER_FILL_TYPE) \
     )
@@ -269,21 +271,20 @@
         (enum2, \
          join_type, \
          JoinType, \
-         0, \
+         ClipperLib::jtRound, \
          "ClipperOffset join type. \nSee https://goo.gl/4odfQh", \
-         (Round)(Square)(Miter), \
-         (ClipperLib::JoinType, ClipperLib::jt)) \
+         (ClipperLib::jtRound)(ClipperLib::jtSquare)(ClipperLib::jtMiter), \
+         ClipperLib::JoinType) \
     ) \
     ((enum2, \
       end_type, \
       EndType, \
-      0, \
+      ClipperLib::etOpenRound, \
       "\nClipperOffset end type. See https://goo.gl/tj7gkX", \
-      (OpenRound)(ClosedPolygon)(ClosedLine)(OpenSquare)(OpenButt), \
-      ( \
-          ClipperLib::EndType, \
-          ClipperLib::et \
-      )))((double, miter_limit, MiterLimit, 2.0, "Miter limit for joint type Miter. See https://goo.gl/K8xX9h", App::PropertyFloat))( \
+      (ClipperLib::etOpenRound)(ClipperLib::etClosedPolygon)(ClipperLib:: \
+                                                                 etClosedLine)(ClipperLib::etOpenSquare)(ClipperLib::etOpenButt), \
+      ClipperLib:: \
+          EndType, ))((double, miter_limit, MiterLimit, 2.0, "Miter limit for joint type Miter. See https://goo.gl/K8xX9h", App::PropertyFloat))( \
         (double, \
          round_precision, \
          RoundPrecision, \
