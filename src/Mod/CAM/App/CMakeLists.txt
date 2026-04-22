@@ -63,7 +63,6 @@ SET(Path_SRCS
     Area.cpp
     Area.h
     AreaParams.h
-    AreaParamsExpanded.h
     ParamsHelper.h
     FeatureArea.cpp
     FeatureArea.h

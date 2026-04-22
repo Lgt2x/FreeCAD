@@ -181,9 +181,14 @@ static Clipper2Lib::EndType ToClipper2EndType(ClipperLib::EndType endType)
     }
 }
 
-// Constructors are defaulted in AreaParamsExpanded.h using C++20 default initialization
+CAreaParams::CAreaParams()
+    : PARAM_INIT(PARAM_FNAME, AREA_PARAMS_CAREA)
+{}
 
-// dump() implementation uses macros to access fields
+AreaParams::AreaParams()
+    : PARAM_INIT(PARAM_FNAME, AREA_PARAMS_AREA)
+{}
+
 void AreaParams::dump(const char* msg) const
 {
 
