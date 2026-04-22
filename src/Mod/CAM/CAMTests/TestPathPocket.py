@@ -284,6 +284,90 @@ class TestPathPocket(PathTestBase):
         self.assertGreaterEqual(actual_num_loops_forced, max_expected_loops - 1)
         self.assertLessEqual(actual_num_loops_forced, max_expected_loops)
 
+    def test_pocket_square_line(self):
+        """test_pocket_square_line() Verify pocket operation with Line clearing pattern."""
+
+        # Test geometry constants
+        pocket_width = 50.0
+        pocket_height = 30.0
+        box_margin = 10.0
+        outer_box_width = pocket_width + box_margin
+        outer_box_height_xy = pocket_height + box_margin
+        outer_box_height_z = 20.0
+        pocket_depth_amount = 1.0
+        pocket_bottom_z = outer_box_height_z - pocket_depth_amount
+
+        # Tool and operation constants
+        tool_diameter = 5.0
+        stepover_percent = 50  # 50% stepover = 2.5mm spacing
+        line_angle = 0  # Horizontal lines (parallel to X-axis)
+
+        # Create a box with a rectangular pocket
+        # Pocket is 1mm deep, from Z=19 to Z=20
+        outer = Part.makeBox(outer_box_width, outer_box_height_xy, outer_box_height_z)
+        pocket_offset_x = (outer_box_width - pocket_width) / 2.0
+        pocket_offset_y = (outer_box_height_xy - pocket_height) / 2.0
+        inner = Part.makeBox(
+            pocket_width,
+            pocket_height,
+            pocket_depth_amount,
+            FreeCAD.Vector(pocket_offset_x, pocket_offset_y, pocket_bottom_z),
+        )
+        pocket_solid = outer.cut(inner)
+
+        part_obj = FreeCAD.ActiveDocument.addObject("Part::Feature", "LinePocketPart")
+        part_obj.Shape = pocket_solid
+
+        # Create pocket operation with Line clearing pattern
+        pocket = self.createPocketOperation(
+            part_obj,
+            pocket_bottom_z,
+            "pocket_square_line",
+            tool_diameter,
+            StepOver=stepover_percent,
+            ClearingPattern="Line",
+            StartAt="Edge",
+            Angle=line_angle,
+        )
+
+        # Count the number of distinct line passes
+        # For Line pattern, we expect parallel lines spaced by stepover distance
+        # Each line is a separate cutting pass
+        stepover_distance = tool_diameter * (stepover_percent / 100.0)
+
+        # Calculate expected number of lines based on pocket height and stepover
+        # The lines run parallel to the X-axis (angle=0), so spacing is in Y direction
+        # Account for tool radius on each side
+        effective_height = pocket_height - tool_diameter
+        expected_num_lines = int(effective_height / stepover_distance) + 1
+
+        # Count actual cutting passes by looking for Y-coordinate changes in G1 moves
+        # at cutting depth
+        y_positions = set()
+        for cmd in pocket.Path.Commands:
+            params = cmd.Parameters
+            if cmd.Name == "G1" and "Z" in params:
+                z = params["Z"]
+                # If we're at cutting depth and have Y coordinate
+                if abs(z - pocket_bottom_z) < 0.01 and "Y" in params:
+                    y_pos = round(params["Y"], 2)  # Round to avoid floating point issues
+                    y_positions.add(y_pos)
+
+        actual_num_lines = len(y_positions)
+
+        # Verify the number of line passes is close to expected
+        # Allow ±1 line tolerance due to boundary conditions
+        self.assertGreaterEqual(
+            actual_num_lines,
+            expected_num_lines - 1,
+            f"Line pocket should have at least {expected_num_lines - 1} lines, got {actual_num_lines}",
+        )
+        self.assertLessEqual(
+            actual_num_lines,
+            expected_num_lines + 1,
+            f"Line pocket should have at most {expected_num_lines + 1} lines, got {actual_num_lines}",
+        )
+
 
 def _addViewProvider(pocketOp):
     if FreeCAD.GuiUp:
