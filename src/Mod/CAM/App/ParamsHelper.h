@@ -305,6 +305,15 @@
  */
 #define PARAM_TYPE(_param) PARAM_TYPED(PARAM_TYPE_, _param)(_param)
 
+#define PARAM_BASE_TYPE_short(_1) short
+#define PARAM_BASE_TYPE_long(_1) long
+#define PARAM_BASE_TYPE_double(_1) double
+#define PARAM_BASE_TYPE_bool(_1) bool
+#define PARAM_BASE_TYPE_enum(_1) short
+#define PARAM_BASE_TYPE_enum2(_param) std::underlying_type_t<PARAM_FENUM_TYPE(_param)>
+
+#define PARAM_BASE_TYPE(_param) PARAM_TYPED(PARAM_BASE_TYPE_, _param)(_param)
+
 
 /** Helper for #PARAM_DECLARE */
 #define PARAM_DECLARE_(_1, _src, _param) PARAM_TYPE(_param) _src(_param);

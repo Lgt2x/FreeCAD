@@ -32,26 +32,28 @@
  */
 
 #include "ParamsHelper.h"
-#include <Mod/CAM/libarea/clipper.hpp>
+#include <clipper2/clipper.h>
 
 /** clipper fill type */
 #define AREA_CLIPPER_FILL_TYPE \
-    (ClipperLib::pftNonZero)(ClipperLib::pftEvenOdd)(ClipperLib::pftPositive)(ClipperLib::pftNegative), \
-        ClipperLib::PolyFillType
+    (Clipper2Lib::FillRule::NonZero)(Clipper2Lib::FillRule:: \
+                                         EvenOdd)(Clipper2Lib::FillRule:: \
+                                                      Positive)(Clipper2Lib::FillRule::Negative), \
+        Clipper2Lib::FillRule
 
 /** Parameters of clipper fill types */
 #define AREA_PARAMS_CLIPPER_FILL \
     ((enum2, \
       subject_fill, \
       SubjectFill, \
-      ClipperLib::pftNonZero, \
-      "ClipperLib subject fill type. \nSee https://goo.gl/5pYQQP", \
+      Clipper2Lib::FillRule::NonZero, \
+      "Clipper2 subject fill rule. \nSee https://goo.gl/5pYQQP", \
       AREA_CLIPPER_FILL_TYPE))( \
         (enum2, \
          clip_fill, \
          ClipFill, \
-         ClipperLib::pftNonZero, \
-         "ClipperLib clip fill type. \nSee https://goo.gl/5pYQQP", \
+         Clipper2Lib::FillRule::NonZero, \
+         "Clipper2 clip fill rule. \nSee https://goo.gl/5pYQQP", \
          AREA_CLIPPER_FILL_TYPE) \
     )
 
@@ -271,19 +273,21 @@
         (enum2, \
          join_type, \
          JoinType, \
-         ClipperLib::jtRound, \
-         "ClipperOffset join type. \nSee https://goo.gl/4odfQh", \
-         (ClipperLib::jtRound)(ClipperLib::jtSquare)(ClipperLib::jtMiter), \
-         ClipperLib::JoinType) \
+         Clipper2Lib::JoinType::Round, \
+         "Clipper2 offset join type. \nSee https://goo.gl/4odfQh", \
+         (Clipper2Lib::JoinType::Round)(Clipper2Lib::JoinType::Square)(Clipper2Lib::JoinType::Miter), \
+         Clipper2Lib::JoinType) \
     ) \
     ((enum2, \
       end_type, \
       EndType, \
-      ClipperLib::etOpenRound, \
-      "\nClipperOffset end type. See https://goo.gl/tj7gkX", \
-      (ClipperLib::etOpenRound)(ClipperLib::etClosedPolygon)(ClipperLib:: \
-                                                                 etClosedLine)(ClipperLib::etOpenSquare)(ClipperLib::etOpenButt), \
-      ClipperLib:: \
+      Clipper2Lib::EndType::Round, \
+      "\nClipper2 offset end type. See https://goo.gl/tj7gkX", \
+      (Clipper2Lib::EndType::Round)(Clipper2Lib::EndType:: \
+                                        Polygon)(Clipper2Lib::EndType:: \
+                                                     Joined)(Clipper2Lib::EndType:: \
+                                                                 Square)(Clipper2Lib::EndType::Butt), \
+      Clipper2Lib:: \
           EndType, ))((double, miter_limit, MiterLimit, 2.0, "Miter limit for joint type Miter. See https://goo.gl/K8xX9h", App::PropertyFloat))( \
         (double, \
          round_precision, \
