@@ -217,8 +217,6 @@
  * @{ */
 #define PARAM_FIELD_STR(_idx, _param) BOOST_PP_STRINGIZE(BOOST_PP_TUPLE_ELEM(PARAM_I##_idx,_param))
 
-#define PARAM_FTYPE_STR(_param) PARAM_FIELD_STR(TYPE, _param)
-#define PARAM_FARG_STR(_param) PARAM_FIELD_STR(ARG, _param)
 #define PARAM_FNAME_STR(_param) PARAM_FIELD_STR(NAME, _param)
 #define PARAM_FDEF_STR(_param) PARAM_FIELD_STR(DEF, _param)
 /** @} */
@@ -384,115 +382,9 @@
  * \ingroup ParamEnumHelper*/
 #define PARAM_ENUM_DECLARE(_seq) PARAM_TYPED_FOREACH(PARAM_ENUM_DECLARE_, _seq)
 
-
-/** \addgroup ParamEnumHelper Enum convert helpers
- * @{ */
-#define PARAM_ENUM_CONVERT_short(...)
-#define PARAM_ENUM_CONVERT_long(...)
-#define PARAM_ENUM_CONVERT_double(...)
-#define PARAM_ENUM_CONVERT_bool(...)
-#define PARAM_ENUM_CONVERT_enum(...)
-#define PARAM_ENUM_CONVERT_enum2 PARAM_ENUM_CONVERT_SINGLE
-
-#define PARAM_ENUM_CONVERT_enum_(_dst, _name, _prefix, _elem) \
-    case BOOST_PP_CAT(_name, _elem): \
-        _dst = BOOST_PP_CAT(_prefix, _elem); \
-        break;
-
-#define PARAM_ENUM_CONVERT__(_1, _args, _i, _elem) \
-    PARAM_ENUM_CONVERT_enum_( \
-        BOOST_PP_TUPLE_ELEM(0, _args), \
-        BOOST_PP_TUPLE_ELEM(1, _args), \
-        BOOST_PP_TUPLE_ELEM(2, _args), \
-        _elem \
-    );
-
-#define PARAM_ENUM_CONVERT_(_1, _args, _param) \
-    PARAM_TYPED(PARAM_ENUM_CONVERT_, _param) \
-    (BOOST_PP_TUPLE_ELEM(0, _args), BOOST_PP_TUPLE_ELEM(1, _args), BOOST_PP_TUPLE_ELEM(2, _args), _param)
-
-/** Convert single enum parameter value into user defined enum type
- *
- * This macro is used by #PARAM_ENUM_CONVERT to convert each parameter, but
- * you can use it directly for a single parameter. Check #PARAM_NUM_CONVERT
- * for more detail. Make sure the outer parenthesis of \c _param is stripped,
- * i.e. not double but single parenthesis
- */
-#define PARAM_ENUM_CONVERT_SINGLE(_src, _dst, _default, _param) \
-    PARAM_FENUM_TYPE(_param) _dst(_param) = _src(_param);
-
 /** Default handling in #PARAM_ENUM_CONVERT and #PARAM_ENUM_CHECK*/
 #define PARAM_ENUM_EXCEPT(_param) \
     throw Base::ValueError("invalid value for enum " PARAM_FNAME_STR(_param))
-
-/** @} */
-
-/* Convert ParamHelper defined enum type to user defined ones
- *
- * This assumes the user defined enum type is given in \ref ParamSeq "seq_type"
- * of the parameter definition, and it has the same postfix as the ones
- * specified in \ref ParamSeq "seq" member of the parameter definition. See
- * \ref ParamEnumHelper "here" for implementations
- *
- * \ingroup ParamEnumHelper
- *
- * \arg \c _src: Macro to generate source variable. The signature must be
- * <tt>_src(_param)<\tt>, where \c _param is the tuple defining the parameter.
- * You pass any of the \ref ParamAccessor "parameter accessors" to directly
- * access the field. Or, supply your own macro to append any prefix as you
- * like.
- * \arg \c _dst: Same as above.
- * \arg \c _default: A macro to call for invalid value. Signature should be
- * <tt>_default(_param)<\tt>, where \c _param is the parameter definition. You
- * can use #PARAM_ENUM_EXCEPT to throw Base::ValueError exception in FreeCAD
- * \arg \c _seq: Parameter sequence
- *
- * For example, with the following parameter definition
- * \code{.unparsed}
- * #define MY_PARAM_TEST \
- *      ((enum,test1,Test1,0,"it's a test",(Foo)(Bar),(MyEnum1,myEnum1)) \
- *      ((enum,test2,Test2,0,"it's a test",(Foo)(Bar),(MyEnum2,myEnum2)))
- *
- *  #define MY_DST(_param) BOOST_PP_CAT(my,PARAM_FNAME(_param))
- * \code{.unparsed}
- *
- * calling
- * \code{.unparsed}
- *      PARAM_ENUM_CONVERT(PARAM_FNAME,MY_DST,My,PARAM_ENUM_EXCEP,MY_PARAM_TEST)
- * \code{.unparsed}
- *
- * expands to
- * \code{.unparsed}
- *      MyEnum1 myTest1;
- *      switch(Test1) {
- *      case Test1Foo:
- *          myTest1 = myEnum1Foo;
- *          break;
- *      case Test1Bar:
- *          myTest1 = myEnum1Bar;
- *          break;
- *      default:
- *          throw Base::ValueError("invalid value for enum Test1");
- *      }
- *      MyEnum2 myTest2;
- *      switch(Test2) {
- *      case Test1Foo:
- *          myTest2 = myEnum2Foo;
- *          break;
- *      case Test2Bar:
- *          myTest2 = myEnum2Bar;
- *          break;
- *      default:
- *          throw Base::ValueError("invalid value for enum Test2");
- *      }
- * \endcode
- *
- * The above code assumes you've already defined \a Test1 and \a Test2 some
- * where as the source variable.
- */
-#define PARAM_ENUM_CONVERT(_src, _dst, _default, _seq) \
-    BOOST_PP_SEQ_FOR_EACH(PARAM_ENUM_CONVERT_, (_src, _dst, _default), _seq)
-
 
 #define PARAM_ENUM_CHECK_short(...)
 #define PARAM_ENUM_CHECK_long(...)
