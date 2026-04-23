@@ -492,17 +492,57 @@ void CArea::Offset(double inwards_value)
     this->Reorder();
 }
 
+void CArea::PopulateClipper(Clipper64& c, bool as_clip) const
+{
+    Paths64 closed_paths;
+    Paths64 open_paths;
+    int skipped = 0;
+
+    for (const CCurve& curve : m_curves) {
+        bool is_closed = curve.IsClosed();
+
+        if (!is_closed && as_clip) {
+            ++skipped;
+            continue;
+        }
+
+        Path64 p;
+        MakePoly(curve, p, false);
+
+        if (is_closed) {
+            closed_paths.push_back(p);
+        }
+        else {
+            open_paths.push_back(p);
+        }
+    }
+
+    if (skipped) {
+        std::cerr << "libarea: warning skipped " << skipped << " open wires" << std::endl;
+    }
+
+    if (as_clip) {
+        if (!closed_paths.empty()) {
+            c.AddClip(closed_paths);
+        }
+    }
+    else {
+        if (!closed_paths.empty()) {
+            c.AddSubject(closed_paths);
+        }
+        if (!open_paths.empty()) {
+            c.AddOpenSubject(open_paths);
+        }
+    }
+}
+
 void CArea::Clip(ClipType op, const CArea* a, FillRule subjFillType, FillRule clipFillType)
 {
-    Paths64 pp1, pp2;
-    MakePolyPoly(*this, pp1);
-
     Clipper64 c;
-    c.AddSubject(pp1);
 
+    PopulateClipper(c, false);
     if (a) {
-        MakePolyPoly(*a, pp2);
-        c.AddClip(pp2);
+        a->PopulateClipper(c, true);
     }
 
     // Execute to get both closed and open paths
