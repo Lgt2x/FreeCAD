@@ -378,7 +378,7 @@ class TestPathOpenProfile(PathTestBase):
         self.assertGreater(len(move_lengths), 2, "Should have at least 3 moves")
 
         # Check lengths of leg moves
-        leg_length = math.sqrt((self.triangle_base / 2.0) ** 2 + self.triangle_height**2)
+        leg_length = math.hypot(self.triangle_base / 2.0, self.triangle_height)
         expected_straight_total = leg_length + self.triangle_base
 
         first_move = move_lengths[0]
