@@ -785,7 +785,7 @@ std::shared_ptr<Area> Area::getRestArea(std::vector<std::shared_ptr<Area>> clear
     CArea remaining(clearable);
     remaining.Clip(
         toClipperOp(Area::OperationDifference),
-        &*(clearedAreasInPlane.myArea),
+        *(clearedAreasInPlane.myArea),
         myParams.SubjectFill,
         myParams.ClipFill
     );
@@ -802,7 +802,7 @@ std::shared_ptr<Area> Area::getRestArea(std::vector<std::shared_ptr<Area>> clear
     );
     restCArea.Clip(
         toClipperOp(Area::OperationIntersection),
-        &clearable,
+        clearable,
         myParams.SubjectFill,
         myParams.ClipFill
     );
@@ -2134,7 +2134,7 @@ void Area::build()
                         myArea->m_curves.splice(myArea->m_curves.end(), areaClip.m_curves);
                     }
                     else {
-                        myArea->Clip(toClipperOp(op), &areaClip, myParams.SubjectFill, myParams.ClipFill);
+                        myArea->Clip(toClipperOp(op), areaClip, myParams.SubjectFill, myParams.ClipFill);
                         areaClip.m_curves.clear();
                     }
                 }
@@ -2158,7 +2158,7 @@ void Area::build()
                 myArea->m_curves.splice(myArea->m_curves.end(), areaClip.m_curves);
             }
             else {
-                myArea->Clip(toClipperOp(op), &areaClip, myParams.SubjectFill, myParams.ClipFill);
+                myArea->Clip(toClipperOp(op), areaClip, myParams.SubjectFill, myParams.ClipFill);
             }
         }
         myArea->m_curves.splice(myArea->m_curves.end(), myAreaOpen->m_curves);
@@ -2413,7 +2413,7 @@ std::shared_ptr<CArea> Area::performSingleOffset(double offset)
             area->Offset(-offset);
             if (areaOpen.m_curves.size()) {
                 areaOpen.Thicken(offset);
-                area->Clip(Clipper2Lib::ClipType::Union, &areaOpen, myParams.SubjectFill, myParams.ClipFill);
+                area->Clip(Clipper2Lib::ClipType::Union, areaOpen, myParams.SubjectFill, myParams.ClipFill);
             }
             break;
         case Area::AlgoClipperOffset:
@@ -2728,7 +2728,7 @@ TopoDS_Shape Area::makePocket(int index, PARAM_ARGS(PARAM_FARG, AREA_PARAMS_POCK
                 myParams.MiterLimit,
                 myParams.RoundPrecision
             );
-            out.Clip(toClipperOp(OperationIntersection), &area, myParams.SubjectFill, myParams.ClipFill);
+            out.Clip(toClipperOp(OperationIntersection), area, myParams.SubjectFill, myParams.ClipFill);
             done = true;
             break;
         }

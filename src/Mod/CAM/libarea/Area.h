@@ -126,7 +126,7 @@ public:
     // Following functions is add to operate on possible open curves
     void Clip(
         Clipper2Lib::ClipType op,
-        const CArea* a,
+        const CArea& clip_area,
         Clipper2Lib::FillRule subjFillType = Clipper2Lib::FillRule::EvenOdd,
         Clipper2Lib::FillRule clipFillType = Clipper2Lib::FillRule::EvenOdd
     );

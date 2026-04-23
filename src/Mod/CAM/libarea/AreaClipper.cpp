@@ -425,62 +425,22 @@ static void SetFromResult(
 
 void CArea::Subtract(const CArea& a2)
 {
-    Paths64 pp1, pp2;
-    MakePolyPoly(*this, pp1);
-    MakePolyPoly(a2, pp2);
-
-    Clipper64 c;
-    c.AddSubject(pp1);
-    c.AddClip(pp2);
-    Paths64 solution;
-    c.Execute(ClipType::Difference, FillRule::EvenOdd, solution);
-
-    SetFromResult(*this, solution);
+    Clip(ClipType::Difference, a2, FillRule::EvenOdd, FillRule::EvenOdd);
 }
 
 void CArea::Intersect(const CArea& a2)
 {
-    Paths64 pp1, pp2;
-    MakePolyPoly(*this, pp1);
-    MakePolyPoly(a2, pp2);
-
-    Clipper64 c;
-    c.AddSubject(pp1);
-    c.AddClip(pp2);
-    Paths64 solution;
-    c.Execute(ClipType::Intersection, FillRule::EvenOdd, solution);
-
-    SetFromResult(*this, solution);
+    Clip(ClipType::Intersection, a2, FillRule::EvenOdd, FillRule::EvenOdd);
 }
 
 void CArea::Union(const CArea& a2)
 {
-    Paths64 pp1, pp2;
-    MakePolyPoly(*this, pp1);
-    MakePolyPoly(a2, pp2);
-
-    Clipper64 c;
-    c.AddSubject(pp1);
-    c.AddClip(pp2);
-    Paths64 solution;
-    c.Execute(ClipType::Union, FillRule::EvenOdd, solution);
-
-    SetFromResult(*this, solution);
+    Clip(ClipType::Union, a2, FillRule::EvenOdd, FillRule::EvenOdd);
 }
 
 void CArea::Xor(const CArea& a2)
 {
-    Paths64 pp1, pp2;
-    MakePolyPoly(*this, pp1);
-    MakePolyPoly(a2, pp2);
-
-    Clipper64 c;
-    c.AddSubject(pp1);
-    c.AddClip(pp2);
-    Paths64 solution;
-    c.Execute(ClipType::Xor, FillRule::EvenOdd, solution);
-
-    SetFromResult(*this, solution);
+    Clip(ClipType::Xor, a2, FillRule::EvenOdd, FillRule::EvenOdd);
 }
 
 void CArea::Offset(double inwards_value)
@@ -536,14 +496,11 @@ void CArea::PopulateClipper(Clipper64& c, bool as_clip) const
     }
 }
 
-void CArea::Clip(ClipType op, const CArea* a, FillRule subjFillType, FillRule clipFillType)
+void CArea::Clip(ClipType op, const CArea& clip_area, FillRule subjFillType, FillRule clipFillType)
 {
     Clipper64 c;
-
     PopulateClipper(c, false);
-    if (a) {
-        a->PopulateClipper(c, true);
-    }
+    clip_area.PopulateClipper(c, true);
 
     // Execute to get both closed and open paths
     Paths64 closed_paths;
