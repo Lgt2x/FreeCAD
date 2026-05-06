@@ -32,16 +32,17 @@ if (BUILD_TRACY_FRAME_PROFILER)
     add_subdirectory(tracy)
 endif()
 
-# Clipper2 for polygon clipping operations
-if( NOT EXISTS "${CMAKE_SOURCE_DIR}/src/3rdParty/Clipper2/CPP/CMakeLists.txt" )
-    message(FATAL_ERROR "The Clipper2 git submodule is not available. Please run
-    git submodule update --init" )
+if(FREECAD_USE_EXTERNAL_CLIPPER2)
+    find_package(Clipper2 2.0.1 REQUIRED)
+    if(NOT TARGET Clipper2::Clipper2Z)
+        message(FATAL_ERROR "Clipper2 must be built with USINGZ")
+    endif()
+else()
+    # Configure Clipper2 options
+    set(CLIPPER2_UTILS OFF CACHE BOOL "Disable Clipper2 utilities" FORCE)
+    set(CLIPPER2_EXAMPLES OFF CACHE BOOL "Disable Clipper2 examples" FORCE)
+    set(CLIPPER2_TESTS OFF CACHE BOOL "Disable Clipper2 tests" FORCE)
+    set(CLIPPER2_USINGZ "ON" CACHE STRING "Build Clipper2Z with Z-coordinate support" FORCE)
+
+    add_subdirectory(Clipper2/CPP)
 endif()
-
-# Configure Clipper2 options
-set(CLIPPER2_UTILS OFF CACHE BOOL "Disable Clipper2 utilities" FORCE)
-set(CLIPPER2_EXAMPLES OFF CACHE BOOL "Disable Clipper2 examples" FORCE)
-set(CLIPPER2_TESTS OFF CACHE BOOL "Disable Clipper2 tests" FORCE)
-set(CLIPPER2_USINGZ "ON" CACHE STRING "Build Clipper2Z with Z-coordinate support" FORCE)
-
-add_subdirectory(Clipper2/CPP)
