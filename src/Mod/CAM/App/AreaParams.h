@@ -47,13 +47,15 @@
       subject_fill, \
       SubjectFill, \
       Clipper2Lib::FillRule::NonZero, \
-      "Clipper2 subject fill rule. \nSee https://goo.gl/5pYQQP", \
+      "Clipper2 subject fill rule. \nSee " \
+      "http://www.angusj.com/clipper2/Docs/Units/Clipper/Types/FillRule.htm", \
       AREA_CLIPPER_FILL_TYPE))( \
         (enum2, \
          clip_fill, \
          ClipFill, \
          Clipper2Lib::FillRule::NonZero, \
-         "Clipper2 clip fill rule. \nSee https://goo.gl/5pYQQP", \
+         "Clipper2 clip fill rule. \nSee " \
+         "http://www.angusj.com/clipper2/Docs/Units/Clipper/Types/FillRule.htm", \
          AREA_CLIPPER_FILL_TYPE) \
     )
 
@@ -120,7 +122,7 @@
       Precision::Confusion(), \
       "Point coincidence tolerance", \
       App::PropertyPrecision)) \
-        AREA_PARAMS_FIT_ARCS((bool, clipper_simple, Simplify, false, "Simplify polygons after operation. See https://goo.gl/Mh9XK1"))((double, clipper_clean_distance, CleanDistance, 0.0, "Clean polygon smaller than this distance. See https://goo.gl/jox3JY", App::PropertyLength))((double, accuracy, Accuracy, 0.01, "Arc fitting accuracy", App::PropertyPrecision))((double, units, Unit, 1.0, "Scaling factor for conversion to inch", App::PropertyFloat))((short, min_arc_points, MinArcPoints, 4, "Minimum segments for arc discretization"))((short, max_arc_points, MaxArcPoints, 100, "Maximum segments for arc discretization (ignored currently)"))( \
+        AREA_PARAMS_FIT_ARCS((bool, clipper_simple, Simplify, false, "Simplify polygons after operation. See http://www.angusj.com/clipper2/Docs/Units/Clipper/Functions/SimplifyPaths.htm"))((double, clipper_clean_distance, CleanDistance, 0.0, "Clean polygon smaller than this distance. See http://www.angusj.com/clipper2/Docs/Units/Clipper/Functions/SimplifyPaths.htm", App::PropertyLength))((double, accuracy, Accuracy, 0.01, "Arc fitting accuracy", App::PropertyPrecision))((double, units, Unit, 1.0, "Scaling factor for conversion to inch", App::PropertyFloat))((short, min_arc_points, MinArcPoints, 4, "Minimum segments for arc discretization"))((short, max_arc_points, MaxArcPoints, 100, "Maximum segments for arc discretization (ignored currently)"))( \
             (double, \
              clipper_scale, \
              ClipperScale, \
@@ -189,7 +191,8 @@
       Operation, \
       0, \
       "Boolean operation.\n" \
-      "For the first four operations, see https://goo.gl/Gj8RUu.\n" \
+      "For the first four operations, see " \
+      "http://www.angusj.com/clipper2/Docs/Units/Clipper/Types/ClipType.htm.\n" \
       "'Compound' means no operation, normally used to do Area.sortWires().", \
       (Union)(Difference)(Intersection)(Xor)(Compound)))
 
@@ -274,7 +277,8 @@
          join_type, \
          JoinType, \
          Clipper2Lib::JoinType::Round, \
-         "Clipper2 offset join type. \nSee https://goo.gl/4odfQh", \
+         "Clipper2 offset join type. \nSee " \
+         "http://www.angusj.com/clipper2/Docs/Units/Clipper/Types/JoinType.htm", \
          (Clipper2Lib::JoinType::Round)(Clipper2Lib::JoinType::Square)(Clipper2Lib::JoinType::Miter), \
          Clipper2Lib::JoinType) \
     ) \
@@ -282,19 +286,22 @@
       end_type, \
       EndType, \
       Clipper2Lib::EndType::Round, \
-      "\nClipper2 offset end type. See https://goo.gl/tj7gkX", \
+      "\nClipper2 offset end type. See " \
+      "http://www.angusj.com/clipper2/Docs/Units/Clipper/Types/EndType.htm", \
       (Clipper2Lib::EndType::Round)(Clipper2Lib::EndType:: \
                                         Polygon)(Clipper2Lib::EndType:: \
                                                      Joined)(Clipper2Lib::EndType:: \
                                                                  Square)(Clipper2Lib::EndType::Butt), \
       Clipper2Lib:: \
-          EndType, ))((double, miter_limit, MiterLimit, 2.0, "Miter limit for joint type Miter. See https://goo.gl/K8xX9h", App::PropertyFloat))( \
+          EndType, ))((double, miter_limit, MiterLimit, 2.0, "Miter limit for joint type Miter. See http://www.angusj.com/clipper2/Docs/Units/Clipper.Offset/Classes/ClipperOffset/Properties/MiterLimit.htm", App::PropertyFloat))( \
         (double, \
          round_precision, \
          RoundPrecision, \
          0.0, \
          "Round joint precision. If =0, it defaults to Accuracy. \n" \
-         "See https://goo.gl/4odfQh", \
+         "See " \
+         "http://www.angusj.com/clipper2/Docs/Units/Clipper.Offset/Classes/ClipperOffset/" \
+         "Properties/ArcTolerance.htm", \
          App::PropertyPrecision) \
     )
 
