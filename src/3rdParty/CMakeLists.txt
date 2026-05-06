@@ -42,7 +42,6 @@ endif()
 set(CLIPPER2_UTILS OFF CACHE BOOL "Disable Clipper2 utilities" FORCE)
 set(CLIPPER2_EXAMPLES OFF CACHE BOOL "Disable Clipper2 examples" FORCE)
 set(CLIPPER2_TESTS OFF CACHE BOOL "Disable Clipper2 tests" FORCE)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build Clipper2 as static library" FORCE)
 set(CLIPPER2_USINGZ "ON" CACHE STRING "Build Clipper2Z with Z-coordinate support" FORCE)
 
 add_subdirectory(Clipper2/CPP)
