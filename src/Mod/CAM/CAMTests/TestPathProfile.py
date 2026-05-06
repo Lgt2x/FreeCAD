@@ -357,7 +357,6 @@ class TestPathOpenProfile(PathTestBase):
     def test02(self):
         """test02() Recompute and verify gcode moves for triangle profile."""
         import math
-        import Constants
         import Path.Base.Language as PathLanguage
 
         # Perform recompute to generate the path
