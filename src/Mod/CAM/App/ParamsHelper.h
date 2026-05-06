@@ -177,6 +177,7 @@
 #include <boost/preprocessor/tuple/enum.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 #include <boost/preprocessor/comparison/greater.hpp>
+#include <type_traits>
 
 /** \defgroup ParamHelper Parameters helper macros
  * \ingroup PATH
