@@ -12,7 +12,7 @@ else()
     set(CLIPPER2_TESTS OFF CACHE BOOL "Disable Clipper2 tests" FORCE)
     set(CLIPPER2_USINGZ ON CACHE STRING "Build Clipper2Z with Z-coordinate support" FORCE)
 
-    add_subdirectory(src/3rdParty/Clipper2/CPP)
+    add_subdirectory(src/3rdParty/Clipper2)
     add_library(Clipper2::Clipper2 ALIAS Clipper2)
     add_library(Clipper2::Clipper2Z ALIAS Clipper2Z)
 endif()
