@@ -24,10 +24,6 @@ The concerns include, but are not limited to:
 - **societal:** exploiting workers for content moderation, affecting the learning process
 - **open source projects:** high-volume of low-quality vibe-coded PRs, interaction with AI chatbots, unclear decision process in agentic AI, and increased burden on reviewers and maintainers
 
-### Frugal and fully open AI alternatives
-
-Although the problems with AI regarding open source projects don’t disappear with alternatives, FreeCAD as a project wants to raise awareness of alternatives to the large LLMs that can only be trained by large organizations. Examples are frugal AI initiatives and fully open source AI models such as Apertus that is trained on fully open data in a carbon-neutral and water-neutral data center.
-
 ## Humans in the driver seat
 
 FreeCAD is made by humans and for humans, and we believe that it is important for it to stay like that. With contributions we expect to interact with actual people behind their computer, discuss solutions, and look for the best possible outcomes. Reviewers must know that when talking with contributors, they talk to someone who can take responsibility for the contributions, knows how the code works, and who is eager to learn and improve. The project is open to all people: domain experts and new developers alike. With each contribution we value the interaction with the contributor and the community building as much as the improvement to FreeCAD. We want to help the contributor improve their skills and learn how their input can cause real change.
