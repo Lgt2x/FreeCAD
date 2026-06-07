@@ -52,4 +52,4 @@ We ask the contributor in the Pull Request template to mark a required checkbox 
 
 ### “Unverified” label
 
-PRs from outside the Developers group will be marked as "Unverified" to help us find potential violations.  After several successful contributions we will add new contributors to the groups - but don't hesitate to ask us to do it sooner.
+PRs from outside the Developers group will be marked as "Unverified" to help us find potential violations. After several successful contributions we will add new contributors to the group - but don't hesitate to ask us to do it sooner. Usage of LLMs is only allowed for trusted contributors, that are part of the group. AI-assisted contributions from new contributors will be automatically closed.
