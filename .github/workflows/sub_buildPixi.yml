@@ -216,7 +216,7 @@ jobs:
 
     - name: C++ tests
       timeout-minutes: 10
-      if: runner.os != 'Windows' && !inputs.skipBuild
+      if: "!inputs.skipBuild"
       uses: ./.github/workflows/actions/runCPPTests/runAllTests
       with:
         reportdir: ${{ env.reportdir }}
@@ -229,7 +229,7 @@ jobs:
         pixi run install-${{ env.config }}
 
     - name: FreeCAD CLI tests on install
-      if: runner.os != 'Windows' && !inputs.skipBuild
+      if: "!inputs.skipBuild"
       timeout-minutes: 10
       uses: ./.github/workflows/actions/runPythonTests
       with:
