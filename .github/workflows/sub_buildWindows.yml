@@ -178,15 +178,15 @@ jobs:
           . $env:ccachebindir\ccache -s
 
       - name: C++ unit tests
-        if: false # Disabled because seems to not function on Windows build  # also: && !inputs.skipBuild
+        if: "!inputs.skipBuild"
         timeout-minutes: 1
         run: |
-          . ${{ env.builddir }}\tests\Release\Tests_run --gtest_output=json:${{ env.reportdir }}gtest_results.json # 2>&1 | tee -filepath ${{ env.logdir }}\unitTests.log
+          . ${{ env.builddir }}\tests\Release\Tests_run --gtest_output="json:${{ env.reportdir }}gtest_results.json" # 2>&1 | tee -filepath "${{ env.logdir }}\unitTests.log"
 
       - name: FreeCAD CLI tests
         if: "!inputs.skipBuild"
         run: |
-          . ${{ env.builddir }}\bin\FreeCADCmd -t 0 # 2>&1 | tee -filepath ${{ env.logdir }}\integrationTests.log
+          . ${{ env.builddir }}\bin\FreeCADCmd -t 0 # 2>&1 | tee -filepath "${{ env.logdir }}\integrationTests.log"
 
       - name: Save Compiler Cache
         id: cache-save
