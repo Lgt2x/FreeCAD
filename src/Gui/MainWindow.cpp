@@ -388,8 +388,8 @@ MainWindow::MainWindow(QWidget* parent, Qt::WindowFlags f)
     instance = this;
 
     d->connParam = App::GetApplication().GetUserParameter().signalParamChanged.connect(
-        [this](ParameterGrp* Param, ParameterGrp::ParamType, const char* Name, const char*) {
-            if (Param != d->hGrp || !Name) {
+        [this](ParameterGrp* Param, ParameterGrp::ParamType, const std::string& Name, const std::string&) {
+            if (Param != d->hGrp || !Name.empty()) {
                 return;
             }
             if (boost::equals(Name, "StatusBar")) {

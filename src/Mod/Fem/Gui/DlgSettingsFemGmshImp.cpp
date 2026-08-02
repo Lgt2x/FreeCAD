@@ -64,7 +64,7 @@ void DlgSettingsFemGmshImp::loadSettings()
     // determine number of CPU threads
 
     ParameterGrp::handle hGrp = ui->sb_threads->getWindowParameter();
-    ui->sb_threads->setValue(hGrp->GetInt(ui->sb_threads->entryName(), QThread::idealThreadCount()));
+    ui->sb_threads->setValue(hGrp->GetInt(ui->sb_threads->entryName().toStdString(), QThread::idealThreadCount()));
 
     populateLogVerbosity();
     ui->cb_log_verbosity->onRestore();
@@ -110,7 +110,7 @@ void DlgSettingsFemGmshImp::populateLogVerbosity()
 
     // set default index
     auto hGrp = ui->cb_log_verbosity->getWindowParameter();
-    std::string current = hGrp->GetASCII(ui->cb_log_verbosity->entryName(), "3");
+    std::string current = hGrp->GetASCII(ui->cb_log_verbosity->entryName().toStdString(), "3");
     int index = ui->cb_log_verbosity->findData(QByteArray::fromStdString(current));
     ui->cb_log_verbosity->setCurrentIndex(index);
 }

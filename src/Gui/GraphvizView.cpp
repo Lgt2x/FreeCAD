@@ -361,7 +361,7 @@ void GraphvizView::updateSvgItem(const App::Document& doc)
         }
         else {
             if (pathChanged) {
-                hGrp->SetASCII("Graphviz", (const char*)path.toUtf8());
+                hGrp->SetASCII("Graphviz", path.toUtf8().toStdString());
             }
             break;
         }

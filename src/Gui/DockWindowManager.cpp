@@ -211,7 +211,7 @@ void DockWindowManager::setupOverlayManagement()
 
     d->_dockWidgetEventFilter.cursorMargin = d->_hPref->GetInt("CursorMargin", 5);
     d->_connParam = d->_hPref->Manager()->signalParamChanged.connect(
-        [this](ParameterGrp* Param, ParameterGrp::ParamType Type, const char* name, const char*) {
+        [this](ParameterGrp* Param, ParameterGrp::ParamType Type, const std::string& name, const std::string&) {
             if (Param == d->_hPref) {
                 switch (Type) {
                     case ParameterGrp::ParamType::FCBool:
@@ -219,7 +219,7 @@ void DockWindowManager::setupOverlayManagement()
                         d->_timer.start(100);
                         break;
                     case ParameterGrp::ParamType::FCInt:
-                        if (name && boost::equals(name, "CursorMargin")) {
+                        if (!name.empty() && boost::equals(name, "CursorMargin")) {
                             d->_dockWidgetEventFilter.cursorMargin
                                 = d->_hPref->GetInt("CursorMargin", 5);
                         }
@@ -239,7 +239,7 @@ void DockWindowManager::setupOverlayManagement()
             if (auto dw = qobject_cast<QDockWidget*>(w)) {
                 QSignalBlocker blocker(dw);
                 QByteArray dockName = dw->toggleViewAction()->data().toByteArray();
-                dw->setVisible(d->_hPref->GetBool(dockName, dw->isVisible()));
+                dw->setVisible(d->_hPref->GetBool(dockName.toStdString(), dw->isVisible()));
             }
         }
     });

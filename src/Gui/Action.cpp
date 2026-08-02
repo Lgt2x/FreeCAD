@@ -1082,7 +1082,7 @@ void RecentFilesAction::save()
         if (value.isEmpty()) {
             break;
         }
-        hGrp->SetASCII(key.toLatin1(), value.toUtf8());
+        hGrp->SetASCII(key.toLatin1().toStdString(), value.toUtf8().toStdString());
     }
 
     Base::StateLocker guard(_pimpl->updating);
@@ -1321,7 +1321,7 @@ void RecentMacrosAction::save()
         if (value.isEmpty()) {
             break;
         }
-        hGrp->SetASCII(key.toLatin1(), value.toUtf8());
+        hGrp->SetASCII(key.toLatin1().toStdString(), value.toUtf8().toStdString());
     }
 
     hGrp->SetInt("RecentMacros", count);  // restore

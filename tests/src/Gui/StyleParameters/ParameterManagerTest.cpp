@@ -160,9 +160,9 @@ TEST_F(ParameterManagerTest, SourcePriority)
     // Create a third source with higher priority
     auto source3 = std::make_unique<InMemoryParameterSource>(
         std::list<Parameter> {
-            {"BaseSize", "24px"},  // Should override both previous sources
+            {.name="BaseSize", .value="24px"},  // Should override both previous sources
         },
-        ParameterSource::Metadata {"Source 3"}
+        ParameterSource::Metadata {.name="Source 3"}
     );
 
     manager.addSource(source3.get());

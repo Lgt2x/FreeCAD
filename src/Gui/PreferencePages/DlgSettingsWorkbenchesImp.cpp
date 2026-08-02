@@ -339,8 +339,8 @@ void DlgSettingsWorkbenchesImp::saveSettings()
     ParameterGrp::handle hGrp = App::GetApplication().GetParameterGroupByPath(
         "User parameter:BaseApp/Preferences/Workbenches"
     );
-    hGrp->SetASCII("Ordered", orderedStr.str().c_str());
-    hGrp->SetASCII("Disabled", disabledStr.str().c_str());
+    hGrp->SetASCII("Ordered", orderedStr.str());
+    hGrp->SetASCII("Disabled", disabledStr.str());
 
     // Update the list of workbenches in the WorkbenchGroup and in the WorkbenchComboBox & workbench
     // QMenu
@@ -348,7 +348,7 @@ void DlgSettingsWorkbenchesImp::saveSettings()
 
     App::GetApplication()
         .GetParameterGroupByPath("User parameter:BaseApp/Preferences/General")
-        ->SetASCII("BackgroundAutoloadModules", autoloadStr.str().c_str());
+        ->SetASCII("BackgroundAutoloadModules", autoloadStr.str());
 
     saveWorkbenchSelector();
 
@@ -357,7 +357,7 @@ void DlgSettingsWorkbenchesImp::saveSettings()
     QString startWbName = data.toString();
     App::GetApplication()
         .GetParameterGroupByPath("User parameter:BaseApp/Preferences/General")
-        ->SetASCII("AutoloadModule", startWbName.toLatin1());
+        ->SetASCII("AutoloadModule", startWbName.toLatin1().toStdString());
 
     ui->CheckBox_WbByTab->onSave();
 }

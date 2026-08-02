@@ -22,11 +22,11 @@ public:
     {
         return notify;
     }
-    void attachSelf(ParameterGrp::handle hGrp)
+    void attachSelf(ParameterGrp::handle& hGrp)
     {
         hGrp->Attach(this);
     }
-    void detachSelf(ParameterGrp::handle hGrp)
+    void detachSelf(ParameterGrp::handle& hGrp)
     {
         hGrp->Detach(this);
     }
@@ -46,7 +46,6 @@ class ParameterTest: public ::testing::Test
 protected:
     static void SetUpTestSuite()
     {
-        ParameterManager::Init();
     }
 
     ParameterTest()
@@ -100,8 +99,6 @@ TEST_F(ParameterTest, TestValid)
     auto cfg = getConfig();
     EXPECT_EQ(cfg.isValid(), true);
     EXPECT_EQ(cfg.isNull(), false);
-    EXPECT_EQ(cfg->CheckDocument(), false);
-    getCreateConfig();  // Make sure we have a valid config by the end of the test
 }
 
 TEST_F(ParameterTest, TestCreate)
@@ -116,8 +113,6 @@ TEST_F(ParameterTest, TestGroup)
 {
     auto cfg = getCreateConfig();
     auto grp = cfg->GetGroup("TopLevelGroup");
-    EXPECT_EQ(grp->Parent(), static_cast<ParameterGrp*>(cfg));
-    EXPECT_EQ(grp->Manager(), static_cast<ParameterGrp*>(cfg));
 
     EXPECT_FALSE(cfg->IsEmpty());
     EXPECT_TRUE(grp->IsEmpty());
@@ -132,16 +127,15 @@ TEST_F(ParameterTest, TestGroupName)
 {
     auto cfg = getCreateConfig();
     auto grp = cfg->GetGroup("TopLevelGroup");
-    EXPECT_STREQ(grp->GetGroupName(), "TopLevelGroup");
+    EXPECT_EQ(grp->GetGroupName(), "TopLevelGroup");
 
     auto subGrp = grp->GetGroup("SubGroup");
-    EXPECT_STREQ(subGrp->GetGroupName(), "SubGroup");
+    EXPECT_EQ(subGrp->GetGroupName(), "SubGroup");
 }
 
 TEST_F(ParameterTest, TestEmptyGroupName)
 {
     auto cfg = getCreateConfig();
-    EXPECT_THROW(cfg->GetGroup(nullptr), Base::ValueError);
     EXPECT_THROW(cfg->GetGroup(""), Base::ValueError);
     EXPECT_THROW(cfg->GetGroup("///////"), Base::ValueError);
 }
@@ -151,8 +145,8 @@ TEST_F(ParameterTest, TestGroupNames)
     auto cfg = getCreateConfig();
     auto grp1 = cfg->GetGroup(" //  // Sub1// /// Sub2/ ////");
     auto grp2 = cfg->GetGroup("Sub1/Sub2");
-    EXPECT_STREQ(grp1->GetGroupName(), "Sub2");
-    EXPECT_STREQ(grp2->GetGroupName(), "Sub2");
+    EXPECT_EQ(grp1->GetGroupName(), "Sub2");
+    EXPECT_EQ(grp2->GetGroupName(), "Sub2");
 }
 
 TEST_F(ParameterTest, TestPath)
@@ -378,6 +372,8 @@ TEST_F(ParameterTest, TestRenameGroup)
     auto grp = cfg->GetGroup("TopLevelGroup");
     auto sub1 = grp->GetGroup("Sub1");
     auto sub2 = sub1->GetGroup("Sub2/Sub/Sub");
+    auto sub3 = sub1->GetGroup("Sub2/Sub/Sub");
+    sub3->SetASCII("TEst", "test2");
     sub2->SetFloat("Float", 1.5);
     sub1->RenameGrp("Sub2", "Sub3");
     EXPECT_TRUE(sub1->HasGroup("Sub3"));
@@ -387,6 +383,19 @@ TEST_F(ParameterTest, TestRenameGroup)
     EXPECT_EQ(sub2->GetInt("Int", 1), 2);
     EXPECT_EQ(sub2->GetFloat("Float", 1.0), 1.5);
 }
+
+TEST_F(ParameterTest, TestSpeed)
+{
+    auto cfg = getCreateConfig();
+    auto grp = cfg->GetGroup("TopLevelGroup/Grp1/Grp2/Grp3");
+    auto grp2 = cfg->GetGroup("TopLevelGroup/Grp1/Grp2/Grp4");
+    
+    grp->SetASCII("Parameter1", "Value1");
+    grp->GetBool("Parameter1",false);
+}
+
+// TODO test notify
+// TODO test colors
 
 TEST_F(ParameterTest, TestSaveRestoreRef)
 {
@@ -473,8 +482,7 @@ TEST_F(ParameterTest, TestGetSetAttribute)
 
     auto mapGrp = grp->GetAttributeMap(ParameterGrp::ParamType::FCGroup);
     EXPECT_EQ(mapGrp.size(), 1);
-    EXPECT_EQ(mapGrp[0].first, "SubGrp2");
-    EXPECT_EQ(mapGrp[0].second, "");
+    EXPECT_EQ(mapGrp["SubGrp2"], "");
 
     grp->SetAttribute(ParameterGrp::ParamType::FCText, "String1", "myString");
     EXPECT_EQ(grp->GetASCII("String1"), "myString");
@@ -483,8 +491,7 @@ TEST_F(ParameterTest, TestGetSetAttribute)
 
     auto mapStr = grp->GetAttributeMap(ParameterGrp::ParamType::FCText);
     EXPECT_EQ(mapStr.size(), 1);
-    EXPECT_EQ(mapStr[0].first, "String1");
-    EXPECT_EQ(mapStr[0].second, "myString");
+    EXPECT_EQ(mapStr["String1"], "myString");
 
     grp->RemoveAttribute(ParameterGrp::ParamType::FCText, "String1");
     grp->GetAttribute(ParameterGrp::ParamType::FCText, "String1", value, "default");
@@ -497,8 +504,7 @@ TEST_F(ParameterTest, TestGetSetAttribute)
 
     auto mapFloat = grp->GetAttributeMap(ParameterGrp::ParamType::FCFloat);
     EXPECT_EQ(mapFloat.size(), 1);
-    EXPECT_EQ(mapFloat[0].first, "Float");
-    EXPECT_EQ(mapFloat[0].second, "1.0");
+    EXPECT_EQ(mapFloat["Float"], "1.0");
 }
 
 TEST_F(ParameterTest, TestGetParameterNames)

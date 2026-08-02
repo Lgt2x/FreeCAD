@@ -270,10 +270,10 @@ TaskView::TaskView(QWidget* parent)
 
     setShowTaskWatcher(hGrp->GetBool("ShowTaskWatcher", true));
     connectShowTaskWatcherSetting = hGrp->Manager()->signalParamChanged.connect(
-        [this](ParameterGrp* Param, ParameterGrp::ParamType Type, const char* name, const char* value) {
-            if (Param == hGrp && Type == ParameterGrp::ParamType::FCBool && name
-                && strcmp(name, "ShowTaskWatcher") == 0) {
-                setShowTaskWatcher(value && *value == '1');
+        [this](ParameterGrp* Param, ParameterGrp::ParamType Type, const std::string& name, const std::string& value) {
+            if (Param == hGrp && Type == ParameterGrp::ParamType::FCBool
+                && name == "ShowTaskWatcher") {
+                setShowTaskWatcher(value == "1");
             }
         }
     );

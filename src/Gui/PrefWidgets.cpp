@@ -195,7 +195,7 @@ void PrefSpinBox::restorePreferences()
         return;
     }
 
-    int nVal = getWindowParameter()->GetInt(entryName(), QSpinBox::value());
+    int nVal = getWindowParameter()->GetInt(entryName().toStdString(), QSpinBox::value());
     setValue(nVal);
 }
 
@@ -206,7 +206,7 @@ void PrefSpinBox::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetInt(entryName(), (int)value());
+    getWindowParameter()->SetInt(entryName().toStdString(), (int)value());
 }
 
 // --------------------------------------------------------------------
@@ -237,7 +237,7 @@ void PrefDoubleSpinBox::restorePreferences()
         return;
     }
 
-    double fVal = (double)getWindowParameter()->GetFloat(entryName(), value());
+    double fVal = (double)getWindowParameter()->GetFloat(entryName().toStdString(), value());
     setValue(fVal);
 }
 
@@ -248,7 +248,7 @@ void PrefDoubleSpinBox::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetFloat(entryName(), value());
+    getWindowParameter()->SetFloat(entryName().toStdString(), value());
 }
 
 // --------------------------------------------------------------------
@@ -268,7 +268,7 @@ void PrefLineEdit::restorePreferences()
     }
 
     QString text = this->text();
-    text = QString::fromUtf8(getWindowParameter()->GetASCII(entryName(), text.toUtf8()).c_str());
+    text = QString::fromUtf8(getWindowParameter()->GetASCII(entryName().toStdString(), text.toUtf8()).c_str());
     setText(text);
 }
 
@@ -279,7 +279,7 @@ void PrefLineEdit::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetASCII(entryName(), text().toUtf8());
+    getWindowParameter()->SetASCII(entryName().toStdString(), text().toUtf8().toStdString());
 }
 
 // --------------------------------------------------------------------
@@ -299,7 +299,7 @@ void PrefTextEdit::restorePreferences()
     }
 
     QString text = this->toPlainText();
-    text = QString::fromUtf8(getWindowParameter()->GetASCII(entryName(), text.toUtf8()).c_str());
+    text = QString::fromUtf8(getWindowParameter()->GetASCII(entryName().toStdString(), text.toUtf8()).c_str());
     setText(text);
 }
 
@@ -311,7 +311,7 @@ void PrefTextEdit::savePreferences()
     }
 
     QString text = this->toPlainText();
-    getWindowParameter()->SetASCII(entryName(), text.toUtf8());
+    getWindowParameter()->SetASCII(entryName().toStdString(), text.toUtf8().toStdString());
 }
 
 // --------------------------------------------------------------------
@@ -331,7 +331,7 @@ void PrefFileChooser::restorePreferences()
     }
 
     QString txt = QString::fromUtf8(
-        getWindowParameter()->GetASCII(entryName(), fileName().toUtf8()).c_str()
+        getWindowParameter()->GetASCII(entryName().toStdString(), fileName().toUtf8()).c_str()
     );
     setFileName(txt);
 }
@@ -343,7 +343,7 @@ void PrefFileChooser::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetASCII(entryName(), fileName().toUtf8());
+    getWindowParameter()->SetASCII(entryName().toStdString(), fileName().toUtf8().toStdString());
 }
 
 // --------------------------------------------------------------------
@@ -388,35 +388,35 @@ void PrefComboBox::restorePreferences()
         case QMetaType::Int:
         case QMetaType::LongLong:
             index = findData(
-                static_cast<int>(getWindowParameter()->GetInt(entryName(), m_Default.toInt()))
+                static_cast<int>(getWindowParameter()->GetInt(entryName().toStdString(), m_Default.toInt()))
             );
             break;
         case QMetaType::UInt:
         case QMetaType::ULongLong:
             index = findData(
-                static_cast<uint>(getWindowParameter()->GetUnsigned(entryName(), m_Default.toUInt()))
+                static_cast<uint>(getWindowParameter()->GetUnsigned(entryName().toStdString(), m_Default.toUInt()))
             );
             break;
         case QMetaType::Bool:
-            index = findData(getWindowParameter()->GetBool(entryName(), m_Default.toBool()));
+            index = findData(getWindowParameter()->GetBool(entryName().toStdString(), m_Default.toBool()));
             break;
         case QMetaType::Double:
-            index = findData(getWindowParameter()->GetFloat(entryName(), m_Default.toDouble()));
+            index = findData(getWindowParameter()->GetFloat(entryName().toStdString(), m_Default.toDouble()));
             break;
         case QMetaType::QString:
             index = findText(
                 QString::fromUtf8(
-                    getWindowParameter()->GetASCII(entryName(), m_DefaultText.toUtf8().constData()).c_str()
+                    getWindowParameter()->GetASCII(entryName().toStdString(), m_DefaultText.toUtf8().constData()).c_str()
                 )
             );
             break;
         case QMetaType::QByteArray:
             index = findData(QByteArray(
-                getWindowParameter()->GetASCII(entryName(), m_Default.toByteArray().constData()).c_str()
+                getWindowParameter()->GetASCII(entryName().toStdString(), m_Default.toByteArray().constData()).c_str()
             ));
             break;
         default:
-            index = getWindowParameter()->GetInt(entryName(), m_DefaultIndex);
+            index = getWindowParameter()->GetInt(entryName().toStdString(), m_DefaultIndex);
             break;
     }
     if (index >= 0 && index < count()) {
@@ -434,26 +434,26 @@ void PrefComboBox::savePreferences()
     switch (static_cast<int>(getParamType())) {
         case QMetaType::Int:
         case QMetaType::LongLong:
-            getWindowParameter()->SetInt(entryName(), currentData().toInt());
+            getWindowParameter()->SetInt(entryName().toStdString(), currentData().toInt());
             break;
         case QMetaType::UInt:
         case QMetaType::ULongLong:
-            getWindowParameter()->SetUnsigned(entryName(), currentData().toUInt());
+            getWindowParameter()->SetUnsigned(entryName().toStdString(), currentData().toUInt());
             break;
         case QMetaType::Bool:
-            getWindowParameter()->SetBool(entryName(), currentData().toBool());
+            getWindowParameter()->SetBool(entryName().toStdString(), currentData().toBool());
             break;
         case QMetaType::Double:
-            getWindowParameter()->SetFloat(entryName(), currentData().toDouble());
+            getWindowParameter()->SetFloat(entryName().toStdString(), currentData().toDouble());
             break;
         case QMetaType::QString:
-            getWindowParameter()->SetASCII(entryName(), currentText().toUtf8().constData());
+            getWindowParameter()->SetASCII(entryName().toStdString(), currentText().toUtf8().constData());
             break;
         case QMetaType::QByteArray:
-            getWindowParameter()->SetASCII(entryName(), currentData().toByteArray().constData());
+            getWindowParameter()->SetASCII(entryName().toStdString(), currentData().toByteArray().constData());
             break;
         default:
-            getWindowParameter()->SetInt(entryName(), currentIndex());
+            getWindowParameter()->SetInt(entryName().toStdString(), currentIndex());
             break;
     }
 }
@@ -474,7 +474,7 @@ void PrefCheckBox::restorePreferences()
         return;
     }
 
-    bool enable = getWindowParameter()->GetBool(entryName(), isChecked());
+    bool enable = getWindowParameter()->GetBool(entryName().toStdString(), isChecked());
     setChecked(enable);
 }
 
@@ -485,7 +485,7 @@ void PrefCheckBox::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetBool(entryName(), isChecked());
+    getWindowParameter()->SetBool(entryName().toStdString(), isChecked());
 }
 
 // --------------------------------------------------------------------
@@ -504,7 +504,7 @@ void PrefRadioButton::restorePreferences()
         return;
     }
 
-    bool enable = getWindowParameter()->GetBool(entryName(), isChecked());
+    bool enable = getWindowParameter()->GetBool(entryName().toStdString(), isChecked());
     setChecked(enable);
 }
 
@@ -515,7 +515,7 @@ void PrefRadioButton::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetBool(entryName(), isChecked());
+    getWindowParameter()->SetBool(entryName().toStdString(), isChecked());
 }
 
 // --------------------------------------------------------------------
@@ -534,7 +534,7 @@ void PrefSlider::restorePreferences()
         return;
     }
 
-    int nVal = getWindowParameter()->GetInt(entryName(), QSlider::value());
+    int nVal = getWindowParameter()->GetInt(entryName().toStdString(), QSlider::value());
     setValue(nVal);
 }
 
@@ -545,7 +545,7 @@ void PrefSlider::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetInt(entryName(), (int)value());
+    getWindowParameter()->SetInt(entryName().toStdString(), (int)value());
 }
 
 // --------------------------------------------------------------------
@@ -571,7 +571,7 @@ void PrefColorButton::restorePreferences()
     unsigned int icol = Base::Color::asPackedRGBA<QColor>(m_Default);
 
     unsigned long lcol = static_cast<unsigned long>(icol);
-    lcol = getWindowParameter()->GetUnsigned(entryName(), lcol);
+    lcol = getWindowParameter()->GetUnsigned(entryName().toStdString(), lcol);
     icol = static_cast<unsigned int>(lcol);
     QColor value = Base::Color::fromPackedRGBA<QColor>(icol);
     if (!this->allowTransparency()) {
@@ -591,7 +591,7 @@ void PrefColorButton::savePreferences()
     // (r,g,b,a) with a = 255 (opaque)
     unsigned int icol = Base::Color::asPackedRGBA<QColor>(col);
     unsigned long lcol = static_cast<unsigned long>(icol);
-    getWindowParameter()->SetUnsigned(entryName(), lcol);
+    getWindowParameter()->SetUnsigned(entryName().toStdString(), lcol);
 }
 
 // --------------------------------------------------------------------
@@ -622,7 +622,7 @@ void PrefUnitSpinBox::restorePreferences()
         return;
     }
 
-    double fVal = (double)getWindowParameter()->GetFloat(entryName(), rawValue());
+    double fVal = (double)getWindowParameter()->GetFloat(entryName().toStdString(), rawValue());
     setValue(fVal);
 }
 
@@ -634,7 +634,7 @@ void PrefUnitSpinBox::savePreferences()
     }
 
     double q = rawValue();
-    getWindowParameter()->SetFloat(entryName(), q);
+    getWindowParameter()->SetFloat(entryName().toStdString(), q);
 }
 
 // --------------------------------------------------------------------
@@ -715,7 +715,7 @@ public:
         for (int i = 0; i < list.size(); i++) {
             QByteArray key("Hist");
             key.append(QByteArray::number(i));
-            hGrp->SetASCII(key, list[i].toUtf8());
+            hGrp->SetASCII(key.toStdString(), list[i].toUtf8().toStdString());
         }
     }
 };
@@ -797,11 +797,11 @@ void PrefQuantitySpinBox::restorePreferences()
     }
 
     QString text = this->text();
-    text = QString::fromUtf8(getWindowParameter()->GetASCII(entryName(), text.toUtf8()).c_str());
+    text = QString::fromUtf8(getWindowParameter()->GetASCII(entryName().toStdString(), text.toUtf8()).c_str());
     lineEdit()->setText(text);
 
     // Restore history
-    auto hGrp = getWindowParameter()->GetGroup(d->getHistoryGroupName(entryName()));
+    auto hGrp = getWindowParameter()->GetGroup(d->getHistoryGroupName(entryName()).toStdString());
     d->restoreHistory(hGrp);
 }
 
@@ -813,10 +813,10 @@ void PrefQuantitySpinBox::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetASCII(entryName(), text().toUtf8());
+    getWindowParameter()->SetASCII(entryName().toStdString(), text().toUtf8().toStdString());
 
     // Save history
-    auto hGrp = getWindowParameter()->GetGroup(d->getHistoryGroupName(entryName()));
+    auto hGrp = getWindowParameter()->GetGroup(d->getHistoryGroupName(entryName()).toStdString());
     d->saveHistory(hGrp);
 }
 
@@ -875,7 +875,7 @@ void PrefFontBox::restorePreferences()
     QString currName = currFont.family();
 
     std::string prefName
-        = getWindowParameter()->GetASCII(entryName(), currName.toUtf8());  // font name from cfg file
+        = getWindowParameter()->GetASCII(entryName().toStdString(), currName.toUtf8());  // font name from cfg file
 
     currFont.setFamily(QString::fromStdString(prefName));
     setCurrentFont(currFont);  // set selector widget to name from cfg file
@@ -890,7 +890,7 @@ void PrefFontBox::savePreferences()
 
     QFont currFont = currentFont();
     QString currName = currFont.family();
-    getWindowParameter()->SetASCII(entryName(), currName.toUtf8());
+    getWindowParameter()->SetASCII(entryName().toStdString(), currName.toUtf8().toStdString());
 }
 
 // --------------------------------------------------------------------
@@ -911,7 +911,7 @@ void PrefCheckableGroupBox::restorePreferences()
 
     // Default value is the current state of the checkbox (usually from .ui on first load)
     bool defaultValueInUi = isChecked();
-    bool actualValue = getWindowParameter()->GetBool(entryName(), defaultValueInUi);
+    bool actualValue = getWindowParameter()->GetBool(entryName().toStdString(), defaultValueInUi);
     setChecked(actualValue);
 }
 
@@ -922,7 +922,7 @@ void PrefCheckableGroupBox::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetBool(entryName(), isChecked());
+    getWindowParameter()->SetBool(entryName().toStdString(), isChecked());
 }
 
 #include "moc_PrefWidgets.cpp"

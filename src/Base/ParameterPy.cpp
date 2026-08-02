@@ -122,34 +122,34 @@ void ParameterGrpPy::init_type()
     add_varargs_method("RenameGroup", &ParameterGrpPy::renameGroup, "RenameGroup(str, str)");
     add_varargs_method("CopyTo", &ParameterGrpPy::copyTo, "copyTo(ParameterGrp)");
 
-    add_varargs_method("Manager", &ParameterGrpPy::getManager, "Manager()");
+    // add_varargs_method("Manager", &ParameterGrpPy::getManager, "Manager()");
     add_varargs_method("Parent", &ParameterGrpPy::getParent, "Parent()");
 
     add_varargs_method("IsEmpty", &ParameterGrpPy::isEmpty, "IsEmpty()");
     add_varargs_method("Clear", &ParameterGrpPy::clear, "Clear()");
 
     add_varargs_method("Attach", &ParameterGrpPy::attach, "Attach()");
-    add_varargs_method(
-        "AttachManager",
-        &ParameterGrpPy::attachManager,
-        "AttachManager(observer) -- attach parameter manager for notification\n\n"
-        "This method attaches a user defined observer to the manager (i.e. the root)\n"
-        "of the current parameter group to receive notification of all its parameters\n"
-        "and those from its sub-groups\n\n"
-        "The method expects the observer to have a callable attribute as shown below\n"
-        "       slotParamChanged(param, tp, name, value)\n"
-        "where 'param' is the parameter group causing the change, 'tp' is the type of\n"
-        "the parameter, 'name' is the name of the parameter, and 'value' is the current\n"
-        "value.\n\n"
-        "The possible value of type are, 'FCBool', 'FCInt', 'FCUint', 'FCFloat', 'FCText',\n"
-        "and 'FCParamGroup'. The notification is triggered when value is changed, in which\n"
-        "case 'value' contains the new value in text form, or, when the parameter is removed,\n"
-        "in which case 'value' is empty.\n\n"
-        "For 'FCParamGroup' type, the observer will be notified in the following events.\n"
-        "* Group creation: both 'name' and 'value' contain the name of the new group\n"
-        "* Group removal: both 'name' and 'value' are empty\n"
-        "* Group rename: 'name' is the new name, and 'value' is the old name"
-    );
+    // add_varargs_method(
+    //     "AttachManager",
+    //     &ParameterGrpPy::attachManager,
+    //     "AttachManager(observer) -- attach parameter manager for notification\n\n"
+    //     "This method attaches a user defined observer to the manager (i.e. the root)\n"
+    //     "of the current parameter group to receive notification of all its parameters\n"
+    //     "and those from its sub-groups\n\n"
+    //     "The method expects the observer to have a callable attribute as shown below\n"
+    //     "       slotParamChanged(param, tp, name, value)\n"
+    //     "where 'param' is the parameter group causing the change, 'tp' is the type of\n"
+    //     "the parameter, 'name' is the name of the parameter, and 'value' is the current\n"
+    //     "value.\n\n"
+    //     "The possible value of type are, 'FCBool', 'FCInt', 'FCUint', 'FCFloat', 'FCText',\n"
+    //     "and 'FCParamGroup'. The notification is triggered when value is changed, in which\n"
+    //     "case 'value' contains the new value in text form, or, when the parameter is removed,\n"
+    //     "in which case 'value' is empty.\n\n"
+    //     "For 'FCParamGroup' type, the observer will be notified in the following events.\n"
+    //     "* Group creation: both 'name' and 'value' contain the name of the new group\n"
+    //     "* Group removal: both 'name' and 'value' are empty\n"
+    //     "* Group rename: 'name' is the new name, and 'value' is the old name"
+    // );
     add_varargs_method("Detach", &ParameterGrpPy::detach, "Detach()");
     add_varargs_method("Notify", &ParameterGrpPy::notify, "Notify()");
     add_varargs_method("NotifyAll", &ParameterGrpPy::notifyAll, "NotifyAll()");
@@ -179,9 +179,9 @@ void ParameterGrpPy::init_type()
     add_varargs_method("GetStrings", &ParameterGrpPy::getStrings, "GetStrings()");
     add_varargs_method("RemString", &ParameterGrpPy::remString, "RemString()");
 
-    add_varargs_method("Import", &ParameterGrpPy::importFrom, "Import()");
-    add_varargs_method("Insert", &ParameterGrpPy::insert, "Insert()");
-    add_varargs_method("Export", &ParameterGrpPy::exportTo, "Export()");
+    // add_varargs_method("Import", &ParameterGrpPy::importFrom, "Import()");
+    // add_varargs_method("Insert", &ParameterGrpPy::insert, "Insert()");
+    // add_varargs_method("Export", &ParameterGrpPy::exportTo, "Export()");
 
     add_varargs_method("GetContents", &ParameterGrpPy::getContents, "GetContents()");
 }
@@ -211,56 +211,56 @@ Py::Object ParameterGrpPy::repr()
     return Py::String(s.str());  // NOLINT
 }
 
-Py::Object ParameterGrpPy::importFrom(const Py::Tuple& args)
-{
-    char* pstr = nullptr;
-    if (!PyArg_ParseTuple(args.ptr(), "s", &pstr)) {
-        throw Py::Exception();
-    }
+// Py::Object ParameterGrpPy::importFrom(const Py::Tuple& args)
+// {
+//     char* pstr = nullptr;
+//     if (!PyArg_ParseTuple(args.ptr(), "s", &pstr)) {
+//         throw Py::Exception();
+//     }
 
-    try {
-        _cParamGrp->importFrom(pstr);
-        return Py::None();
-    }
-    catch (const Base::Exception& e) {
-        e.setPyException();
-        throw Py::Exception();
-    }
-}
+//     try {
+//         _cParamGrp->importFrom(pstr);
+//         return Py::None();
+//     }
+//     catch (const Base::Exception& e) {
+//         e.setPyException();
+//         throw Py::Exception();
+//     }
+// }
 
-Py::Object ParameterGrpPy::insert(const Py::Tuple& args)
-{
-    char* pstr = nullptr;
-    if (!PyArg_ParseTuple(args.ptr(), "s", &pstr)) {
-        throw Py::Exception();
-    }
+// Py::Object ParameterGrpPy::insert(const Py::Tuple& args)
+// {
+//     char* pstr = nullptr;
+//     if (!PyArg_ParseTuple(args.ptr(), "s", &pstr)) {
+//         throw Py::Exception();
+//     }
 
-    try {
-        _cParamGrp->insert(pstr);
-        return Py::None();
-    }
-    catch (const Base::Exception& e) {
-        e.setPyException();
-        throw Py::Exception();
-    }
-}
+//     try {
+//         _cParamGrp->insert(pstr);
+//         return Py::None();
+//     }
+//     catch (const Base::Exception& e) {
+//         e.setPyException();
+//         throw Py::Exception();
+//     }
+// }
 
-Py::Object ParameterGrpPy::exportTo(const Py::Tuple& args)
-{
-    char* pstr = nullptr;
-    if (!PyArg_ParseTuple(args.ptr(), "s", &pstr)) {
-        throw Py::Exception();
-    }
+// Py::Object ParameterGrpPy::exportTo(const Py::Tuple& args)
+// {
+//     char* pstr = nullptr;
+//     if (!PyArg_ParseTuple(args.ptr(), "s", &pstr)) {
+//         throw Py::Exception();
+//     }
 
-    try {
-        _cParamGrp->exportTo(pstr);
-        return Py::None();
-    }
-    catch (const Base::Exception& e) {
-        e.setPyException();
-        throw Py::Exception();
-    }
-}
+//     try {
+//         _cParamGrp->exportTo(pstr);
+//         return Py::None();
+//     }
+//     catch (const Base::Exception& e) {
+//         e.setPyException();
+//         throw Py::Exception();
+//     }
+// }
 
 Py::Object ParameterGrpPy::getGroup(const Py::Tuple& args)
 {
@@ -287,23 +287,23 @@ Py::Object ParameterGrpPy::getGroup(const Py::Tuple& args)
     }
 }
 
-Py::Object ParameterGrpPy::getManager(const Py::Tuple& args)
-{
-    if (!PyArg_ParseTuple(args.ptr(), "")) {
-        throw Py::Exception();
-    }
+// Py::Object ParameterGrpPy::getManager(const Py::Tuple& args)
+// {
+//     if (!PyArg_ParseTuple(args.ptr(), "")) {
+//         throw Py::Exception();
+//     }
 
-    // get the Handle of the wanted group
-    Base::Reference<ParameterGrp> handle = _cParamGrp->Manager();
-    if (handle.isValid()) {
-        // create a python wrapper class
-        auto pcParamGrp = new ParameterGrpPy(handle);
-        // increment the ref count
-        return Py::asObject(pcParamGrp);
-    }
+//     // get the Handle of the wanted group
+//     Base::Reference<ParameterManager> handle = _cParamGrp->Manager();
+//     if (handle.isValid()) {
+//         // create a python wrapper class
+//         auto pcParamGrp = new ParameterGrpPy(handle);
+//         // increment the ref count
+//         return Py::asObject(pcParamGrp);
+//     }
 
-    return Py::None();
-}
+//     return Py::None();
+// }
 
 Py::Object ParameterGrpPy::getParent(const Py::Tuple& args)
 {
@@ -380,7 +380,7 @@ Py::Object ParameterGrpPy::getBools(const Py::Tuple& args)
         throw Py::Exception();
     }
 
-    std::vector<std::pair<std::string, bool>> map = _cParamGrp->GetBoolMap(filter);
+    std::map<std::string, bool> map = _cParamGrp->GetBoolMap(filter);
     Py::List list;
     for (const auto& it : map) {
         list.append(Py::String(it.first));
@@ -418,7 +418,7 @@ Py::Object ParameterGrpPy::getInts(const Py::Tuple& args)
         throw Py::Exception();
     }
 
-    std::vector<std::pair<std::string, long>> map = _cParamGrp->GetIntMap(filter);
+    std::map<std::string, long> map = _cParamGrp->GetIntMap(filter);
     Py::List list;
     for (const auto& it : map) {
         list.append(Py::String(it.first));
@@ -456,7 +456,7 @@ Py::Object ParameterGrpPy::getUnsigneds(const Py::Tuple& args)
         throw Py::Exception();
     }
 
-    std::vector<std::pair<std::string, unsigned long>> map = _cParamGrp->GetUnsignedMap(filter);
+    std::map<std::string, unsigned long> map = _cParamGrp->GetUnsignedMap(filter);
     Py::List list;
     for (const auto& it : map) {
         list.append(Py::String(it.first));
@@ -495,7 +495,7 @@ Py::Object ParameterGrpPy::getFloats(const Py::Tuple& args)
         throw Py::Exception();
     }
 
-    std::vector<std::pair<std::string, double>> map = _cParamGrp->GetFloatMap(filter);
+    std::map<std::string, double> map = _cParamGrp->GetFloatMap(filter);
     Py::List list;
     for (const auto& it : map) {
         list.append(Py::String(it.first));
@@ -534,7 +534,7 @@ Py::Object ParameterGrpPy::getStrings(const Py::Tuple& args)
         throw Py::Exception();
     }
 
-    std::vector<std::pair<std::string, std::string>> map = _cParamGrp->GetASCIIMap(filter);
+    std::map<std::string, std::string> map = _cParamGrp->GetASCIIMap(filter ? filter : "");
     Py::List list;
     for (const auto& it : map) {
         list.append(Py::String(it.first));
@@ -690,16 +690,16 @@ void ParameterGrpPy::tryCall(
     ParameterGrpObserver* obs,
     ParameterGrp* Param,
     ParameterGrp::ParamType Type,
-    const char* Name,
-    const char* Value
+    const std::string& Name,
+    const std::string& Value
 )
 {
     Base::PyGILStateLocker lock;
     Py::TupleN args(
         Py::asObject(new ParameterGrpPy(Param)),
         Py::String(ParameterGrp::TypeName(Type)),
-        Py::String(Name ? Name : ""),
-        Py::String(Value ? Value : "")
+        Py::String(Name),
+        Py::String(Value)
     );
     try {
         Py::Callable(obs->callable).apply(args);
@@ -741,7 +741,7 @@ Py::Object ParameterGrpPy::attachManager(const Py::Tuple& args)
     ParameterManager* man = _cParamGrp->Manager();
     obs->conn = man->signalParamChanged.connect(
         [obs,
-         this](ParameterGrp* Param, ParameterGrp::ParamType Type, const char* Name, const char* Value) {
+         this](ParameterGrp* Param, ParameterGrp::ParamType Type, const std::string& Name, const std::string& Value) {
             if (!Param) {
                 return;
             }
@@ -816,7 +816,7 @@ Py::Object ParameterGrpPy::getContents(const Py::Tuple& args)
 
     Py::List list;
     // filling up Text nodes
-    std::vector<std::pair<std::string, std::string>> mcTextMap = _cParamGrp->GetASCIIMap();
+    std::map<std::string, std::string> mcTextMap = _cParamGrp->GetASCIIMap();
     for (const auto& it : mcTextMap) {
         Py::Tuple t2(3);
         t2.setItem(0, Py::String("String"));
@@ -826,7 +826,7 @@ Py::Object ParameterGrpPy::getContents(const Py::Tuple& args)
     }
 
     // filling up Int nodes
-    std::vector<std::pair<std::string, long>> mcIntMap = _cParamGrp->GetIntMap();
+    std::map<std::string, long> mcIntMap = _cParamGrp->GetIntMap();
     for (const auto& it : mcIntMap) {
         Py::Tuple t3(3);
         t3.setItem(0, Py::String("Integer"));
@@ -836,7 +836,7 @@ Py::Object ParameterGrpPy::getContents(const Py::Tuple& args)
     }
 
     // filling up Float nodes
-    std::vector<std::pair<std::string, double>> mcFloatMap = _cParamGrp->GetFloatMap();
+    std::map<std::string, double> mcFloatMap = _cParamGrp->GetFloatMap();
     for (const auto& it : mcFloatMap) {
         Py::Tuple t4(3);
         t4.setItem(0, Py::String("Float"));
@@ -846,7 +846,7 @@ Py::Object ParameterGrpPy::getContents(const Py::Tuple& args)
     }
 
     // filling up bool nodes
-    std::vector<std::pair<std::string, bool>> mcBoolMap = _cParamGrp->GetBoolMap();
+    std::map<std::string, bool> mcBoolMap = _cParamGrp->GetBoolMap();
     for (const auto& it : mcBoolMap) {
         Py::Tuple t5(3);
         t5.setItem(0, Py::String("Boolean"));
@@ -856,7 +856,7 @@ Py::Object ParameterGrpPy::getContents(const Py::Tuple& args)
     }
 
     // filling up UInt nodes
-    std::vector<std::pair<std::string, unsigned long>> mcUIntMap = _cParamGrp->GetUnsignedMap();
+    std::map<std::string, unsigned long> mcUIntMap = _cParamGrp->GetUnsignedMap();
     for (const auto& it : mcUIntMap) {
         Py::Tuple t6(3);
         t6.setItem(0, Py::String("Unsigned Long"));

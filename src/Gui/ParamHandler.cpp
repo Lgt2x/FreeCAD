@@ -34,11 +34,11 @@ void ParamHandlers::addHandler(const ParamKey& key, const std::shared_ptr<ParamH
 {
     if (handlers.empty()) {
         conn = App::GetApplication().GetUserParameter().signalParamChanged.connect(
-            [this](ParameterGrp* Param, ParameterGrp::ParamType, const char* Name, const char*) {
-                if (!Param || !Name) {
+            [this](ParameterGrp* Param, ParameterGrp::ParamType, const std::string& Name, const std::string&) {
+                if (!Param || Name.empty()) {
                     return;
                 }
-                auto it = handlers.find(ParamKey(Param, Name));
+                auto it = handlers.find(ParamKey(Param, Name.c_str()));
                 if (it != handlers.end() && it->second->onChange(&it->first)) {
                     pendings.insert(it->second);
                     timer.start(100);

@@ -360,14 +360,14 @@ int main(int argc, char** argv)
         e.reportException();
         exit(1);
     }
-    catch (const std::exception& e) {
-        Base::Console().error("Application unexpectedly terminated: %s\n", e.what());
-        exit(1);
-    }
-    catch (...) {
-        Base::Console().error("Application unexpectedly terminated\n");
-        exit(1);
-    }
+    // catch (const std::exception& e) {
+    //     Base::Console().error("Application unexpectedly terminated: %s\n", e.what());
+    //     exit(1);
+    // }
+    // catch (...) {
+    //     Base::Console().error("Application unexpectedly terminated\n");
+    //     exit(1);
+    // }
 
     std::cout.rdbuf(oldcout);
     std::clog.rdbuf(oldclog);

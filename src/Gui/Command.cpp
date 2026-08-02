@@ -1362,7 +1362,7 @@ void MacroCommand::load()
         hGrp = hGrp->GetGroup("Macros");
         std::vector<Base::Reference<ParameterGrp>> macros = hGrp->GetGroups();
         for (const auto& it : macros) {
-            auto macro = new MacroCommand(it->GetGroupName());
+            auto macro = new MacroCommand(it->GetGroupName().c_str());
             macro->setScriptName(it->GetASCII("Script").c_str());
             macro->setMenuText(it->GetASCII("Menu").c_str());
             macro->setToolTipText(it->GetASCII("Tooltip").c_str());

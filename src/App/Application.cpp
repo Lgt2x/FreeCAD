@@ -1533,7 +1533,7 @@ void Application::RemoveParameterSet(const char* sName)
 
 Base::Reference<ParameterGrp>  Application::GetParameterGroupByPath(const char* sName)
 {
-    std::string cName = sName, cTemp;
+    std::string cName = sName;
 
     const std::string::size_type pos = cName.find(':');
 
@@ -1542,6 +1542,7 @@ Base::Reference<ParameterGrp>  Application::GetParameterGroupByPath(const char* 
         throw Base::ValueError("Application::GetParameterGroupByPath() no parameter set name specified");
     }
     // assigning the parameter set name
+    std::string cTemp;
     cTemp.assign(cName,0,pos);
     cName.erase(0,pos+1);
 
@@ -1550,7 +1551,7 @@ Base::Reference<ParameterGrp>  Application::GetParameterGroupByPath(const char* 
     if (It == mpcPramManager.end())
         throw Base::ValueError("Application::GetParameterGroupByPath() unknown parameter set name specified");
 
-    return It->second->GetGroup(cName.c_str());
+    return It->second->GetGroup(cName);
 }
 
 void Application::addImportType(const char* filter, const char* moduleName)
@@ -2054,7 +2055,6 @@ void Application::destruct()
     Base::ScriptFactorySingleton::Destruct();
     Base::InterpreterSingleton::Destruct();
     Base::Type::destruct();
-    ParameterManager::Terminate();
     SafeMode::Destruct();
 }
 

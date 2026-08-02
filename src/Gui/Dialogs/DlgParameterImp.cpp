@@ -331,7 +331,7 @@ void DlgParameterImp::onGroupSelected(QTreeWidgetItem* item)
         static_cast<ParameterValue*>(paramValue)->setCurrentGroup(_hcGrp);
 
         // filling up Text nodes
-        std::vector<std::pair<std::string, std::string>> mcTextMap = _hcGrp->GetASCIIMap();
+        std::map<std::string, std::string> mcTextMap = _hcGrp->GetASCIIMap();
         for (const auto& It2 : mcTextMap) {
             (void)new ParameterText(
                 paramValue,
@@ -342,25 +342,25 @@ void DlgParameterImp::onGroupSelected(QTreeWidgetItem* item)
         }
 
         // filling up Int nodes
-        std::vector<std::pair<std::string, long>> mcIntMap = _hcGrp->GetIntMap();
+        std::map<std::string, long> mcIntMap = _hcGrp->GetIntMap();
         for (const auto& It3 : mcIntMap) {
             (void)new ParameterInt(paramValue, QString::fromUtf8(It3.first.c_str()), It3.second, _hcGrp);
         }
 
         // filling up Float nodes
-        std::vector<std::pair<std::string, double>> mcFloatMap = _hcGrp->GetFloatMap();
+        std::map<std::string, double> mcFloatMap = _hcGrp->GetFloatMap();
         for (const auto& It4 : mcFloatMap) {
             (void)new ParameterFloat(paramValue, QString::fromUtf8(It4.first.c_str()), It4.second, _hcGrp);
         }
 
         // filling up bool nodes
-        std::vector<std::pair<std::string, bool>> mcBoolMap = _hcGrp->GetBoolMap();
+        std::map<std::string, bool> mcBoolMap = _hcGrp->GetBoolMap();
         for (const auto& It5 : mcBoolMap) {
             (void)new ParameterBool(paramValue, QString::fromUtf8(It5.first.c_str()), It5.second, _hcGrp);
         }
 
         // filling up UInt nodes
-        std::vector<std::pair<std::string, unsigned long>> mcUIntMap = _hcGrp->GetUnsignedMap();
+        std::map<std::string, unsigned long> mcUIntMap = _hcGrp->GetUnsignedMap();
         for (const auto& It6 : mcUIntMap) {
             (void)new ParameterUInt(paramValue, QString::fromUtf8(It6.first.c_str()), It6.second, _hcGrp);
         }
@@ -586,7 +586,7 @@ void ParameterGroup::onCreateSubgroup()
             auto para = static_cast<ParameterGroupItem*>(item);
             Base::Reference<ParameterGrp> hGrp = para->_hcGrp;
 
-            if (hGrp->HasGroup(name.toLatin1())) {
+            if (hGrp->HasGroup(name.toLatin1().toStdString())) {
                 QMessageBox::critical(
                     this,
                     tr("Existing Sub-Group"),
@@ -595,7 +595,7 @@ void ParameterGroup::onCreateSubgroup()
                 return;
             }
 
-            hGrp = hGrp->GetGroup(name.toLatin1());
+            hGrp = hGrp->GetGroup(name.toLatin1().toStdString());
             (void)new ParameterGroupItem(para, hGrp);
             expandItem(para);
         }
@@ -615,7 +615,7 @@ void ParameterGroup::onExportToFile()
         if (item && item->isSelected()) {
             auto para = static_cast<ParameterGroupItem*>(item);
             Base::Reference<ParameterGrp> hGrp = para->_hcGrp;
-            hGrp->exportTo(file.toUtf8());
+            // hGrp->exportTo(file.toUtf8().toStdString());
         }
     }
 }
@@ -641,7 +641,7 @@ void ParameterGroup::onImportFromFile()
             }
 
             try {
-                hGrp->importFrom(file.toUtf8());
+                // hGrp->importFrom(file.toUtf8().toStdString()); // TODO
                 std::vector<Base::Reference<ParameterGrp>> cSubGrps = hGrp->GetGroups();
                 for (const auto& cSubGrp : cSubGrps) {
                     new ParameterGroupItem(para, cSubGrp);
@@ -820,7 +820,7 @@ void ParameterValue::onCreateTextItem()
         return;
     }
 
-    std::vector<std::pair<std::string, std::string>> smap = _hcGrp->GetASCIIMap();
+    std::map<std::string, std::string> smap = _hcGrp->GetASCIIMap();
     for (const auto& it : smap) {
         if (name == QLatin1String(it.first.c_str())) {
             QMessageBox::critical(
@@ -865,7 +865,7 @@ void ParameterValue::onCreateIntItem()
         return;
     }
 
-    std::vector<std::pair<std::string, long>> lmap = _hcGrp->GetIntMap();
+    std::map<std::string, long> lmap = _hcGrp->GetIntMap();
     for (const auto& it : lmap) {
         if (name == QLatin1String(it.first.c_str())) {
             QMessageBox::critical(
@@ -913,7 +913,7 @@ void ParameterValue::onCreateUIntItem()
         return;
     }
 
-    std::vector<std::pair<std::string, unsigned long>> lmap = _hcGrp->GetUnsignedMap();
+    std::map<std::string, unsigned long> lmap = _hcGrp->GetUnsignedMap();
     for (const auto& it : lmap) {
         if (name == QLatin1String(it.first.c_str())) {
             QMessageBox::critical(
@@ -958,7 +958,7 @@ void ParameterValue::onCreateFloatItem()
         return;
     }
 
-    std::vector<std::pair<std::string, double>> fmap = _hcGrp->GetFloatMap();
+    std::map<std::string, double> fmap = _hcGrp->GetFloatMap();
     for (const auto& it : fmap) {
         if (name == QLatin1String(it.first.c_str())) {
             QMessageBox::critical(
@@ -1005,7 +1005,7 @@ void ParameterValue::onCreateBoolItem()
         return;
     }
 
-    std::vector<std::pair<std::string, bool>> bmap = _hcGrp->GetBoolMap();
+    std::map<std::string, bool> bmap = _hcGrp->GetBoolMap();
     for (const auto& it : bmap) {
         if (name == QLatin1String(it.first.c_str())) {
             QMessageBox::critical(
@@ -1100,7 +1100,7 @@ void ParameterGroupItem::setData(int column, int role, const QVariant& value)
             );
             return;
         }
-        if (item->_hcGrp->HasGroup(newName.toLatin1())) {
+        if (item->_hcGrp->HasGroup(newName.toLatin1().toStdString())) {
             QMessageBox::critical(
                 treeWidget(),
                 QObject::tr("Existing group"),
@@ -1110,7 +1110,7 @@ void ParameterGroupItem::setData(int column, int role, const QVariant& value)
         }
         else {
             // rename the group by adding a new group, copy the content and remove the old group
-            if (!item->_hcGrp->RenameGrp(oldName.toLatin1(), newName.toLatin1())) {
+            if (!item->_hcGrp->RenameGrp(oldName.toLatin1().toStdString(), newName.toLatin1().toStdString())) {
                 return;
             }
         }
@@ -1195,25 +1195,25 @@ void ParameterText::changeValue()
     );
     if (ok) {
         setText(2, txt);
-        _hcGrp->SetASCII(text(0).toLatin1(), txt.toUtf8());
+        _hcGrp->SetASCII(text(0).toLatin1().toStdString(), txt.toUtf8().toStdString());
     }
 }
 
 void ParameterText::removeFromGroup()
 {
-    _hcGrp->RemoveASCII(text(0).toLatin1());
+    _hcGrp->RemoveASCII(text(0).toLatin1().toStdString());
 }
 
 void ParameterText::replace(const QString& oldName, const QString& newName)
 {
-    std::string val = _hcGrp->GetASCII(oldName.toLatin1());
-    _hcGrp->RemoveASCII(oldName.toLatin1());
-    _hcGrp->SetASCII(newName.toLatin1(), val.c_str());
+    std::string val = _hcGrp->GetASCII(oldName.toLatin1().toStdString());
+    _hcGrp->RemoveASCII(oldName.toLatin1().toStdString());
+    _hcGrp->SetASCII(newName.toLatin1().toStdString(), val.c_str());
 }
 
 void ParameterText::appendToGroup()
 {
-    _hcGrp->SetASCII(text(0).toLatin1(), text(2).toUtf8());
+    _hcGrp->SetASCII(text(0).toLatin1().toStdString(), text(2).toUtf8().toStdString());
 }
 
 // --------------------------------------------------------------------
@@ -1250,25 +1250,25 @@ void ParameterInt::changeValue()
     );
     if (ok) {
         setText(2, QStringLiteral("%1").arg(num));
-        _hcGrp->SetInt(text(0).toLatin1(), (long)num);
+        _hcGrp->SetInt(text(0).toLatin1().toStdString(), (long)num);
     }
 }
 
 void ParameterInt::removeFromGroup()
 {
-    _hcGrp->RemoveInt(text(0).toLatin1());
+    _hcGrp->RemoveInt(text(0).toLatin1().toStdString());
 }
 
 void ParameterInt::replace(const QString& oldName, const QString& newName)
 {
-    long val = _hcGrp->GetInt(oldName.toLatin1());
-    _hcGrp->RemoveInt(oldName.toLatin1());
-    _hcGrp->SetInt(newName.toLatin1(), val);
+    long val = _hcGrp->GetInt(oldName.toLatin1().toStdString());
+    _hcGrp->RemoveInt(oldName.toLatin1().toStdString());
+    _hcGrp->SetInt(newName.toLatin1().toStdString(), val);
 }
 
 void ParameterInt::appendToGroup()
 {
-    _hcGrp->SetInt(text(0).toLatin1(), text(2).toLong());
+    _hcGrp->SetInt(text(0).toLatin1().toStdString(), text(2).toLong());
 }
 
 // --------------------------------------------------------------------
@@ -1303,26 +1303,26 @@ void ParameterUInt::changeValue()
 
         if (ok) {
             setText(2, QStringLiteral("%1").arg(num));
-            _hcGrp->SetUnsigned(text(0).toLatin1(), (unsigned long)num);
+            _hcGrp->SetUnsigned(text(0).toLatin1().toStdString(), (unsigned long)num);
         }
     }
 }
 
 void ParameterUInt::removeFromGroup()
 {
-    _hcGrp->RemoveUnsigned(text(0).toLatin1());
+    _hcGrp->RemoveUnsigned(text(0).toLatin1().toStdString());
 }
 
 void ParameterUInt::replace(const QString& oldName, const QString& newName)
 {
-    unsigned long val = _hcGrp->GetUnsigned(oldName.toLatin1());
-    _hcGrp->RemoveUnsigned(oldName.toLatin1());
-    _hcGrp->SetUnsigned(newName.toLatin1(), val);
+    unsigned long val = _hcGrp->GetUnsigned(oldName.toLatin1().toStdString());
+    _hcGrp->RemoveUnsigned(oldName.toLatin1().toStdString());
+    _hcGrp->SetUnsigned(newName.toLatin1().toStdString(), val);
 }
 
 void ParameterUInt::appendToGroup()
 {
-    _hcGrp->SetUnsigned(text(0).toLatin1(), text(2).toULong());
+    _hcGrp->SetUnsigned(text(0).toLatin1().toStdString(), text(2).toULong());
 }
 
 // --------------------------------------------------------------------
@@ -1359,25 +1359,25 @@ void ParameterFloat::changeValue()
     );
     if (ok) {
         setText(2, QStringLiteral("%1").arg(num));
-        _hcGrp->SetFloat(text(0).toLatin1(), num);
+        _hcGrp->SetFloat(text(0).toLatin1().toStdString(), num);
     }
 }
 
 void ParameterFloat::removeFromGroup()
 {
-    _hcGrp->RemoveFloat(text(0).toLatin1());
+    _hcGrp->RemoveFloat(text(0).toLatin1().toStdString());
 }
 
 void ParameterFloat::replace(const QString& oldName, const QString& newName)
 {
-    double val = _hcGrp->GetFloat(oldName.toLatin1());
-    _hcGrp->RemoveFloat(oldName.toLatin1());
-    _hcGrp->SetFloat(newName.toLatin1(), val);
+    double val = _hcGrp->GetFloat(oldName.toLatin1().toStdString());
+    _hcGrp->RemoveFloat(oldName.toLatin1().toStdString());
+    _hcGrp->SetFloat(newName.toLatin1().toStdString(), val);
 }
 
 void ParameterFloat::appendToGroup()
 {
-    _hcGrp->SetFloat(text(0).toLatin1(), text(2).toDouble());
+    _hcGrp->SetFloat(text(0).toLatin1().toStdString(), text(2).toDouble());
 }
 
 // --------------------------------------------------------------------
@@ -1417,26 +1417,26 @@ void ParameterBool::changeValue()
     );
     if (ok) {
         setText(2, txt);
-        _hcGrp->SetBool(text(0).toLatin1(), (txt == list[0] ? true : false));
+        _hcGrp->SetBool(text(0).toLatin1().toStdString(), (txt == list[0]));
     }
 }
 
 void ParameterBool::removeFromGroup()
 {
-    _hcGrp->RemoveBool(text(0).toLatin1());
+    _hcGrp->RemoveBool(text(0).toLatin1().toStdString());
 }
 
 void ParameterBool::replace(const QString& oldName, const QString& newName)
 {
-    bool val = _hcGrp->GetBool(oldName.toLatin1());
-    _hcGrp->RemoveBool(oldName.toLatin1());
-    _hcGrp->SetBool(newName.toLatin1(), val);
+    bool val = _hcGrp->GetBool(oldName.toLatin1().toStdString());
+    _hcGrp->RemoveBool(oldName.toLatin1().toStdString());
+    _hcGrp->SetBool(newName.toLatin1().toStdString(), val);
 }
 
 void ParameterBool::appendToGroup()
 {
-    bool val = (text(2) == QLatin1String("true") ? true : false);
-    _hcGrp->SetBool(text(0).toLatin1(), val);
+    bool val = (text(2) == QLatin1String("true"));
+    _hcGrp->SetBool(text(0).toLatin1().toStdString(), val);
 }
 
 #include "moc_DlgParameterImp.cpp"

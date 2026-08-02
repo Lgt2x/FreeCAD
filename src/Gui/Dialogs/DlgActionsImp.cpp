@@ -470,7 +470,7 @@ void IconDialog::onAddIconPath()
         for (QStringList::iterator it = paths.begin(); it != paths.end(); ++it, ++index) {
             std::stringstream str;
             str << "CustomPath" << index;
-            group->SetASCII(str.str().c_str(), (const char*)it->toUtf8());
+            group->SetASCII(str.str(), it->toUtf8().toStdString());
         }
 
         QStringList search = BitmapFactory().getPaths();

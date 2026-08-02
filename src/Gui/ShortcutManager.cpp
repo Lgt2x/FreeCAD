@@ -177,7 +177,7 @@ QString ShortcutManager::getShortcut(const char* cmdName, const char* accel)
     }
     QString shortcut;
     if (cmdName) {
-        shortcut = QString::fromLatin1(hShortcuts->GetASCII(cmdName, accel).c_str());
+        shortcut = QString::fromLatin1(hShortcuts->GetASCII(cmdName, accel));
     }
     else {
         shortcut = QString::fromLatin1(accel);

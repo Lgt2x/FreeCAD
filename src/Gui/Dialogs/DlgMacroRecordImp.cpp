@@ -202,7 +202,7 @@ void DlgMacroRecordImp::onButtonChooseDirClicked()
             userMacroDir = userMacroDir.parent_path();
         }
         if (chosenPath != userMacroDir) {
-            getWindowParameter()->SetASCII("MacroPath", macroPath.toUtf8());
+            getWindowParameter()->SetASCII("MacroPath", macroPath.toUtf8().toStdString());
         }
         else if (getWindowParameter()->GetASCII("MacroPath", "UNSET") != "UNSET") {
             // If the new path IS the default path, remove any existing storage of the path

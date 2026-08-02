@@ -43,6 +43,7 @@ add_executable(Base_tests_run
         Vector3D.cpp
         ViewProj.cpp
         Writer.cpp
+        XMLParser.cpp
         XMLTools.cpp
 )
 
@@ -60,3 +61,7 @@ target_link_libraries(Base_tests_run PRIVATE
 if(cpptrace_FOUND)
     target_compile_definitions(Base_tests_run PRIVATE FC_HAVE_CPPTRACE)
 endif()
+
+find_package(benchmark REQUIRED)
+add_executable(param_bench ParameterBench.cpp)
+target_link_libraries(param_bench PRIVATE benchmark::benchmark_main benchmark::benchmark FreeCADApp ${Python3_LIBRARIES})

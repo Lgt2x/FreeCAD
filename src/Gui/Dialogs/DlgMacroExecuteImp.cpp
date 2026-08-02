@@ -434,7 +434,7 @@ void DlgMacroExecuteImp::onFileChooserFileNameChanged(const QString& fn)
         }
         if (chosenPath != userMacroDir) {
             // Save the path in the parameters, but only if it is NOT the default value
-            getWindowParameter()->SetASCII("MacroPath", fn.toUtf8());
+            getWindowParameter()->SetASCII("MacroPath", fn.toUtf8().toStdString());
         }
         else {
             // If the user specifically chose the default path, actually remove the setting (this

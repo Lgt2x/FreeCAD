@@ -222,8 +222,8 @@ struct OverlayInfo
                    ->GetGroup("DockWindows")
                    ->GetGroup(name);
         conn = App::GetApplication().GetUserParameter().signalParamChanged.connect(
-            [this](ParameterGrp* Param, ParameterGrp::ParamType, const char* Name, const char*) {
-                if (hGrp == Param && Name && !tabWidget->isSaving()) {
+            [this](ParameterGrp* Param, ParameterGrp::ParamType, const std::string& Name, const std::string&) {
+                if (hGrp == Param && !Name.empty() && !tabWidget->isSaving()) {
                     // This will prevent saving settings which will mess up the
                     // just restored ones
                     tabWidget->restore(nullptr);

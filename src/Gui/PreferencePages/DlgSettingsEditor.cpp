@@ -22,6 +22,7 @@
 
 
 #include <QFontDatabase>
+#include <algorithm>
 
 
 #include <Base/Color.h>
@@ -229,10 +230,10 @@ void DlgSettingsEditor::saveSettings()
     ParameterGrp::handle hGrp = WindowParameter::getDefaultParameter()->GetGroup("Editor");
     for (const auto& [textType, textColor] : d->colormap) {
         auto col = static_cast<unsigned long>(textColor);
-        hGrp->SetUnsigned(textType.toLatin1(), col);
+        hGrp->SetUnsigned(textType.toLatin1().toStdString(), col);
     }
     hGrp->SetInt("FontSize", ui->fontSize->value());
-    hGrp->SetASCII("Font", ui->fontFamily->currentText().toLatin1());
+    hGrp->SetASCII("Font", ui->fontFamily->currentText().toLatin1().toStdString());
 
     setEditorTabWidth(ui->tabSize->value());
 }
@@ -267,7 +268,7 @@ void DlgSettingsEditor::loadSettings()
     ParameterGrp::handle hGrp = WindowParameter::getDefaultParameter()->GetGroup("Editor");
     for (auto& [textType, textColor] : d->colormap) {
         auto col = static_cast<unsigned long>(textColor);
-        col = hGrp->GetUnsigned(textType.toLatin1(), col);
+        col = hGrp->GetUnsigned(textType.toLatin1().toStdString(), col);
         textColor = static_cast<unsigned int>(col);
         QColor color = Base::Color::fromPackedRGB<QColor>(col);
         pythonSyntax->setColor(textType, color);
@@ -314,11 +315,9 @@ void DlgSettingsEditor::loadSettings()
     ui->fontFamily->setProperty("doNotSearch", true);
 
     int index = fixedFamilyNames.indexOf(
-        QString::fromLatin1(hGrp->GetASCII("Font", defaultMonospaceFont).c_str())
+        QString::fromLatin1(hGrp->GetASCII("Font", defaultMonospaceFont))
     );
-    if (index < 0) {
-        index = 0;
-    }
+    index = std::max(index, 0);
     ui->fontFamily->setCurrentIndex(index);
     onFontFamilyActivated(ui->fontFamily->currentText());
     ui->displayItems->setCurrentItem(ui->displayItems->topLevelItem(0));
@@ -330,7 +329,7 @@ void DlgSettingsEditor::resetSettingsToDefaults()
     hGrp = WindowParameter::getDefaultParameter()->GetGroup("Editor");
     // reset the parameters in the "Editor" group
     for (const auto& [textType, textColor] : d->colormap) {
-        hGrp->RemoveUnsigned(textType.toLatin1());
+        hGrp->RemoveUnsigned(textType.toLatin1().toStdString());
     }
     // reset "FontSize" parameter
     hGrp->RemoveInt("FontSize");

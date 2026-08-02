@@ -74,7 +74,7 @@ void DlgCheckableMessageBox::showMessage(
 {
     bool checked = App::GetApplication()
                        .GetParameterGroupByPath(QByteArray("User parameter:BaseApp/CheckMessages"))
-                       ->GetBool(toParamEntry(header));
+                       ->GetBool(toParamEntry(header).toStdString());
 
     if (!checked) {
         auto mb = new DlgCheckableMessageBox(Gui::getMainWindow());
@@ -103,7 +103,7 @@ void DlgCheckableMessageBox::showMessage(
 {
     bool checked = App::GetApplication()
                        .GetParameterGroupByPath(prefPath.toLatin1())
-                       ->GetBool(paramEntry.toLatin1(), entryDefault);
+                       ->GetBool(paramEntry.toLatin1().toStdString(), entryDefault);
 
     if (checked == entryDefault) {
         auto mb = new Gui::Dialog::DlgCheckableMessageBox(Gui::getMainWindow());
@@ -152,7 +152,7 @@ void DlgCheckableMessageBox::setPrefEntry(const QString& entry)
 {
     paramEntry = toParamEntry(entry);
     bool checked
-        = App::GetApplication().GetParameterGroupByPath(prefPath.toLatin1())->GetBool(paramEntry);
+        = App::GetApplication().GetParameterGroupByPath(prefPath.toLatin1())->GetBool(paramEntry.toStdString());
     setChecked(checked);
 }
 
@@ -255,7 +255,7 @@ void DlgCheckableMessageBox::accept()
     if (!paramEntry.isEmpty()) {
         App::GetApplication()
             .GetParameterGroupByPath(prefPath.toLatin1())
-            ->SetBool(paramEntry, isChecked());
+            ->SetBool(paramEntry.toStdString(), isChecked());
     }
     QDialog::accept();
 }
@@ -265,7 +265,7 @@ void DlgCheckableMessageBox::reject()
     if (!paramEntry.isEmpty()) {
         App::GetApplication()
             .GetParameterGroupByPath(prefPath.toLatin1())
-            ->SetBool(paramEntry, isChecked());
+            ->SetBool(paramEntry.toStdString(), isChecked());
     }
     QDialog::reject();
 }

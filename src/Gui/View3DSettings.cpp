@@ -563,8 +563,8 @@ NaviCubeSettings::NaviCubeSettings(ParameterGrp::handle hGrp, View3DInventorView
     , _viewer(view)
 {
     connectParameterChanged = hGrp->Manager()->signalParamChanged.connect(
-        [this](ParameterGrp*, ParameterGrp::ParamType, const char* Name, const char*) {
-            parameterChanged(Name);
+        [this](ParameterGrp*, ParameterGrp::ParamType, const std::string& Name, const std::string&) {
+            parameterChanged(Name.c_str());
         }
     );
 }

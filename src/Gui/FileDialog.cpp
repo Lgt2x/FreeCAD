@@ -941,7 +941,7 @@ void FileDialog::saveLocation(const QString& dirName)
                                               .GetGroup("BaseApp")
                                               ->GetGroup("Preferences")
                                               ->GetGroup("General");
-    hPath->SetASCII("FileOpenSavePath", dirName.toUtf8());
+    hPath->SetASCII("FileOpenSavePath", dirName.toUtf8().toStdString());
 }
 
 // ======================================================================

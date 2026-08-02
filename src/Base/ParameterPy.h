@@ -92,9 +92,9 @@ public:
     Py::Object getStrings(const Py::Tuple&);
     Py::Object remString(const Py::Tuple&);
 
-    Py::Object importFrom(const Py::Tuple&);
-    Py::Object insert(const Py::Tuple&);
-    Py::Object exportTo(const Py::Tuple&);
+    // Py::Object importFrom(const Py::Tuple&);
+    // Py::Object insert(const Py::Tuple&);
+    // Py::Object exportTo(const Py::Tuple&);
 
     Py::Object getContents(const Py::Tuple&);
     // NOLINTEND
@@ -104,8 +104,8 @@ private:
         ParameterGrpObserver* obs,
         ParameterGrp* Param,
         ParameterGrp::ParamType Type,
-        const char* Name,
-        const char* Value
+        const std::string& Name,
+        const std::string& Value
     );
 
 private:

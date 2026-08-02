@@ -343,7 +343,6 @@ def exercise(
     assert_type(parameters.GetGroups(), list[str])
     assert_type(parameters.HasGroup("Preferences"), bool)
     assert_type(parameters.RenameGroup("old", "new"), bool)
-    assert_type(parameters.Manager(), ParameterGrp | None)
     assert_type(parameters.Parent(), ParameterGrp | None)
     assert_type(parameters.IsEmpty(), bool)
     assert_type(parameters.GetBool("flag", 0), bool)

@@ -499,9 +499,9 @@ void ToolBarManager::setupConnection()
     refreshParams(nullptr);
     connParam = App::GetApplication().GetUserParameter().signalParamChanged.connect(
         [this,
-         refreshParams](ParameterGrp* hParam, ParameterGrp::ParamType, const char* name, const char*) {
-            if (hParam == hGeneral && name) {
-                refreshParams(name);
+         refreshParams](ParameterGrp* hParam, ParameterGrp::ParamType, const std::string& name, const std::string&) {
+            if (hParam == hGeneral && !name.empty()) {
+                refreshParams(name.c_str());
             }
             if (hParam == hPref || hParam == hStatusBar || hParam == hMenuBarRight
                 || hParam == hMenuBarLeft) {
@@ -887,17 +887,17 @@ void ToolBarManager::restoreState() const
                 toolbar->setVisible(hPref->GetBool(toolbarName.constData(), toolbar->isVisible()));
             }
 
-            int idx = hStatusBar->GetInt(toolbarName, -1);
+            int idx = hStatusBar->GetInt(toolbarName.toStdString(), -1);
             if (idx >= 0) {
                 sbToolBars[idx] = toolbar;
                 continue;
             }
-            idx = hMenuBarLeft->GetInt(toolbarName, -1);
+            idx = hMenuBarLeft->GetInt(toolbarName.toStdString(), -1);
             if (idx >= 0) {
                 mbLeftToolBars[idx] = toolbar;
                 continue;
             }
-            idx = hMenuBarRight->GetInt(toolbarName, -1);
+            idx = hMenuBarRight->GetInt(toolbarName.toStdString(), -1);
             if (idx >= 0) {
                 mbRightToolBars[idx] = toolbar;
                 continue;

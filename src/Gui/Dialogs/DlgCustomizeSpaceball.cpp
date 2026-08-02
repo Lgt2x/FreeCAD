@@ -227,7 +227,7 @@ void ButtonModel::insertButtonRows(int number)
         QString groupName;
         groupName.setNum(index);
         Base::Reference<ParameterGrp> newGroup = spaceballButtonGroup()->GetGroup(
-            groupName.toLatin1()
+            groupName.toLatin1().toStdString()
         );  // builds the group.
         newGroup->SetASCII("Command", "");
         newGroup->SetASCII("Description", "");
@@ -239,14 +239,14 @@ void ButtonModel::insertButtonRows(int number)
 void ButtonModel::setCommand(int row, QString command)
 {
     GroupVector groupVector = spaceballButtonGroup()->GetGroups();
-    groupVector.at(row)->SetASCII("Command", command.toLatin1());
+    groupVector.at(row)->SetASCII("Command", command.toLatin1().toStdString());
 }
 
 void ButtonModel::goButtonPress(int number)
 {
     QString numberString;
     numberString.setNum(number);
-    if (!spaceballButtonGroup()->HasGroup(numberString.toLatin1())) {
+    if (!spaceballButtonGroup()->HasGroup(numberString.toLatin1().toStdString())) {
         insertButtonRows(number);
     }
 }
@@ -287,7 +287,7 @@ QString ButtonModel::getLabel(const int& number) const
         QString numberString;
         numberString.setNum(number);
         QString desc = QString::fromStdString(
-            spaceballButtonGroup()->GetGroup(numberString.toLatin1())->GetASCII("Description", "")
+            spaceballButtonGroup()->GetGroup(numberString.toLatin1().toStdString())->GetASCII("Description", "")
         );
         if (desc.length()) {
             desc = QStringLiteral(" \"") + desc + QStringLiteral("\"");

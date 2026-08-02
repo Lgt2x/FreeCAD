@@ -459,9 +459,9 @@ void PreferencePackManager::toggleVisibility(
     );
     if (hiddenPack == hiddenPacks.end()) {
         auto name = findUnusedName("PreferencePack", pref);
-        auto group = pref->GetGroup(name.c_str());
-        group->SetASCII("addonName", addonName.c_str());
-        group->SetASCII("preferencePackName", preferencePackName.c_str());
+        auto group = pref->GetGroup(name);
+        group->SetASCII("addonName", addonName);
+        group->SetASCII("preferencePackName", preferencePackName);
     }
     else {
         auto groupName = (*hiddenPack)->GetGroupName();

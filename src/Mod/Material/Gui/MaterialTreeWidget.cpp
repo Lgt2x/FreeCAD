@@ -770,7 +770,7 @@ void PrefMaterialTreeWidget::restorePreferences()
     }
 
     const char* defaultUuid = "7f9fd73b-50c9-41d8-b7b2-575a030c1eeb";
-    QString uuid = QString::fromStdString(getWindowParameter()->GetASCII(entryName(), defaultUuid));
+    QString uuid = QString::fromStdString(getWindowParameter()->GetASCII(entryName().toStdString(), defaultUuid));
     setMaterial(uuid);
 }
 
@@ -781,5 +781,5 @@ void PrefMaterialTreeWidget::savePreferences()
         return;
     }
 
-    getWindowParameter()->SetASCII(entryName(), getMaterialUUID().toStdString());
+    getWindowParameter()->SetASCII(entryName().toStdString(), getMaterialUUID().toStdString());
 }

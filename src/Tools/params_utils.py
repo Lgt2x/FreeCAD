@@ -118,6 +118,7 @@ namespace {namespace} {{
  *     void {class_name}:on<parameter_name>Changed()
  * @endcode
  */
+ // TODO MAKE SURE IT STILL WORKS
 class {namespace}Export {class_name} {{
 public:
     static ParameterGrp::handle getHandle();

@@ -318,7 +318,7 @@ void MDIView::savePrinterSettings(QPrinter* printer)
         return;
     }
 
-    hGrp = hGrp->GetGroup(printerName.toUtf8());
+    hGrp = hGrp->GetGroup(printerName.toUtf8().toStdString());
 
     hGrp->SetInt("DefaultPageSize", printer->pageLayout().pageSize().id());
     hGrp->SetInt("DefaultPageOrientation", static_cast<int>(printer->pageLayout().orientation()));
@@ -336,7 +336,7 @@ void MDIView::restorePrinterSettings(QPrinter* printer)
         return;
     }
 
-    hGrp = hGrp->GetGroup(printerName.toUtf8());
+    hGrp = hGrp->GetGroup(printerName.toUtf8().toStdString());
 
     QPrinterInfo info = QPrinterInfo::defaultPrinter();
     int initialDefaultPageSize = info.isNull() ? QPageSize::A4 : info.defaultPageSize().id();

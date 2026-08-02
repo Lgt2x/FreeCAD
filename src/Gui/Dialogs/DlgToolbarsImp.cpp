@@ -213,7 +213,7 @@ void DlgCustomToolbars::importCustomToolbars(const QByteArray& name)
         toplevel->setCheckState(0, (active ? Qt::Checked : Qt::Unchecked));
 
         // get the elements of the subgroups
-        std::vector<std::pair<std::string, std::string>> items = hGrp->GetASCIIMap();
+        std::map<std::string, std::string> items = hGrp->GetASCIIMap();
         for (const auto& it2 : items) {
             // since we have stored the separators to the user parameters as (key, pair) we had to
             // make sure to use a unique key because otherwise we cannot store more than
@@ -267,7 +267,7 @@ void DlgCustomToolbars::exportCustomToolbars(const QByteArray& workbench)
         QTreeWidgetItem* toplevel = ui->toolbarTreeWidget->topLevelItem(i);
         QString groupName = QStringLiteral("Custom_%1").arg(i + 1);
         QByteArray toolbarName = toplevel->text(0).toUtf8();
-        ParameterGrp::handle hToolGrp = hGrp->GetGroup(groupName.toLatin1());
+        ParameterGrp::handle hToolGrp = hGrp->GetGroup(groupName.toLatin1().toStdString());
         hToolGrp->SetASCII("Name", toolbarName.constData());
         hToolGrp->SetBool("Active", toplevel->checkState(0) == Qt::Checked);
 
@@ -281,7 +281,7 @@ void DlgCustomToolbars::exportCustomToolbars(const QByteArray& workbench)
             if (commandName == "Separator") {
                 QByteArray key = commandName + QByteArray::number(suffixSeparator);
                 suffixSeparator++;
-                hToolGrp->SetASCII(key, commandName);
+                hToolGrp->SetASCII(key.toStdString(), commandName.toStdString());
             }
             else {
                 Command* pCmd = rMgr.getCommandByName(commandName);
@@ -290,7 +290,7 @@ void DlgCustomToolbars::exportCustomToolbars(const QByteArray& workbench)
                 }
                 else {
                     QByteArray moduleName = child->data(0, Qt::WhatsThisPropertyRole).toByteArray();
-                    hToolGrp->SetASCII(commandName, moduleName);
+                    hToolGrp->SetASCII(commandName.toStdString(), moduleName.toStdString());
                 }
             }
         }

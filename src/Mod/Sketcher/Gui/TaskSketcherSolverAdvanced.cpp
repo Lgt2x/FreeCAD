@@ -809,18 +809,18 @@ void TaskSketcherSolverAdvanced::onPushButtonDefaultsClicked(bool checked /* = f
     ParameterGrp::handle hGrp = App::GetApplication().GetParameterGroupByPath(
         "User parameter:BaseApp/Preferences/Mod/Sketcher/SolverAdvanced"
     );
-    hGrp->SetASCII("LM_eps", QString::number(LM_EPS).toUtf8());
-    hGrp->SetASCII("LM_eps1", QString::number(LM_EPS1).toUtf8());
-    hGrp->SetASCII("LM_tau", QString::number(LM_TAU).toUtf8());
-    hGrp->SetASCII("DL_tolg", QString::number(DL_TOLG).toUtf8());
-    hGrp->SetASCII("DL_tolx", QString::number(DL_TOLX).toUtf8());
-    hGrp->SetASCII("DL_tolf", QString::number(DL_TOLF).toUtf8());
-    hGrp->SetASCII("Redundant_LM_eps", QString::number(LM_EPS).toUtf8());
-    hGrp->SetASCII("Redundant_LM_eps1", QString::number(LM_EPS1).toUtf8());
-    hGrp->SetASCII("Redundant_LM_tau", QString::number(LM_TAU).toUtf8());
-    hGrp->SetASCII("Redundant_DL_tolg", QString::number(DL_TOLG).toUtf8());
-    hGrp->SetASCII("Redundant_DL_tolx", QString::number(DL_TOLX).toUtf8());
-    hGrp->SetASCII("Redundant_DL_tolf", QString::number(DL_TOLF).toUtf8());
+    hGrp->SetASCII("LM_eps", QString::number(LM_EPS).toUtf8().toStdString());
+    hGrp->SetASCII("LM_eps1", QString::number(LM_EPS1).toUtf8().toStdString());
+    hGrp->SetASCII("LM_tau", QString::number(LM_TAU).toUtf8().toStdString());
+    hGrp->SetASCII("DL_tolg", QString::number(DL_TOLG).toUtf8().toStdString());
+    hGrp->SetASCII("DL_tolx", QString::number(DL_TOLX).toUtf8().toStdString());
+    hGrp->SetASCII("DL_tolf", QString::number(DL_TOLF).toUtf8().toStdString());
+    hGrp->SetASCII("Redundant_LM_eps", QString::number(LM_EPS).toUtf8().toStdString());
+    hGrp->SetASCII("Redundant_LM_eps1", QString::number(LM_EPS1).toUtf8().toStdString());
+    hGrp->SetASCII("Redundant_LM_tau", QString::number(LM_TAU).toUtf8().toStdString());
+    hGrp->SetASCII("Redundant_DL_tolg", QString::number(DL_TOLG).toUtf8().toStdString());
+    hGrp->SetASCII("Redundant_DL_tolx", QString::number(DL_TOLX).toUtf8().toStdString());
+    hGrp->SetASCII("Redundant_DL_tolf", QString::number(DL_TOLF).toUtf8().toStdString());
     // Set other settings
     hGrp->SetInt("DefaultSolver", DEFAULT_SOLVER);
     hGrp->SetInt("DogLegGaussStep", DEFAULT_DOGLEG_GAUSS_STEP);
@@ -830,10 +830,10 @@ void TaskSketcherSolverAdvanced::onPushButtonDefaultsClicked(bool checked /* = f
     hGrp->SetInt("RedundantSolverMaxIterations", MAX_ITER);
     hGrp->SetBool("SketchSizeMultiplier", MAX_ITER_MULTIPLIER);
     hGrp->SetBool("RedundantSketchSizeMultiplier", MAX_ITER_MULTIPLIER);
-    hGrp->SetASCII("Convergence", QString::number(CONVERGENCE).toUtf8());
-    hGrp->SetASCII("RedundantConvergence", QString::number(CONVERGENCE).toUtf8());
+    hGrp->SetASCII("Convergence", QString::number(CONVERGENCE).toUtf8().toStdString());
+    hGrp->SetASCII("RedundantConvergence", QString::number(CONVERGENCE).toUtf8().toStdString());
     hGrp->SetInt("QRMethod", DEFAULT_QRSOLVER);
-    hGrp->SetASCII("QRPivotThreshold", QString::number(QR_PIVOT_THRESHOLD).toUtf8());
+    hGrp->SetASCII("QRPivotThreshold", QString::number(QR_PIVOT_THRESHOLD).toUtf8().toStdString());
     hGrp->SetInt("DebugMode", DEFAULT_SOLVER_DEBUG);
 
     ui->comboBoxDefaultSolver->onRestore();
