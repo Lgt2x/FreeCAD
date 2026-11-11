@@ -23,7 +23,7 @@
 import unittest
 import FreeCAD
 
-from PySide import QtCore, QtGui
+from PySide import QtCore, QtWidgets
 import FreeCADGui
 
 # ----------------------------------------------------------------------------------
@@ -34,6 +34,12 @@ import FreeCADGui
 class SpreadsheetGuiCases(unittest.TestCase):
     def setUp(self):
         self.doc = FreeCAD.newDocument()
+        clipboard = QtWidgets.QApplication.clipboard()
+        saved_clipboard = QtCore.QMimeData()
+        if clipboard.mimeData():
+            for format_name in clipboard.mimeData().formats():
+                saved_clipboard.setData(format_name, clipboard.mimeData().data(format_name))
+        self.addCleanup(clipboard.setMimeData, saved_clipboard)
         self.sheet = self.doc.addObject("Spreadsheet::Sheet", "Spreadsheet")
         self.view_provider = self.sheet.ViewObject
 
@@ -41,8 +47,7 @@ class SpreadsheetGuiCases(unittest.TestCase):
         return self.view_provider.getView()
 
     def tearDown(self):
-        pass
-        # FreeCAD.closeDocument(self.doc.Name)
+        FreeCAD.closeDocument(self.doc.Name)
 
     def injectSimpleData(self):
         """A utility function to initialize a blank sheet with some known data"""
@@ -68,11 +73,16 @@ class SpreadsheetGuiCases(unittest.TestCase):
     def testCopySingleCell(self):
         self.injectSimpleData()
         self.view_provider.doubleClicked()
+        main_window = FreeCADGui.getMainWindow()
+        QtWidgets.QApplication.setActiveWindow(main_window)
+        subwindow = main_window.findChild(QtWidgets.QMdiArea).activeSubWindow()
+        subwindow.findChild(QtWidgets.QGraphicsView).setFocus()
+        FreeCADGui.updateGui()
         view = self.getTableView()
-        view.select("A1", QtCore.QItemSelectionModel.SelectCurrent)
+        view.select("A1", QtCore.QItemSelectionModel.ClearAndSelect.value)
         view.setCurrentIndex("A1")
         FreeCAD.Gui.runCommand("Std_Copy", 0)
-        view.select("E5", QtCore.QItemSelectionModel.SelectCurrent)
+        view.select("E5", QtCore.QItemSelectionModel.ClearAndSelect.value)
         view.setCurrentIndex("E5")
         FreeCAD.Gui.runCommand("Std_Paste", 0)
         self.doc.recompute()
