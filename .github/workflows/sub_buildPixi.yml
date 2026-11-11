@@ -227,6 +227,14 @@ jobs:
       if: "!inputs.skipBuild"
       run: pixi run python -m unittest discover -s src/Tools/tests -p "test_*.py"
 
+    - name: Python binding generator tests
+      if: "!inputs.skipBuild"
+      run: pixi run python -m unittest discover -s src/Tools/bindings/tests -p "test_*.py"
+
+    - name: Typing stub generator tests
+      if: "!inputs.skipBuild"
+      run: pixi run python -m unittest discover -s src/Tools/typing/stubgen -p "test_*.py"
+
     - name: C++ tests
       timeout-minutes: 10
       if: runner.os != 'Windows' && !inputs.skipBuild
