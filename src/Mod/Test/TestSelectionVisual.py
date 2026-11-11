@@ -31,6 +31,16 @@ class TestSelectionVisual(unittest.TestCase):
     _COLOR_DELTA_RESTORE_MAX = 0.05
 
     def setUp(self):
+        self.view_params = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/View")
+        saved_colors = {
+            key: self.view_params.GetUnsigned(key)
+            if key in self.view_params.GetUnsigneds()
+            else None
+            for key in ("SelectionColor", "HighlightColor")
+        }
+        self.addCleanup(self._restore_colors, saved_colors)
+        self.view_params.SetUnsigned("SelectionColor", 0x00FF00FF)
+        self.view_params.SetUnsigned("HighlightColor", 0xFF0000FF)
         self.doc = FreeCAD.newDocument("TestSelectionVisual")
         FreeCADGui.ActiveDocument = FreeCADGui.getDocument(self.doc.Name)
         self.view = FreeCADGui.ActiveDocument.ActiveView
@@ -149,6 +159,16 @@ class TestSelectionVisual(unittest.TestCase):
         self._set_orthographic_if_supported()
         self.view.fitAll()
         self._flush_gui()
+        Selection.clearPreselection()
+        Selection.clearSelection()
+        self._flush_gui()
+
+    def _restore_colors(self, colors):
+        for key, value in colors.items():
+            if value is None:
+                self.view_params.RemUnsigned(key)
+            else:
+                self.view_params.SetUnsigned(key, value)
 
     def _set_orthographic_if_supported(self):
         with suppress(Exception):

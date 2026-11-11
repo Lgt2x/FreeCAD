@@ -27,7 +27,7 @@ endfunction()
 function(setup_qt_test)
     foreach(_testname ${ARGN})
         add_executable(${_testname}_Tests_run ${_testname}.cpp)
-        add_test(NAME ${_testname}_Tests_run COMMAND ${_testname}_Tests_run)
+        add_test(NAME FreeCAD-CPP-${_testname} COMMAND ${_testname}_Tests_run)
 
         if(NOT BUILD_DYNAMIC_LINK_PYTHON)
             list(APPEND ${_testname}_LIBS
@@ -48,14 +48,14 @@ function(setup_qt_test)
         if(WIN32)
             set_target_properties(${_testname}_Tests_run PROPERTIES
                 RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-            set_tests_properties(${_testname}_Tests_run PROPERTIES
+            set_tests_properties(FreeCAD-CPP-${_testname} PROPERTIES
                 LABELS "Qt"
                 ENVIRONMENT "QT_QPA_PLATFORM=offscreen"
                 ENVIRONMENT_MODIFICATION "${_test_env_mod}")
         else()
             set_target_properties(${_testname}_Tests_run PROPERTIES
                 RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests)
-            set_tests_properties(${_testname}_Tests_run PROPERTIES
+            set_tests_properties(FreeCAD-CPP-${_testname} PROPERTIES
                 LABELS "Qt"
                 ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
         endif()
@@ -156,11 +156,13 @@ foreach (exe ${TestExecutables})
         # gtest_discover_tests requires running the exe to list tests, which fails on Windows
         # because third-party DLLs are not on PATH during CMake script execution. Register each
         # test executable as a single ctest entry instead.
-        add_test(NAME ${exe} COMMAND ${exe})
-        set_tests_properties(${exe} PROPERTIES
+        add_test(NAME FreeCAD-CPP-${exe} COMMAND ${exe})
+        set_tests_properties(FreeCAD-CPP-${exe} PROPERTIES
             ENVIRONMENT_MODIFICATION "${_test_env_mod}")
     else()
         set_target_properties(${exe} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests)
-        gtest_discover_tests(${exe})
+        gtest_discover_tests(${exe} TEST_PREFIX FreeCAD-CPP-)
     endif()
 endforeach()
+
+include(PythonTests.cmake)

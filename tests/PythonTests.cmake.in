@@ -1,0 +1,117 @@
+# SPDX-License-Identifier: LGPL-2.1-or-later
+
+set(PY_EXECUTABLE "@PY_EXECUTABLE@")
+set(GUI_EXECUTABLE "@GUI_EXECUTABLE@")
+# CI also checks the installed application, selected from PATH rather than the build tree.
+if(DEFINED ENV{FREECAD_TEST_USE_INSTALLED})
+    set(PY_EXECUTABLE FreeCADCmd)
+    if(GUI_EXECUTABLE)
+        set(GUI_EXECUTABLE FreeCAD)
+    endif()
+endif()
+
+# Installed applications can come from any prefix on PATH. Only cache the build tree,
+# whose runtime inputs we can enumerate without starting FreeCAD.
+set(use_cache TRUE)
+if(DEFINED ENV{FREECAD_TEST_USE_INSTALLED})
+    set(use_cache FALSE)
+endif()
+if(use_cache)
+    set(cache "${CMAKE_CURRENT_LIST_DIR}/PythonTests-${CTEST_CONFIGURATION_TYPE}-cache.cmake")
+    file(LOCK "${cache}.lock" GUARD PROCESS TIMEOUT 120)
+    file(GLOB_RECURSE inputs LIST_DIRECTORIES FALSE FOLLOW_SYMLINKS
+        "@CMAKE_BINARY_DIR@/bin/*" "@CMAKE_BINARY_DIR@/lib/*" "@CMAKE_BINARY_DIR@/Mod/*")
+    list(FILTER inputs EXCLUDE REGEX "(/__pycache__/|\\.py[co]$)")
+    list(APPEND inputs "${CMAKE_CURRENT_LIST_FILE}" "@CMAKE_BINARY_DIR@/CMakeCache.txt"
+        "${PY_EXECUTABLE}")
+    if(GUI_EXECUTABLE)
+        list(APPEND inputs "${GUI_EXECUTABLE}")
+    endif()
+    set(state)
+    foreach(input IN LISTS inputs)
+        if(EXISTS "${input}")
+            file(TIMESTAMP "${input}" modified "%Y-%m-%dT%H:%M:%S.%fZ" UTC)
+            file(SIZE "${input}" size)
+            string(APPEND state "${input}|${modified}|${size}\n")
+        else()
+            string(APPEND state "${input}|missing\n")
+        endif()
+    endforeach()
+    foreach(variable PATH PYTHONPATH PYTHONHOME LD_LIBRARY_PATH DYLD_LIBRARY_PATH
+                     QT_PLUGIN_PATH CONDA_PREFIX VIRTUAL_ENV FREECAD_USER_HOME
+                     XDG_CONFIG_HOME HOME USERPROFILE)
+        string(APPEND state "${variable}=$ENV{${variable}}\n")
+    endforeach()
+    string(SHA256 signature "${state}")
+    if(EXISTS "${cache}" AND EXISTS "${cache}.sha256" AND NOT "$ENV{FREECAD_TEST_REFRESH}")
+        file(READ "${cache}.sha256" cached_signature)
+        if(signature STREQUAL cached_signature)
+            include("${cache}")
+            file(LOCK "${cache}.lock" RELEASE)
+            return()
+        endif()
+    endif()
+endif()
+
+set(registrations "# Generated Python test registrations. Do not edit.\n")
+foreach(kind PY GUI)
+    if(NOT ${kind}_EXECUTABLE)
+        continue()
+    endif()
+    # Only discovery is offscreen; GUI tests retain the caller's display settings.
+    execute_process(
+        COMMAND "@CMAKE_COMMAND@" -E env QT_QPA_PLATFORM=offscreen "${${kind}_EXECUTABLE}" -t CTestTests
+        RESULT_VARIABLE result OUTPUT_VARIABLE output ERROR_VARIABLE errors
+        TIMEOUT 60)
+    if(NOT result STREQUAL "0")
+        message(FATAL_ERROR "Cannot discover ${kind} tests: ${result}\n${output}\n${errors}")
+    endif()
+    string(REGEX MATCH "FREECAD_CTEST_TESTS=([^\r\n]+)" manifest "${output}")
+    if(NOT manifest)
+        message(FATAL_ERROR "No registered ${kind} tests found:\n${output}\n${errors}")
+    endif()
+    set(manifest "${CMAKE_MATCH_1}")
+    string(JSON module_count LENGTH "${manifest}")
+    if(module_count EQUAL 0)
+        message(FATAL_ERROR "No registered ${kind} tests found:\n${output}\n${errors}")
+    endif()
+    math(EXPR last_module "${module_count} - 1")
+    foreach(index RANGE 0 ${last_module})
+        string(JSON module MEMBER "${manifest}" ${index})
+        string(JSON module_cases GET "${manifest}" "${module}")
+        string(JSON test_count LENGTH "${module_cases}")
+        math(EXPR last_test "${test_count} - 1")
+        set(test_ids)
+        foreach(test_index RANGE 0 ${last_test})
+            string(JSON test_id GET "${module_cases}" ${test_index})
+            if(kind STREQUAL "GUI" AND test_id IN_LIST py_cases_${module})
+                continue()
+            endif()
+            list(APPEND test_ids "${test_id}")
+        endforeach()
+        if(NOT test_ids)
+            continue()
+        endif()
+        if(kind STREQUAL "PY")
+            set(py_cases_${module} ${test_ids})
+        endif()
+        list(JOIN test_ids "," selection)
+        string(APPEND registrations
+            "add_test([==[FreeCAD-${kind}-${module}]==] [==[${${kind}_EXECUTABLE}]==] -t CTestTests)\n"
+            "set_tests_properties([==[FreeCAD-${kind}-${module}]==] PROPERTIES\n"
+            "  ENVIRONMENT [==[FREECAD_CTEST_MODULE=${module};FREECAD_CTEST_CASES=${selection}]==]\n"
+            "  SKIP_REGULAR_EXPRESSION FREECAD_CTEST_ALL_SKIPPED)\n")
+    endforeach()
+endforeach()
+
+if(use_cache)
+    # Publish only complete, successful discovery results. The lock also prevents
+    # concurrent CTest invocations from collecting or writing the same cache twice.
+    file(WRITE "${cache}.tmp" "${registrations}")
+    file(RENAME "${cache}.tmp" "${cache}")
+    file(WRITE "${cache}.sha256" "${signature}")
+    include("${cache}")
+    file(LOCK "${cache}.lock" RELEASE)
+else()
+    cmake_language(EVAL CODE "${registrations}")
+endif()
