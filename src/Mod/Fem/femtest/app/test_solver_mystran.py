@@ -28,11 +28,11 @@ __author__ = "Bernd Hahnebach"
 __url__ = "https://www.freecad.org"
 
 import unittest
+import importlib.util
 from os.path import join
 
 import FreeCAD
 
-import femsolver.run
 from . import support_utils as testtools
 from .support_utils import fcc_print
 from .support_utils import get_namefromdef
@@ -44,6 +44,9 @@ class TestSolverMystran(unittest.TestCase):
     # ********************************************************************************************
     def setUp(self):
         # setUp is executed before every test
+
+        if importlib.util.find_spec("vtkmodules") is None:
+            self.skipTest("VTK Python bindings are not available")
 
         # new document
         self.document = FreeCAD.newDocument(self.__class__.__name__)
@@ -120,6 +123,8 @@ class TestSolverMystran(unittest.TestCase):
 
     # ********************************************************************************************
     def input_file_writing_test(self, base_name):
+        import femsolver.run
+
         self.document.recompute()
 
         # get analysis working directory and save FreeCAD file
