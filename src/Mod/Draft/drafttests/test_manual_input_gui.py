@@ -46,6 +46,9 @@ class DraftGuiManualInput(test_base.DraftTestCaseDoc):
     """GUI regressions for manual point-input field locking in DraftGui."""
 
     def setUp(self):
+        workbench = Gui.activeWorkbench().name()
+        Gui.activateWorkbench("DraftWorkbench")
+        self.addCleanup(Gui.activateWorkbench, workbench)
         super().setUp()
         self.tb = Gui.draftToolBar
 

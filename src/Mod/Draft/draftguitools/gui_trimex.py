@@ -55,7 +55,11 @@ def _get_global_shape(obj, subname=""):
     """Return an object's shape transformed through its container chain."""
     import Part
 
-    return Part.getShape(obj, subname, needSubElement=bool(subname), noElementMap=True)
+    shape = Part.getShape(obj, subname, needSubElement=bool(subname), noElementMap=True)
+    parent = obj.getParentGeoFeatureGroup()
+    if parent:
+        shape.Placement = parent.getGlobalPlacement() * shape.Placement
+    return shape
 
 
 def _resolve_selection(sel):
@@ -68,6 +72,9 @@ def _resolve_selection(sel):
             subname += "."
     obj = sel.Object.getSubObject(subname, 1) if subname else sel.Object
     placement = sel.Object.getSubObject(subname, 3)
+    parent = sel.Object.getParentGeoFeatureGroup()
+    if parent:
+        placement = parent.getGlobalPlacement() * placement
     shape = _get_global_shape(sel.Object, subname)
     return obj, placement, shape
 

@@ -79,6 +79,31 @@ class DraftTrimexGui(DraftTestCaseDoc):
             [App.Vector(20, 30, 0), App.Vector(30, 30, 0)],
         )
 
+    def test_resolve_selection_through_link_in_rotated_part(self):
+        source = self.doc.addObject("App::Part", "Source")
+        line = Draft.make_line(App.Vector(0, 0, 0), App.Vector(10, 0, 0))
+        source.addObject(line)
+        parent = self.doc.addObject("App::Part", "Parent")
+        parent.Placement = App.Placement(
+            App.Vector(100, 200, 0), App.Rotation(App.Vector(0, 0, 1), 90)
+        )
+        link = self.doc.addObject("App::Link", "Link")
+        link.LinkedObject = source
+        parent.addObject(link)
+        link.Placement.Base = App.Vector(20, 30, 0)
+        self.doc.recompute()
+        selection = mock.Mock(Object=link, SubElementNames=(f"{line.Name}.Edge1",))
+
+        obj, placement, shape = gui_trimex._resolve_selection(selection)
+
+        self.assertEqual(obj, line)
+        expected = parent.Placement * link.Placement
+        self.assertLess((placement.Base - expected.Base).Length, 1e-7)
+        self.assertEqual(len(shape.Vertexes), 2)
+        for vertex, point in zip(shape.Vertexes, (App.Vector(), App.Vector(10, 0, 0))):
+            self.assertLess((vertex.Point - expected.multVec(point)).Length, 1e-7)
+            self.assertLess((placement.multVec(point) - expected.multVec(point)).Length, 1e-7)
+
     def test_extend_object_through_link(self):
         """Trimex should write linked-instance geometry back locally."""
         part = self.doc.addObject("App::Part", "Part")
@@ -94,6 +119,8 @@ class DraftTrimexGui(DraftTestCaseDoc):
 
         obj, placement, shape = gui_trimex._resolve_selection(selection)
         command = gui_trimex.Trimex()
+        command.lockedActivePoint = None
+        command.axisSetter = None
         command.obj = obj
         command.placement = placement
         command.edges = shape.Edges
@@ -112,7 +139,7 @@ class DraftTrimexGui(DraftTestCaseDoc):
 
         command.trimObject()
 
-        self.assertEqual(horizontal.Points, [App.Vector(20, 0, 0), App.Vector(0, 0, 0)])
+        self.assertEqual(horizontal.Points, [App.Vector(0, 0, 0), App.Vector(20, 0, 0)])
 
     def test_extend_to_object_in_translated_part(self):
         """Trimex should extend between world-space shapes in an App Part."""
@@ -127,6 +154,8 @@ class DraftTrimexGui(DraftTestCaseDoc):
         self.doc.recompute()
 
         command = gui_trimex.Trimex()
+        command.lockedActivePoint = None
+        command.axisSetter = None
         command.edges = gui_trimex._get_global_shape(horizontal).Edges
         command.ghost = [mock.Mock()]
         command.activePoint = 0
@@ -151,5 +180,5 @@ class DraftTrimexGui(DraftTestCaseDoc):
         command.trimObject()
         self.assertEqual(
             horizontal.Points,
-            [App.Vector(700, 100, 0), App.Vector(100, 100, 0)],
+            [App.Vector(100, 100, 0), App.Vector(700, 100, 0)],
         )
