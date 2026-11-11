@@ -165,36 +165,20 @@ jobs:
       - name: FreeCAD CLI tests on build dir
         if: inputs.testOnBuildDir
         timeout-minutes: 10
-        uses: ./.github/workflows/actions/runPythonTests
-        with:
-          testDescription: "CLI tests on build dir"
-          testCommand: ${{ env.builddir }}/bin/FreeCADCmd -t 0
-          logFile: ${{ env.logdir }}TestCLIBuild.log
-          reportFile: ${{env.reportdir}}${{ env.reportfilename }}
+        run: ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-PY-' --output-on-failure --no-tests=error
 
       - name: FreeCAD GUI tests on build dir
         if: inputs.testOnBuildDir
         timeout-minutes: 15
-        uses: ./.github/workflows/actions/runPythonTests
-        with:
-          testDescription: "GUI tests on build dir"
-          # Use Python wrapper to run only GUI-registered tests with the built FreeCAD executable
-          testCommand: xvfb-run python3 ./.github/scripts/run_gui_tests.py "${{ env.builddir }}"
-          logFile: ${{ env.logdir }}TestGUIBuild.log
-          reportFile: ${{env.reportdir}}${{ env.reportfilename }}
+        run: xvfb-run ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-GUI-' --output-on-failure --no-tests=error
 
       - name: Coin node snapshot visual tests on build dir
         if: inputs.testCoinNodeSnapshots
         timeout-minutes: 15
-        uses: ./.github/workflows/actions/runPythonTests
-        with:
-          testDescription: "Coin node snapshot visual tests on build dir"
-          testCommand: |
-            FC_VISUAL_OUT_DIR="/tmp/FreeCADTesting/CoinNodeSnapshots" \
-            xvfb-run -a -s "-screen 0 1024x768x24" \
-              "${{ env.builddir }}/bin/FreeCAD" -t TestCoinNodeSnapshots
-          logFile: ${{ env.logdir }}TestCoinNodeSnapshotsBuild.log
-          reportFile: ${{env.reportdir}}${{ env.reportfilename }}
+        run: |
+          FC_VISUAL_OUT_DIR="/tmp/FreeCADTesting/CoinNodeSnapshots" \
+          xvfb-run -a -s "-screen 0 1024x768x24" \
+            ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-GUI-TestCoinNodeSnapshots$' --output-on-failure --no-tests=error
 
       - name: Upload Coin node snapshot artifacts (on failure)
         if: failure() && inputs.testCoinNodeSnapshots
@@ -204,12 +188,8 @@ jobs:
           path: /tmp/FreeCADTesting/CoinNodeSnapshots
 
       - name: C++ tests
-        timeout-minutes: 1
-        uses: ./.github/workflows/actions/runCPPTests/runAllTests
-        with:
-          reportdir: ${{ env.reportdir }}
-          builddir: ${{ env.builddir }}
-          reportFile: ${{ env.reportdir }}${{ env.reportfilename }}
+        timeout-minutes: 10
+        run: ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-CPP-' --output-on-failure --no-tests=error
 
       - name: CMake Install
         uses: ./.github/workflows/actions/linux/install
@@ -221,22 +201,11 @@ jobs:
 
       - name: FreeCAD CLI tests on install
         timeout-minutes: 10
-        uses: ./.github/workflows/actions/runPythonTests
-        with:
-          testDescription: "CLI tests on install"
-          testCommand: FreeCADCmd -t 0
-          logFile: ${{ env.logdir }}TestCLIInstall.log
-          reportFile: ${{env.reportdir}}${{ env.reportfilename }}
+        run: FREECAD_TEST_USE_INSTALLED=1 ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-PY-' --output-on-failure --no-tests=error
 
       - name: FreeCAD GUI tests on install
         timeout-minutes: 15
-        uses: ./.github/workflows/actions/runPythonTests
-        with:
-          testDescription: "GUI tests on install"
-          # Use Python wrapper to run only GUI-registered tests using the installed FreeCAD
-          testCommand: xvfb-run python3 ./.github/scripts/run_gui_tests.py "FreeCAD"
-          logFile: ${{ env.logdir }}TestGUIInstall.log
-          reportFile: ${{env.reportdir}}${{ env.reportfilename }}
+        run: FREECAD_TEST_USE_INSTALLED=1 xvfb-run ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-GUI-' --output-on-failure --no-tests=error
 
       - name: Save Compiler Cache
         id: cache-save
@@ -253,6 +222,7 @@ jobs:
           name: ${{ inputs.artifactBasename }}-Logs
           path: |
             ${{ env.logdir }}
+            ${{ env.builddir }}Testing/Temporary/
             /var/crash/*FreeCAD*
 
       - name: Upload report
