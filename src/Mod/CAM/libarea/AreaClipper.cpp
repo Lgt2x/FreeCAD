@@ -327,9 +327,18 @@ void CArea::NaiveOffset(double offset)
             continue;
         }
 
-        // Handle "curves" of a single point -- positive offset is the circle about that point,
-        // and negative offset is empty.
-        if (curve.m_vertices.size() == 1) {
+        // Repeated zero-length moves also represent a single point. They produce no offset
+        // segments, so handle them here rather than trying to join empty output curves.
+        const Point& firstPoint = curve.m_vertices.front().m_p;
+        const bool isPoint = std::all_of(
+            std::next(curve.m_vertices.begin()),
+            curve.m_vertices.end(),
+            [&](const CVertex& vertex) {
+                return vertex.m_p.exactlyEquals(firstPoint)
+                    && (vertex.m_type == 0 || vertex.m_c.exactlyEquals(firstPoint));
+            }
+        );
+        if (isPoint) {
             const Point& center = curve.m_vertices.front().m_p;
             const Point right(center.x + offset, center.y);
             const Point left(center.x - offset, center.y);

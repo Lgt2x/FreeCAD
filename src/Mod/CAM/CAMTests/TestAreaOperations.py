@@ -14,6 +14,18 @@ from CAMTests.TestArcFitting import areas_equal, make_curve, make_area, format_a
 class TestAreaOperations(unittest.TestCase):
     """Direct tests for Area boolean and offset operations exposed to Python."""
 
+    def test_thicken_zero_length_segments(self):
+        """Repeated zero-length moves sweep the same disk as a single point."""
+        for vertex_count in (1, 2, 3):
+            with self.subTest(vertex_count=vertex_count):
+                region = area.Area()
+                curve = area.Curve()
+                for _ in range(vertex_count):
+                    curve.append(area.Vertex(area.Point(2, 3)))
+                region.append(curve)
+                region.Thicken(2)
+                self.assert_areas_equal(region, self.create_circle(2, 3, 2))
+
     def create_square(self, x, y, size):
         """Helper: Create a square Area at position (x,y) with given size."""
         a = area.Area()
