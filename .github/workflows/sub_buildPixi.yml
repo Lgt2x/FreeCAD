@@ -52,9 +52,6 @@ on:
         default: false
         type: boolean
         required: false
-    outputs:
-      reportFile:
-        value: ${{ jobs.Build.outputs.reportFile }}
 
 permissions:
   contents: read
@@ -80,11 +77,7 @@ jobs:
       cacheKey: pixi-${{ matrix.os }}
       config: release
       logdir: ${{ github.workspace }}/logs/
-      reportdir: ${{ github.workspace }}/report/
-      reportfilename: ${{ inputs.artifactBasename }}-${{ matrix.os }}-report.md
       shellCmd: "pixi run bash -l {0}"
-    outputs:
-      reportFile: ${{ steps.Init.outputs.reportFile }}
 
     strategy:
       max-parallel: 6
@@ -156,14 +149,11 @@ jobs:
       run: |
         echo "::add-matcher::${{ runner.workspace }}/FreeCAD/.github/problemMatcher/msvc.json"
 
-    - name: Make needed directories, files and initializations
+    - name: Make build and log directories
       if: "!inputs.skipBuild"
-      id: Init
       run: |
         mkdir -p ${{ env.builddir }}
         mkdir -p ${{ env.logdir }}
-        mkdir -p ${{ env.reportdir }}
-        echo "reportFile=${{ env.reportfilename }}" >> $GITHUB_OUTPUT
 
     - if: "!inputs.skipBuild"
       uses: prefix-dev/setup-pixi@ad1da6449d9e506fd127fd67ab2d054a769f6a94 # v0.11.2
@@ -208,38 +198,23 @@ jobs:
     - name: FreeCAD CLI tests on build dir
       if: inputs.testOnBuildDir && !inputs.skipBuild
       timeout-minutes: 10
-      uses: ./.github/workflows/actions/runPythonTests
-      with:
-        testDescription: "CLI tests on build dir"
-        testCommand: ${{ env.builddir }}/bin/FreeCADCmd -t 0
-        logFile: ${{ env.logdir }}TestCLIBuild.log
-        reportFile: ${{env.reportdir}}${{ env.reportfilename }}
-        shellCmd: ${{ env.shellCmd }}
+      shell: ${{ env.shellCmd }}
+      run: ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-PY-' --output-on-failure --no-tests=error
 
     - name: FreeCAD GUI tests on build dir
       if: runner.os == 'Linux' && inputs.testOnBuildDir && !inputs.skipBuild
       timeout-minutes: 15
-      uses: ./.github/workflows/actions/runPythonTests
-      with:
-        testDescription: "GUI tests on build dir"
-        testCommand: xvfb-run ${{ env.builddir }}/bin/FreeCAD -t 0
-        logFile: ${{ env.logdir }}TestGUIBuild.log
-        reportFile: ${{env.reportdir}}${{ env.reportfilename }}
-        shellCmd: ${{ env.shellCmd }}
+      shell: ${{ env.shellCmd }}
+      run: xvfb-run ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-GUI-' --output-on-failure --no-tests=error
 
     - name: Coin node snapshot visual tests on build dir
       if: runner.os == 'Linux' && inputs.testCoinNodeSnapshots && !inputs.skipBuild
       timeout-minutes: 15
-      uses: ./.github/workflows/actions/runPythonTests
-      with:
-        testDescription: "Coin node snapshot visual tests on build dir"
-        testCommand: |
-          FC_VISUAL_OUT_DIR="/tmp/FreeCADTesting/CoinNodeSnapshots" \
-          xvfb-run -a -s "-screen 0 1024x768x24" \
-            "${{ env.builddir }}/bin/FreeCAD" -t TestCoinNodeSnapshots
-        logFile: ${{ env.logdir }}TestCoinNodeSnapshotsBuild.log
-        reportFile: ${{env.reportdir}}${{ env.reportfilename }}
-        shellCmd: ${{ env.shellCmd }}
+      shell: ${{ env.shellCmd }}
+      run: |
+        FC_VISUAL_OUT_DIR="/tmp/FreeCADTesting/CoinNodeSnapshots" \
+        xvfb-run -a -s "-screen 0 1024x768x24" \
+          ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-GUI-TestCoinNodeSnapshots$' --output-on-failure --no-tests=error
 
     - name: Upload Coin node snapshot artifacts (on failure)
       if: failure() && runner.os == 'Linux' && inputs.testCoinNodeSnapshots && !inputs.skipBuild
@@ -255,12 +230,8 @@ jobs:
     - name: C++ tests
       timeout-minutes: 10
       if: runner.os != 'Windows' && !inputs.skipBuild
-      uses: ./.github/workflows/actions/runCPPTests/runAllTests
-      with:
-        reportdir: ${{ env.reportdir }}
-        builddir: ${{ env.builddir }}
-        reportFile: ${{ env.reportdir }}${{ env.reportfilename }}
-        shellCmd: ${{ env.shellCmd }}
+      shell: ${{ env.shellCmd }}
+      run: ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-CPP-' --output-on-failure --no-tests=error
 
     - name: CMake Install
       if: "!inputs.skipBuild"
@@ -270,26 +241,16 @@ jobs:
     - name: FreeCAD CLI tests on install
       if: runner.os != 'Windows' && !inputs.skipBuild
       timeout-minutes: 10
-      uses: ./.github/workflows/actions/runPythonTests
-      with:
-        testDescription: "CLI tests on install"
-        testCommand: FreeCADCmd -t 0
-        logFile: ${{ env.logdir }}TestCLIInstall.log
-        reportFile: ${{env.reportdir}}${{ env.reportfilename }}
-        shellCmd: ${{ env.shellCmd }}
+      shell: ${{ env.shellCmd }}
+      run: FREECAD_TEST_USE_INSTALLED=1 ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-PY-' --output-on-failure --no-tests=error
 
     - name: FreeCAD GUI tests on install
       # if: runner.os == 'Linux' && !inputs.skipBuild
       # currently broken on Qt6 builds
       if: false
       timeout-minutes: 15
-      uses: ./.github/workflows/actions/runPythonTests
-      with:
-        testDescription: "GUI tests on install"
-        testCommand: xvfb-run FreeCAD -t 0
-        logFile: ${{ env.logdir }}TestGUIInstall.log
-        reportFile: ${{env.reportdir}}${{ env.reportfilename }}
-        shellCmd: ${{ env.shellCmd }}
+      shell: ${{ env.shellCmd }}
+      run: FREECAD_TEST_USE_INSTALLED=1 xvfb-run ctest --test-dir "${{ env.builddir }}" -R '^FreeCAD-GUI-' --output-on-failure --no-tests=error
 
     - name: Save Compiler Cache
       id: cache-save
@@ -300,18 +261,11 @@ jobs:
         key: FC-${{ env.cacheKey }}-${{ github.ref }}-${{ github.run_id }}
 
     - name: Upload logs
-      if: "!inputs.skipBuild"
+      if: always() && !inputs.skipBuild
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
         name: ${{ inputs.artifactBasename }}-${{ matrix.os }}-Logs
         path: |
           ${{ env.logdir }}
+          ${{ env.builddir }}Testing/Temporary/
           /var/crash/*FreeCAD*
-
-    - name: Upload report
-      if: "!inputs.skipBuild"
-      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-      with:
-        name: ${{ env.reportfilename }}
-        path: |
-          ${{env.reportdir}}${{ env.reportfilename }}
