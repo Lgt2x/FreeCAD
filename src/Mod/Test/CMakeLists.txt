@@ -5,52 +5,13 @@
 SET(Test_SRCS
     __init__.py
     Init.py
-    BaseTests.py
-    FreeCADInitTests.py
-    AutoSaverStress.py
-    RunAutoSaverStress.py
-    Document.py
-    GuiDocument.py
-    Metadata.py
-    StringHasher.py
     Menu.py
-    Recompute.py
-    GuiRecompute.py
     TestApp.py
-    TestLinkSuppression.py
-    TestIntPairList.py
     TestGui.py
-    TestGroupVisibilityRestoreGui.py
-    TestPySideUic.py
-    UnicodeTests.py
-    UnitTests.py
-    Workbench.py
     unittestgui.py
-    testmakeWireString.py
-    TestCrashReporter.py
-    TestPythonSyntax.py
-    TestPerf.py
-    TestTreeSelection.py
-    TestGraphicsViewWrapping.py
-    TestMDIView.py
-    TestRubberbandSelection.py
-    TestCoinNodeSnapshots.py
-    TestView3DFramebufferCapture.py
-    TestSelectionVisual.py
-    TestCornerAxisCrossVisual.py
-    TestViewProviderLink.py
 )
 
-SET(TestData_SRCS
-    TestData/basic_metadata.xml
-    TestData/bad_root_node.xml
-    TestData/bad_xml.xml
-    TestData/bad_version.xml
-    TestData/content_items.xml
-    TestData/DXFSample.dxf
-)
-
-SOURCE_GROUP("" FILES ${Test_SRCS} ${TestData_SRCS})
+SOURCE_GROUP("" FILES ${Test_SRCS})
 
 if(BUILD_GUI)
     add_subdirectory(Gui)
@@ -61,9 +22,6 @@ set(Test_COPY_OUTPUTS)
 foreach(test_src ${Test_SRCS})
     list(APPEND Test_COPY_OUTPUTS "${CMAKE_BINARY_DIR}/Mod/Test/${test_src}")
 endforeach()
-foreach(test_data_src ${TestData_SRCS})
-    list(APPEND Test_COPY_OUTPUTS "${CMAKE_BINARY_DIR}/Mod/Test/${test_data_src}")
-endforeach()
 
 add_custom_target(TestSources DEPENDS ${Test_COPY_OUTPUTS})
 
@@ -73,10 +31,13 @@ endif()
 
 ADD_CUSTOM_TARGET(Test ALL
     DEPENDS TestSources
-    SOURCES ${Test_SRCS} ${TestData_SRCS}
+    SOURCES ${Test_SRCS}
 )
 
-fc_copy_sources(Test "${CMAKE_BINARY_DIR}/Mod/Test" ${Test_SRCS} ${TestData_SRCS})
+fc_copy_sources(Test "${CMAKE_BINARY_DIR}/Mod/Test" ${Test_SRCS})
+
+# Core and integration tests keep their installed names, independently of source ownership.
+add_subdirectory("${CMAKE_SOURCE_DIR}/tests/python" "${CMAKE_BINARY_DIR}/tests/python")
 
 # Coin node snapshot visual test baselines (Python unittest `TestCoinNodeSnapshots`).
 # For out-of-source builds, copy baselines into the build tree so the test can find them
@@ -145,11 +106,4 @@ INSTALL(
         ${Test_SRCS}
     DESTINATION
         Mod/Test
-)
-
-INSTALL(
-    FILES
-        ${TestData_SRCS}
-    DESTINATION
-        Mod/Test/TestData
 )

@@ -8,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-TYPING_DIR = Path(__file__).resolve().parents[1]
+TYPING_DIR = Path(__file__).resolve().parents[3] / "src" / "Tools" / "typing"
 sys.path.insert(0, str(TYPING_DIR))
 
 from stubgen.property_contracts import (  # noqa: E402
@@ -24,7 +24,7 @@ from stubgen.property_hierarchy import (  # noqa: E402
 )
 from stubgen.type_hierarchy import discover_type_hierarchy  # noqa: E402
 
-ROOT_DIR = Path(__file__).resolve().parents[4]
+ROOT_DIR = Path(__file__).resolve().parents[3]
 
 
 class PropertyContractsTests(unittest.TestCase):

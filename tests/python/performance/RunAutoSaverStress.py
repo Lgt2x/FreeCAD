@@ -23,9 +23,9 @@
 Driver for the opt-in GUI autosave soak test.
 
 Examples from the repository root:
-    FreeCAD src/Mod/Test/RunAutoSaverStress.py
-    FreeCAD src/Mod/Test/RunAutoSaverStress.py documents=3
-    FreeCAD src/Mod/Test/RunAutoSaverStress.py iterations=25 burst=10
+    FreeCAD tests/python/performance/RunAutoSaverStress.py
+    FreeCAD tests/python/performance/RunAutoSaverStress.py documents=3
+    FreeCAD tests/python/performance/RunAutoSaverStress.py iterations=25 burst=10
 """
 
 import os

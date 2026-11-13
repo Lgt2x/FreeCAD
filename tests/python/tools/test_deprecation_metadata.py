@@ -10,8 +10,8 @@ import tempfile
 import textwrap
 import unittest
 
-BINDINGS_ROOT = Path(__file__).resolve().parents[1]
-SRC_ROOT = Path(__file__).resolve().parents[3]
+BINDINGS_ROOT = Path(__file__).resolve().parents[3] / "src" / "Tools" / "bindings"
+SRC_ROOT = Path(__file__).resolve().parents[3] / "src"
 if str(BINDINGS_ROOT) not in sys.path:
     sys.path.insert(0, str(BINDINGS_ROOT))
 

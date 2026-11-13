@@ -36,7 +36,8 @@ files: |
         src/Mod/Test|
         src/Mod/Tux|
         src/Mod/Web|
-        tests/src
+        tests/src|
+        tests/python
     )
 exclude: |
     (?x)^(

@@ -8,7 +8,7 @@ import sys
 import unittest
 import warnings
 
-EXT_ROOT = Path(__file__).resolve().parents[2] / "Ext"
+EXT_ROOT = Path(__file__).resolve().parents[3] / "src" / "Ext"
 if str(EXT_ROOT) not in sys.path:
     sys.path.insert(0, str(EXT_ROOT))
 

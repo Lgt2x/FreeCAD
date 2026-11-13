@@ -8,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-TYPING_DIR = Path(__file__).resolve().parents[1]
+TYPING_DIR = Path(__file__).resolve().parents[3] / "src" / "Tools" / "typing"
 sys.path.insert(0, str(TYPING_DIR))
 
 from stubgen.cpp_properties import (  # noqa: E402
@@ -30,7 +30,7 @@ from stubgen.type_hierarchy import (  # noqa: E402
 )
 from stubgen.model import PublicPythonType  # noqa: E402
 
-ROOT_DIR = Path(__file__).resolve().parents[4]
+ROOT_DIR = Path(__file__).resolve().parents[3]
 
 
 class CppPropertyTests(unittest.TestCase):

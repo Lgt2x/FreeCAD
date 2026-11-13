@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 import unittest
 
-TYPING_DIR = Path(__file__).resolve().parents[1]
+TYPING_DIR = Path(__file__).resolve().parents[3] / "src" / "Tools" / "typing"
 sys.path.insert(0, str(TYPING_DIR))
 
 from stubgen.init_exports import (  # noqa: E402
@@ -21,7 +21,7 @@ from stubgen.module_merge import (  # noqa: E402
     merge_module_support_nodes,
 )
 
-ROOT_DIR = Path(__file__).resolve().parents[4]
+ROOT_DIR = Path(__file__).resolve().parents[3]
 
 
 class InitExportsTests(unittest.TestCase):

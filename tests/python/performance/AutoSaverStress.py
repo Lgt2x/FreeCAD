@@ -26,9 +26,9 @@ This module is intentionally not registered in FreeCAD.__unit_test__, so it is
 only run when requested explicitly.
 
 Examples:
-    FreeCAD src/Mod/Test/RunAutoSaverStress.py
-    FreeCAD src/Mod/Test/RunAutoSaverStress.py documents=3 objects=150
-    FreeCAD src/Mod/Test/RunAutoSaverStress.py iterations=25 burst=10 timeout=5.0
+    FreeCAD tests/python/performance/RunAutoSaverStress.py
+    FreeCAD tests/python/performance/RunAutoSaverStress.py documents=3 objects=150
+    FreeCAD tests/python/performance/RunAutoSaverStress.py iterations=25 burst=10 timeout=5.0
 """
 
 import os

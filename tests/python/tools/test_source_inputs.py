@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 import sys
 
-TYPING_DIR = Path(__file__).resolve().parents[1]
+TYPING_DIR = Path(__file__).resolve().parents[3] / "src" / "Tools" / "typing"
 sys.path.insert(0, str(TYPING_DIR))
 
 from stubgen.model import BindingMethod
@@ -18,7 +18,7 @@ from stubgen.source_inputs import (
     supplement_module_methods_from_stub_signatures,
 )
 
-ROOT_DIR = Path(__file__).resolve().parents[4]
+ROOT_DIR = Path(__file__).resolve().parents[3]
 
 
 class SourceInputsTests(unittest.TestCase):

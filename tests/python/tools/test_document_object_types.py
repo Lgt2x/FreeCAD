@@ -9,7 +9,7 @@ import sys
 import tempfile
 import unittest
 
-TYPING_DIR = Path(__file__).resolve().parents[1]
+TYPING_DIR = Path(__file__).resolve().parents[3] / "src" / "Tools" / "typing"
 sys.path.insert(0, str(TYPING_DIR))
 
 from stubgen.discovery import collect_type_registrations  # noqa: E402
@@ -25,7 +25,7 @@ from stubgen.source_inputs import collect_binding_classes  # noqa: E402
 from stubgen.type_hierarchy import TypeHierarchy, discover_type_hierarchy  # noqa: E402
 from stubgen.cli import parse_args, run_generate  # noqa: E402
 
-ROOT_DIR = Path(__file__).resolve().parents[4]
+ROOT_DIR = Path(__file__).resolve().parents[3]
 
 
 @lru_cache(maxsize=1)

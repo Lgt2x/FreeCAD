@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 import unittest
 
-TYPING_DIR = Path(__file__).resolve().parents[1]
+TYPING_DIR = Path(__file__).resolve().parents[3] / "src" / "Tools" / "typing"
 sys.path.insert(0, str(TYPING_DIR))
 
 from stubgen.class_merge import public_class_stub_source  # noqa: E402

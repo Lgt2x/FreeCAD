@@ -9,8 +9,8 @@ import textwrap
 import unittest
 from pathlib import Path
 
-BINDINGS_DIR = Path(__file__).resolve().parents[1]
-SRC_DIR = Path(__file__).resolve().parents[3]
+BINDINGS_DIR = Path(__file__).resolve().parents[3] / "src" / "Tools" / "bindings"
+SRC_DIR = Path(__file__).resolve().parents[3] / "src"
 sys.path.insert(0, str(BINDINGS_DIR))
 
 from generate import generate
