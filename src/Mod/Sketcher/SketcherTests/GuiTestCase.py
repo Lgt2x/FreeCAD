@@ -33,6 +33,15 @@ def gui_available():
 
 
 class SketcherGuiTestCase(unittest.TestCase):
+    def disable_navigation_cube(self):
+        """Prevent the cube from intercepting clicks in small Xvfb test viewports."""
+        params = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/View")
+        if any(name == "ShowNaviCube" for _, name, _ in params.GetContents()):
+            self.addCleanup(params.SetBool, "ShowNaviCube", params.GetBool("ShowNaviCube", True))
+        else:
+            self.addCleanup(params.RemoveBool, "ShowNaviCube")
+        params.SetBool("ShowNaviCube", False)
+
     def setUp(self):
         super().setUp()
         if not gui_available():

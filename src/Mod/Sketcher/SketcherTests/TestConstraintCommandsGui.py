@@ -10,6 +10,7 @@ from SketcherTests.GuiTestCase import FreeCADGui as Gui, SketcherGuiTestCase
 class TestConstraintCommandsGui(SketcherGuiTestCase):
     def setUp(self):
         super().setUp()
+        self.disable_navigation_cube()
         Gui.activateWorkbench("SketcherWorkbench")
         self.params = App.ParamGet("User parameter:BaseApp/Preferences/Mod/Sketcher")
         self.saved_params = {
