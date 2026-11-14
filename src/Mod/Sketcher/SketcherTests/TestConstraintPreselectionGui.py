@@ -246,7 +246,7 @@ class SketcherGuiTestCases(unittest.TestCase):
                 probe_coin = (marker_coin[0] + dx, marker_coin[1] + dy)
                 probe_info = SketcherGui.getActiveSketchPreselection(probe_coin)
                 probe_kind = self.classify_preselection(probe_info, "Constraint0")
-                if probe_kind == "vertex":
+                if probe_kind == "vertex" and "Vertex3" in probe_info["SubElementNames"]:
                     vertex_offsets.append((dx, dy))
 
         constraint_id = self.sketch.addConstraint(
@@ -315,7 +315,7 @@ class SketcherGuiTestCases(unittest.TestCase):
             )
         )
         self.sketch.setLabelDistance(constraint_id, 0.0)
-        self.sketch.setLabelPosition(constraint_id, 12.0)
+        self.sketch.setLabelPosition(constraint_id, 40.0)
         self.expected_constraint_name = f"Constraint{constraint_id + 1}"
         self.doc.recompute()
         self.pump_gui_events()
