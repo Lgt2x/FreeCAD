@@ -82,6 +82,10 @@ class TestRubberbandSelection(unittest.TestCase):
     )
 
     def setUp(self):
+        self.addCleanup(QtGui.QCursor.setPos, QtGui.QCursor.pos())
+        # Keep overlay away from the view to avoid clashes with mouse input.
+        menu_bar = FreeCADGui.getMainWindow().menuBar()
+        QtGui.QCursor.setPos(menu_bar.mapToGlobal(QtCore.QPoint()))
         self.doc = FreeCAD.newDocument("TestRubberbandSelection")
         FreeCADGui.ActiveDocument = FreeCADGui.getDocument(self.doc.Name)
         self.left_box = None
@@ -527,7 +531,6 @@ class TestRubberbandSelection(unittest.TestCase):
         self._refresh_view_widgets()
         app = QtGui.QApplication.instance()
         global_pos = self.viewport.mapToGlobal(pos)
-        QtGui.QCursor.setPos(global_pos)
         event = QtGui.QMouseEvent(
             event_type,
             pos,
