@@ -95,12 +95,15 @@ foreach(kind PY GUI)
         if(kind STREQUAL "PY")
             set(py_cases_${module} ${test_ids})
         endif()
-        list(JOIN test_ids "," selection)
         string(APPEND registrations
-            "add_test([==[FreeCAD-${kind}-${module}]==] [==[${${kind}_EXECUTABLE}]==] -t CTestTests)\n"
+            "add_test([==[FreeCAD-${kind}-${module}]==] [==[${${kind}_EXECUTABLE}]==] -t [==[${module}]==])\n"
             "set_tests_properties([==[FreeCAD-${kind}-${module}]==] PROPERTIES\n"
-            "  ENVIRONMENT [==[FREECAD_CTEST_MODULE=${module};FREECAD_CTEST_CASES=${selection}]==]\n"
             "  SKIP_REGULAR_EXPRESSION FREECAD_CTEST_ALL_SKIPPED)\n")
+        if(kind STREQUAL "GUI")
+            # GUI processes on the same display compete for keyboard focus.
+            string(APPEND registrations
+                "set_tests_properties([==[FreeCAD-${kind}-${module}]==] PROPERTIES RESOURCE_LOCK FreeCAD_GUI)\n")
+        endif()
     endforeach()
 endforeach()
 

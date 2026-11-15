@@ -78,6 +78,54 @@ class TestCTestCache(unittest.TestCase):
     def calls(self):
         return len(self.count.read_text().splitlines())
 
+    def test_commands_use_full_module_names(self):
+        self.collect()
+        registrations = self.cache.read_text()
+        self.assertIn(
+            f"add_test([==[FreeCAD-PY-nested.Fixture]==] "
+            f"[==[{(self.root / 'bin' / 'FakeCmd').as_posix()}]==] "
+            "-t [==[nested.Fixture]==])",
+            registrations,
+        )
+        self.assertNotIn("-t CTestTests", registrations)
+        self.assertNotIn("ENVIRONMENT", registrations)
+
+    def test_gui_tests_share_display_lock(self):
+        executable = self.root / "bin" / "FakeGui"
+        executable.write_text("binary")
+        self.script.write_text(
+            self.script.read_text().replace(
+                'set(GUI_EXECUTABLE "")',
+                f'set(GUI_EXECUTABLE "{executable.as_posix()}")',
+            )
+        )
+        launcher = self.root / "env"
+        launcher.write_text(
+            launcher.read_text().replace(
+                "print('FREECAD_CTEST_TESTS=",
+                "if any('FakeGui' in arg for arg in sys.argv):\n"
+                "    print('FREECAD_CTEST_TESTS={\"gui.Fixture\": [\"gui.Fixture.Case.test_one\"]}')\n"
+                "    sys.exit(0)\n"
+                "print('FREECAD_CTEST_TESTS=",
+            )
+        )
+        result = subprocess.run(
+            [CMAKE, "-P", str(self.driver)],
+            cwd=self.root,
+            env=self.env,
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        registrations = self.cache.read_text()
+        self.assertIn(
+            "set_tests_properties([==[FreeCAD-GUI-gui.Fixture]==] "
+            "PROPERTIES RESOURCE_LOCK FreeCAD_GUI)",
+            registrations,
+        )
+        self.assertEqual(registrations.count("RESOURCE_LOCK"), 1)
+
     def test_reuse_and_explicit_refresh(self):
         self.collect()
         signature = self.signature.read_text()

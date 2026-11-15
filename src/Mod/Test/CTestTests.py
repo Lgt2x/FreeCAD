@@ -2,9 +2,7 @@
 
 """Expose the cases selected by FreeCAD's registered suites to CTest."""
 
-import importlib
 import json
-import os
 import unittest
 
 import FreeCAD
@@ -48,19 +46,6 @@ class _SelectedSuite(unittest.TestSuite):
 
 
 def load_tests(loader, tests, pattern):
-    module_name = os.environ.get("FREECAD_CTEST_MODULE")
-    if module_name:
-        module = importlib.import_module(module_name)
-        ids = os.environ["FREECAD_CTEST_CASES"].split(",")
-        if ids == [module_name]:
-            return _SelectedSuite(loader.loadTestsFromModule(module))
-        # Import the module explicitly: packages may export a class with the same
-        # name as its module (CAMTests.TestPathAdaptive is one such case).
-        return _SelectedSuite(
-            loader.loadTestsFromNames(
-                [name.removeprefix(module_name + ".") for name in ids], module
-            )
-        )
     # -t uses unittest's standard load_tests hook, so both CLI and GUI initialization
     # have completed and the same registry as an ordinary test run is available.
     print("FREECAD_CTEST_TESTS=" + json.dumps(discover(FreeCAD.__unit_test__)))

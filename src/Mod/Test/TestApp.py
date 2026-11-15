@@ -22,6 +22,7 @@
 # ***************************************************************************/
 
 import FreeCAD
+import importlib
 import sys
 import unittest
 
@@ -34,7 +35,7 @@ def tryLoadingTest(testName):
     "Loads and returns testName, or a failing TestCase if unsuccessful."
 
     try:
-        return unittest.defaultTestLoader.loadTestsFromName(testName)
+        return _load_test(testName)
 
     except ImportError:
 
@@ -80,8 +81,20 @@ def PrintAll():
     return suite
 
 
+def _load_test(name):
+    # Import full module names before unittest traverses package attributes: some
+    # packages export a class with the same name as its defining test module.
+    try:
+        module = importlib.import_module(name)
+    except ImportError:
+        return unittest.defaultTestLoader.loadTestsFromName(name)
+    return unittest.defaultTestLoader.loadTestsFromModule(module)
+
+
 def TestText(s):
-    s = unittest.defaultTestLoader.loadTestsFromName(s)
+    from CTestTests import _SelectedSuite
+
+    s = _SelectedSuite(_load_test(s))
     r = unittest.TextTestRunner(stream=sys.stdout, verbosity=2)
     retval = r.run(s)
     # Flushing to make sure the stream is written to the console

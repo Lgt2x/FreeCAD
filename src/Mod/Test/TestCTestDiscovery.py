@@ -7,7 +7,8 @@ import unittest
 from contextlib import redirect_stdout
 from unittest import mock
 
-from CTestTests import discover, load_tests as _load_ctest_tests
+from CTestTests import discover
+from TestApp import TestText as _run_text_test, _load_test
 
 
 class TestCTestDiscovery(unittest.TestCase):
@@ -49,7 +50,7 @@ class TestCTestDiscovery(unittest.TestCase):
             {"_missing_ctest_fixture": ["_missing_ctest_fixture"]},
         )
 
-    def test_selected_cases_use_module_not_package_attributes(self):
+    def test_direct_module_uses_module_not_package_attributes(self):
         # CAM exports classes whose names shadow their modules. Resolve case IDs
         # relative to the imported module, not by traversing package attributes.
         name = self.module.__name__ + ".child"
@@ -57,31 +58,38 @@ class TestCTestDiscovery(unittest.TestCase):
         child.SelectedCase = self.module.SelectedCase
         child.SelectedCase.__module__ = name
         self.module.child = child.SelectedCase
-        case_id = name + ".SelectedCase.test_selected"
-        with (
-            mock.patch.dict(sys.modules, {name: child}),
-            mock.patch.dict(
-                "os.environ", {"FREECAD_CTEST_MODULE": name, "FREECAD_CTEST_CASES": case_id}
-            ),
-        ):
-            suite = _load_ctest_tests(unittest.TestLoader(), None, None)
+        with mock.patch.dict(sys.modules, {name: child}):
+            suite = _load_test(name)
+        self.assertEqual(suite.countTestCases(), 2)
+        self.assertEqual(
+            {case.id() for group in suite for case in group},
+            {name + ".SelectedCase.test_" + suffix for suffix in ("selected", "excluded")},
+        )
+
+    def test_direct_case_name_still_works(self):
+        name = self.module.__name__ + ".SelectedCase.test_selected"
+        suite = _load_test(name)
         self.assertEqual(suite.countTestCases(), 1)
-        self.assertEqual(next(iter(next(iter(suite)))).id(), case_id)
+        self.assertEqual(next(iter(suite)).id(), name)
+
+    def test_direct_module_preserves_load_tests(self):
+        case = self.module.SelectedCase("test_selected")
+        self.module.load_tests = lambda *args: unittest.TestSuite([case])
+        suite = _load_test(self.module.__name__)
+        self.assertEqual(list(suite), [case])
+
+    def test_direct_missing_module_fails(self):
+        result = unittest.TestResult()
+        _load_test("_missing_ctest_fixture").run(result)
+        self.assertFalse(result.wasSuccessful())
+        self.assertEqual(len(result.errors), 1)
 
     def _run_selected_case(self):
-        name = self.module.__name__
-        with mock.patch.dict(
-            "os.environ",
-            {
-                "FREECAD_CTEST_MODULE": name,
-                "FREECAD_CTEST_CASES": name + ".SelectedCase.test_selected",
-            },
-        ):
-            suite = _load_ctest_tests(unittest.TestLoader(), None, None)
-        result = unittest.TestResult()
+        case = self.module.SelectedCase("test_selected")
+        self.module.load_tests = lambda *args: unittest.TestSuite([case])
         output = io.StringIO()
         with redirect_stdout(output):
-            suite.run(result)
+            result = _run_text_test(self.module.__name__)
         self.assertTrue(result.wasSuccessful())
         return output.getvalue()
 
